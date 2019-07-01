@@ -1,8 +1,19 @@
-import Vue from 'vue'
-import App from './App.vue'
+/**
+ * @author Mr Dk.
+ * @version 2019/07/01
+ * @description 
+ *    The entry file.
+ */
+
+import Vue from "vue"
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
+import App from "./App.vue"
+
+Vue.use(ElementUI);
 
 Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
-}).$mount('#app')
+}).$mount("#app")

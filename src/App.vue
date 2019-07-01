@@ -11,37 +11,54 @@
 <template>
   <div id="app">
 
-    <duckling-header></duckling-header>
-    <duckling-guide id="guide"></duckling-guide>
-    <duckling-content id="content"></duckling-content>
+    <!-- Header -->
+    <el-header>
+      <duckling-header></duckling-header>
+    </el-header>
+
+    <!-- Central part -->
+    <el-container>
+
+      <!-- Aside on the left -->
+      <el-aside width="30%">
+        <duckling-aside></duckling-aside>
+      </el-aside>
+
+      <!-- Content on the right -->
+      <el-main width="70%">
+        <duckling-content></duckling-content>
+      </el-main>
+      
+    </el-container>
+
+    <!-- Footer -->
+    <el-footer>
+      <duckling-footer></duckling-footer>
+    </el-footer>
     
   </div>
 </template>
 
 <script>
+/**
+ * The basic component of blog over here
+ */
 import DucklingHeader from "./components/DucklingHeader.vue";
-import DucklingGuide from "./components/DucklingGuide.vue";
+import DucklingAside from "./components/DucklingAside.vue";
 import DucklingContent from "./components/DucklingContent.vue";
+import DucklingFooter from "./components/DucklingFooter.vue";
 
 export default {
   name: 'app',
   components: {
     DucklingHeader,
-    DucklingGuide,
-    DucklingContent
+    DucklingAside,
+    DucklingContent,
+    DucklingFooter
   }
 }
 </script>
 
 <style>
-#guide {
-  width: 20%;
-  float: left;
-  background: black
-}
-#content {
-  width: 80%;
-  float: right;
-  background: red
-}
+
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Guide</p>
+    <p>Footer</p>
   </div>
 </template>
 
@@ -13,3 +13,4 @@ export default {
   
 }
 </script>
+
