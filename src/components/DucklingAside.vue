@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/01
+  @version - 2019/07/02
 
   @description - 
     The aside component for guiding
@@ -11,34 +11,14 @@
 <template>
   <div>
     
+    <!-- The menu on the left -->
     <el-menu>
 
-      <el-submenu>
-        <template slot="title">
-          <i class="el-icon-edit"></i>
-          <span> Notes </span>
-        </template>
+      <!-- Sub-menu of notes -->
+      <aside-notes :index="1"></aside-notes>
 
-        <el-submenu>
-          <template slot="title">
-            <i class="el-icon-location"></i>
-            <span>Java</span>
-          </template>
-
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-
-        </el-submenu>
-
-      </el-submenu>
-
-      <el-submenu>
-        <template slot="title">
-          <i class="el-icon-document"></i>
-          <span> Paper Outline </span>
-        </template>
-
-      </el-submenu>
+      <!-- Sub-menu of paper-outline -->
+      <aside-paper-outline></aside-paper-outline>
 
     </el-menu>
     
@@ -50,7 +30,13 @@
 </style>
 
 <script>
+import AsideNotes from "./aside/AsideNotes.vue";
+import AsidePaperOutline from "./aside/AsidePaterOutline.vue";
+
 export default {
-  
+  components: {
+    AsideNotes,
+    AsidePaperOutline
+  }
 }
 </script>

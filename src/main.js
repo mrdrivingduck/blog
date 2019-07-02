@@ -1,19 +1,21 @@
 /**
  * @author Mr Dk.
- * @version 2019/07/01
+ * @version 2019/07/02
  * @description 
  *    The entry file.
  */
 
-import Vue from "vue"
+import Vue from "vue";
+import VueResource from "vue-resource";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-import App from "./App.vue"
+import App from "./App.vue";
 
+Vue.use(VueResource);
 Vue.use(ElementUI);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   render: h => h(App),
-}).$mount("#app")
+}).$mount("#app");
