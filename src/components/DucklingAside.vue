@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/02
+  @version - 2019/07/03
 
   @description - 
     The aside component for guiding
@@ -18,7 +18,7 @@
       <aside-notes :index="1"></aside-notes>
 
       <!-- Sub-menu of paper-outline -->
-      <aside-paper-outline></aside-paper-outline>
+      <aside-paper-outline :index="2"></aside-paper-outline>
 
     </el-menu>
     

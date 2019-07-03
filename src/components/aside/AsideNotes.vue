@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/02
+  @version - 2019/07/03
 
   @description - 
     The aside component for displaying note list
@@ -68,6 +68,9 @@
 </style>
 
 <script>
+// Filter only directory
+const dirNameReg = /^[A-Z].*$/;
+
 export default {
   props: ["index"],
 
@@ -98,18 +101,18 @@ export default {
      * Loading all directories of notes repository
      */
     loadDirectories: function (url) {
-      // Set loading status for every directory
+      // Set loading status
       this.loading = true;
 
       // Issue HTTP request
       this.$http.get(url).then(response => {
-
         this.noteDir = [];
-        // Filter only directory
-        const dirNameReg = /^[A-Z].*$/;
         for (let i = 0; i < response.body.length; i++) {
           if (dirNameReg.test(response.body[i].name) && response.body[i].type === "dir") {
-            this.noteDir.push(response.body[i]);
+            let { name, sha, type, url } = response.body[i];
+            this.noteDir.push({
+              name, sha, type, url
+            });
           }
         }
 
@@ -137,9 +140,17 @@ export default {
       // Issue HTTP request for every directory's contents
       this.$http.get(url).then(response => {
         // Inject the content into directory
-        this.$set(dirObj, "notes", response.body);
+        let dirNotes = [];
+        for (let i = 0; i < response.body.length; i++) {
+          let { name, sha, type, size, url } = response.body[i];
+          dirNotes.push({
+            name, sha, type, size, url
+          });
+        }
+        this.$set(dirObj, "notes", dirNotes);
         // Notes loading complete
         dirObj.loading = false;
+
       }, error => {
         // HTTP failed
         this.fail = true;
