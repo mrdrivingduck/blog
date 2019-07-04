@@ -4,7 +4,7 @@
   @version - 2019/07/04
 
   @description - 
-    The aside component for displaying paper outlines
+    The content component for displaying paper outlines
 
 -->
 
@@ -34,7 +34,7 @@
           <span> {{ dir.name }} </span>
         </template>
       </el-menu-item>
-
+      
     </el-submenu>
 
     <!-- Loading failure -->
@@ -93,8 +93,7 @@ export default {
         this.outlineDir = [];
         for (let i = 0; i < response.body.length; i++) {
           if (dirNameReg.test(response.body[i].name) && response.body[i].type === "dir") {
-            let { name, url, sha } = response.body[i];
-            this.outlineDir.push({ name, url, sha });
+            this.outlineDir.push(response.body[i]);
           }
         }
         
