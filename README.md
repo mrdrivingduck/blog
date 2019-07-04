@@ -16,6 +16,8 @@ A dynamic blog system of myself.
 Based on - 
 
 * Vue.js - https://vuejs.org/
+* Vue Router - https://router.vuejs.org/
+* Vuex - https://vuex.vuejs.org/
 * element - https://element.eleme.io/#/en-US
 * _[GitHub](https://github.com/)_ as content server & _[GitHub API v3](https://developer.github.com/v3/)_ as interface
 

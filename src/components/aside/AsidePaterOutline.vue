@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/04
+  @version - 2019/07/05
 
   @description - 
     The aside component for displaying paper outlines
@@ -26,6 +26,8 @@
       <el-menu-item
         v-for="(dir, dirIdx) in outlineDir"
         v-loading="dir.loading"
+        @click="clickDir"
+        :meta="dir"
         :key="dir.name"
         :index="index + '-' + (dirIdx + 1)">
 
@@ -57,8 +59,6 @@
 <script>
 // Filter only directory
 const dirNameReg = /^[A-Z].*$/;
-// Filter only outline markdown files
-// const outlineNameReg = /^Outline.*$/;
 
 export default {
   props: ["index"],
@@ -106,6 +106,12 @@ export default {
         this.fail = true;
         this.failReason = "Status: " + error.status;
       });
+    },
+
+    clickDir: function (item) {
+      let url = item.$attrs.meta.url;
+      this.$store.commit("setOutlineUrl", { url });
+      this.$router.push("/paperoutline");
     }
 
   },

@@ -1,6 +1,8 @@
 /**
  * @author Mr Dk.
  * @version 2019/07/04
+ * @description
+ *    Entry of different modules of Vuex store.
  */
 
 import Vue from "vue";

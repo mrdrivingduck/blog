@@ -11,41 +11,7 @@
 <template>
   <div>
 
-    <!-- Sub-menu of paper outline -->
-    <el-submenu
-      v-if="!fail"
-      v-loading="loading"
-      :index="this.index + ''">
-      
-      <template slot="title">
-        <i class="el-icon-document-copy"></i>
-        <span> Paper Outline </span>
-      </template>
-
-      <!-- Every directories -->
-      <el-menu-item
-        v-for="(dir, dirIdx) in outlineDir"
-        v-loading="dir.loading"
-        :key="dir.name"
-        :index="index + '-' + (dirIdx + 1)">
-
-        <template slot="title">
-          <i class="el-icon-folder"></i>
-          <span> {{ dir.name }} </span>
-        </template>
-      </el-menu-item>
-      
-    </el-submenu>
-
-    <!-- Loading failure -->
-    <el-alert
-      v-if="fail"
-      title="Loading failed"
-      type="error"
-      :description="failReason"
-      :closable="false"
-      show-icon>
-    </el-alert>
+    <p> Out Line </p>
     
   </div>
 </template>
@@ -56,7 +22,7 @@
 
 <script>
 // Filter only directory
-const dirNameReg = /^[A-Z].*$/;
+// const dirNameReg = /^[A-Z].*$/;
 // Filter only outline markdown files
 // const outlineNameReg = /^Outline.*$/;
 
@@ -65,9 +31,16 @@ export default {
   data: function () {
     return  {
       /**
-       * For repository data storage
+       * For outlines in a repository directory
        */
-      outlineDir: null,
+      outlines: [
+        {
+          name: "OUT1"
+        },
+        {
+          name: "OUT2"
+        }
+      ],
       /**
        * For displaying loading status
        */
@@ -84,33 +57,33 @@ export default {
   },
   methods: {
 
-    loadDirectories: function (url) {
-      // Set loading status
-      this.loading = true;
-      // Issur HTTP Request
-      this.$http.get(url).then(response => {
+    // loadDirectories: function (url) {
+    //   // Set loading status
+    //   this.loading = true;
+    //   // Issur HTTP Request
+    //   this.$http.get(url).then(response => {
         
-        this.outlineDir = [];
-        for (let i = 0; i < response.body.length; i++) {
-          if (dirNameReg.test(response.body[i].name) && response.body[i].type === "dir") {
-            this.outlineDir.push(response.body[i]);
-          }
-        }
+    //     this.outlineDir = [];
+    //     for (let i = 0; i < response.body.length; i++) {
+    //       if (dirNameReg.test(response.body[i].name) && response.body[i].type === "dir") {
+    //         this.outlineDir.push(response.body[i]);
+    //       }
+    //     }
         
-        // Directories loading complete
-        this.loading = false;
+    //     // Directories loading complete
+    //     this.loading = false;
 
-      }, error => {
-        // HTTP failed
-        this.fail = true;
-        this.failReason = "Status: " + error.status;
-      });
-    }
+    //   }, error => {
+    //     // HTTP failed
+    //     this.fail = true;
+    //     this.failReason = "Status: " + error.status;
+    //   });
+    // }
 
   },
   created: function () {
     // Initializing the data from GitHub
-    this.loadDirectories("https://api.github.com/repos/mrdrivingduck/paper-outline/contents/")
+    // this.loadDirectories("https://api.github.com/repos/mrdrivingduck/paper-outline/contents/")
   }
 }
 </script>
