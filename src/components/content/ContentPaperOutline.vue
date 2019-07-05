@@ -21,13 +21,22 @@
         class="margin">
 
         <div slot="header" class="clearfix">
-          <span> <b> {{ outline.name }} </b> </span>
+          <span>
+            <i class="el-icon-document"></i>
+            <b> {{ outline.name }} </b>
+          </span>
           <el-button style="float: right; padding: 3px 0" type="text">详情</el-button>
         </div>
         <div v-loading="outline.loading">
           <div v-if="outline.resource">
-            <p> sha: <b> {{ outline.resource.sha }} </b> </p>
-            <p> size: <b> {{ outline.resource.size }} </b> Bytes </p>
+            <p>
+              <i class="el-icon-lock"></i>
+              sha: <b> {{ outline.resource.sha }} </b>
+            </p>
+            <p>
+              <i class="el-icon-odometer"></i>
+              size: <b> {{ outline.resource.size }} </b> Bytes
+            </p>
           </div>
         </div>
 
