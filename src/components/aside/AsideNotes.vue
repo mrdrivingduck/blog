@@ -116,10 +116,8 @@ export default {
           }
         }
 
-        // Set loading status for every directory
         // Start loading every directory
         for (let i = 0; i < this.noteDir.length; i++) {
-          this.$set(this.noteDir[i], "loading", true);
           this.loadNotes(this.noteDir[i].url, this.noteDir[i]);
         }
 
@@ -137,6 +135,8 @@ export default {
      * Loading all notes in one of the directories
      */
     loadNotes: function (url, dirObj) {
+      // Set loading status
+      this.$set(dirObj, "loading", true);
       // Issue HTTP request for every directory's contents
       this.$http.get(url).then(response => {
         // Inject the content into directory
@@ -149,7 +149,7 @@ export default {
         }
         this.$set(dirObj, "notes", dirNotes);
         // Notes loading complete
-        dirObj.loading = false;
+        this.$set(dirObj, "loading", false);
 
       }, error => {
         // HTTP failed
