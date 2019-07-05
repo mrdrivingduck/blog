@@ -18,14 +18,19 @@
       <el-card
         v-for="outline in outlines"
         :key="outline.sha"
+        shadow="hover"
         class="margin">
 
-        <div slot="header" class="clearfix">
+        <div slot="header">
           <span>
             <i class="el-icon-document"></i>
             <b> {{ outline.name }} </b>
           </span>
-          <el-button style="float: right; padding: 3px 0" type="text">详情</el-button>
+          <el-button
+            style="float: right" type="text"
+            @click="clickOutline(outline.url)">
+            Detail
+          </el-button>
         </div>
         <div v-loading="outline.loading">
           <div v-if="outline.resource">
@@ -129,6 +134,11 @@ export default {
         this.fail = true;
         this.failReason = "Status: " + error.status;
       });
+    },
+
+    clickOutline: function (url) {
+      // eslint-disable-next-line
+      console.log(url)
     }
 
   },
