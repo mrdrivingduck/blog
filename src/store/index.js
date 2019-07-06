@@ -11,9 +11,11 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 import paper_outline from "./modules/paper-outline.js";
+import markdown from "./modules/markdown.js";
 
 export default new Vuex.Store({
   modules: {
-    paper_outline
+    paper_outline,
+    markdown
   }
 });
