@@ -11,7 +11,12 @@
 <template>
   <div>
 
-    <div v-html="htmlStr"> {{ htmlStr }} </div>
+    <div
+      v-if="!fail"
+      v-loading="loading"
+      v-html="htmlStr">
+      {{ htmlStr }}
+    </div>
 
     <el-alert
       v-if="fail"
@@ -30,12 +35,13 @@
 </style>
 
 <script>
+import marked from "marked";
 
 export default {
   name: "ContentMarkdown",
   data: function () {
     return  {
-      htmlStr: "<p>hello</p>",
+      htmlStr: "<p> No markdown available. </p>", // For displaying markdown content
       loading: true, // For displaying loading status
       fail: false, // Set to true if loading error occurs
       failReason: "" // Reason of failure
@@ -54,16 +60,14 @@ export default {
       // Issur HTTP request
       this.$http.get(url).then(response => {
 
-        // eslint-disable-next-line
-        console.log(response)
-
         if (response.body.encoding === "base64") {
-          // let md = window.atob(response.body.content);
-          // eslint-disable-next-line
-          // console.log(marked("# enn"))
+          let md = decodeURIComponent(escape(window.atob(response.body.content)));
+          this.htmlStr = marked(md);
         } else {
           this.htmlStr = "<p> Encoding not support </p>"
         }
+
+        this.loading = false;
 
       }, error => {
         // HTTP failure
@@ -74,13 +78,18 @@ export default {
 
   },
   created: function () {
+    // Initialize the content from GitHub
     this.initialize();
   },
   computed: {
-
+    markdownUrlChanged: function () {
+      return this.$store.state.markdown.markdown_url;
+    }
   },
   watch: {
-
+    markdownUrlChanged: function () {
+      this.initialize();
+    }
   }
 }
 </script>
