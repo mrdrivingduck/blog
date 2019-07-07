@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/05
+  @version - 2019/07/07
 
   @description - 
     The content component for displaying paper outlines
@@ -9,7 +9,7 @@
 -->
 
 <template>
-  <div >
+  <div>
 
     <div
       v-if="!fail"
@@ -28,7 +28,7 @@
           </span>
           <el-button
             style="float: right" type="text"
-            @click="clickOutline(outline.url)">
+            @click="clickOutline(outline.resource.url)">
             Detail
           </el-button>
         </div>
@@ -71,7 +71,7 @@
 const outlineNameReg = /^Outline.*$/;
 
 export default {
-  props: ["index"],
+  name: "ContentPaperOutline",
   data: function () {
     return  {
       outlines: null, // For outlines in a repository directory
@@ -88,8 +88,10 @@ export default {
     loadOutlineDirectory: function () {
       // Get topic URL
       const url = this.$store.state.paper_outline.outline_url;
-      // Initialize and set loading status
+      // Initialize component status
       this.outlines = [];
+      this.fail = false;
+      this.failReason = "";
       this.loading = true;
       // Issue HTTP request
       this.$http.get(url).then(response => {
@@ -137,8 +139,8 @@ export default {
     },
 
     clickOutline: function (url) {
-      // eslint-disable-next-line
-      console.log(url)
+      this.$store.commit("setMarkdownUrl", { url });
+      this.$store.commit("setCurrentContent", { currentComp: "ContentMarkdown" });
     }
 
   },
@@ -160,9 +162,6 @@ export default {
      * Reinitializing the conponent's status
      */
     urlChange: function () {
-      this.loading = true;
-      this.fail = false;
-      this.failReason = "";
       this.loadOutlineDirectory();
     }
   }

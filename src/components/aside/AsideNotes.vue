@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/03
+  @version - 2019/07/07
 
   @description - 
     The aside component for displaying note list
@@ -38,6 +38,7 @@
         <!-- Every notes in a directory -->
         <el-menu-item
           v-for="(note, noteIdx) in noteDir[dirIdx].notes"
+          @click="clickNote(note.url)"
           :key="note.name"
           :index="index + '-' + (dirIdx + 1) + '-' + (noteIdx + 1)">
 
@@ -156,6 +157,11 @@ export default {
         this.fail = true;
         this.failReason = "Status: " + error.status;
       });
+    },
+
+    clickNote: function (url) {
+      this.$store.commit("setMarkdownUrl", { url });
+      this.$store.commit("setCurrentContent", { currentComp: "ContentMarkdown" });
     }
 
   },

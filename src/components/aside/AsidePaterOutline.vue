@@ -111,7 +111,7 @@ export default {
     clickDir: function (item) {
       let url = item.$attrs.meta.url;
       this.$store.commit("setOutlineUrl", { url });
-      this.$router.push("/paperoutline");
+      this.$store.commit("setCurrentContent", { currentComp: "ContentPaperOutline" });
     }
 
   },

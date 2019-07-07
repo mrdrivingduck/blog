@@ -10,7 +10,9 @@
 
 <template>
   <div>
-    <router-view></router-view>
+    
+    <component v-bind:is="current"></component>
+
   </div>
 </template>
 
@@ -19,7 +21,30 @@
 </style>
 
 <script>
+import ContentIndex from "./content/ContentIndex.vue";
+import ContentMarkdown from "./content/ContentMarkdown.vue";
+import ContentPaperOutline from "./content/ContentPaperOutline.vue";
+
 export default {
-  
+  components: {
+    ContentIndex,
+    ContentMarkdown,
+    ContentPaperOutline
+  },
+  data: function () {
+    return {
+      current: "ContentIndex"
+    };
+  },
+  computed: {
+    contentStore: function () {
+      return this.$store.state.content.currentComponent;
+    }
+  },
+  watch: {
+    contentStore: function (newContent) {
+      this.current = newContent;
+    }
+  }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Footer</p>
+    <p @click="click">Footer</p>
   </div>
 </template>
 
@@ -10,7 +10,13 @@
 
 <script>
 export default {
-  
+  methods: {
+
+    click: function () {
+      this.$store.commit("setCurrentContent", { currentComp: "ContentMarkdown" });
+    }
+
+  }
 }
 </script>
 

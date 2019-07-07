@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/07/05
+ * @version 2019/07/07
  * @description
  *    The vue-router definition.
  */
@@ -15,6 +15,10 @@ export default new Router({
     {
       path: "/paperoutline",
       component: () => import("../components/content/ContentPaperOutline.vue")
+    },
+    {
+      path: "/markdown",
+      component: () => import("../components/content/ContentMarkdown.vue")
     }
   ]
 });
