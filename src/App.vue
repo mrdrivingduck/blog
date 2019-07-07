@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/01
+  @version - 2019/07/07
 
   @description - 
     The entry component.
@@ -20,12 +20,12 @@
     <el-container>
 
       <!-- Aside on the left -->
-      <el-aside width="30%">
+      <el-aside width=30%>
         <duckling-aside></duckling-aside>
       </el-aside>
 
       <!-- Content on the right -->
-      <el-main width="70%">
+      <el-main width=70% class="content">
         <duckling-content></duckling-content>
       </el-main>
       
@@ -38,6 +38,12 @@
     
   </div>
 </template>
+
+<style>
+  .content {
+    margin-left: 50px;
+  }
+</style>
 
 <script>
 /**
@@ -58,7 +64,3 @@ export default {
   }
 }
 </script>
-
-<style>
-
-</style>

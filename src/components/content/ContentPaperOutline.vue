@@ -11,10 +11,12 @@
 <template>
   <div>
 
+    <!-- Content -->
     <div
       v-if="!fail"
       v-loading="loading">
 
+      <!-- Every card for paper outlines -->
       <el-card
         v-for="outline in outlines"
         :key="outline.sha"
@@ -48,6 +50,7 @@
       </el-card>
     </div>
 
+    <!-- Load failure -->
     <el-alert
       v-if="fail"
       title="Loading failed"
@@ -138,6 +141,9 @@ export default {
       });
     },
 
+    /**
+     * Jump to the outline detail
+     */
     clickOutline: function (url) {
       this.$store.commit("setMarkdownUrl", { url });
       this.$store.commit("setCurrentContent", { currentComp: "ContentMarkdown" });

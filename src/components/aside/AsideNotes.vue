@@ -159,6 +159,9 @@ export default {
       });
     },
 
+    /**
+     * Jump to the note detail
+     */
     clickNote: function (url) {
       this.$store.commit("setMarkdownUrl", { url });
       this.$store.commit("setCurrentContent", { currentComp: "ContentMarkdown" });

@@ -11,13 +11,16 @@
 <template>
   <div>
 
+    <!-- Display markdown -->
     <div
+      class="markdown-body"
       v-if="!fail"
       v-loading="loading"
       v-html="htmlStr">
       {{ htmlStr }}
     </div>
 
+    <!-- Load failure -->
     <el-alert
       v-if="fail"
       title="Loading failed"
@@ -41,7 +44,7 @@ export default {
   name: "ContentMarkdown",
   data: function () {
     return  {
-      htmlStr: "<p> No markdown available. </p>", // For displaying markdown content
+      htmlStr: "", // For displaying markdown content
       loading: true, // For displaying loading status
       fail: false, // Set to true if loading error occurs
       failReason: "" // Reason of failure
@@ -53,7 +56,7 @@ export default {
       // Get markdown URL
       const url = this.$store.state.markdown.markdown_url;
       // Initialize component status
-      this.htmlStr = "<p> No markdown available. </p>"
+      this.htmlStr = ""
       this.loading = true;
       this.fail = false;
       this.failReason = "";
@@ -61,12 +64,15 @@ export default {
       this.$http.get(url).then(response => {
 
         if (response.body.encoding === "base64") {
+          // Parse encoded Base64 to markdown
           let md = decodeURIComponent(escape(window.atob(response.body.content)));
+          // Parse markdown to HTML
           this.htmlStr = marked(md);
         } else {
+          // Encoding not support
           this.htmlStr = "<p> Encoding not support </p>"
         }
-
+        // Set loading status
         this.loading = false;
 
       }, error => {
@@ -82,11 +88,17 @@ export default {
     this.initialize();
   },
   computed: {
+    /**
+     * Triggered when markdown resource URL changes
+     */
     markdownUrlChanged: function () {
       return this.$store.state.markdown.markdown_url;
     }
   },
   watch: {
+    /**
+     * When URL changes, re-initialize to component
+     */
     markdownUrlChanged: function () {
       this.initialize();
     }

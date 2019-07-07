@@ -19,6 +19,7 @@ Based on -
 * Vue Router - https://router.vuejs.org/
 * Vuex - https://vuex.vuejs.org/
 * element - https://element.eleme.io/#/en-US
+* Marked - https://github.com/markedjs/marked
 * _[GitHub](https://github.com/)_ as content server & _[GitHub API v3](https://developer.github.com/v3/)_ as interface
 
 ---
