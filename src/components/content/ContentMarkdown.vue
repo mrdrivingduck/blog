@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/07
+  @version - 2019/07/08
 
   @description - 
     The content component for displaying markdown files
@@ -12,8 +12,10 @@
   <div>
 
     <!-- Display markdown -->
+    <!-- Code highlighting supported -->
     <div
       class="markdown-body"
+      v-highlight
       v-if="!fail"
       v-loading="loading"
       v-html="htmlStr">

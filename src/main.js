@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/07/07
+ * @version 2019/07/08
  * @description 
  *    The entry file.
  */
@@ -8,17 +8,39 @@
 import Vue from "vue";
 import VueResource from "vue-resource";
 import ElementUI from "element-ui";
-
-import "element-ui/lib/theme-chalk/index.css";
-import "github-markdown-css/github-markdown.css";
-
-import App from "./App.vue";
-import store from "./store";
+import hljs from "highlightjs";
 
 Vue.use(VueResource);
 Vue.use(ElementUI);
 
-Vue.config.productionTip = false;
+/**
+ * Styles
+ */
+// Element-UI's style
+import "element-ui/lib/theme-chalk/index.css";
+// Markdown's style
+import "github-markdown-css/github-markdown.css";
+// Code highlighting style
+import "highlightjs/styles/atom-one-light.css";
+
+/**
+ * Self-define instruction for code highlighting
+ */
+Vue.directive('highlight',function (el) {
+  let blocks = el.querySelectorAll('pre code');
+  blocks.forEach((block)=>{
+    hljs.highlightBlock(block)
+  })
+})
+
+/**
+ * Main component
+ */
+import App from "./App.vue";
+/**
+ * Vuex store
+ */
+import store from "./store";
 
 new Vue({
   store, // Vuex
