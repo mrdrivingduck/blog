@@ -9,7 +9,7 @@
 -->
 
 <template>
-  <div id="app" ref="app">
+  <div id="app">
 
     <!-- Header -->
     <el-header>

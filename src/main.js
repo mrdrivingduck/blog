@@ -20,10 +20,8 @@ Vue.use(ElementUI);
 import "element-ui/lib/theme-chalk/index.css";
 // Markdown's style
 import "github-markdown-css/github-markdown.css";
-import "./style/github-markdown-dark.css"
 // Code highlighting style
 import "highlightjs/styles/atom-one-light.css";
-import "highlightjs/styles/atom-one-dark.css";
 
 /**
  * Self-define instruction for code highlighting

@@ -14,7 +14,7 @@
     <!-- Display markdown -->
     <!-- Code highlighting supported -->
     <div
-      class="markdown-body-dark"
+      class="markdown-body"
       v-highlight
       v-if="!fail"
       v-loading="loading"
