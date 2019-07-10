@@ -14,7 +14,7 @@
     <!-- Display markdown -->
     <!-- Code highlighting supported -->
     <div
-      class="markdown-body"
+      class="markdown-body-dark"
       v-highlight
       v-if="!fail"
       v-loading="loading"
@@ -34,10 +34,6 @@
     
   </div>
 </template>
-
-<style>
-
-</style>
 
 <script>
 import marked from "marked";
