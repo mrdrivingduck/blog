@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/07/08
+ * @version 2019/07/11
  * @description 
  *    The entry file.
  */
@@ -8,7 +8,6 @@
 import Vue from "vue";
 import VueResource from "vue-resource";
 import ElementUI from "element-ui";
-import hljs from "highlightjs";
 
 Vue.use(VueResource);
 Vue.use(ElementUI);
@@ -22,16 +21,6 @@ import "element-ui/lib/theme-chalk/index.css";
 import "github-markdown-css/github-markdown.css";
 // Code highlighting style
 import "highlightjs/styles/atom-one-light.css";
-
-/**
- * Self-define instruction for code highlighting
- */
-Vue.directive('highlight',function (el) {
-  let blocks = el.querySelectorAll('pre code');
-  blocks.forEach((block)=>{
-    hljs.highlightBlock(block)
-  })
-})
 
 /**
  * Main component

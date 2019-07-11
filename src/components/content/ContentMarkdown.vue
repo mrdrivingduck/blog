@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/08
+  @version - 2019/07/11
 
   @description - 
     The content component for displaying markdown files
@@ -15,7 +15,7 @@
     <!-- Code highlighting supported -->
     <div
       class="markdown-body"
-      v-highlight
+      ref="highlight"
       v-if="!fail"
       v-loading="loading"
       v-html="htmlStr">
@@ -37,6 +37,7 @@
 
 <script>
 import marked from "marked";
+import hljs from "highlightjs";
 
 export default {
   name: "ContentMarkdown",
@@ -45,7 +46,9 @@ export default {
       htmlStr: "", // For displaying markdown content
       loading: true, // For displaying loading status
       fail: false, // Set to true if loading error occurs
-      failReason: "" // Reason of failure
+      failReason: "", // Reason of failure,
+
+      theme: "one-light"
     };
   },
   methods: {
@@ -66,6 +69,8 @@ export default {
           let md = decodeURIComponent(escape(window.atob(response.body.content)));
           // Parse markdown to HTML
           this.htmlStr = marked(md);
+          this.$nextTick(this.highLightCode);
+
         } else {
           // Encoding not support
           this.htmlStr = "<p> Encoding not support </p>"
@@ -78,6 +83,13 @@ export default {
         this.fail = true;
         this.failReason = "Status: " + error.status;
       });
+    },
+
+    highLightCode: function () {
+      let blocks = this.$refs.highlight.querySelectorAll('pre code');
+      blocks.forEach((block) => {
+        hljs.highlightBlock(block, this.theme)
+      })
     }
 
   },
