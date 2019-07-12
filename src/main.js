@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/07/11
+ * @version 2019/07/12
  * @description 
  *    The entry file.
  */
@@ -20,7 +20,8 @@ import "element-ui/lib/theme-chalk/index.css";
 // Markdown's style
 import "github-markdown-css/github-markdown.css";
 // Code highlighting style
-import "highlightjs/styles/atom-one-light.css";
+import "duckling-highlight/styles/atom-one-light.css";
+import "duckling-highlight/styles/atom-one-dark.css";
 
 /**
  * Main component

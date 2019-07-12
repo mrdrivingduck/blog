@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/11
+  @version - 2019/07/12
 
   @description - 
     The content component for displaying markdown files
@@ -37,7 +37,7 @@
 
 <script>
 import marked from "marked";
-import hljs from "highlightjs";
+import hljs from "duckling-highlight";
 
 export default {
   name: "ContentMarkdown",
