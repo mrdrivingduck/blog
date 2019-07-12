@@ -18,7 +18,8 @@ Vue.use(ElementUI);
 // Element-UI's style
 import "element-ui/lib/theme-chalk/index.css";
 // Markdown's style
-import "github-markdown-css/github-markdown.css";
+import "duckling-markdown-css/github-markdown.css";
+import "duckling-markdown-css/github-markdown-dark.css";
 // Code highlighting style
 import "duckling-highlight/styles/atom-one-light.css";
 import "duckling-highlight/styles/atom-one-dark.css";
