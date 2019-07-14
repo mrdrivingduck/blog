@@ -44,12 +44,11 @@ export default {
     initialize: function () {
       this.marks = {};
       this.theme = this.$store.state.theme.currentThemeIndex;
-      let allThemes = this.$store.state.theme.themes;
 
+      let allThemes = this.$store.state.theme.themes;
       for (let i = 0; i < allThemes.length; i++) {
         this.$set(this.marks, i, allThemes[i].name);
       }
-      
     }
 
   },
