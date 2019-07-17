@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/07
+  @version - 2019/07/17
 
   @description - 
     The entry component.
@@ -9,7 +9,7 @@
 -->
 
 <template>
-  <div id="app">
+  <div id="app" ref="rootDiv">
 
     <!-- Header -->
     <el-header>
@@ -61,6 +61,35 @@ export default {
     DucklingAside,
     DucklingContent,
     DucklingFooter
+  },
+  methods: {
+
+    setBackgroundStyle: function (themeIndex) {
+      const allThemes = this.$store.state.theme.themes;
+      // Get DOM of <body> and set the style
+      let rootDivDom = this.$refs.rootDiv;
+      let bodyDiv = rootDivDom.parentNode;
+      bodyDiv.style.background = allThemes[themeIndex].background;
+    }
+
+  },
+  mounted: function () {
+    // Called after DOM is mounted
+    let themeIndex = this.$store.state.theme.currentThemeIndex;
+    this.setBackgroundStyle(themeIndex);
+  },
+  computed: {
+
+    themeChange: function () {
+      // Triggered when theme index changes
+      return this.$store.state.theme.currentThemeIndex;
+    }
+
+  },
+  watch: {
+    themeChange: function (newThemeIndex) {
+      this.setBackgroundStyle(newThemeIndex);
+    }
   }
 }
 </script>

@@ -15,7 +15,7 @@
     <!-- Code highlighting supported -->
     <div
       class="markdown-body"
-      ref="highlight"
+      ref="markdown"
       v-if="!fail"
       v-loading="loading"
       v-html="htmlStr">
@@ -46,9 +46,7 @@ export default {
       htmlStr: "", // For displaying markdown content
       loading: true, // For displaying loading status
       fail: false, // Set to true if loading error occurs
-      failReason: "", // Reason of failure,
-
-      theme: "one-light"
+      failReason: "" // Reason of failure
     };
   },
   methods: {
@@ -69,7 +67,7 @@ export default {
           let md = decodeURIComponent(escape(window.atob(response.body.content)));
           // Parse markdown to HTML
           this.htmlStr = marked(md);
-          this.$nextTick(this.highLightCode);
+          this.$nextTick(this.onChangeTheme);
 
         } else {
           // Encoding not support
@@ -85,11 +83,28 @@ export default {
       });
     },
 
-    highLightCode: function () {
-      let blocks = this.$refs.highlight.querySelectorAll('pre code');
+    setCodeStyle: function () {
+      // Highlight the code into corresponding theme
+      const allThemes = this.$store.state.theme.themes;
+      const currentTheme = this.$store.state.theme.currentThemeIndex;
+      let blocks = this.$refs.markdown.querySelectorAll('pre code');
       blocks.forEach((block) => {
-        hljs.highlightBlock(block, this.theme)
+        hljs.highlightBlock(block, allThemes[currentTheme].highlight);
       })
+    },
+
+    setMarkdownStyle: function () {
+      // Set the corresponding markdown theme
+      const allThemes = this.$store.state.theme.themes;
+      const currentTheme = this.$store.state.theme.currentThemeIndex;
+      let div = this.$refs.markdown;
+      div.className = allThemes[currentTheme].markdown
+    },
+
+    onChangeTheme: function () {
+      // Called when the theme changes
+      this.setCodeStyle();
+      this.setMarkdownStyle();
     }
 
   },
@@ -98,19 +113,28 @@ export default {
     this.initialize();
   },
   computed: {
-    /**
-     * Triggered when markdown resource URL changes
-     */
+
     markdownUrlChanged: function () {
+      // Triggered when markdown resource URL changes
       return this.$store.state.markdown.markdown_url;
+    },
+
+    themeChange: function () {
+      // Triggered when the theme changes
+      return this.$store.state.theme.currentThemeIndex;
     }
+
   },
   watch: {
-    /**
-     * When URL changes, re-initialize to component
-     */
+
     markdownUrlChanged: function () {
+      // When URL changes, re-initialize to component
       this.initialize();
+    },
+
+    themeChange: function () {
+      // When theme changes, reset the style
+      this.$nextTick(this.onChangeTheme);
     }
   }
 }

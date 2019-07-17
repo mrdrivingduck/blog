@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/14
+  @version - 2019/07/17
 
   @description - 
     Slider for changing themes.
@@ -13,6 +13,7 @@
 
     <el-slider 
       v-model="theme"
+      @change="onThemeChange"
       :marks="marks"
       :max="1"
       :show-tooltip="false"
@@ -33,10 +34,7 @@ export default {
   data: function () {
     return  {
       theme: 0,
-      marks: {
-        0: "Light",
-        1: "Dark"
-      }
+      marks: null
     };
   },
   methods: {
@@ -49,6 +47,10 @@ export default {
       for (let i = 0; i < allThemes.length; i++) {
         this.$set(this.marks, i, allThemes[i].name);
       }
+    },
+
+    onThemeChange: function (themeIndex) {
+      this.$store.commit("setCurrentTheme", { themeIndex });
     }
 
   },

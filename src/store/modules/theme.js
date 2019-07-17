@@ -10,12 +10,14 @@ const state = {
     {
       name: "Light",
       background: "#ffffff",
-      highlight: "atom-one-light"
+      highlight: "atom-one-light",
+      markdown: "markdown-body"
     },
     {
       name: "Dark",
       background: "#282c34",
-      highlight: "atom-one-dark"
+      highlight: "atom-one-dark",
+      markdown: "markdown-body-dark"
     }
   ],
   currentThemeIndex: 0
