@@ -21,7 +21,7 @@ const mutations = {
     let { link, sha, size } = metadata;
     state.link = link;
     state.sha = sha;
-    state.size = size;
+    state.size = size / 1024;
   }
 
 };

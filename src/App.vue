@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/17
+  @version - 2019/07/21
 
   @description - 
     The entry component.
@@ -64,8 +64,9 @@ export default {
   },
   methods: {
 
-    setBackgroundStyle: function (themeIndex) {
+    setBackgroundStyle: function () {
       const allThemes = this.$store.state.theme.themes;
+      const themeIndex = this.$store.state.theme.currentThemeIndex;
       // Get DOM of <body> and set the style
       let rootDivDom = this.$refs.rootDiv;
       let bodyDiv = rootDivDom.parentNode;
@@ -75,8 +76,7 @@ export default {
   },
   mounted: function () {
     // Called after DOM is mounted
-    let themeIndex = this.$store.state.theme.currentThemeIndex;
-    this.setBackgroundStyle(themeIndex);
+    this.setBackgroundStyle();
   },
   computed: {
 
@@ -88,8 +88,8 @@ export default {
   },
   watch: {
 
-    themeChange: function (newThemeIndex) {
-      this.setBackgroundStyle(newThemeIndex);
+    themeChange: function () {
+      this.setBackgroundStyle();
     }
     
   }

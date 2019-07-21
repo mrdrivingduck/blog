@@ -12,24 +12,41 @@
   <div>
 
     <el-card
-      v-if="!fail"
-      v-loading="loading"
       class="basicinfo"
       shadow="hover"
       v-bind:style="{ backgroundColor: cardBackgroundColor, color: cardTextColor }">
 
       <div>
         <p>
-          <i class="el-icon-lock"></i>
-          Original link: <b> {{ this.articleLink }} </b>
+          <i class="el-icon-link"></i>
+          Origin: 
+          <el-link type="primary" :href="this.articleLink"> Link from GitHub </el-link>
         </p>
         <p>
           <i class="el-icon-lock"></i>
-          sha: <b> {{ this.articleSha }} </b>
+          SHA: <b> {{ this.articleSha }} </b>
         </p>
         <p>
           <i class="el-icon-odometer"></i>
-          size: <b> {{ this.articleSize }} </b> Bytes
+          Size: <b> {{ this.articleSize }} </b> KiB
+        </p>
+        <p>
+          <i class="el-icon-time"></i>
+          Estimated Reading Time: <b> {{ this.articleReadingTime }} </b> min
+        </p>
+      </div>
+
+      <el-divider></el-divider>
+
+      <div>
+        <p>
+          <i class="el-icon-message"></i>
+          Something wrong? - 
+          <el-link
+            type="warning"
+            href="mailto:mrdrivingduck@gmail.com">
+            Tell the author
+          </el-link>
         </p>
       </div>
 
@@ -79,6 +96,7 @@ export default {
       articleLink: "",
       articleSha: "",
       articleSize: "",
+      articleReadingTime: "",
 
       htmlStr: "", // For displaying markdown content
       loading: true, // For displaying loading status
@@ -92,6 +110,11 @@ export default {
     initialize: function () {
       // Get markdown URL
       const url = this.$store.state.markdown.markdown_url;
+      // Metadata
+      this.articleLink = this.$store.state.markdown.link;
+      this.articleSha = this.$store.state.markdown.sha;
+      this.articleSize = this.$store.state.markdown.size;
+      this.articleReadingTime = 2 * parseInt(this.articleSize);
       // Initialize component status
       this.htmlStr = ""
       this.loading = true;
@@ -135,13 +158,22 @@ export default {
       // Set the corresponding markdown theme
       const allThemes = this.$store.state.theme.themes;
       const currentTheme = this.$store.state.theme.currentThemeIndex;
-      this.markdownClass = allThemes[currentTheme].markdown.class;
+      this.markdownClass = allThemes[currentTheme].content.markdown;
+    },
+
+    setCardStyle: function () {
+      const allThemes = this.$store.state.theme.themes;
+      const currentTheme = this.$store.state.theme.currentThemeIndex;
+      let { backgroundColor, textColor } = allThemes[currentTheme].card;
+      this.cardBackgroundColor = backgroundColor;
+      this.cardTextColor = textColor;
     },
 
     onChangeTheme: function () {
       // Called when the theme changes
       this.setCodeStyle();
       this.setMarkdownStyle();
+      this.setCardStyle();
     }
 
   },

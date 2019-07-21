@@ -10,9 +10,6 @@ const state = {
     {
       name: "Light",
       background: "#ffffff",
-      markdown: {
-        class: "markdown-body"
-      },
       content: {
         highlight: "atom-one-light",
         markdown: "markdown-body"
@@ -30,9 +27,6 @@ const state = {
     {
       name: "Dark",
       background: "#282c34",
-      markdown: {
-        class: "markdown-body-dark"
-      },
       content: {
         highlight: "atom-one-dark",
         markdown: "markdown-body-dark",
@@ -43,7 +37,7 @@ const state = {
         activeTextColor: "#ffd04b" // 选中文字颜色 - 黄黄的 😁
       },
       card: {
-        backgroundColor: "#000000",
+        backgroundColor: "#2d2d2d",
         textColor: "#ffffff"
       }
     }
