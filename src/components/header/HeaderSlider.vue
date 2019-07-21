@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/17
+  @version - 2019/07/21
 
   @description - 
     Slider for changing themes.

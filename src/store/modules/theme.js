@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/07/14
+ * @version 2019/07/21
  * @description
  *    Vuex store for saving theme information
  */
@@ -10,14 +10,42 @@ const state = {
     {
       name: "Light",
       background: "#ffffff",
-      highlight: "atom-one-light",
-      markdown: "markdown-body"
+      markdown: {
+        class: "markdown-body"
+      },
+      content: {
+        highlight: "atom-one-light",
+        markdown: "markdown-body"
+      },
+      aside: {
+        backgroundColor: "#ffffff", // 背景色 - 白色
+        textColor: "#000000", // 文字颜色 - 黑色
+        activeTextColor: "#9567e4" // 选中文字颜色 - 基佬紫 😂
+      },
+      card: {
+        backgroundColor: "#ffffff",
+        textColor: "#000000"
+      }
     },
     {
       name: "Dark",
       background: "#282c34",
-      highlight: "atom-one-dark",
-      markdown: "markdown-body-dark"
+      markdown: {
+        class: "markdown-body-dark"
+      },
+      content: {
+        highlight: "atom-one-dark",
+        markdown: "markdown-body-dark",
+      },
+      aside: {
+        backgroundColor: "#282c34", // 背景色 - 深灰
+        textColor: "#ffffff", // 文字颜色 - 白色
+        activeTextColor: "#ffd04b" // 选中文字颜色 - 黄黄的 😁
+      },
+      card: {
+        backgroundColor: "#000000",
+        textColor: "#ffffff"
+      }
     }
   ],
   currentThemeIndex: 0

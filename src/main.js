@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/07/12
+ * @version 2019/07/21
  * @description 
  *    The entry file.
  */
@@ -15,11 +15,15 @@ Vue.use(ElementUI);
 /**
  * Styles
  */
+
 // Element-UI's style
-import "element-ui/lib/theme-chalk/index.css";
+// import "element-ui/lib/theme-chalk/index.css";
+import "../theme/index.css" // Self-define theme
+
 // Markdown's style
 import "duckling-markdown-css/github-markdown.css";
 import "duckling-markdown-css/github-markdown-dark.css";
+
 // Code highlighting style
 import "duckling-highlight/styles/atom-one-light.css";
 import "duckling-highlight/styles/atom-one-dark.css";

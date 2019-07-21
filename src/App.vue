@@ -87,9 +87,11 @@ export default {
 
   },
   watch: {
+
     themeChange: function (newThemeIndex) {
       this.setBackgroundStyle(newThemeIndex);
     }
+    
   }
 }
 </script>

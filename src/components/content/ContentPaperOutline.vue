@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/07
+  @version - 2019/07/21
 
   @description - 
     The content component for displaying paper outlines
@@ -21,7 +21,8 @@
         v-for="outline in outlines"
         :key="outline.sha"
         shadow="hover"
-        class="margin">
+        class="margin"
+        v-bind:style="{ backgroundColor: cardBackgroundColor, color: cardTextColor }">
 
         <div slot="header">
           <span>
@@ -65,7 +66,7 @@
 
 <style>
   .margin {
-    margin-bottom: 15px
+    margin-bottom: 15px;
   }
 </style>
 
@@ -80,7 +81,10 @@ export default {
       outlines: null, // For outlines in a repository directory
       loading: true, // For displaying loading status
       fail: false, // Set to true if loading error occurs
-      failReason: "" // Reason of failure
+      failReason: "", // Reason of failure
+
+      cardBackgroundColor: null,
+      cardTextColor: null
     };
   },
   methods: {
@@ -147,12 +151,24 @@ export default {
     clickOutline: function (url) {
       this.$store.commit("setMarkdownUrl", { url });
       this.$store.commit("setCurrentContent", { currentComp: "ContentMarkdown" });
+    },
+
+    /**
+     * Set the background color and text color of the cards
+     */
+    setCardTheme: function () {
+      const themeIndex = this.$store.state.theme.currentThemeIndex;
+      const allThemes = this.$store.state.theme.themes;
+      let { backgroundColor, textColor } = allThemes[themeIndex].card;
+      this.cardBackgroundColor = backgroundColor;
+      this.cardTextColor = textColor;
     }
 
   },
   created: function () {
     // Initializing the data from GitHub
     this.loadOutlineDirectory();
+    this.setCardTheme();
   },
   computed: {
     /**
@@ -160,6 +176,12 @@ export default {
      */
     urlChange: function () {
       return this.$store.state.paper_outline.outline_url;
+    },
+    /**
+     * The whole theme will be changed
+     */
+    themeChange: function () {
+      return this.$store.state.theme.currentThemeIndex;
     }
   },
   watch: {
@@ -169,6 +191,12 @@ export default {
      */
     urlChange: function () {
       this.loadOutlineDirectory();
+    },
+    /**
+     * Set the theme of the card
+     */
+    themeChange: function () {
+      this.setCardTheme();
     }
   }
 }

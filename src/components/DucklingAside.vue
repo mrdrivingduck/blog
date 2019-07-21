@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/03
+  @version - 2019/07/21
 
   @description - 
     The aside component for guiding
@@ -12,7 +12,10 @@
   <div>
     
     <!-- The menu on the left -->
-    <el-menu>
+    <el-menu
+      v-bind:background-color="this.backgroundColor"
+      v-bind:text-color="this.textColor"
+      v-bind:active-text-color="this.activeTextColor">
 
       <!-- Sub-menu of notes -->
       <aside-notes :index="1"></aside-notes>
@@ -37,6 +40,42 @@ export default {
   components: {
     AsideNotes,
     AsidePaperOutline
+  },
+  data: function() {
+    return {
+      backgroundColor: null,
+      textColor: null,
+      activeTextColor: null
+    };
+  },
+  methods: {
+
+    setTheme: function () {
+      const allThemes = this.$store.state.theme.themes;
+      const themeIndex = this.$store.state.theme.currentThemeIndex;
+      let { backgroundColor, textColor, activeTextColor } = allThemes[themeIndex].aside;
+      this.backgroundColor = backgroundColor;
+      this.textColor = textColor;
+      this.activeTextColor = activeTextColor;
+    }
+
+  },
+  mounted: function () {
+    this.setTheme();
+  },
+  computed: {
+
+    themeChange: function () {
+      return this.$store.state.theme.currentThemeIndex;
+    }
+
+  },
+  watch: {
+
+    themeChange: function () {
+      this.setTheme();
+    }
+
   }
 }
 </script>
