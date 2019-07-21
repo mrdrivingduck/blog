@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/07/07
+ * @version 2019/07/21
  * @description
  *    Vuex store for saving current content component
  */
@@ -11,8 +11,8 @@ const state = {
 
 const mutations = {
   
-  setCurrentContent: function (state, { currentComp }) {
-    state.currentComponent = currentComp;
+  setCurrentContent: function (state, { currentComponent }) {
+    state.currentComponent = currentComponent;
   }
 
 };

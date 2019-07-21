@@ -31,7 +31,7 @@
           </span>
           <el-button
             style="float: right" type="text"
-            @click="clickOutline(outline.resource.url)">
+            @click="clickOutline(outline.resource)">
             Detail
           </el-button>
         </div>
@@ -104,8 +104,8 @@ export default {
       this.$http.get(url).then(response => {
 
         for (let i = 0; i < response.body.length; i++) {
-          let { url, name, sha } = response.body[i];
-          this.outlines.push({ url, name, sha });
+          let { url, name, sha, html_url } = response.body[i];
+          this.outlines.push({ url, name, sha, html_url });
         }
         // All directories in a topic load complete
         this.loading = false;
@@ -132,9 +132,9 @@ export default {
         for (let i = 0; i < response.body.length; i++) {
           if (outlineNameReg.test(response.body[i].name)) {
             // Filter only outline files in markdown format
-            let { url, sha, size } = response.body[i];
+            let { url, sha, size, html_url } = response.body[i];
             // Set the metadata, change loading status
-            this.$set(dirObj, "resource", { url, sha, size });
+            this.$set(dirObj, "resource", { url, sha, size, html_url });
             this.$set(dirObj, "loading", false);
           }
         }
@@ -148,9 +148,16 @@ export default {
     /**
      * Jump to the outline detail
      */
-    clickOutline: function (url) {
-      this.$store.commit("setMarkdownUrl", { url });
-      this.$store.commit("setCurrentContent", { currentComp: "ContentMarkdown" });
+    clickOutline: function (outlineObj) {
+      this.$store.commit("setMarkdownUrl", {
+        url: outlineObj.url,
+        metadata: {
+          link: outlineObj.html_url,
+          sha: outlineObj.sha,
+          size: outlineObj.size
+        }
+      });
+      this.$store.commit("setCurrentContent", { currentComponent: "ContentMarkdown" });
     },
 
     /**

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/12
+  @version - 2019/07/21
 
   @description - 
     The content component for displaying markdown files
@@ -11,10 +11,34 @@
 <template>
   <div>
 
+    <el-card
+      v-if="!fail"
+      v-loading="loading"
+      class="basicinfo"
+      shadow="hover"
+      v-bind:style="{ backgroundColor: cardBackgroundColor, color: cardTextColor }">
+
+      <div>
+        <p>
+          <i class="el-icon-lock"></i>
+          Original link: <b> {{ this.articleLink }} </b>
+        </p>
+        <p>
+          <i class="el-icon-lock"></i>
+          sha: <b> {{ this.articleSha }} </b>
+        </p>
+        <p>
+          <i class="el-icon-odometer"></i>
+          size: <b> {{ this.articleSize }} </b> Bytes
+        </p>
+      </div>
+
+    </el-card>
+
     <!-- Display markdown -->
     <!-- Code highlighting supported -->
     <div
-      class="markdown-body"
+      v-bind:class="this.markdownClass"
       ref="markdown"
       v-if="!fail"
       v-loading="loading"
@@ -35,6 +59,13 @@
   </div>
 </template>
 
+<style>
+  .basicinfo {
+    margin-bottom: 50px;
+  }
+</style>
+
+
 <script>
 import marked from "marked";
 import hljs from "duckling-highlight";
@@ -43,10 +74,17 @@ export default {
   name: "ContentMarkdown",
   data: function () {
     return  {
+      cardBackgroundColor: "",
+      cardTextColor: "",
+      articleLink: "",
+      articleSha: "",
+      articleSize: "",
+
       htmlStr: "", // For displaying markdown content
       loading: true, // For displaying loading status
       fail: false, // Set to true if loading error occurs
-      failReason: "" // Reason of failure
+      failReason: "", // Reason of failure
+      markdownClass: null
     };
   },
   methods: {
@@ -89,7 +127,7 @@ export default {
       const currentTheme = this.$store.state.theme.currentThemeIndex;
       let blocks = this.$refs.markdown.querySelectorAll('pre code');
       blocks.forEach((block) => {
-        hljs.highlightBlock(block, allThemes[currentTheme].highlight);
+        hljs.highlightBlock(block, allThemes[currentTheme].content.highlight);
       })
     },
 
@@ -97,8 +135,7 @@ export default {
       // Set the corresponding markdown theme
       const allThemes = this.$store.state.theme.themes;
       const currentTheme = this.$store.state.theme.currentThemeIndex;
-      let div = this.$refs.markdown;
-      div.className = allThemes[currentTheme].markdown
+      this.markdownClass = allThemes[currentTheme].markdown.class;
     },
 
     onChangeTheme: function () {

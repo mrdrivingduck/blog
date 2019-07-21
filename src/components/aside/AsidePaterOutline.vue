@@ -64,22 +64,10 @@ export default {
   props: ["index"],
   data: function () {
     return  {
-      /**
-       * For repository data storage
-       */
-      outlineDir: null,
-      /**
-       * For displaying loading status
-       */
-      loading: true,
-      /**
-       * Set to true if loading error occurs
-       */
-      fail: false,
-      /**
-       * Reason of failure
-       */
-      failReason: ""
+      outlineDir: null, // For repository data storage
+      loading: true, // For displaying loading status
+      fail: false, // Set to true if loading error occurs
+      failReason: "", // Reason of failure
     };
   },
   methods: {
@@ -93,8 +81,8 @@ export default {
         this.outlineDir = [];
         for (let i = 0; i < response.body.length; i++) {
           if (dirNameReg.test(response.body[i].name) && response.body[i].type === "dir") {
-            let { name, url, sha } = response.body[i];
-            this.outlineDir.push({ name, url, sha });
+            let { name, url, sha, html_url } = response.body[i];
+            this.outlineDir.push({ name, url, sha, html_url });
           }
         }
         
@@ -111,7 +99,7 @@ export default {
     clickDir: function (item) {
       let url = item.$attrs.meta.url;
       this.$store.commit("setOutlineUrl", { url });
-      this.$store.commit("setCurrentContent", { currentComp: "ContentPaperOutline" });
+      this.$store.commit("setCurrentContent", { currentComponent: "ContentPaperOutline" });
     }
 
   },

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/07
+  @version - 2019/07/21
 
   @description - 
     The aside component for displaying note list
@@ -38,7 +38,7 @@
         <!-- Every notes in a directory -->
         <el-menu-item
           v-for="(note, noteIdx) in noteDir[dirIdx].notes"
-          @click="clickNote(note.url)"
+          @click="clickNote(note)"
           :key="note.name"
           :index="index + '-' + (dirIdx + 1) + '-' + (noteIdx + 1)">
 
@@ -77,22 +77,10 @@ export default {
 
   data: function () {
     return {
-      /**
-       * For repository data storage
-       */
-      noteDir: null,
-      /**
-       * For displaying the status of loading data
-       */
-      loading: true,
-      /**
-       * For displaying the result of HTTP request
-       */
-      fail: false,
-      /**
-       * For displaying the reason of HTTP request failure
-       */
-      failReason: ""
+      noteDir: null, // For repository data storage
+      loading: true, // For displaying the status of loading data
+      fail: false, // For displaying the result of HTTP request
+      failReason: "" // For displaying the reason of HTTP request failure
     }
   },
 
@@ -110,9 +98,9 @@ export default {
         this.noteDir = [];
         for (let i = 0; i < response.body.length; i++) {
           if (dirNameReg.test(response.body[i].name) && response.body[i].type === "dir") {
-            let { name, sha, type, url } = response.body[i];
+            let { name, sha, type, url, html_url } = response.body[i];
             this.noteDir.push({
-              name, sha, type, url
+              name, sha, type, url, html_url
             });
           }
         }
@@ -143,9 +131,9 @@ export default {
         // Inject the content into directory
         let dirNotes = [];
         for (let i = 0; i < response.body.length; i++) {
-          let { name, sha, type, size, url } = response.body[i];
+          let { name, sha, type, size, url, html_url } = response.body[i];
           dirNotes.push({
-            name, sha, type, size, url
+            name, sha, type, size, url, html_url
           });
         }
         this.$set(dirObj, "notes", dirNotes);
@@ -162,9 +150,16 @@ export default {
     /**
      * Jump to the note detail
      */
-    clickNote: function (url) {
-      this.$store.commit("setMarkdownUrl", { url });
-      this.$store.commit("setCurrentContent", { currentComp: "ContentMarkdown" });
+    clickNote: function (noteObj) {
+      this.$store.commit("setMarkdownUrl", {
+        url: noteObj.url,
+        metadata: {
+          link: noteObj.html_url,
+          sha: noteObj.sha,
+          size: noteObj.size
+        }
+      });
+      this.$store.commit("setCurrentContent", { currentComponent: "ContentMarkdown" });
     }
 
   },
