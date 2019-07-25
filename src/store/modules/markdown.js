@@ -10,7 +10,8 @@ const state = {
 
   link: "",
   sha: "",
-  size: ""
+  size: "",
+  path: ""
 };
 
 const mutations = {
@@ -18,10 +19,11 @@ const mutations = {
   setMarkdownUrl: function (state, { url, metadata }) {
     state.markdown_url = url;
 
-    let { link, sha, size } = metadata;
+    let { link, sha, size, path } = metadata;
     state.link = link;
     state.sha = sha;
     state.size = size / 1024;
+    state.path = path;
   }
 
 };

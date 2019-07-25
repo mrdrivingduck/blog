@@ -39,11 +39,11 @@
           <div v-if="outline.resource">
             <p>
               <i class="el-icon-lock"></i>
-              sha: <b> {{ outline.resource.sha }} </b>
+              SHA: <b> {{ outline.resource.sha }} </b>
             </p>
             <p>
               <i class="el-icon-odometer"></i>
-              size: <b> {{ outline.resource.size }} </b> Bytes
+              Size: <b> {{ outline.resource.size }} </b> Bytes
             </p>
           </div>
         </div>
@@ -132,9 +132,9 @@ export default {
         for (let i = 0; i < response.body.length; i++) {
           if (outlineNameReg.test(response.body[i].name)) {
             // Filter only outline files in markdown format
-            let { url, sha, size, html_url } = response.body[i];
+            let { url, sha, size, html_url, path } = response.body[i];
             // Set the metadata, change loading status
-            this.$set(dirObj, "resource", { url, sha, size, html_url });
+            this.$set(dirObj, "resource", { url, sha, size, html_url, path });
             this.$set(dirObj, "loading", false);
           }
         }
@@ -154,7 +154,8 @@ export default {
         metadata: {
           link: outlineObj.html_url,
           sha: outlineObj.sha,
-          size: outlineObj.size
+          size: outlineObj.size,
+          path: outlineObj.path
         }
       });
       this.$store.commit("setCurrentContent", { currentComponent: "ContentMarkdown" });

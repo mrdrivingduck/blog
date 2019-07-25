@@ -131,9 +131,9 @@ export default {
         // Inject the content into directory
         let dirNotes = [];
         for (let i = 0; i < response.body.length; i++) {
-          let { name, sha, type, size, url, html_url } = response.body[i];
+          let { name, sha, type, size, url, html_url, path } = response.body[i];
           dirNotes.push({
-            name, sha, type, size, url, html_url
+            name: name.replace(".md", ""), sha, type, size, url, html_url, path
           });
         }
         this.$set(dirObj, "notes", dirNotes);
@@ -156,9 +156,11 @@ export default {
         metadata: {
           link: noteObj.html_url,
           sha: noteObj.sha,
-          size: noteObj.size
+          size: noteObj.size,
+          path: noteObj.path
         }
       });
+      this.$store.commit("setCommitUrlIndex", { index: this.index });
       this.$store.commit("setCurrentContent", { currentComponent: "ContentMarkdown" });
     }
 
@@ -166,7 +168,7 @@ export default {
   
   created: function () {
     // Initializing the data from GitHub
-    this.loadDirectories("https://api.github.com/repos/mrdrivingduck/notes/contents/");
+    this.loadDirectories(this.$store.state.githubapi.notes);
   }
 }
 </script>

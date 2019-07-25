@@ -100,12 +100,13 @@ export default {
       let url = item.$attrs.meta.url;
       this.$store.commit("setOutlineUrl", { url });
       this.$store.commit("setCurrentContent", { currentComponent: "ContentPaperOutline" });
+      this.$store.commit("setCommitUrlIndex", { index: this.index });
     }
 
   },
   created: function () {
     // Initializing the data from GitHub
-    this.loadDirectories("https://api.github.com/repos/mrdrivingduck/paper-outline/contents/")
+    this.loadDirectories(this.$store.state.githubapi.paper_outline);
   }
 }
 </script>

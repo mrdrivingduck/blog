@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/21
+  @version - 2019/07/25
 
   @description - 
     The content component for displaying markdown files
@@ -12,6 +12,8 @@
   <div>
 
     <el-card
+      v-if="!fail"
+      v-loading="loading"
       class="basicinfo"
       shadow="hover"
       v-bind:style="{ backgroundColor: cardBackgroundColor, color: cardTextColor }">
@@ -22,17 +24,28 @@
           Origin: 
           <el-link type="primary" :href="this.articleLink"> Link from GitHub </el-link>
         </p>
-        <p>
+        <!-- <p>
           <i class="el-icon-lock"></i>
-          SHA: <b> {{ this.articleSha }} </b>
+          File SHA: <b> {{ this.articleSha }} </b>
         </p>
         <p>
           <i class="el-icon-odometer"></i>
-          Size: <b> {{ this.articleSize }} </b> KiB
-        </p>
+          File Size: <b> {{ this.articleSize }} </b> KiB
+        </p> -->
         <p>
           <i class="el-icon-time"></i>
           Estimated Reading Time: <b> {{ this.articleReadingTime }} </b> min
+        </p>
+      </div>
+
+      <div>
+        <!-- <p>
+          <i class="el-icon-lock"></i>
+          Commit SHA: <b> {{ this.commitSha }} </b>
+        </p> -->
+        <p>
+          <i class="el-icon-time"></i>
+          Last Modification: <b> {{ this.commitLastModification }} </b> by <b> {{ this.committer }} </b>
         </p>
       </div>
 
@@ -98,6 +111,13 @@ export default {
       articleSize: "",
       articleReadingTime: "",
 
+      commitLastModification: "",
+      commitSha: "",
+      committer: "",
+
+      loadingMarkdownComplete: false,
+      loadingCommitComplete: false,
+
       htmlStr: "", // For displaying markdown content
       loading: true, // For displaying loading status
       fail: false, // Set to true if loading error occurs
@@ -108,21 +128,30 @@ export default {
   methods: {
 
     initialize: function () {
-      // Get markdown URL
-      const url = this.$store.state.markdown.markdown_url;
       // Metadata
       this.articleLink = this.$store.state.markdown.link;
       this.articleSha = this.$store.state.markdown.sha;
       this.articleSize = this.$store.state.markdown.size;
       this.articleReadingTime = 2 * parseInt(this.articleSize);
+      this.commitLastModification = "";
+      this.commitSha = "";
+      this.committer = "";
       // Initialize component status
       this.htmlStr = ""
       this.loading = true;
       this.fail = false;
       this.failReason = "";
-      // Issur HTTP request
-      this.$http.get(url).then(response => {
 
+      // Issur HTTP request
+      this.getMarkdown();
+      this.getCommit();
+    },
+
+    getMarkdown: function () {
+      // Get markdown URL
+      const mdUrl = this.$store.state.markdown.markdown_url;
+
+      this.$http.get(mdUrl).then(response => {
         if (response.body.encoding === "base64") {
           // Parse encoded Base64 to markdown
           let md = decodeURIComponent(escape(window.atob(response.body.content)));
@@ -135,7 +164,36 @@ export default {
           this.htmlStr = "<p> Encoding not support </p>"
         }
         // Set loading status
-        this.loading = false;
+        this.loadingMarkdownComplete = true;
+        if (this.loadingMarkdownComplete && this.loadingCommitComplete) {
+          this.loading = false;
+        }
+
+      }, error => {
+        // HTTP failure
+        this.fail = true;
+        this.failReason = "Status: " + error.status;
+      });
+    },
+
+    getCommit: function () {
+      const commitUrls = this.$store.state.githubapi.commit_url;
+      const urlIndex = this.$store.state.githubapi.url_index;
+      let commitUrl = commitUrls[urlIndex];
+      let path = this.$store.state.markdown.path;
+
+      this.$http.get(commitUrl + encodeURIComponent(path)).then(response => {
+        
+        let lastCommit = response.body[0];
+        this.commitSha = lastCommit.sha;
+        this.commitLastModification = lastCommit.commit.committer.date;
+        this.committer = lastCommit.commit.committer.name;
+
+        // Set loading status
+        this.loadingCommitComplete = true;
+        if (this.loadingMarkdownComplete && this.loadingCommitComplete) {
+          this.loading = false;
+        }
 
       }, error => {
         // HTTP failure

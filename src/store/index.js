@@ -14,12 +14,14 @@ import paper_outline from "./modules/paper-outline.js";
 import markdown from "./modules/markdown.js";
 import content from "./modules/content.js";
 import theme from "./modules/theme.js";
+import githubapi from "./modules/githubapi.js";
 
 export default new Vuex.Store({
   modules: {
     paper_outline,
     markdown,
     content,
-    theme
+    theme,
+    githubapi
   }
 });
