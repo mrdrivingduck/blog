@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/21
+  @version - 2019/07/25
 
   @description - 
     The content component for displaying paper outlines
@@ -21,7 +21,7 @@
         v-for="outline in outlines"
         :key="outline.sha"
         shadow="hover"
-        class="margin"
+        style="margin-bottom: 15px;"
         v-bind:style="{ backgroundColor: cardBackgroundColor, color: cardTextColor }">
 
         <div slot="header">
@@ -65,9 +65,7 @@
 </template>
 
 <style>
-  .margin {
-    margin-bottom: 15px;
-  }
+
 </style>
 
 <script>
