@@ -6,6 +6,7 @@
  */
 
 const state = {
+  person: "https://api.github.com/users/mrdrivingduck",
   paper_outline: "https://api.github.com/repos/mrdrivingduck/paper-outline/contents/",
   notes: "https://api.github.com/repos/mrdrivingduck/notes/contents/",
   commit_url: [
