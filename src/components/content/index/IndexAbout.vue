@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/26
+  @version - 2019/07/27
 
   @description - 
     The index component for displaying pernal information
@@ -9,7 +9,7 @@
 -->
 
 <template>
-  <div class="dark">
+  <div :class="theme">
 
     <h1><i class="el-icon-school"></i>Education</h1>
 
@@ -50,10 +50,10 @@
 </template>
 
 <style>
-  .dark h1, h2, p {
+  .dark h1, .dark h2, .dark p {
     color: #ffffff;
   }
-  .light h1, h2, p {
+  .light h1, .light h2, .light p {
     color: #000000;
   }
 </style>
@@ -93,19 +93,23 @@ export default {
           location_en: "🚩 Nanjing, Jiangsu, China",
           location_zh: "江苏省南京市"
         }
-      ]
+      ],
+
+      theme: ""
     };
   },
   methods: {
     
     setTheme: function () {
-      // const themeIndex = this.$store.state.theme.currentThemeIndex;
-      // const allThemes = this.$store.state.theme.themes;
-      // let { backgroundColor, textColor } = allThemes[themeIndex].card;
-      // this.cardBackgroundColor = backgroundColor;
-      // this.cardTextColor = textColor;
+      const themeIndex = this.$store.state.theme.currentThemeIndex;
+      const allThemes = this.$store.state.theme.themes;
+      let { name } = allThemes[themeIndex];
+      this.theme = name.toLowerCase();
     }
 
+  },
+  mounted: function () {
+    this.setTheme();
   },
   computed: {
 
