@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/26
+  @version - 2019/07/27
 
   @description - 
     The content component for displaying pernal information
@@ -30,19 +30,23 @@
             v-if="!fail"
             :style="{ backgroundColor: cardBackgroundColor, color: cardTextColor }">
 
-            <div style="font-size: 25px">
-              <b>{{ name }}</b>
-            </div>
+            <p>
+              <b style="font-size: 25px">{{ name }}</b>
+              &nbsp;&nbsp;&nbsp;
+              @{{ aliase }}
+            </p>
 
             <el-divider></el-divider>
 
             <p>{{ bio }}</p>
 
-            <p><i class="el-icon-check"></i>  🏸 / 💪 / 🚗 / 👨‍💻 </p>
-            <p><i class="el-icon-location-outline"></i>{{ location }}</p>
-            <p><i class="el-icon-message"></i> 
-              <a href="mailto:mrdrivingduck@gmail.com"
-                style="color: #0366d6;"> mrdrivingduck@gmail.com</a>
+            <p>🧭 {{ location }}</p>
+            <p>📧
+              <el-link
+                type="primary"
+                href="mailto:mrdrivingduck@gmail.com">
+                mrdrivingduck@gmail.com
+              </el-link>
             </p>
 
           </el-card>
@@ -76,6 +80,7 @@
 
     <component
       style="margin-top: 50px;"
+      :theme="theme"
       v-bind:is="tabs[selectedTab]">
     </component>
 
@@ -102,6 +107,7 @@ export default {
 
       // Card info
       name: "",
+      aliase: "",
       bio: "",
       location: "",
       company: "",
@@ -117,6 +123,7 @@ export default {
       tabs: [ "IndexAbout", "IndexTechStack", "IndexSocial", "IndexPageInfo" ],
 
       // For changing themes
+      theme: "",
       cardBackgroundColor: null,
       cardTextColor: null,
 
@@ -134,8 +141,9 @@ export default {
 
       let url = this.$store.state.githubapi.person;
       this.$http.get(url).then(response => {
-        let { name, bio, location, company } = response.body;
+        let { name, bio, location, company, login } = response.body;
         this.name = name;
+        this.aliase = login;
         this.bio = bio;
         this.location = location;
         this.company = company;
@@ -146,6 +154,12 @@ export default {
         this.fail = true;
         this.failReason = "Status: " + err.status;
       });
+    },
+
+    setThemeName: function () {
+      const themeIndex = this.$store.state.theme.currentThemeIndex;
+      const allThemes = this.$store.state.theme.themes;
+      this.theme = allThemes[themeIndex].name.toLowerCase();
     },
 
     setCardTheme: function () {
@@ -166,6 +180,7 @@ export default {
     },
 
     setTheme: function () {
+      this.setThemeName();
       this.setCardTheme();
       this.setNavTheme();
     },
@@ -187,7 +202,6 @@ export default {
 
   },
   watch: {
-
     themeChange: function () {
       this.setTheme();
     }

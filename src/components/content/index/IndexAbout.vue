@@ -11,7 +11,14 @@
 <template>
   <div :class="theme">
 
-    <h1><i class="el-icon-school"></i>Education</h1>
+    <h1>☀️ Daily</h1>
+    <ul>
+      <li><h3> 🏸 / 💪 / 🚘 / 💻 </h3></li>
+    </ul>
+    
+    <el-divider></el-divider>
+
+    <h1>🎓 Education</h1>
 
     <el-timeline>
       <el-timeline-item
@@ -46,20 +53,54 @@
       </el-timeline-item>
     </el-timeline>
 
+    <el-divider></el-divider>
+
+    <h1>💼 Work</h1>
+
+    <el-timeline>
+      <el-timeline-item
+        v-for="(work, index) in works"
+        :key="index"
+        placement="top"
+        type="primary">
+
+        <h2>{{ work.time }}</h2>
+        <p style="font-size: 20px;">
+          {{ work.company_en }}
+          <br>
+          {{ work.company_zh }}
+        </p>
+        <p style="font-size: 16px;">
+          {{ work.job_en }} - {{ work.job_zh }}
+        </p>
+        <p style="font-size: 16px;">
+          {{ work.location_en }} - {{ work.location_zh }}
+        </p>
+
+      </el-timeline-item>
+    </el-timeline>
+
   </div>
 </template>
 
 <style>
-  .dark h1, .dark h2, .dark p {
+  .dark h1, .dark h2, .dark p, .dark li {
     color: #ffffff;
   }
-  .light h1, .light h2, .light p {
+  .dark h1 {
+    margin-top: 50px;
+  }
+  .light h1, .light h2, .light p, .light li {
     color: #000000;
+  }
+  .light h1 {
+    margin-top: 50px;
   }
 </style>
 
 <script>
 export default {
+  props: ["theme"],
   data: function () {
     return {
       educations: [
@@ -94,36 +135,18 @@ export default {
           location_zh: "江苏省南京市"
         }
       ],
-
-      theme: ""
+      works: [
+        {
+          time: "2018.07 - 2018-08",
+          company_en: "DolphinDB, Inc.",
+          company_zh: "智臾科技有限公司",
+          job_en: "🖥️ Software Engineering",
+          job_zh: "软件工程师 (实习)",
+          location_en: "🚩 Hangzhou, Zhejiang, China",
+          location_zh: "浙江省杭州市"
+        }
+      ]
     };
-  },
-  methods: {
-    
-    setTheme: function () {
-      const themeIndex = this.$store.state.theme.currentThemeIndex;
-      const allThemes = this.$store.state.theme.themes;
-      let { name } = allThemes[themeIndex];
-      this.theme = name.toLowerCase();
-    }
-
-  },
-  mounted: function () {
-    this.setTheme();
-  },
-  computed: {
-
-    themeChange: function () {
-      return this.$store.state.theme.currentThemeIndex;
-    }
-
-  },
-  watch: {
-
-    themeChange: function () {
-      this.setTheme();
-    }
-
   }
 }
 </script>

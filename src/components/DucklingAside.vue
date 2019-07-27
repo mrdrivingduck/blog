@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/21
+  @version - 2019/07/27
 
   @description - 
     The aside component for guiding
@@ -13,9 +13,10 @@
     
     <!-- The menu on the left -->
     <el-menu
-      v-bind:background-color="this.backgroundColor"
-      v-bind:text-color="this.textColor"
-      v-bind:active-text-color="this.activeTextColor">
+      :default-openeds="['2']"
+      :background-color="this.backgroundColor"
+      :text-color="this.textColor"
+      :active-text-color="this.activeTextColor">
 
       <!-- Sub-menu of notes -->
       <aside-notes :index="1"></aside-notes>
