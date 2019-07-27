@@ -11,7 +11,7 @@
 <template>
   <div>
     
-    <component v-bind:is="current"></component>
+    <component :is="current" :theme="theme"></component>
 
   </div>
 </template>
@@ -31,6 +31,7 @@ export default {
     ContentMarkdown,
     ContentPaperOutline
   },
+  props: [ "theme" ],
   data: function () {
     return {
       current: "ContentIndex"

@@ -26,14 +26,14 @@
 
       <!-- Content on the right -->
       <el-main width=70% class="content">
-        <duckling-content></duckling-content>
+        <duckling-content :theme="theme"></duckling-content>
       </el-main>
       
     </el-container>
 
     <!-- Footer -->
     <el-footer>
-      <duckling-footer></duckling-footer>
+      <duckling-footer :theme="theme"></duckling-footer>
     </el-footer>
     
   </div>
@@ -62,7 +62,18 @@ export default {
     DucklingContent,
     DucklingFooter
   },
+  data: function() {
+    return {
+      theme: null
+    };
+  },
   methods: {
+
+    setTheme: function() {
+      const allThemes = this.$store.state.theme.themes;
+      const themeIndex = this.$store.state.theme.currentThemeIndex;
+      this.theme = allThemes[themeIndex].name.toLowerCase();
+    },
 
     setBackgroundStyle: function () {
       const allThemes = this.$store.state.theme.themes;
@@ -76,6 +87,7 @@ export default {
   },
   mounted: function () {
     // Called after DOM is mounted
+    this.setTheme();
     this.setBackgroundStyle();
   },
   computed: {
@@ -89,6 +101,7 @@ export default {
   watch: {
 
     themeChange: function () {
+      this.setTheme();
       this.setBackgroundStyle();
     }
     

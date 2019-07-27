@@ -99,6 +99,7 @@ import IndexPageInfo from "./index/IndexPageInfo.vue";
 
 export default {
   name: "ContentIndex",
+  props: [ "theme" ],
   components: {
     IndexAbout, IndexTechStack, IndexSocial, IndexPageInfo
   },
@@ -123,7 +124,6 @@ export default {
       tabs: [ "IndexAbout", "IndexTechStack", "IndexSocial", "IndexPageInfo" ],
 
       // For changing themes
-      theme: "",
       cardBackgroundColor: null,
       cardTextColor: null,
 
@@ -156,12 +156,6 @@ export default {
       });
     },
 
-    setThemeName: function () {
-      const themeIndex = this.$store.state.theme.currentThemeIndex;
-      const allThemes = this.$store.state.theme.themes;
-      this.theme = allThemes[themeIndex].name.toLowerCase();
-    },
-
     setCardTheme: function () {
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       const allThemes = this.$store.state.theme.themes;
@@ -180,7 +174,6 @@ export default {
     },
 
     setTheme: function () {
-      this.setThemeName();
       this.setCardTheme();
       this.setNavTheme();
     },

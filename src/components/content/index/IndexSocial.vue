@@ -80,6 +80,13 @@ export default {
           link: "https://www.instagram.com/mrdrivingduck/",
           icon_light: "icon/ins-light.svg",
           icon_dark: "icon/ins-dark.svg"
+        },
+        {
+          name: "Twitter",
+          login: "mrdrivingduck",
+          link: "https://twitter.com/mrdrivingduck",
+          icon_light: "icon/twitter-light.svg",
+          icon_dark: "icon/twitter-dark.svg"
         }
       ]
     };
