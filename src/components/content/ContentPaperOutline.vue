@@ -26,8 +26,7 @@
 
         <div slot="header">
           <span>
-            <i class="el-icon-document"></i>
-            <b> {{ outline.name }} </b>
+            <b> 📑 {{ outline.name }} </b>
           </span>
           <el-button
             style="float: right" type="text"
@@ -38,12 +37,10 @@
         <div v-loading="outline.loading">
           <div v-if="outline.resource">
             <p>
-              <i class="el-icon-lock"></i>
-              SHA: <b> {{ outline.resource.sha }} </b>
+              🔏 SHA: <b> {{ outline.resource.sha }} </b>
             </p>
             <p>
-              <i class="el-icon-odometer"></i>
-              Size: <b> {{ outline.resource.size }} </b> Bytes
+              ✒️ Size: <b> {{ outline.resource.size }} </b> Bytes
             </p>
           </div>
         </div>

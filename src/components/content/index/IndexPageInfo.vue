@@ -19,11 +19,22 @@
 
     <div
       v-if="!fail"
-      v-loading="loading">
+      v-loading="commitLoading">
 
       <p style="font-size: 30px;"> Last commit </p>
-      <p> {{ lastCommitMessage }} - <b>🔏{{ lastCommitSha }}</b></p>
+      <p> 📤 {{ lastCommitMessage }} </p>
       <p> <b>⌚{{ lastCommitTime }}</b> by <b>{{ lastCommitter }}</b> </p>
+    </div>
+
+    <el-divider></el-divider>
+
+    <div
+      v-if="!fail"
+      v-loading="deployLoading">
+
+      <p style="font-size: 30px;"> Last deploy </p>
+      <b>🔏{{ lastDeploySha }}</b>
+      <p> <b>⌚{{ lastDeployTime }}</b> by <b>{{ lastDeployer }}</b> </p>
     </div>
 
     <el-divider></el-divider>
@@ -70,8 +81,13 @@ export default {
       lastCommitter: null,
       lastCommitMessage: null,
       lastCommitSha: null,
+      commitLoading: false,
 
-      loading: false,
+      lastDeployTime: null,
+      lastDeployer: null,
+      lastDeploySha: null,
+      deployLoading: false,
+
       fail: false,
       failReason: "",
 
@@ -126,12 +142,13 @@ export default {
   },
   created: function() {
     this.getCommits();
+    this.getDeploys();
   },
   methods: {
 
     getCommits: function() {
       const url = this.$store.state.githubapi.commit_url[0];
-      this.loading = true;
+      this.commitLoading = true;
       this.fail = false;
       this.failReason = "";
 
@@ -145,7 +162,29 @@ export default {
         this.lastCommitMessage = message;
         this.lastCommitSha = sha;
 
-        this.loading = false;
+        this.commitLoading = false;
+
+      }, err => {
+        this.fail = true;
+        this.failReason = "Status: " + err.status;
+      });
+    },
+
+    getDeploys: function() {
+      const url = this.$store.state.githubapi.deploy;
+      this.deployLoading = true;
+      this.fail = false;
+      this.failReason = "";
+
+      this.$http.get(url).then(response => {
+
+        let { creator, sha, updated_at } = response.body[0];
+        let { login } = creator;
+        this.lastDeployTime = updated_at;
+        this.lastDeploySha = sha;
+        this.lastDeployer = login;
+
+        this.deployLoading = false;
 
       }, err => {
         this.fail = true;

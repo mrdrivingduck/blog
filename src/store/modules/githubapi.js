@@ -14,6 +14,7 @@ const state = {
     "https://api.github.com/repos/mrdrivingduck/notes/commits?path=",
     "https://api.github.com/repos/mrdrivingduck/paper-outline/commits?path="
   ],
+  deploy: "https://api.github.com/repos/mrdrivingduck/mrdrivingduck.github.io/deployments",
   url_index: 0
 };
 

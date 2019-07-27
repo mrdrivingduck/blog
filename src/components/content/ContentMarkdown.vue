@@ -20,8 +20,7 @@
 
       <div>
         <p>
-          <i class="el-icon-link"></i>
-          Origin: 
+          🔗 Origin: 
           <el-link type="primary" :href="this.articleLink"> Link from GitHub </el-link>
         </p>
         <!-- <p>
@@ -33,8 +32,7 @@
           File Size: <b> {{ this.articleSize }} </b> KiB
         </p> -->
         <p>
-          <i class="el-icon-time"></i>
-          Estimated Reading Time: <b> {{ this.articleReadingTime }} </b> min
+          ⏱️ Estimated Reading Time: <b> {{ this.articleReadingTime }} </b> min
         </p>
       </div>
 
@@ -44,8 +42,7 @@
           Commit SHA: <b> {{ this.commitSha }} </b>
         </p> -->
         <p>
-          <i class="el-icon-time"></i>
-          Last Modification: <b> {{ this.commitLastModification }} </b> by <b> {{ this.committer }} </b>
+          📅 Last Modification: <b> {{ this.commitLastModification }} </b> by <b> {{ this.committer }} </b>
         </p>
       </div>
 
@@ -53,8 +50,7 @@
 
       <div>
         <p>
-          <i class="el-icon-message"></i>
-          Something wrong? - 
+          📧 Something wrong? - 
           <el-link
             type="warning"
             href="mailto:mrdrivingduck@gmail.com">
