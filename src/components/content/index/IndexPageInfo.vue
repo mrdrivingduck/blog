@@ -128,6 +128,11 @@ export default {
           link: "https://github.com/mrdrivingduck/highlight.js"
         },
         {
+          name: "GitHub API v3",
+          description: "The official GitHub REST API v3.",
+          link: "https://developer.github.com/v3/"
+        },
+        {
           name: "GitHub Pages",
           description: "Websites for you and your projects.",
           link: "https://pages.github.com/"
