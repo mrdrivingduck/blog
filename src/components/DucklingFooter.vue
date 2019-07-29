@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/27
+  @version - 2019/07/29
 
   @description - 
     The index component for displaying fotter
@@ -19,12 +19,12 @@
 
         <el-col
           :span="13">
-          <p style="float: right; margin-right: 10px">mrdrivingduck©, 2019</p>
+          <p style="float: right; margin-right: 0px">mrdrivingduck©, 2019</p>
         </el-col>
 
         <el-col :span="11">
           <el-link
-            style="width: 32px; height: 32px; vertical-align:middle; margin-left: 10px"
+            style="width: 32px; height: 32px; vertical-align:middle; margin-left: 20px"
             :underline="false"
             :href="repo_url">
             <el-image

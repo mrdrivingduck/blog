@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/25
+  @version - 2019/07/29
 
   @description - 
     The content component for displaying markdown files
@@ -180,10 +180,10 @@ export default {
 
       this.$http.get(commitUrl + encodeURIComponent(path)).then(response => {
         
-        let lastCommit = response.body[0];
-        this.commitSha = lastCommit.sha;
-        this.commitLastModification = lastCommit.commit.committer.date;
-        this.committer = lastCommit.commit.committer.name;
+        let { sha, commit, committer } = response.body[0];
+        this.commitSha = sha;
+        this.commitLastModification = commit.committer.date;
+        this.committer = committer.login;
 
         // Set loading status
         this.loadingCommitComplete = true;
