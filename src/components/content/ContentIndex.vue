@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/27
+  @version - 2019/07/30
 
   @description - 
     The content component for displaying pernal information
@@ -139,7 +139,7 @@ export default {
       this.fail = false;
       this.failReason = "";
 
-      let url = this.$store.state.githubapi.person;
+      let url = this.$store.state.githubapi.api[0].content;
       this.$http.get(url).then(response => {
         let { name, bio, location, company, login } = response.body;
         this.name = name;

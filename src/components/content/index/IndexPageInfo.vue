@@ -33,7 +33,7 @@
       v-loading="deployLoading">
 
       <p style="font-size: 30px;"> Last deploy </p>
-      <b>🔏{{ lastDeploySha }}</b>
+      <p><b>🔏{{ lastDeploySha }}</b></p>
       <p> <b>⌚{{ lastDeployTime }}</b> by <b>{{ lastDeployer }}</b> </p>
     </div>
 
@@ -139,7 +139,7 @@ export default {
         },
         {
           name: "Aliyun",
-          description: "More ThanJust Cloud.",
+          description: "More Than Just Cloud.",
           link: "https://www.aliyun.com/"
         }
       ]
@@ -152,7 +152,7 @@ export default {
   methods: {
 
     getCommits: function() {
-      const url = this.$store.state.githubapi.commit_url[0];
+      const url = this.$store.state.githubapi.api[0].commit;
       this.commitLoading = true;
       this.fail = false;
       this.failReason = "";
@@ -176,7 +176,7 @@ export default {
     },
 
     getDeploys: function() {
-      const url = this.$store.state.githubapi.deploy;
+      const url = this.$store.state.githubapi.api[0].deploy;
       this.deployLoading = true;
       this.fail = false;
       this.failReason = "";

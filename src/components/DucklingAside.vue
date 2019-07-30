@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/27
+  @version - 2019/07/29
 
   @description - 
     The aside component for guiding
@@ -16,6 +16,7 @@
       :default-openeds="['2']"
       :background-color="this.backgroundColor"
       :text-color="this.textColor"
+      :unique-opened="true"
       :active-text-color="this.activeTextColor">
 
       <!-- Sub-menu of notes -->

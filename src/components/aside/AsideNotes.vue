@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/21
+  @version - 2019/07/30
 
   @description - 
     The aside component for displaying note list
@@ -69,9 +69,6 @@
 </style>
 
 <script>
-// Filter only directory
-const dirNameReg = /^[A-Z].*$/;
-
 export default {
   props: ["index"],
 
@@ -95,6 +92,8 @@ export default {
 
       // Issue HTTP request
       this.$http.get(url).then(response => {
+
+        const dirNameReg = this.$store.state.regexpre.dirNameReg;
         this.noteDir = [];
         for (let i = 0; i < response.body.length; i++) {
           if (dirNameReg.test(response.body[i].name) && response.body[i].type === "dir") {
@@ -168,7 +167,8 @@ export default {
   
   created: function () {
     // Initializing the data from GitHub
-    this.loadDirectories(this.$store.state.githubapi.notes);
+    let url = this.$store.state.githubapi.api[this.index].content;
+    this.loadDirectories(url);
   }
 }
 </script>

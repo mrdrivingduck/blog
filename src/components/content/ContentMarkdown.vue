@@ -138,6 +138,10 @@ export default {
       this.fail = false;
       this.failReason = "";
 
+      if (this.articleReadingTime === 0) {
+        this.articleReadingTime = 1;
+      }
+
       // Issur HTTP request
       this.getMarkdown();
       this.getCommit();
@@ -153,6 +157,7 @@ export default {
           let md = decodeURIComponent(escape(window.atob(response.body.content)));
           // Parse markdown to HTML
           this.htmlStr = marked(md);
+          console.log(this.htmlStr)
           this.$nextTick(this.onChangeTheme);
 
         } else {
@@ -173,9 +178,9 @@ export default {
     },
 
     getCommit: function () {
-      const commitUrls = this.$store.state.githubapi.commit_url;
+      const commitUrls = this.$store.state.githubapi.api;
       const urlIndex = this.$store.state.githubapi.url_index;
-      let commitUrl = commitUrls[urlIndex];
+      let commitUrl = commitUrls[urlIndex].commit;
       let path = this.$store.state.markdown.path;
 
       this.$http.get(commitUrl + encodeURIComponent(path)).then(response => {

@@ -66,9 +66,6 @@
 </style>
 
 <script>
-// Filter only outline markdown files
-const outlineNameReg = /^Outline.*$/;
-
 export default {
   name: "ContentPaperOutline",
   data: function () {
@@ -124,6 +121,7 @@ export default {
       this.$set(dirObj, "loading", true);
       // Issue HTTP request
       this.$http.get(url).then(response => {
+        const outlineNameReg = this.$store.state.regexpre.outlineNameReg;
         for (let i = 0; i < response.body.length; i++) {
           if (outlineNameReg.test(response.body[i].name)) {
             // Filter only outline files in markdown format

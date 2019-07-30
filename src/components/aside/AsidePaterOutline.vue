@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/05
+  @version - 2019/07/30
 
   @description - 
     The aside component for displaying paper outlines
@@ -57,9 +57,6 @@
 </style>
 
 <script>
-// Filter only directory
-const dirNameReg = /^[A-Z].*$/;
-
 export default {
   props: ["index"],
   data: function () {
@@ -78,6 +75,7 @@ export default {
       // Issur HTTP Request
       this.$http.get(url).then(response => {
         
+        const dirNameReg = this.$store.state.regexpre.dirNameReg;
         this.outlineDir = [];
         for (let i = 0; i < response.body.length; i++) {
           if (dirNameReg.test(response.body[i].name) && response.body[i].type === "dir") {
@@ -106,7 +104,8 @@ export default {
   },
   created: function () {
     // Initializing the data from GitHub
-    this.loadDirectories(this.$store.state.githubapi.paper_outline);
+    let url = this.$store.state.githubapi.api[this.index].content;
+    this.loadDirectories(url);
   }
 }
 </script>
