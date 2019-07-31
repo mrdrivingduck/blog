@@ -18,8 +18,7 @@
       :index="this.index + ''">
       
       <template slot="title">
-        <i class="el-icon-document-copy"></i>
-        <span> Paper Outline </span>
+        <span> 🔍 Paper Outline </span>
       </template>
 
       <!-- Every directories -->
@@ -32,8 +31,7 @@
         :index="index + '-' + (dirIdx + 1)">
 
         <template slot="title">
-          <i class="el-icon-folder"></i>
-          <span> {{ dir.name }} </span>
+          <span> 📂 {{ dir.name }} </span>
         </template>
       </el-menu-item>
 

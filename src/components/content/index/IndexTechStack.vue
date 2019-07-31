@@ -16,6 +16,7 @@
       v-for="(item) in stack"
       :key="item.language">
 
+        <!-- Language name -->
         <p style="font-size: 20px;">{{ item.language }}</p>
         <ul>
           <li 
@@ -25,6 +26,7 @@
           </li>
         </ul>
 
+        <!-- Progress bar -->
         <el-progress
           :percentage="item.percentage"
           :stroke-width="24"
@@ -54,9 +56,6 @@ export default {
         {
           language: "C/C++",
           percentage: 32,
-          // projects: [
-          //   "RCPP"
-          // ]
         },
         {
           language: "Java",

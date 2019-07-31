@@ -16,6 +16,7 @@
       :key="social.name"
       type="flex">
 
+      <!-- Social icon -->
       <el-col :span="3">
         <div style="height: 100%; float: right; margin-right: 20px">
           <el-image
@@ -29,6 +30,7 @@
         </div>
       </el-col>
 
+      <!-- Social link url -->
       <el-col :span="16">
         <p>
           {{ social.name }} -

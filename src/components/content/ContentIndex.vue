@@ -126,7 +126,7 @@ export default {
       // For changing themes
       cardBackgroundColor: null,
       cardTextColor: null,
-
+      // Navigation
       backgroundColor: null,
       textColor: null,
       activeTextColor: null
@@ -134,6 +134,7 @@ export default {
   },
   methods: {
 
+    // For initializing personal info card
     initializeCardInfo: function () {
       this.loading = true;
       this.fail = false;
@@ -147,7 +148,7 @@ export default {
         this.bio = bio;
         this.location = location;
         this.company = company;
-
+        // Loading complete
         this.loading = false;
       }, err => {
         // HTTP failed
@@ -156,6 +157,7 @@ export default {
       });
     },
 
+    // Set the theme of personal info card
     setCardTheme: function () {
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       const allThemes = this.$store.state.theme.themes;
@@ -164,6 +166,7 @@ export default {
       this.cardTextColor = textColor;
     },
 
+    // Set the theme of navigation
     setNavTheme: function () {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
@@ -178,6 +181,7 @@ export default {
       this.setNavTheme();
     },
 
+    // For selecting sub-component
     selectIndex: function (key) {
       this.selectedTab = key;
     }
@@ -189,15 +193,19 @@ export default {
   },
   computed: {
     
+    // Triggered when changing theme
     themeChange: function () {
       return this.$store.state.theme.currentThemeIndex;
     }
 
   },
   watch: {
+
+    // Triggered to change the theme
     themeChange: function () {
       this.setTheme();
     }
+    
   }
 }
 </script>

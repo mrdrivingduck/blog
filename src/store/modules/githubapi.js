@@ -21,7 +21,7 @@ const state = {
       // notes commit record
       commit: "https://api.github.com/repos/mrdrivingduck/notes/commits?path=",
       // url replacement prefix of images in the notes
-      img_prefix: "https://raw.githubusercontent.com/mrdrivingduck/notes/master/"
+      img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/notes/master/img/'
     },
     {
       // paper outline content
@@ -29,7 +29,15 @@ const state = {
       // paper outline commit record
       commit: "https://api.github.com/repos/mrdrivingduck/paper-outline/commits?path=",
       // url replacement prefix of images in the paper outlines
-      img_prefix: "https://raw.githubusercontent.com/mrdrivingduck/paper-outline/master/"
+      img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/paper-outline/master/img/'
+    },
+    {
+      // paper outline content
+      content: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/contents/",
+      // paper outline commit record
+      commit: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/commits?path=",
+      // url replacement prefix of images in the paper outlines
+      img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/how-linux-works-notes/master/img/'
     }
   ],
   url_index: 0
@@ -37,6 +45,7 @@ const state = {
 
 const mutations = {
 
+  // Set the index on the navigate into global
   setCommitUrlIndex: function (state, { index }) {
     state.url_index = index;
   }

@@ -19,8 +19,7 @@
       :index="this.index + ''">
       
       <template slot="title">
-        <i class="el-icon-edit"></i>
-        <span> Notes </span>
+        <span> 📝 Notes </span>
       </template>
 
       <!-- Every directories -->
@@ -31,8 +30,7 @@
         :index="index + '-' + (dirIdx + 1)">
 
         <template slot="title">
-          <i class="el-icon-folder"></i>
-          <span> {{ dir.name }} </span>
+          <span> 📂 {{ dir.name }} </span>
         </template>
 
         <!-- Every notes in a directory -->
@@ -43,8 +41,7 @@
           :index="index + '-' + (dirIdx + 1) + '-' + (noteIdx + 1)">
 
           <template slot="title">
-            <i class="el-icon-edit-outline"></i>
-            <span> {{ note.name }} </span>
+            <span> 📃 {{ note.name }} </span>
           </template>
 
         </el-menu-item>
@@ -83,17 +80,15 @@ export default {
 
   methods: {
 
-    /**
-     * Loading all directories of notes repository
-     */
+    // Loading all directories of notes repository
     loadDirectories: function (url) {
+      const dirNameReg = this.$store.state.regexpre.dirNameReg;
       // Set loading status
       this.loading = true;
 
       // Issue HTTP request
       this.$http.get(url).then(response => {
 
-        const dirNameReg = this.$store.state.regexpre.dirNameReg;
         this.noteDir = [];
         for (let i = 0; i < response.body.length; i++) {
           if (dirNameReg.test(response.body[i].name) && response.body[i].type === "dir") {
@@ -119,9 +114,7 @@ export default {
       });
     },
 
-    /**
-     * Loading all notes in one of the directories
-     */
+    // Loading all notes in one of the directories
     loadNotes: function (url, dirObj) {
       // Set loading status
       this.$set(dirObj, "loading", true);
@@ -146,9 +139,7 @@ export default {
       });
     },
 
-    /**
-     * Jump to the note detail
-     */
+    // Jump to the note detail
     clickNote: function (noteObj) {
       this.$store.commit("setMarkdownUrl", {
         url: noteObj.url,
@@ -162,7 +153,6 @@ export default {
       this.$store.commit("setCommitUrlIndex", { index: this.index });
       this.$store.commit("setCurrentContent", { currentComponent: "ContentMarkdown" });
     }
-
   },
   
   created: function () {

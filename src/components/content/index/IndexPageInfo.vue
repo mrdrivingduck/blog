@@ -77,20 +77,25 @@ export default {
   props: [ "theme" ],
   data: function() {
     return {
+
+      // Last commit info
       lastCommitTime: null,
       lastCommitter: null,
       lastCommitMessage: null,
       lastCommitSha: null,
       commitLoading: false,
 
+      // Last deploy info
       lastDeployTime: null,
       lastDeployer: null,
       lastDeploySha: null,
       deployLoading: false,
 
+      // HTTP status
       fail: false,
       failReason: "",
 
+      // Supporting tech.
       supporting: [
         {
           name: "Vue.js",
@@ -151,6 +156,7 @@ export default {
   },
   methods: {
 
+    // Get last commit info
     getCommits: function() {
       const url = this.$store.state.githubapi.api[0].commit;
       this.commitLoading = true;
@@ -158,7 +164,7 @@ export default {
       this.failReason = "";
 
       this.$http.get(url).then(response => {
-
+        // Fill the data
         let { commit, sha } = response.body[0];
         let { committer, message } = commit;
         let { name, date } = committer;
@@ -166,15 +172,17 @@ export default {
         this.lastCommitter = name;
         this.lastCommitMessage = message;
         this.lastCommitSha = sha;
-
+        // Set commit loading status
         this.commitLoading = false;
 
       }, err => {
+        // HTTP failed
         this.fail = true;
         this.failReason = "Status: " + err.status;
       });
     },
 
+    // Get last deploy info
     getDeploys: function() {
       const url = this.$store.state.githubapi.api[0].deploy;
       this.deployLoading = true;
@@ -182,16 +190,17 @@ export default {
       this.failReason = "";
 
       this.$http.get(url).then(response => {
-
+        // Fill the data
         let { creator, sha, updated_at } = response.body[0];
         let { login } = creator;
         this.lastDeployTime = updated_at;
         this.lastDeploySha = sha;
         this.lastDeployer = login;
-
+        // Set deploy loading status
         this.deployLoading = false;
 
       }, err => {
+        // HTTP failed
         this.fail = true;
         this.failReason = "Status: " + err.status;
       });

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/29
+  @version - 2019/07/31
 
   @description - 
     The content component for displaying markdown files
@@ -91,7 +91,6 @@
   }
 </style>
 
-
 <script>
 import marked from "marked";
 import hljs from "duckling-highlight";
@@ -100,6 +99,7 @@ export default {
   name: "ContentMarkdown",
   data: function () {
     return  {
+      // Info in the card
       cardBackgroundColor: "",
       cardTextColor: "",
       articleLink: "",
@@ -107,10 +107,12 @@ export default {
       articleSize: "",
       articleReadingTime: "",
 
+      // Commit info
       commitLastModification: "",
       commitSha: "",
       committer: "",
-
+      
+      // loading status of each part
       loadingMarkdownComplete: false,
       loadingCommitComplete: false,
 
@@ -132,6 +134,7 @@ export default {
       this.commitLastModification = "";
       this.commitSha = "";
       this.committer = "";
+
       // Initialize component status
       this.htmlStr = ""
       this.loading = true;
@@ -147,17 +150,21 @@ export default {
       this.getCommit();
     },
 
+    // Get the content of markdown file
     getMarkdown: function () {
       // Get markdown URL
       const mdUrl = this.$store.state.markdown.markdown_url;
+      const idx = this.$store.state.githubapi.url_index;
+      const apis = this.$store.state.githubapi.api;
+      const regs = this.$store.state.regexpre.imageUrlMatcher;
 
       this.$http.get(mdUrl).then(response => {
         if (response.body.encoding === "base64") {
           // Parse encoded Base64 to markdown
           let md = decodeURIComponent(escape(window.atob(response.body.content)));
           // Parse markdown to HTML
-          this.htmlStr = marked(md);
-          console.log(this.htmlStr)
+          let html = marked(md);
+          this.htmlStr = html.replace(regs[idx], apis[idx].img_prefix);
           this.$nextTick(this.onChangeTheme);
 
         } else {
@@ -166,10 +173,9 @@ export default {
         }
         // Set loading status
         this.loadingMarkdownComplete = true;
-        if (this.loadingMarkdownComplete && this.loadingCommitComplete) {
+        if (this.loadingCommitComplete) {
           this.loading = false;
         }
-
       }, error => {
         // HTTP failure
         this.fail = true;
@@ -177,6 +183,7 @@ export default {
       });
     },
 
+    // Get the commit info of the markdown file
     getCommit: function () {
       const commitUrls = this.$store.state.githubapi.api;
       const urlIndex = this.$store.state.githubapi.url_index;
@@ -185,6 +192,7 @@ export default {
 
       this.$http.get(commitUrl + encodeURIComponent(path)).then(response => {
         
+        // Get the last commit
         let { sha, commit, committer } = response.body[0];
         this.commitSha = sha;
         this.commitLastModification = commit.committer.date;
@@ -192,7 +200,7 @@ export default {
 
         // Set loading status
         this.loadingCommitComplete = true;
-        if (this.loadingMarkdownComplete && this.loadingCommitComplete) {
+        if (this.loadingMarkdownComplete) {
           this.loading = false;
         }
 
@@ -203,8 +211,8 @@ export default {
       });
     },
 
+    // Highlight the code into corresponding theme
     setCodeStyle: function () {
-      // Highlight the code into corresponding theme
       const allThemes = this.$store.state.theme.themes;
       const currentTheme = this.$store.state.theme.currentThemeIndex;
       let blocks = this.$refs.markdown.querySelectorAll('pre code');
@@ -213,13 +221,14 @@ export default {
       })
     },
 
+    // Set the corresponding markdown theme
     setMarkdownStyle: function () {
-      // Set the corresponding markdown theme
       const allThemes = this.$store.state.theme.themes;
       const currentTheme = this.$store.state.theme.currentThemeIndex;
       this.markdownClass = allThemes[currentTheme].content.markdown;
     },
 
+    // Set the theme of card on the top
     setCardStyle: function () {
       const allThemes = this.$store.state.theme.themes;
       const currentTheme = this.$store.state.theme.currentThemeIndex;
@@ -228,8 +237,8 @@ export default {
       this.cardTextColor = textColor;
     },
 
+    // Called when the theme changes
     onChangeTheme: function () {
-      // Called when the theme changes
       this.setCodeStyle();
       this.setMarkdownStyle();
       this.setCardStyle();
@@ -242,26 +251,26 @@ export default {
   },
   computed: {
 
+    // Triggered when markdown resource URL changes
     markdownUrlChanged: function () {
-      // Triggered when markdown resource URL changes
       return this.$store.state.markdown.markdown_url;
     },
 
+    // Triggered when the theme changes
     themeChange: function () {
-      // Triggered when the theme changes
       return this.$store.state.theme.currentThemeIndex;
     }
 
   },
   watch: {
 
+    // When URL changes, re-initialize to component
     markdownUrlChanged: function () {
-      // When URL changes, re-initialize to component
       this.initialize();
     },
 
+    // When theme changes, reset the style
     themeChange: function () {
-      // When theme changes, reset the style
       this.$nextTick(this.onChangeTheme);
     }
   }

@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/07/30
+ * @version 2019/07/31
  * @description
  *    Vuex store for saving regular expressions.
  */
@@ -13,11 +13,15 @@ const state = {
   // These files start with 'Outline'
   outlineNameReg: /^Outline.*$/,
 
+  // Filter only markdown of different chapters
+  chapterNameReg: /^Chapter.*$/,
+
   // Image urls in markdown component
   imageUrlMatcher: [
     /^$/,
-    /^$/, // image url in notes -  <img src="../img/
-    /^$/, // image url in paper outlines - <img src="../../img/
+    /<img\ssrc="\.\.\/img\//g, // image url in notes -  <img src="../img/
+    /<img\ssrc="\.\.\/\.\.\/img\//g, // image url in paper outlines - <img src="../../img/
+    /<img\ssrc="\.\/img\//g
   ]
 };
 

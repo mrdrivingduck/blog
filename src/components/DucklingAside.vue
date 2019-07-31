@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/29
+  @version - 2019/07/31
 
   @description - 
     The aside component for guiding
@@ -13,10 +13,9 @@
     
     <!-- The menu on the left -->
     <el-menu
-      :default-openeds="['2']"
+      :default-openeds="['2', '3']"
       :background-color="this.backgroundColor"
       :text-color="this.textColor"
-      :unique-opened="true"
       :active-text-color="this.activeTextColor">
 
       <!-- Sub-menu of notes -->
@@ -24,6 +23,9 @@
 
       <!-- Sub-menu of paper-outline -->
       <aside-paper-outline :index="2"></aside-paper-outline>
+
+      <!-- Sub-meua of how-linux-works -->
+      <aside-how-linux-works :index="3"></aside-how-linux-works>
 
     </el-menu>
     
@@ -37,11 +39,13 @@
 <script>
 import AsideNotes from "./aside/AsideNotes.vue";
 import AsidePaperOutline from "./aside/AsidePaterOutline.vue";
+import AsideHowLinuxWorks from "./aside/AsideHowLinuxWorks.vue";
 
 export default {
   components: {
     AsideNotes,
-    AsidePaperOutline
+    AsidePaperOutline,
+    AsideHowLinuxWorks
   },
   data: function() {
     return {
