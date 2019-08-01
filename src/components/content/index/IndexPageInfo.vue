@@ -23,7 +23,7 @@
 
       <p style="font-size: 30px;"> Last commit </p>
       <p> 📤 {{ lastCommitMessage }} </p>
-      <p> <b>⌚{{ lastCommitTime }}</b> by <b>{{ lastCommitter }}</b> </p>
+      <p><b> ⌚ {{ lastCommitTime }}</b> by <b> {{ lastCommitter }} </b> </p>
     </div>
 
     <el-divider></el-divider>
@@ -33,8 +33,8 @@
       v-loading="deployLoading">
 
       <p style="font-size: 30px;"> Last deploy </p>
-      <p><b>🔏{{ lastDeploySha }}</b></p>
-      <p> <b>⌚{{ lastDeployTime }}</b> by <b>{{ lastDeployer }}</b> </p>
+      <p><b> 🔏 {{ lastDeploySha }}</b></p>
+      <p><b> ⌚ {{ lastDeployTime }}</b> by <b> {{ lastDeployer }} </b> </p>
     </div>
 
     <el-divider></el-divider>
