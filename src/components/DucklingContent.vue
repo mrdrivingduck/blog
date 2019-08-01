@@ -16,20 +16,12 @@
   </div>
 </template>
 
-<style>
-
-</style>
-
 <script>
-import ContentIndex from "./content/ContentIndex.vue";
-import ContentMarkdown from "./content/ContentMarkdown.vue";
-import ContentPaperOutline from "./content/ContentPaperOutline.vue";
-
 export default {
   components: {
-    ContentIndex,
-    ContentMarkdown,
-    ContentPaperOutline
+    ContentIndex: () => import("./content/ContentIndex"),
+    ContentMarkdown: () => import("./content/ContentMarkdown"),
+    ContentPaperOutline: () => import("./content/ContentPaperOutline")
   },
   props: [ "theme" ],
   data: function () {

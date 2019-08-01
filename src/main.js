@@ -1,16 +1,16 @@
 /**
  * @author Mr Dk.
- * @version 2019/07/21
+ * @version 2019/08/01
  * @description 
  *    The entry file.
  */
 
 import Vue from "vue";
-import VueResource from "vue-resource";
 import ElementUI from "element-ui";
+import Axios from "axios";
 
-Vue.use(VueResource);
 Vue.use(ElementUI);
+Vue.prototype.$http = Axios;
 
 /**
  * Styles
@@ -37,7 +37,10 @@ import App from "./App.vue";
  */
 import store from "./store";
 
+/**
+ * Instantiation
+ */
 new Vue({
-  store, // Vuex
+  store, // register the Vuex store
   render: h => h(App),
 }).$mount("#app");

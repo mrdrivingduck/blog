@@ -1,10 +1,10 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/31
+  @version - 2019/08/01
 
   @description - 
-    The aside component for displaying How-Linux-Works
+    The aside component for displaying Linux-Kernel-Comments
     Loading the resource from GitHub using GitHub API v3
 
 -->
@@ -19,7 +19,7 @@
       :index="this.index + ''">
       
       <template slot="title">
-        <span> 🐧 How Linux Works </span>
+        <span> 🐧 Linux Kernel Comments </span>
       </template>
 
       <!-- Every notes -->

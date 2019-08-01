@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/31
+  @version - 2019/08/01
 
   @description - 
     The aside component for guiding
@@ -13,7 +13,7 @@
     
     <!-- The menu on the left -->
     <el-menu
-      :default-openeds="['2', '3']"
+      :default-openeds="['2']"
       :background-color="this.backgroundColor"
       :text-color="this.textColor"
       :active-text-color="this.activeTextColor">
@@ -24,28 +24,24 @@
       <!-- Sub-menu of paper-outline -->
       <aside-paper-outline :index="2"></aside-paper-outline>
 
-      <!-- Sub-meua of how-linux-works -->
+      <!-- Sub-menu of how-linux-works -->
       <aside-how-linux-works :index="3"></aside-how-linux-works>
+
+      <!-- Sub-menu of linux-kernel-comments-notes -->
+      <aside-linux-kernel-comments :index="4"></aside-linux-kernel-comments>
 
     </el-menu>
     
   </div>
 </template>
 
-<style>
-
-</style>
-
 <script>
-import AsideNotes from "./aside/AsideNotes.vue";
-import AsidePaperOutline from "./aside/AsidePaterOutline.vue";
-import AsideHowLinuxWorks from "./aside/AsideHowLinuxWorks.vue";
-
 export default {
   components: {
-    AsideNotes,
-    AsidePaperOutline,
-    AsideHowLinuxWorks
+    AsideNotes: () => import("./aside/AsideNotes"),
+    AsidePaperOutline: () => import("./aside/AsidePaterOutline"),
+    AsideHowLinuxWorks: () => import("./aside/AsideHowLinuxWorks"),
+    AsideLinuxKernelComments: () => import("./aside/AsideLinuxKernelComments")
   },
   data: function() {
     return {
@@ -56,6 +52,7 @@ export default {
   },
   methods: {
 
+    // For changing theme of menu
     setTheme: function () {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
@@ -67,10 +64,11 @@ export default {
 
   },
   mounted: function () {
-    this.setTheme();
+    this.setTheme(); // Initialize the theme
   },
   computed: {
 
+    // Listening theme changing
     themeChange: function () {
       return this.$store.state.theme.currentThemeIndex;
     }
@@ -78,6 +76,7 @@ export default {
   },
   watch: {
 
+    // Trigger theme changing
     themeChange: function () {
       this.setTheme();
     }

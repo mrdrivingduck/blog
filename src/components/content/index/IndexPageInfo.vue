@@ -63,15 +63,6 @@
   </div>
 </template>
 
-<style>
-  .dark p {
-    color: #ffffff;
-  }
-  .light p {
-    color: #000000;
-  }
-</style>
-
 <script>
 export default {
   props: [ "theme" ],
@@ -111,6 +102,11 @@ export default {
           name: "Vue CLI",
           description: "🛠️ Standard Tooling for Vue.js Development.",
           link: "https://cli.vuejs.org/"
+        },
+        {
+          name: "Axios",
+          description: "Promise based HTTP client for the browser and node.js.",
+          link: "https://github.com/axios/axios"
         },
         {
           name: "Element",
@@ -165,7 +161,7 @@ export default {
 
       this.$http.get(url).then(response => {
         // Fill the data
-        let { commit, sha } = response.body[0];
+        let { commit, sha } = response.data[0];
         let { committer, message } = commit;
         let { name, date } = committer;
         this.lastCommitTime = date;
@@ -175,10 +171,10 @@ export default {
         // Set commit loading status
         this.commitLoading = false;
 
-      }, err => {
+      }).catch(error => {
         // HTTP failed
         this.fail = true;
-        this.failReason = "Status: " + err.status;
+        this.failReason = error;
       });
     },
 
@@ -191,7 +187,7 @@ export default {
 
       this.$http.get(url).then(response => {
         // Fill the data
-        let { creator, sha, updated_at } = response.body[0];
+        let { creator, sha, updated_at } = response.data[0];
         let { login } = creator;
         this.lastDeployTime = updated_at;
         this.lastDeploySha = sha;
@@ -199,10 +195,10 @@ export default {
         // Set deploy loading status
         this.deployLoading = false;
 
-      }, err => {
+      }).catch(error => {
         // HTTP failed
         this.fail = true;
-        this.failReason = "Status: " + err.status;
+        this.failReason = error;
       });
     }
 

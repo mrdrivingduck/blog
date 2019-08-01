@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/07/30
+ * @version 2019/08/01
  * @description
  *    Vuex store for saving current content component
  */
@@ -32,12 +32,20 @@ const state = {
       img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/paper-outline/master/img/'
     },
     {
-      // paper outline content
+      // how-linux-works notes content
       content: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/contents/",
-      // paper outline commit record
+      // how-linux-works notes commit record
       commit: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/commits?path=",
-      // url replacement prefix of images in the paper outlines
+      // url replacement prefix of images in how-linux-works
       img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/how-linux-works-notes/master/img/'
+    },
+    {
+      // linux-kernel-comments notes content
+      content: "https://api.github.com/repos/mrdrivingduck/linux-kernel-comments-notes/contents/",
+      // linux-kernel-comments notes commit record
+      commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-comments-notes/commits?path=",
+      // url replacement prefix of images in linux-kernel-comments-notes
+      img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-comments-notes/master/img/'
     }
   ],
   url_index: 0

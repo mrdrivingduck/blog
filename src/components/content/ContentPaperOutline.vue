@@ -77,9 +77,7 @@ export default {
   },
   methods: {
 
-    /**
-     * Load one of the outline topic
-     */
+    // Load one of the outline topic
     loadOutlineDirectory: function () {
       // Get topic URL
       const url = this.$store.state.paper_outline.outline_url;
@@ -91,8 +89,8 @@ export default {
       // Issue HTTP request
       this.$http.get(url).then(response => {
 
-        for (let i = 0; i < response.body.length; i++) {
-          let { url, name, sha, html_url } = response.body[i];
+        for (let i = 0; i < response.data.length; i++) {
+          let { url, name, sha, html_url } = response.data[i];
           this.outlines.push({ url, name, sha, html_url });
         }
         // All directories in a topic load complete
@@ -102,41 +100,38 @@ export default {
           this.loadOutlineUrl(this.outlines[i].url, this.outlines[i]);
         }
         
-      }, error => {
+      }).catch(error => {
         // HTTP failure
         this.fail = true;
-        this.failReason = "Status: " + error.status;
+        this.failReason = error;
       });
     },
 
-    /**
-     * Load outline file metadata in a directory
-     */
+    // Load outline file metadata in a directory
     loadOutlineUrl: function (url, dirObj) {
       // Set loading status of metadata
       this.$set(dirObj, "loading", true);
       // Issue HTTP request
       this.$http.get(url).then(response => {
         const outlineNameReg = this.$store.state.regexpre.outlineNameReg;
-        for (let i = 0; i < response.body.length; i++) {
-          if (outlineNameReg.test(response.body[i].name)) {
+        for (let i = 0; i < response.data.length; i++) {
+          if (outlineNameReg.test(response.data[i].name)) {
             // Filter only outline files in markdown format
-            let { url, sha, size, html_url, path } = response.body[i];
+            let { url, sha, size, html_url, path } = response.data[i];
             // Set the metadata, change loading status
             this.$set(dirObj, "resource", { url, sha, size, html_url, path });
             this.$set(dirObj, "loading", false);
           }
         }
-      }, error => {
+
+      }).catch(error => {
         // HTTP failure
         this.fail = true;
-        this.failReason = "Status: " + error.status;
+        this.failReason = error;
       });
     },
 
-    /**
-     * Jump to the outline detail
-     */
+    // Jump to the outline detail
     clickOutline: function (outlineObj) {
       this.$store.commit("setMarkdownUrl", {
         url: outlineObj.url,
@@ -150,9 +145,7 @@ export default {
       this.$store.commit("setCurrentContent", { currentComponent: "ContentMarkdown" });
     },
 
-    /**
-     * Set the background color and text color of the cards
-     */
+    // Set the background color and text color of the cards
     setCardTheme: function () {
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       const allThemes = this.$store.state.theme.themes;
@@ -168,33 +161,31 @@ export default {
     this.setCardTheme();
   },
   computed: {
-    /**
-     * Clicking on the aside will trigger URL changed
-     */
+
+    // Listening for the URL changed
     urlChange: function () {
       return this.$store.state.paper_outline.outline_url;
     },
-    /**
-     * The whole theme will be changed
-     */
+
+    // Listening for the theme changed
     themeChange: function () {
       return this.$store.state.theme.currentThemeIndex;
     }
+
   },
   watch: {
-    /**
-     * The URL change triggered
-     * Reinitializing the conponent's status
-     */
+
+    // The URL change triggered
+    // Reinitializing the conponent's status
     urlChange: function () {
       this.loadOutlineDirectory();
     },
-    /**
-     * Set the theme of the card
-     */
+
+    // Set the theme of the card
     themeChange: function () {
       this.setCardTheme();
     }
+
   }
 }
 </script>

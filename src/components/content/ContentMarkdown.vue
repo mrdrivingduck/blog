@@ -159,9 +159,9 @@ export default {
       const regs = this.$store.state.regexpre.imageUrlMatcher;
 
       this.$http.get(mdUrl).then(response => {
-        if (response.body.encoding === "base64") {
+        if (response.data.encoding === "base64") {
           // Parse encoded Base64 to markdown
-          let md = decodeURIComponent(escape(window.atob(response.body.content)));
+          let md = decodeURIComponent(escape(window.atob(response.data.content)));
           // Parse markdown to HTML
           let html = marked(md);
           this.htmlStr = html.replace(regs[idx], apis[idx].img_prefix);
@@ -176,10 +176,11 @@ export default {
         if (this.loadingCommitComplete) {
           this.loading = false;
         }
-      }, error => {
+
+      }).catch(error => {
         // HTTP failure
         this.fail = true;
-        this.failReason = "Status: " + error.status;
+        this.failReason = error;
       });
     },
 
@@ -193,7 +194,7 @@ export default {
       this.$http.get(commitUrl + encodeURIComponent(path)).then(response => {
         
         // Get the last commit
-        let { sha, commit, committer } = response.body[0];
+        let { sha, commit, committer } = response.data[0];
         this.commitSha = sha;
         this.commitLastModification = commit.committer.date;
         this.committer = committer.login;
@@ -204,10 +205,10 @@ export default {
           this.loading = false;
         }
 
-      }, error => {
+      }).catch(error => {
         // HTTP failure
         this.fail = true;
-        this.failReason = "Status: " + error.status;
+        this.failReason = error;
       });
     },
 

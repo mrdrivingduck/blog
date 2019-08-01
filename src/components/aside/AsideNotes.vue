@@ -61,10 +61,6 @@
   </div>
 </template>
 
-<style>
-
-</style>
-
 <script>
 export default {
   props: ["index"],
@@ -90,9 +86,9 @@ export default {
       this.$http.get(url).then(response => {
 
         this.noteDir = [];
-        for (let i = 0; i < response.body.length; i++) {
-          if (dirNameReg.test(response.body[i].name) && response.body[i].type === "dir") {
-            let { name, sha, type, url, html_url } = response.body[i];
+        for (let i = 0; i < response.data.length; i++) {
+          if (dirNameReg.test(response.data[i].name) && response.data[i].type === "dir") {
+            let { name, sha, type, url, html_url } = response.data[i];
             this.noteDir.push({
               name, sha, type, url, html_url
             });
@@ -107,10 +103,10 @@ export default {
         // Directories loading complete
         this.loading = false;
 
-      }, error => {
+      }).catch(error => {
         // HTTP failed
         this.fail = true;
-        this.failReason = "Status: " + error.status;
+        this.failReason = error;
       });
     },
 
@@ -122,8 +118,8 @@ export default {
       this.$http.get(url).then(response => {
         // Inject the content into directory
         let dirNotes = [];
-        for (let i = 0; i < response.body.length; i++) {
-          let { name, sha, type, size, url, html_url, path } = response.body[i];
+        for (let i = 0; i < response.data.length; i++) {
+          let { name, sha, type, size, url, html_url, path } = response.data[i];
           dirNotes.push({
             name: name.replace(".md", ""), sha, type, size, url, html_url, path
           });
@@ -132,10 +128,10 @@ export default {
         // Notes loading complete
         this.$set(dirObj, "loading", false);
 
-      }, error => {
+      }).catch(error => {
         // HTTP failed
         this.fail = true;
-        this.failReason = "Status: " + error.status;
+        this.failReason = error;
       });
     },
 

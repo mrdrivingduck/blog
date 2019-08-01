@@ -47,15 +47,6 @@
   </div>
 </template>
 
-<style>
-  .dark p, .dark li {
-    color: #ffffff;
-  }
-  .light p, .light li {
-    color: #000000;
-  }
-</style>
-
 <script>
 export default {
   props: [ "theme" ],

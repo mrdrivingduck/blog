@@ -9,7 +9,7 @@
 -->
 
 <template>
-  <div>
+  <div :theme="theme">
 
     <el-row :gutter="20">
 
@@ -88,7 +88,18 @@
 </template>
 
 <style>
-
+  .dark h1, .dark h2, .dark p, .dark li {
+    color: #ffffff;
+  }
+  .dark h1 {
+    margin-top: 50px;
+  }
+  .light h1, .light h2, .light p, .light li {
+    color: #000000;
+  }
+  .light h1 {
+    margin-top: 50px;
+  }
 </style>
 
 <script>
@@ -142,7 +153,7 @@ export default {
 
       let url = this.$store.state.githubapi.api[0].content;
       this.$http.get(url).then(response => {
-        let { name, bio, location, company, login } = response.body;
+        let { name, bio, location, company, login } = response.data;
         this.name = name;
         this.aliase = login;
         this.bio = bio;
@@ -150,10 +161,11 @@ export default {
         this.company = company;
         // Loading complete
         this.loading = false;
-      }, err => {
+
+      }).catch(error => {
         // HTTP failed
         this.fail = true;
-        this.failReason = "Status: " + err.status;
+        this.failReason = error;
       });
     },
 

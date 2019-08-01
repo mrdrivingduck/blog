@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/21
+  @version - 2019/08/01
 
   @description - 
     The entry component.
@@ -46,21 +46,13 @@
 </style>
 
 <script>
-/**
- * The basic component of blog over here
- */
-import DucklingHeader from "./components/DucklingHeader.vue";
-import DucklingAside from "./components/DucklingAside.vue";
-import DucklingContent from "./components/DucklingContent.vue";
-import DucklingFooter from "./components/DucklingFooter.vue";
-
 export default {
   name: 'app',
   components: {
-    DucklingHeader,
-    DucklingAside,
-    DucklingContent,
-    DucklingFooter
+    DucklingHeader: () => import("./components/DucklingHeader"),
+    DucklingAside: () => import("./components/DucklingAside"),
+    DucklingContent: () => import("./components/DucklingContent"),
+    DucklingFooter: () => import("./components/DucklingFooter")
   },
   data: function() {
     return {
@@ -69,12 +61,14 @@ export default {
   },
   methods: {
 
+    // Set the theme in props
     setTheme: function() {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       this.theme = allThemes[themeIndex].name.toLowerCase();
     },
 
+    // Set the background color of HTML page
     setBackgroundStyle: function () {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
@@ -92,14 +86,15 @@ export default {
   },
   computed: {
 
+    // Listen for theme index changes
     themeChange: function () {
-      // Triggered when theme index changes
       return this.$store.state.theme.currentThemeIndex;
     }
 
   },
   watch: {
 
+    // Triggered when changing theme
     themeChange: function () {
       this.setTheme();
       this.setBackgroundStyle();

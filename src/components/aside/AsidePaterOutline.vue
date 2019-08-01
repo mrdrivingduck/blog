@@ -50,10 +50,6 @@
   </div>
 </template>
 
-<style>
-
-</style>
-
 <script>
 export default {
   props: ["index"],
@@ -75,9 +71,9 @@ export default {
         
         const dirNameReg = this.$store.state.regexpre.dirNameReg;
         this.outlineDir = [];
-        for (let i = 0; i < response.body.length; i++) {
-          if (dirNameReg.test(response.body[i].name) && response.body[i].type === "dir") {
-            let { name, url, sha, html_url } = response.body[i];
+        for (let i = 0; i < response.data.length; i++) {
+          if (dirNameReg.test(response.data[i].name) && response.data[i].type === "dir") {
+            let { name, url, sha, html_url } = response.data[i];
             this.outlineDir.push({ name, url, sha, html_url });
           }
         }
@@ -85,10 +81,10 @@ export default {
         // Directories loading complete
         this.loading = false;
 
-      }, error => {
+      }).catch(error => {
         // HTTP failed
         this.fail = true;
-        this.failReason = "Status: " + error.status;
+        this.failReason = error;
       });
     },
 
