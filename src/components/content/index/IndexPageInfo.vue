@@ -125,7 +125,7 @@ export default {
         },
         {
           name: "highlight.js",
-          description: "Javascript syntax highlighter.",
+          description: "JavaScript syntax highlighter.",
           link: "https://github.com/mrdrivingduck/highlight.js"
         },
         {
