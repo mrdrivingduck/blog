@@ -13,7 +13,7 @@
 
     <p style="font-size: 30px;"> Author </p>
     <p> 🦆 Mr Dk. </p>
-    <p> Page build by <i>duckling</i> version 0.1.6 </p>
+    <p> Page build by <i>duckling</i> version 0.1.8 </p>
 
     <el-divider></el-divider>
 
