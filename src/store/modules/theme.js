@@ -42,7 +42,7 @@ const state = {
       }
     }
   ],
-  currentThemeIndex: 0
+  currentThemeIndex: 1
 };
 
 const mutations = {

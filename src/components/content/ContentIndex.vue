@@ -103,16 +103,14 @@
 </style>
 
 <script>
-import IndexAbout from "./index/IndexAbout.vue";
-import IndexTechStack from "./index/IndexTechStack.vue";
-import IndexSocial from "./index/IndexSocial.vue";
-import IndexPageInfo from "./index/IndexPageInfo.vue";
-
 export default {
   name: "ContentIndex",
   props: [ "theme" ],
   components: {
-    IndexAbout, IndexTechStack, IndexSocial, IndexPageInfo
+    IndexAbout: () => import("./index/IndexAbout"),
+    IndexTechStack: () => import("./index/IndexTechStack"),
+    IndexSocial: () => import("./index/IndexSocial"),
+    IndexPageInfo: () => import("./index/IndexPageInfo")
   },
   data: function () {
     return {
