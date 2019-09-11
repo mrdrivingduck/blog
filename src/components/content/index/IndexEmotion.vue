@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/09/10
+  @version - 2019/09/11
 
   @description - 
     The index component for displaying emotions
@@ -31,8 +31,10 @@
         placement="top"
         type="primary">
 
-        <h1> {{ this.date }} </h1>
-        <p> {{ this.emotionText }} </p>
+        <h1 style="font-size: 25px;"> {{ this.date }} </h1>
+        <p style="font-size: 18px;" v-for="(line, index) in emotionText" :key="index">
+          {{ line }}
+        </p>
 
       </el-timeline-item>
 
@@ -75,7 +77,7 @@ export default {
       emotions: [],
       current: 0,
       date: "",
-      emotionText: ""
+      emotionText: []
 
     };
   },
@@ -116,6 +118,7 @@ export default {
     getEmotionContent: function (index) {
       const auth = this.$store.state.githubapi.authorization;
       this.loading = true;
+      this.emotionText = [];
       this.$http.get(this.emotions[index].url, {
         headers: {
           "Authorization": auth
@@ -126,11 +129,11 @@ export default {
           // Parse encoded Base64 to markdown
           let text = decodeURIComponent(escape(window.atob(response.data.content)));
           this.date = this.emotions[index].date;
-          this.emotionText = text;
+          this.emotionText = text.split("\n");
 
         } else {
           // Encoding not support
-          this.emotionText = "Encoding not support.";
+          this.emotionText.push("Encoding not support.");
         }
 
         this.fail = false;
