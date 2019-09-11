@@ -51,18 +51,10 @@ const state = {
   emotion: {
     url: "https://api.github.com/repos/mrdrivingduck/emotions/contents/"
   },
-  duckling: {
-    url: "https://api.github.com/repos/mrdrivingduck/duckling/contents/package.json"
-  },
-  authorization: "",
   url_index: 0
 };
 
 const mutations = {
-
-  setToken: function (state, { token }) {
-    state.authorization = token;
-  },
 
   // Set the index on the navigate into global
   setCommitUrlIndex: function (state, { index }) {

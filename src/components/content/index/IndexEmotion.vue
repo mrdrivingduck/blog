@@ -86,14 +86,9 @@ export default {
 
     getEmotions: function () {
       const repoUrl = this.$store.state.githubapi.emotion.url;
-      const auth = this.$store.state.githubapi.authorization;
       this.loading = true;
       this.emotions = [];
-      this.$http.get(repoUrl, {
-        headers: {
-          "Authorization": auth
-        }
-      }).then(response => {
+      this.$http.get(repoUrl).then(response => {
 
         for (let i = 0; i < response.data.length; i++) {
           let { name, url } = response.data[i];

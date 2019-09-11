@@ -76,22 +76,10 @@ export default {
       let rootDivDom = this.$refs.rootDiv;
       let bodyDiv = rootDivDom.parentNode;
       bodyDiv.style.background = allThemes[themeIndex].background;
-    },
-
-    initToken: function () {
-      let token = "token b00372";
-      let part1 = "cd680e4b952";
-      let part2 = "18cd2ee1beb";
-      let part3 = "5d470a84673d";
-      this.$store.commit("setToken", { token: token + part1 + part2 + part3 });
     }
 
   },
-
-  created: function () {
-    this.initToken();
-  },
-
+  
   mounted: function () {
     // Called after DOM is mounted
     this.setTheme();
