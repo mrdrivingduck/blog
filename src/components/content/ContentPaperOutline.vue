@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/25
+  @version - 2019/09/11
 
   @description - 
     The content component for displaying paper outlines
@@ -41,6 +41,9 @@
             </p>
             <p>
               ✒️ Size: <b> {{ outline.resource.size }} </b> Bytes
+            </p>
+            <p>
+              🔗 <el-link :href="outline.pdf.download_url" type="primary"> PDF </el-link>
             </p>
           </div>
         </div>
@@ -114,6 +117,8 @@ export default {
       // Issue HTTP request
       this.$http.get(url).then(response => {
         const outlineNameReg = this.$store.state.regexpre.outlineNameReg;
+        const pdfFormatReg = this.$store.state.regexpre.pdfFormatReg;
+
         for (let i = 0; i < response.data.length; i++) {
           if (outlineNameReg.test(response.data[i].name)) {
             // Filter only outline files in markdown format
@@ -121,6 +126,10 @@ export default {
             // Set the metadata, change loading status
             this.$set(dirObj, "resource", { url, sha, size, html_url, path });
             this.$set(dirObj, "loading", false);
+
+          } else if (pdfFormatReg.test(response.data[i].name)) {
+            let { download_url } = response.data[i];
+            this.$set(dirObj, "pdf", { download_url });
           }
         }
 

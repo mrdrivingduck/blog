@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/09/10
+ * @version 2019/09/11
  * @description
  *    Vuex store for saving regular expressions.
  */
@@ -15,6 +15,9 @@ const state = {
 
   // Filter only markdown of different chapters
   chapterNameReg: /^Chapter.*$/,
+
+  // Filter PDF file
+  pdfFormatReg: /^.*\.pdf$/,
 
   // Image urls in markdown component
   imageUrlMatcher: [
