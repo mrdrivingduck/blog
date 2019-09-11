@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/08/01
+ * @version 2019/09/11
  * @description
  *    Vuex store for saving current content component
  */
@@ -54,11 +54,15 @@ const state = {
   duckling: {
     url: "https://api.github.com/repos/mrdrivingduck/duckling/contents/package.json"
   },
-  authorization: "token 9fb587231e57a3315d202a513983e6dad5923480",
+  authorization: "",
   url_index: 0
 };
 
 const mutations = {
+
+  setToken: function (state, { token }) {
+    state.authorization = token;
+  },
 
   // Set the index on the navigate into global
   setCommitUrlIndex: function (state, { index }) {

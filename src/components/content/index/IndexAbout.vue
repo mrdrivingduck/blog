@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/27
+  @version - 2019/09/11
 
   @description - 
     The index component for displaying pernal information
