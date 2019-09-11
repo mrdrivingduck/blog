@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/08/01
+  @version - 2019/09/10
 
   @description - 
     The aside component for displaying Linux-Kernel-Comments
@@ -24,14 +24,14 @@
 
       <!-- Every notes -->
       <el-menu-item
-        v-for="(note, idx) in notes"
+        v-for="(folder, idx) in notes"
         v-loading="loading"
-        @click="clickNote(note)"
-        :key="note.name"
+        @click="clickFolder(folder)"
+        :key="folder.name"
         :index="index + '-' + (idx + 1)">
 
         <template slot="title">
-          <span> 📃 {{ note.name }} </span>
+          <span> 📂 {{ folder.name }} </span>
         </template>
 
       </el-menu-item>
@@ -79,7 +79,7 @@ export default {
           if (chapterReg.test(response.data[i].name)) {
             let { name, sha, size, url, html_url, path } = response.data[i];
             this.notes.push({
-              name: name.replace(".md", ""), sha, url, html_url, path, size
+              name, sha, url, html_url, path, size
             });
           }
         }
@@ -101,20 +101,13 @@ export default {
       });
     },
 
-    // Jump to the note detail
-    clickNote: function (noteObj) {
-      this.$store.commit("setMarkdownUrl", {
-        url: noteObj.url,
-        metadata: {
-          link: noteObj.html_url,
-          sha: noteObj.sha,
-          size: noteObj.size,
-          path: noteObj.path
-        }
-      });
+    clickFolder: function (folder) {
+      let url = folder.url;
+      this.$store.commit("setNotesUrl", { url });
+      this.$store.commit("setCurrentContent", { currentComponent: "ContentNoteList" });
       this.$store.commit("setCommitUrlIndex", { index: this.index });
-      this.$store.commit("setCurrentContent", { currentComponent: "ContentMarkdown" });
     }
+
   },
   
   created: function () {

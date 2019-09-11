@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/08/01
+ * @version 2019/09/10
  * @description
  *    Vuex store for saving regular expressions.
  */
@@ -22,7 +22,7 @@ const state = {
     /<img\ssrc="\.\.\/img\//g, // image url in notes -  <img src="../img/
     /<img\ssrc="\.\.\/\.\.\/img\//g, // image url in paper outlines - <img src="../../img/
     /<img\ssrc="\.\/img\//g, // image url in how-linux-works - <img src="./img/
-    /<img\ssrc="\.\/img\//g, // image url in linux-kernel-comments - <img src="./img/
+    /<img\ssrc="\.\.\/img\//g, // image url in linux-kernel-comments - <img src="../img/
   ]
 };
 

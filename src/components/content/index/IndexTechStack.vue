@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/27
+  @version - 2019/09/11
 
   @description - 
     The index component for displaying technology stack
@@ -20,9 +20,14 @@
         <p style="font-size: 20px;">{{ item.language }}</p>
         <ul>
           <li 
-            v-for="project in item.projects"
-            :key="project">
-            {{ project }}
+            v-for="(project, idx) in item.projects"
+            :key="idx">
+            {{ project.description }}
+            <el-link
+              type="primary"
+              :href="project.link">
+              - {{ project.name }}
+            </el-link>
           </li>
         </ul>
 
@@ -47,30 +52,94 @@ export default {
         {
           language: "C/C++",
           percentage: 32,
+          projects: [
+            {
+              description: "Learning kernel code of Linux 0.12",
+              name: "Linux kernel comments notes",
+              link: "https://github.com/mrdrivingduck/linux-kernel-comments-notes"
+            },
+            {
+              description: "R(C++) API of DolphinDB©",
+              name: "DolphinDB R-API",
+              link: "https://github.com/mrdrivingduck/api-r"
+            },
+            {
+              description: "Programming Ability Test (PAT) of Zhejiang University, 2018.03",
+              name: "Score 100"
+            }
+          ]
         },
         {
           language: "Java",
-          percentage: 40
+          percentage: 40,
+          projects: [
+            {
+              description: "Some network program",
+              name: "kismet Java client",
+              link: "https://github.com/mrdrivingduck/kismet-Jclient"
+            },
+            {
+              description: "Small tools for file encryption/decryption",
+              name: "File privacy protector",
+              link: "https://github.com/mrdrivingduck/file-privacy-protector"
+            },
+            {
+              description: "Utility for quick encryption",
+              name: "Encryption machine",
+              link: "https://github.com/mrdrivingduck/encryption-machine"
+            }
+          ]
         },
         {
           language: "Javascript",
-          percentage: 28
+          percentage: 24,
+          projects: [
+            {
+              description: "Node.js / Vue.js"
+            }
+          ]
         },
         {
           language: "Python",
-          percentage: 13
+          percentage: 8,
+          projects: [
+            {
+              description: "Some experiment programs of machine learning",
+              name: "IEEE 802.11 beacon frame analysis",
+              link: "https://github.com/mrdrivingduck/beacon-frame-analysis"
+            }
+          ]
         },
         {
           language: "SQL",
-          percentage: 25
+          percentage: 20,
+          projects: [
+            {
+              description: "Basic CRUD of several back-end programs"
+            }
+          ]
         },
         {
           language: "Verilog HDL",
-          percentage: 16
+          percentage: 14,
+          projects: [
+            {
+              description: "NSCSCC (Loongson Cup), Summer of 2017",
+              name: "MIPS 32-bit 5-stage pipeline CPU",
+              link: "https://github.com/mrdrivingduck/mips32-CPU"
+            }
+          ]
         },
         {
-          language: "R",
-          percentage: 10
+          language: "C#",
+          percentage: 10,
+          projects: [
+            {
+              description: "Some VSTO tools for Microsoft Office©",
+              name: "Office utilities",
+              link: "https://github.com/mrdrivingduck/office-utilities"
+            }
+          ]
         }
       ]
     };

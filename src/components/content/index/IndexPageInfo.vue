@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/27
+  @version - 2019/09/10
 
   @description - 
     The index component for displaying page information
@@ -10,10 +10,15 @@
 
 <template>
   <div :class="theme">
+    
+    <div
+      v-if="!fail"
+      v-loading="sourceLoading">
 
-    <p style="font-size: 30px;"> Author </p>
-    <p> 🦆 Mr Dk. </p>
-    <p> Page build by <i>duckling</i> version 0.1.8 </p>
+      <p style="font-size: 30px;"> Author </p>
+      <p><b> 🦆 {{ this.ducklingAuthor }} </b></p>
+      <p> Page build by <i> {{ this.ducklingName }} </i> version <b> {{ this.ducklingVersion }} </b> </p>
+    </div>
 
     <el-divider></el-divider>
 
@@ -68,6 +73,11 @@ export default {
   props: [ "theme" ],
   data: function() {
     return {
+
+      sourceLoading: false,
+      ducklingName: "",
+      ducklingAuthor: "",
+      ducklingVersion: "",
 
       // Last commit info
       lastCommitTime: null,
@@ -147,6 +157,7 @@ export default {
     };
   },
   created: function() {
+    this.getSource();
     this.getCommits();
     this.getDeploys();
   },
@@ -194,6 +205,41 @@ export default {
         this.lastDeployer = login;
         // Set deploy loading status
         this.deployLoading = false;
+
+      }).catch(error => {
+        // HTTP failed
+        this.fail = true;
+        this.failReason = error;
+      });
+    },
+
+    getSource: function () {
+      const url = this.$store.state.githubapi.duckling.url;
+      const auth = this.$store.state.githubapi.authorization;
+      this.sourceLoading = true;
+      this.fail = false;
+      this.failReason = "";
+
+      this.$http.get(url, {
+        headers: {
+          "Authorization": auth
+        }
+      }).then(response => {
+        
+        if (response.data.encoding === "base64") {
+          // Parse encoded Base64 to markdown
+          let version = decodeURIComponent(escape(window.atob(response.data.content)));
+          let obj = JSON.parse(version);
+          this.ducklingName = obj["name"];
+          this.ducklingAuthor = obj["author"]["name"];
+          this.ducklingVersion = obj["version"];
+
+        } else {
+          // Encoding not support
+          this.ducklingVersion = "";
+        }
+
+        this.sourceLoading = false;
 
       }).catch(error => {
         // HTTP failed

@@ -48,6 +48,13 @@ const state = {
       img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-comments-notes/master/img/'
     }
   ],
+  emotion: {
+    url: "https://api.github.com/repos/mrdrivingduck/emotions/contents/"
+  },
+  duckling: {
+    url: "https://api.github.com/repos/mrdrivingduck/duckling/contents/package.json"
+  },
+  authorization: "token 9fb587231e57a3315d202a513983e6dad5923480",
   url_index: 0
 };
 

@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/07/30
+ * @version 2019/09/10
  * @description
  *    Entry of different modules of Vuex store.
  */
@@ -16,6 +16,7 @@ import content from "./modules/content.js";
 import theme from "./modules/theme.js";
 import githubapi from "./modules/githubapi.js";
 import regexpre from "./modules/regexpre.js";
+import notelist from "./modules/notelist.js";
 
 export default new Vuex.Store({
   modules: {
@@ -24,6 +25,7 @@ export default new Vuex.Store({
     content,
     theme,
     githubapi,
-    regexpre
+    regexpre,
+    notelist
   }
 });

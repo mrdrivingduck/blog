@@ -169,7 +169,7 @@ export default {
 
         } else {
           // Encoding not support
-          this.htmlStr = "<p> Encoding not support </p>"
+          this.htmlStr = "<p> Encoding not support </p>";
         }
         // Set loading status
         this.loadingMarkdownComplete = true;

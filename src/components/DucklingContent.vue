@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/05
+  @version - 2019/09/10
 
   @description - 
     The main component for displaying contents
@@ -21,7 +21,8 @@ export default {
   components: {
     ContentIndex: () => import("./content/ContentIndex"),
     ContentMarkdown: () => import("./content/ContentMarkdown"),
-    ContentPaperOutline: () => import("./content/ContentPaperOutline")
+    ContentPaperOutline: () => import("./content/ContentPaperOutline"),
+    ContentNoteList: () => import("./content/ContentNoteList")
   },
   props: [ "theme" ],
   data: function () {

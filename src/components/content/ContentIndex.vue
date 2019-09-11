@@ -72,10 +72,11 @@
       :active-text-color="this.activeTextColor"
       @select="selectIndex"
       style="margin-top: 30px;">
-      <el-menu-item index="0"> About Me </el-menu-item>
-      <el-menu-item index="1"> Tech. Stack </el-menu-item>
-      <el-menu-item index="2"> Social Network </el-menu-item>
-      <el-menu-item index="3"> About this Page </el-menu-item>
+      <el-menu-item index="0"> Emotions </el-menu-item>
+      <el-menu-item index="1"> About Me </el-menu-item>
+      <el-menu-item index="2"> Tech. Stack </el-menu-item>
+      <el-menu-item index="3"> Social Network </el-menu-item>
+      <el-menu-item index="4"> About this Page </el-menu-item>
     </el-menu>
 
     <component
@@ -107,6 +108,7 @@ export default {
   name: "ContentIndex",
   props: [ "theme" ],
   components: {
+    IndexEmotion: () => import("./index/IndexEmotion"),
     IndexAbout: () => import("./index/IndexAbout"),
     IndexTechStack: () => import("./index/IndexTechStack"),
     IndexSocial: () => import("./index/IndexSocial"),
@@ -130,7 +132,7 @@ export default {
       // Bottom components selector
       defaultTab: "0",
       selectedTab: 0,
-      tabs: [ "IndexAbout", "IndexTechStack", "IndexSocial", "IndexPageInfo" ],
+      tabs: [ "IndexEmotion", "IndexAbout", "IndexTechStack", "IndexSocial", "IndexPageInfo" ],
 
       // For changing themes
       cardBackgroundColor: null,
