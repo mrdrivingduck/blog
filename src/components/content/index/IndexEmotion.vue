@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/09/11
+  @version - 2019/09/15
 
   @description - 
     The index component for displaying emotions
@@ -17,8 +17,8 @@
       <el-timeline-item
         :key="0"
         placement="top"
-        type="info"
-        v-if="this.current === 0 ? false : true">
+        type="info">
+
         <el-link
           :type="(this.current === 0) ? 'info' : 'primary'"
           @click="nextEmotion">
@@ -29,11 +29,12 @@
       <el-timeline-item
         :key="1"
         placement="top"
+        size="large"
         type="primary">
 
-        <h1 style="font-size: 25px;"> {{ this.date }} </h1>
+        <h1 style="font-size: 28px;"> {{ this.date }} </h1>
         <p style="font-size: 18px;" v-for="(line, index) in emotionText" :key="index">
-          {{ line }}
+          {{ line }} <br/>
         </p>
 
       </el-timeline-item>
@@ -41,8 +42,7 @@
       <el-timeline-item
         :key="2"
         placement="top"
-        type="info"
-        v-if="(this.current === this.emotions.length - 1) ? false : true">
+        type="info">
 
         <el-link
           :type="(this.current === this.emotions.length - 1) ? 'info' : 'primary'"

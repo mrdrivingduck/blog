@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/09/10
+  @version - 2019/09/15
 
   @description - 
     The content component for displaying note list
@@ -96,9 +96,16 @@ export default {
         }
 
         this.notes.sort(function (a, b) {
-          let idxFront = a.name.split("-")[0].split(" ")[1];
-          let idxBack = b.name.split("-")[0].split(" ")[1];
-          return parseFloat(idxFront) - parseFloat(idxBack);
+          let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
+          let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
+
+          // Chapter 12.10 - xxxxxx
+          // Chapter 12 - xxxxxx
+          if (idxFrontArr[0] === idxBackArr[0]) {
+            return parseInt(idxFrontArr[1]) - parseInt(idxBackArr[1]);
+          } else {
+            return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
+          }
         });
 
         // All directories in a topic load complete
