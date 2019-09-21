@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/09/11
+  @version - 2019/09/21
 
   @description - 
     The index component for displaying technology stack
@@ -26,7 +26,7 @@
             <el-link
               type="primary"
               :href="project.link">
-              - {{ project.name }}
+              {{ project.name ? " - " + project.name : "" }}
             </el-link>
           </li>
         </ul>
@@ -91,31 +91,11 @@ export default {
           ]
         },
         {
-          language: "Javascript",
+          language: "JavaScript",
           percentage: 24,
           projects: [
             {
               description: "Node.js / Vue.js"
-            }
-          ]
-        },
-        {
-          language: "Python",
-          percentage: 8,
-          projects: [
-            {
-              description: "Some experiment programs of machine learning",
-              name: "IEEE 802.11 beacon frame analysis",
-              link: "https://github.com/mrdrivingduck/beacon-frame-analysis"
-            }
-          ]
-        },
-        {
-          language: "SQL",
-          percentage: 20,
-          projects: [
-            {
-              description: "Basic CRUD of several back-end programs"
             }
           ]
         },
@@ -131,6 +111,17 @@ export default {
           ]
         },
         {
+          language: "Python",
+          percentage: 8,
+          projects: [
+            {
+              description: "Some experiment programs for data analysis",
+              name: "IEEE 802.11 beacon frame analysis",
+              link: "https://github.com/mrdrivingduck/beacon-frame-analysis"
+            }
+          ]
+        },
+        {
           language: "C#",
           percentage: 10,
           projects: [
@@ -138,6 +129,15 @@ export default {
               description: "Some VSTO tools for Microsoft Office©",
               name: "Office utilities",
               link: "https://github.com/mrdrivingduck/office-utilities"
+            }
+          ]
+        },
+        {
+          language: "SQL",
+          percentage: 20,
+          projects: [
+            {
+              description: "Basic CRUD of several back-end programs"
             }
           ]
         }

@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/09/11
+ * @version 2019/09/21
  * @description
  *    Vuex store for saving regular expressions.
  */
@@ -18,6 +18,9 @@ const state = {
 
   // Filter PDF file
   pdfFormatReg: /^.*\.pdf$/,
+
+  // Filter PPT file
+  pptFormatReg: /^.*\.ppt(x)?$/,
 
   // Image urls in markdown component
   imageUrlMatcher: [

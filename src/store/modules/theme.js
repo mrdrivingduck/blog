@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/07/21
+ * @version 2019/09/21
  * @description
  *    Vuex store for saving theme information
  */
@@ -42,7 +42,7 @@ const state = {
       }
     }
   ],
-  currentThemeIndex: 1
+  currentThemeIndex: 0
 };
 
 const mutations = {

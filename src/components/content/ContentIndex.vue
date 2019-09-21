@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/30
+  @version - 2019/09/21
 
   @description - 
     The content component for displaying pernal information
@@ -40,7 +40,7 @@
 
             <p>{{ bio }}</p>
 
-            <p>🧭 {{ location }}</p>
+            <p>📌 {{ location }}</p>
             <p>📧
               <el-link
                 type="primary"

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/09/11
+  @version - 2019/09/21
 
   @description - 
     The content component for displaying paper outlines
@@ -43,7 +43,10 @@
               ✒️ Size: <b> {{ outline.resource.size }} </b> Bytes
             </p>
             <p>
-              🔗 <el-link :href="outline.pdf.download_url" type="primary"> PDF </el-link>
+              📄 <el-link :href="outline.pdf.download_url" type="primary"> PDF Download </el-link>
+            </p>
+            <p v-if="outline.slide ? true : false">
+              📊 <el-link :href="outline.slide.download_url" type="primary"> Slide Download </el-link>
             </p>
           </div>
         </div>
@@ -118,6 +121,7 @@ export default {
       this.$http.get(url).then(response => {
         const outlineNameReg = this.$store.state.regexpre.outlineNameReg;
         const pdfFormatReg = this.$store.state.regexpre.pdfFormatReg;
+        const pptFormatReg = this.$store.state.regexpre.pptFormatReg;
 
         for (let i = 0; i < response.data.length; i++) {
           if (outlineNameReg.test(response.data[i].name)) {
@@ -130,6 +134,9 @@ export default {
           } else if (pdfFormatReg.test(response.data[i].name)) {
             let { download_url } = response.data[i];
             this.$set(dirObj, "pdf", { download_url });
+          } else if (pptFormatReg.test(response.data[i].name)) {
+            let { download_url } = response.data[i];
+            this.$set(dirObj, "slide", { download_url });
           }
         }
 

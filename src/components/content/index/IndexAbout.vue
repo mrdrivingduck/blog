@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/09/11
+  @version - 2019/09/21
 
   @description - 
     The index component for displaying pernal information
@@ -11,9 +11,12 @@
 <template>
   <div :class="theme">
 
-    <h1>☀️ Hobby</h1>
+    <h1>🍺 Hobby</h1>
     <ul>
-      <li><h3> 🏸 / 💪 / 🚘 / 💻 </h3></li>
+      <li><p> 🏸 Badminton </p></li>
+      <li><p> 💪 Bodybuilding </p></li>
+      <li><p> 🚘 Driving </p></li>
+      <li><p> 💻 Technology </p></li>
     </ul>
     
     <el-divider></el-divider>
@@ -98,10 +101,10 @@ export default {
           major_en: "🔑 Cyberspace Security",
           major_zh: "网络空间安全",
           major_icon: "el-icon-lock",
-          academic_en: "👨‍🎓 M.Eng",
+          academic_en: "👨‍🎓 M.Eng.",
           academic_zh: "工学硕士 在读",
           academic_status: "el-icon-loading",
-          location_en: "🚩 Nanjing, Jiangsu, China",
+          location_en: "🚩 Nanjing, Jiangsu, P.R.China",
           location_zh: "江苏省南京市"
         },
         {
@@ -113,10 +116,10 @@ export default {
           major_en: "🔌 IoT. Engineering",
           major_zh: "物联网工程",
           major_icon: "el-icon-cpu",
-          academic_en: "👨‍🎓 B.Eng",
+          academic_en: "👨‍🎓 B.Eng.",
           academic_zh: "工学学士学位",
           // academic_status: "el-icon-s-check",
-          location_en: "🚩 Nanjing, Jiangsu, China",
+          location_en: "🚩 Nanjing, Jiangsu, P.R.China",
           location_zh: "江苏省南京市"
         }
       ],
@@ -127,7 +130,7 @@ export default {
           company_zh: "智臾科技有限公司",
           job_en: "🖥️ Software Engineering",
           job_zh: "软件工程师 (实习)",
-          location_en: "🚩 Hangzhou, Zhejiang, China",
+          location_en: "🚩 Hangzhou, Zhejiang, P.R.China",
           location_zh: "浙江省杭州市"
         }
       ]
