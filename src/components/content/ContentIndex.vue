@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/09/21
+  @version - 2019/10/01
 
   @description - 
     The content component for displaying pernal information
@@ -41,7 +41,7 @@
             <p>{{ bio }}</p>
 
             <p>📌 {{ location }}</p>
-            <p>📧
+            <p>📭
               <el-link
                 type="primary"
                 href="mailto:mrdrivingduck@gmail.com">
@@ -75,7 +75,7 @@
       <el-menu-item index="0"> Emotions </el-menu-item>
       <el-menu-item index="1"> About Me </el-menu-item>
       <el-menu-item index="2"> Tech. Stack </el-menu-item>
-      <el-menu-item index="3"> Social Network </el-menu-item>
+      <el-menu-item index="3"> Social Links </el-menu-item>
       <el-menu-item index="4"> About this Page </el-menu-item>
     </el-menu>
 

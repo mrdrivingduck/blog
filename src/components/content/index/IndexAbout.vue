@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/09/21
+  @version - 2019/10/01
 
   @description - 
     The index component for displaying pernal information
@@ -128,7 +128,7 @@ export default {
           time: "2018.07 - 2018-08",
           company_en: "DolphinDB, Inc.",
           company_zh: "智臾科技有限公司",
-          job_en: "🖥️ Software Engineering",
+          job_en: "🖥️ Software Engineering (internship)",
           job_zh: "软件工程师 (实习)",
           location_en: "🚩 Hangzhou, Zhejiang, P.R.China",
           location_zh: "浙江省杭州市"

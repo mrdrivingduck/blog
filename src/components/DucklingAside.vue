@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/08/01
+  @version - 2019/10/01
 
   @description - 
     The aside component for guiding
@@ -13,7 +13,7 @@
     
     <!-- The menu on the left -->
     <el-menu
-      :default-openeds="['2']"
+      :default-openeds="['2','4']"
       :background-color="this.backgroundColor"
       :text-color="this.textColor"
       :active-text-color="this.activeTextColor">

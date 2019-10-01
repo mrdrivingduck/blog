@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/09/21
+  @version - 2019/10/01
 
   @description - 
     The index component for displaying page information
@@ -12,8 +12,13 @@
   <div :class="theme">
 
       <p style="font-size: 30px;"> Author </p>
-      <p><b> 🦆 Mr Dk. </b></p>
-      <p> Page build by <i> duckling </i> version <b> 0.2.4 </b> </p>
+      <p>
+        🦆 <b> Mr Dk. </b>
+        <el-link type="primary" href="https://github.com/mrdrivingduck">
+          @mrdrivingduck
+        </el-link>
+      </p>
+      <p> Page build by <i> duckling </i> version <b> 0.2.5 </b> </p>
 
     <el-divider></el-divider>
 

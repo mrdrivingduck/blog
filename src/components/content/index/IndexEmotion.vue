@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/09/15
+  @version - 2019/10/01
 
   @description - 
     The index component for displaying emotions
@@ -11,18 +11,18 @@
 <template>
   <div :class="theme" v-loading="this.loading">
 
-    <el-timeline 
-      v-if="!fail">
-
+    <el-timeline>
+      
       <el-timeline-item
         :key="0"
         placement="top"
         type="info">
 
         <el-link
-          :type="(this.current === 0) ? 'info' : 'primary'"
-          @click="nextEmotion">
-          Next Emotion
+          v-if="!fail"
+          :type="(this.current === this.emotions.length - 1) ? 'info' : 'primary'"
+          @click="preEmotion">
+          {{ this.emotionLinkText(true) }}
         </el-link>
       </el-timeline-item>
 
@@ -32,7 +32,7 @@
         size="large"
         type="primary">
 
-        <h1 style="font-size: 28px;"> {{ this.date }} </h1>
+        <h1 style="font-size: 28px;"> {{ "💭 " + this.date }} </h1>
         <p style="font-size: 18px;" v-for="(line, index) in emotionText" :key="index">
           {{ line }} <br/>
         </p>
@@ -45,11 +45,13 @@
         type="info">
 
         <el-link
-          :type="(this.current === this.emotions.length - 1) ? 'info' : 'primary'"
-          @click="preEmotion">
-          Previous Emotion
+          v-if="!fail"
+          :type="(this.current === 0) ? 'info' : 'primary'"
+          @click="nextEmotion">
+          {{ this.emotionLinkText(false) }}
         </el-link>
       </el-timeline-item>
+
     </el-timeline>
 
     <el-alert
@@ -70,7 +72,7 @@ export default {
   data: function () {
     return {
 
-      fail: false,
+      fail: true,
       failReason: "",
       loading: true,
 
@@ -111,15 +113,9 @@ export default {
     },
 
     getEmotionContent: function (index) {
-      const auth = this.$store.state.githubapi.authorization;
       this.loading = true;
       this.emotionText = [];
-      this.$http.get(this.emotions[index].url, {
-        headers: {
-          "Authorization": auth
-        }
-      }).then(response => {
-
+      this.$http.get(this.emotions[index].url).then(response => {
         if (response.data.encoding === "base64") {
           // Parse encoded Base64 to markdown
           let text = decodeURIComponent(escape(window.atob(response.data.content)));
@@ -152,8 +148,28 @@ export default {
         this.current--;
         this.getEmotionContent(this.current);
       }
-    }
+    },
 
+    emotionLinkText: function (previous) {
+      if (previous) {
+        let str = "Previous Emotion: ";
+        if (this.current != this.emotions.length - 1) {
+          return str + "📅 " + this.emotions[this.current + 1].date;
+        } else {
+          // No more previous emotion
+          return str + "😅 no more";
+        }
+      } else {
+        let str = "Next Emotion: ";
+        if (this.current != 0) {
+          return str + "📅 " + this.emotions[this.current - 1].date;
+        } else {
+          // No more next emotion
+          return str + "😅 no more";
+        }
+      }
+    }
+    
   },
 
   created: function () {
