@@ -18,7 +18,7 @@
           @mrdrivingduck
         </el-link>
       </p>
-      <p> Page build by <i> duckling </i> version <b> 0.2.5 </b> </p>
+      <p> Page build by <i> duckling </i> version <b> 0.2.6 </b> </p>
 
     <el-divider></el-divider>
 

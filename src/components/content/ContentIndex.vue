@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/10/01
+  @version - 2019/10/13
 
   @description - 
     The content component for displaying pernal information
@@ -72,8 +72,8 @@
       :active-text-color="this.activeTextColor"
       @select="selectIndex"
       style="margin-top: 30px;">
-      <el-menu-item index="0"> Emotions </el-menu-item>
-      <el-menu-item index="1"> About Me </el-menu-item>
+      <el-menu-item index="0"> About Me </el-menu-item>
+      <el-menu-item index="1"> Emotions </el-menu-item>
       <el-menu-item index="2"> Tech. Stack </el-menu-item>
       <el-menu-item index="3"> Social Links </el-menu-item>
       <el-menu-item index="4"> About this Page </el-menu-item>
@@ -132,7 +132,7 @@ export default {
       // Bottom components selector
       defaultTab: "0",
       selectedTab: 0,
-      tabs: [ "IndexEmotion", "IndexAbout", "IndexTechStack", "IndexSocial", "IndexPageInfo" ],
+      tabs: [ "IndexAbout", "IndexEmotion", "IndexTechStack", "IndexSocial", "IndexPageInfo" ],
 
       // For changing themes
       cardBackgroundColor: null,

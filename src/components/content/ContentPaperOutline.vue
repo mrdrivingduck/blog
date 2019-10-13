@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/09/21
+  @version - 2019/10/03
 
   @description - 
     The content component for displaying paper outlines
@@ -97,6 +97,7 @@ export default {
 
         for (let i = 0; i < response.data.length; i++) {
           let { url, name, sha, html_url } = response.data[i];
+          name = name.replace(" -", ":");
           this.outlines.push({ url, name, sha, html_url });
         }
         // All directories in a topic load complete
