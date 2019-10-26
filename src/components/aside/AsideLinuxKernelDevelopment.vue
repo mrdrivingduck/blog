@@ -4,7 +4,7 @@
   @version - 2019/10/26
 
   @description - 
-    The aside component for displaying How-Linux-Works
+    The aside component for displaying Linux Kernel Development notes
     Loading the resource from GitHub using GitHub API v3
 
 -->
@@ -20,7 +20,7 @@
       :index="this.index + ''">
       
       <template slot="title">
-        <span> 🐧 How Linux Works (notes) </span>
+        <span> 🐧 Linux Kernel Development (notes) </span>
       </template>
 
     </el-menu-item>

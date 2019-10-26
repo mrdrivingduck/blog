@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/09/11
+  @version - 2019/10/26
 
   @description - 
     The entry component.
@@ -10,6 +10,9 @@
 
 <template>
   <div id="app" ref="rootDiv">
+
+    <!-- Back to top -->
+    <el-backtop></el-backtop>
 
     <!-- Header -->
     <el-header>
@@ -35,7 +38,7 @@
     <el-footer>
       <duckling-footer :theme="theme"></duckling-footer>
     </el-footer>
-    
+
   </div>
 </template>
 

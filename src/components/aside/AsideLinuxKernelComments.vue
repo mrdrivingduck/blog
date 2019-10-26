@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/09/10
+  @version - 2019/10/26
 
   @description - 
     The aside component for displaying Linux-Kernel-Comments
@@ -19,7 +19,7 @@
       :index="this.index + ''">
       
       <template slot="title">
-        <span> 🐧 Linux Kernel Comments </span>
+        <span> 🐧 Linux Kernel Comments (notes) </span>
       </template>
 
       <!-- Every notes -->

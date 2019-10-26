@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/10/01
+  @version - 2019/10/26
 
   @description - 
     The aside component for guiding
@@ -13,22 +13,27 @@
     
     <!-- The menu on the left -->
     <el-menu
-      :default-openeds="['2','4']"
+      :default-openeds="[]"
       :background-color="this.backgroundColor"
       :text-color="this.textColor"
       :active-text-color="this.activeTextColor">
 
+      <aside-home :index="1"></aside-home>
+
       <!-- Sub-menu of notes -->
-      <aside-notes :index="1"></aside-notes>
+      <aside-notes :index="2"></aside-notes>
 
       <!-- Sub-menu of paper-outline -->
-      <aside-paper-outline :index="2"></aside-paper-outline>
+      <aside-paper-outline :index="3"></aside-paper-outline>
 
       <!-- Sub-menu of how-linux-works -->
-      <aside-how-linux-works :index="3"></aside-how-linux-works>
+      <aside-how-linux-works :index="4"></aside-how-linux-works>
 
       <!-- Sub-menu of linux-kernel-comments-notes -->
-      <aside-linux-kernel-comments :index="4"></aside-linux-kernel-comments>
+      <aside-linux-kernel-comments :index="5"></aside-linux-kernel-comments>
+
+      <!-- Sub-menu of linux-kernel-development-notes -->
+      <aside-linux-kernel-development :index="6"></aside-linux-kernel-development>
 
     </el-menu>
     
@@ -38,10 +43,12 @@
 <script>
 export default {
   components: {
+    AsideHome: () => import("./aside/AsideHome"),
     AsideNotes: () => import("./aside/AsideNotes"),
     AsidePaperOutline: () => import("./aside/AsidePaterOutline"),
     AsideHowLinuxWorks: () => import("./aside/AsideHowLinuxWorks"),
-    AsideLinuxKernelComments: () => import("./aside/AsideLinuxKernelComments")
+    AsideLinuxKernelComments: () => import("./aside/AsideLinuxKernelComments"),
+    AsideLinuxKernelDevelopment: () => import("./aside/AsideLinuxKernelDevelopment")
   },
   data: function() {
     return {
