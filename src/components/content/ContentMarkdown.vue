@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/31
+  @version - 2019/11/06
 
   @description - 
     The content component for displaying markdown files
@@ -156,7 +156,6 @@ export default {
       const mdUrl = this.$store.state.markdown.markdown_url;
       const idx = this.$store.state.githubapi.url_index;
       const apis = this.$store.state.githubapi.api;
-      const regs = this.$store.state.regexpre.imageUrlMatcher;
 
       this.$http.get(mdUrl).then(response => {
         if (response.data.encoding === "base64") {
@@ -164,7 +163,7 @@ export default {
           let md = decodeURIComponent(escape(window.atob(response.data.content)));
           // Parse markdown to HTML
           let html = marked(md);
-          this.htmlStr = html.replace(regs[idx], apis[idx].img_prefix);
+          this.htmlStr = html.replace(apis[idx].img_matcher, apis[idx].img_prefix);
           this.$nextTick(this.onChangeTheme);
 
         } else {
