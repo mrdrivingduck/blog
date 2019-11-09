@@ -106,7 +106,7 @@ export default {
       }).catch(error => {
         // HTTP failed
         this.fail = true;
-        this.failReason = error;
+        this.failReason = error.message;
       });
     },
 
@@ -131,7 +131,7 @@ export default {
       }).catch(error => {
         // HTTP failed
         this.fail = true;
-        this.failReason = error;
+        this.failReason = error.message;
       });
     },
 

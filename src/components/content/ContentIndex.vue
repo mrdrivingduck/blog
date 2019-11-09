@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/10/13
+  @version - 2019/11/09
 
   @description - 
     The content component for displaying pernal information
@@ -165,7 +165,7 @@ export default {
       }).catch(error => {
         // HTTP failed
         this.fail = true;
-        this.failReason = error;
+        this.failReason = error.message;
       });
     },
 

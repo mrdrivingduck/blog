@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/10/01
+  @version - 2019/11/09
 
   @description - 
     The index component for displaying emotions
@@ -11,7 +11,8 @@
 <template>
   <div :class="theme" v-loading="this.loading">
 
-    <el-timeline>
+    <el-timeline
+      v-if="!fail">
       
       <el-timeline-item
         :key="0"
@@ -108,7 +109,8 @@ export default {
 
       }).catch(error => {
         this.fail = true;
-        this.failReason = error;
+        this.failReason = error.message;
+        this.loading = false;
       })
     },
 
@@ -132,7 +134,8 @@ export default {
 
       }).catch(error => {
         this.fail = true;
-        this.failReason = error;
+        this.failReason = error.message;
+        this.loading = false;
       })
     },
 

@@ -80,6 +80,13 @@ export default {
           link: "https://twitter.com/mrdrivingduck",
           icon_light: "icon/twitter-light.svg",
           icon_dark: "icon/twitter-dark.svg"
+        },
+        {
+          name: "Weibo",
+          login: "肉喇叭叭叭叭",
+          link: "https://weibo.com/u/1638054144",
+          icon_light: "icon/weibo-light.svg",
+          icon_dark: "icon/weibo-dark.svg"
         }
       ]
     };

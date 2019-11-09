@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/10/01
+  @version - 2019/11/09
 
   @description - 
     The index component for displaying pernal information
@@ -117,7 +117,7 @@ export default {
           major_zh: "物联网工程",
           major_icon: "el-icon-cpu",
           academic_en: "👨‍🎓 B.Eng.",
-          academic_zh: "工学学士学位",
+          academic_zh: "工学学士",
           // academic_status: "el-icon-s-check",
           location_en: "🚩 Nanjing, Jiangsu, P.R.China",
           location_zh: "江苏省南京市"

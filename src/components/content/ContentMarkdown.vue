@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/06
+  @version - 2019/11/09
 
   @description - 
     The content component for displaying markdown files
@@ -179,7 +179,7 @@ export default {
       }).catch(error => {
         // HTTP failure
         this.fail = true;
-        this.failReason = error;
+        this.failReason = error.message;
       });
     },
 
@@ -207,7 +207,7 @@ export default {
       }).catch(error => {
         // HTTP failure
         this.fail = true;
-        this.failReason = error;
+        this.failReason = error.message;
       });
     },
 
