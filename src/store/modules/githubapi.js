@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/11/06
+ * @version 2019/11/28
  * @description
  *    Vuex store for saving current content component
  */
@@ -65,9 +65,29 @@ const state = {
       commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/commits?path=",
       // url replacement prefix of images in linux-kernel-development-notes
       img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-development-notes/master/img/',
-      // image url in inux-kernel-development-notes - <img src="./img/
+      // image url in linux-kernel-development-notes - <img src="./img/
       img_matcher: /<img\ssrc="\.\/img\//g
     },
+    {
+      // μC/OS-II notes content
+      content: "https://api.github.com/repos/mrdrivingduck/uc-os-ii-code-notes/contents/",
+      // μC/OS-II notes commit record
+      commit: "https://api.github.com/repos/mrdrivingduck/uc-os-ii-code-notes/commits?path=",
+      // url replacement prefix of images in μC/OS-II
+      img_prefix: '',
+      // image url in μC/OS-II
+      img_matcher: /<img\ssrc="\.\/img\//g
+    },
+    {
+      // JDK source code analysis notes content
+      content: "https://api.github.com/repos/mrdrivingduck/jdk-source-code-analysis/contents/",
+      // JDK source code analysis notes commit record
+      commit: "https://api.github.com/repos/mrdrivingduck/jdk-source-code-analysis/commits?path=",
+      // url replacement prefix of images in JDK source code analysis
+      img_prefix: '',
+      // image url in JDK source code analysis
+      img_matcher: /<img\ssrc="\.\/img\//g
+    }
   ],
   emotion: {
     url: "https://api.github.com/repos/mrdrivingduck/emotions/contents/"

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/10/26
+  @version - 2019/11/29
 
   @description - 
     The aside component for guiding
@@ -35,6 +35,12 @@
       <!-- Sub-menu of linux-kernel-development-notes -->
       <aside-linux-kernel-development :index="6"></aside-linux-kernel-development>
 
+      <!-- Sub-menu of μC/OS-II -->
+      <aside-miu-cos-two :index="7"></aside-miu-cos-two>
+
+      <!-- Sub-menu of JDK source code analysis -->
+      <aside-jdk-code-analysis :index="8"></aside-jdk-code-analysis>
+
     </el-menu>
     
   </div>
@@ -48,7 +54,9 @@ export default {
     AsidePaperOutline: () => import("./aside/AsidePaterOutline"),
     AsideHowLinuxWorks: () => import("./aside/AsideHowLinuxWorks"),
     AsideLinuxKernelComments: () => import("./aside/AsideLinuxKernelComments"),
-    AsideLinuxKernelDevelopment: () => import("./aside/AsideLinuxKernelDevelopment")
+    AsideLinuxKernelDevelopment: () => import("./aside/AsideLinuxKernelDevelopment"),
+    AsideMiuCosTwo: () => import("./aside/AsideMiuCosTwo"),
+    AsideJdkCodeAnalysis: () => import("./aside/AsideJdkCodeAnalysis")
   },
   data: function() {
     return {

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/09
+  @version - 2019/11/28
 
   @description - 
     The content component for displaying pernal information
@@ -79,11 +79,13 @@
       <el-menu-item index="4"> About this Page </el-menu-item>
     </el-menu>
 
-    <component
-      style="margin-top: 50px;"
-      :theme="theme"
-      v-bind:is="tabs[selectedTab]">
-    </component>
+    <keep-alive>
+      <component
+        style="margin-top: 50px;"
+        :theme="theme"
+        v-bind:is="tabs[selectedTab]">
+      </component>
+    </keep-alive>
 
   </div>
 </template>
