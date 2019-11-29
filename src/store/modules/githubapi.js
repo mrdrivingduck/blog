@@ -8,48 +8,59 @@
 const state = {
   api: [
     {
-      // user info
+      /**
+       * user info
+       *    commit - GitHub page repo commit
+       *    deploy - GitHub page repo deploy
+       */
       content: "https://api.github.com/users/mrdrivingduck",
-      // GitHub page repo commit
       commit: "https://api.github.com/repos/mrdrivingduck/mrdrivingduck.github.io/commits?path=",
-      // GitHub page repo deploy
       deploy: "https://api.github.com/repos/mrdrivingduck/mrdrivingduck.github.io/deployments"
     },
     {
-      // home
+      /**
+       * home
+       *    slot only
+       */
     },
     {
-      // notes content
+      /**
+       * notes content
+       *    commit: notes commit record
+       *    img_prefix: url replacement prefix of images in the notes
+       *    img_matcher: image url in notes -  <img src="../img/
+       */
       content: "https://api.github.com/repos/mrdrivingduck/notes/contents/",
-      // notes commit record
       commit: "https://api.github.com/repos/mrdrivingduck/notes/commits?path=",
-      // url replacement prefix of images in the notes
       img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/notes/master/img/',
-      // image url in notes -  <img src="../img/
       img_matcher: /<img\ssrc="\.\.\/img\//g,
       file_filter: /^Chapter.*$/,
       dir_filter: /^[A-Z].*$/
     },
     {
-      // paper outline content
+      /**
+       * paper outline content
+       *    commit: notes commit record
+       *    img_prefix: url replacement prefix of images in the notes
+       *    img_matcher: image url in notes -  <img src="../img/
+       */
       content: "https://api.github.com/repos/mrdrivingduck/paper-outline/contents/",
-      // paper outline commit record
       commit: "https://api.github.com/repos/mrdrivingduck/paper-outline/commits?path=",
-      // url replacement prefix of images in the paper outlines
       img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/paper-outline/master/img/',
-      // image url in paper outlines - <img src="../../img/
       img_matcher: /<img\ssrc="\.\.\/\.\.\/img\//g,
       file_filter: /^Outline.*$/,
       dir_filter: /^[A-Z].*$/
     },
     {
-      // how-linux-works notes content
+      /**
+       * how linux works notes content
+       *    commit: notes commit record
+       *    img_prefix: url replacement prefix of images in the notes
+       *    img_matcher: image url in notes -  <img src="../img/
+       */
       content: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/contents/",
-      // how-linux-works notes commit record
       commit: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/commits?path=",
-      // url replacement prefix of images in how-linux-works
       img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/how-linux-works-notes/master/img/',
-      // image url in how-linux-works - <img src="./img/
       img_matcher: /<img\ssrc="\.\/img\//g,
       file_filter: /^Chapter.*$/,
       // dir_filter: /^Chapter.*$/
@@ -67,13 +78,15 @@ const state = {
       }
     },
     {
-      // linux-kernel-comments notes content
+      /**
+       * linux kernel comments notes content
+       *    commit: notes commit record
+       *    img_prefix: url replacement prefix of images in the notes
+       *    img_matcher: image url in notes -  <img src="../img/
+       */
       content: "https://api.github.com/repos/mrdrivingduck/linux-kernel-comments-notes/contents/",
-      // linux-kernel-comments notes commit record
       commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-comments-notes/commits?path=",
-      // url replacement prefix of images in linux-kernel-comments-notes
       img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-comments-notes/master/img/',
-      // image url in linux-kernel-comments - <img src="../img/
       img_matcher: /<img\ssrc="\.\.\/img\//g,
       file_filter: /^.*\.md$/,
       dir_filter: /^Chapter.*$/,
@@ -91,13 +104,15 @@ const state = {
       }
     },
     {
-      // linux-kernel-development-notes notes content
+      /**
+       * linux kernel development notes content
+       *    commit: notes commit record
+       *    img_prefix: url replacement prefix of images in the notes
+       *    img_matcher: image url in notes -  <img src="../img/
+       */
       content: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/contents/",
-      // linux-kernel-development-notes notes commit record
       commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/commits?path=",
-      // url replacement prefix of images in linux-kernel-development-notes
       img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-development-notes/master/img/',
-      // image url in linux-kernel-development-notes - <img src="./img/
       img_matcher: /<img\ssrc="\.\/img\//g,
       file_filter: /^Chapter.*$/,
       sort: function (a, b) {
@@ -114,13 +129,15 @@ const state = {
       }
     },
     {
-      // μC/OS-II notes content
+      /**
+       * μC/OS-II notes content
+       *    commit: notes commit record
+       *    img_prefix: url replacement prefix of images in the notes
+       *    img_matcher: image url in notes -  <img src="../img/
+       */
       content: "https://api.github.com/repos/mrdrivingduck/uc-os-ii-code-notes/contents/",
-      // μC/OS-II notes commit record
       commit: "https://api.github.com/repos/mrdrivingduck/uc-os-ii-code-notes/commits?path=",
-      // url replacement prefix of images in μC/OS-II
       img_prefix: '',
-      // image url in μC/OS-II
       img_matcher: /<img\ssrc="\.\/img\//g,
       file_filter: /^.*\.md$/,
       dir_filter: /^Chapter.*$/,
@@ -138,13 +155,15 @@ const state = {
       }
     },
     {
-      // JDK source code analysis notes content
+      /**
+       * JDK source code analysis notes content
+       *    commit: notes commit record
+       *    img_prefix: url replacement prefix of images in the notes
+       *    img_matcher: image url in notes -  <img src="../img/
+       */
       content: "https://api.github.com/repos/mrdrivingduck/jdk-source-code-analysis/contents/",
-      // JDK source code analysis notes commit record
       commit: "https://api.github.com/repos/mrdrivingduck/jdk-source-code-analysis/commits?path=",
-      // url replacement prefix of images in JDK source code analysis
       img_prefix: '',
-      // image url in JDK source code analysis
       img_matcher: /<img\ssrc="\.\/img\//g,
       file_filter: /^(Class|Abstract|Interface).*$/,
       sort: function(a, b) {

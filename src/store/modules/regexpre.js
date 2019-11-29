@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/11/06
+ * @version 2019/11/29
  * @description
  *    Vuex store for saving regular expressions.
  */
