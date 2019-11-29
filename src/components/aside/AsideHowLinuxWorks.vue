@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/10/26
+  @version - 2019/11/29
 
   @description - 
     The aside component for displaying How-Linux-Works
@@ -56,8 +56,8 @@ export default {
     load: function () {
       let url = this.$store.state.githubapi.api[this.index].content;
       this.$store.commit("setNotesUrl", { url });
+      this.$store.commit("setCurrentAsideIndex", { index: this.index });
       this.$store.commit("setCurrentContent", { currentComponent: "ContentNoteList" });
-      this.$store.commit("setCommitUrlIndex", { index: this.index });
     }
 
   }

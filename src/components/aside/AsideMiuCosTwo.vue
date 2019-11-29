@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/28
+  @version - 2019/11/29
 
   @description - 
     The aside component for displaying μC/OS-II code analysis
@@ -67,16 +67,17 @@ export default {
 
     // Loading all notes of how-linux-works repository
     loadNotes: function (url) {
-      const chapterReg = this.$store.state.regexpre.chapterNameReg;
+      const apis = this.$store.state.githubapi.api;
+      const dirNameReg = apis[this.index].dir_filter;
+      
       // Set loading status
       this.loading = true;
 
       // Issue HTTP request
       this.$http.get(url).then(response => {
-
         this.notes = [];
         for (let i = 0; i < response.data.length; i++) {
-          if (chapterReg.test(response.data[i].name)) {
+          if (dirNameReg.test(response.data[i].name)) {
             let { name, sha, size, url, html_url, path } = response.data[i];
             this.notes.push({
               name, sha, url, html_url, path, size
@@ -104,8 +105,8 @@ export default {
     clickFolder: function (folder) {
       let url = folder.url;
       this.$store.commit("setNotesUrl", { url });
+      this.$store.commit("setCurrentAsideIndex", { index: this.index });
       this.$store.commit("setCurrentContent", { currentComponent: "ContentNoteList" });
-      this.$store.commit("setCommitUrlIndex", { index: this.index });
     }
 
   },

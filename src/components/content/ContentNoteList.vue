@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/09
+  @version - 2019/11/29
 
   @description - 
     The content component for displaying note list
@@ -77,6 +77,9 @@ export default {
     loadNoteDirectory: function () {
       // Get topic URL
       const url = this.$store.state.notelist.notes_url;
+      const idx = this.$store.state.content.compIndex;
+      const apis = this.$store.state.githubapi.api;
+      const listReg = apis[idx].file_filter;
       // Initialize component status
       this.notes = [];
       this.fail = false;
@@ -84,9 +87,8 @@ export default {
       this.loading = true;
       // Issue HTTP request
       this.$http.get(url).then(response => {
-        const chapterNameReg = this.$store.state.regexpre.chapterNameReg;
         for (let i = 0; i < response.data.length; i++) {
-          if (chapterNameReg.test(response.data[i].name)) {
+          if (listReg.test(response.data[i].name)) {
             let { name, url, sha, size, html_url, path } = response.data[i];
             this.notes.push({
               name: name.replace(".md", ""),
@@ -95,18 +97,7 @@ export default {
           }
         }
 
-        this.notes.sort(function (a, b) {
-          let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
-          let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
-
-          // Chapter 12.10 - xxxxxx
-          // Chapter 12 - xxxxxx
-          if (idxFrontArr[0] === idxBackArr[0]) {
-            return parseInt(idxFrontArr[1]) - parseInt(idxBackArr[1]);
-          } else {
-            return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
-          }
-        });
+        this.notes.sort(apis[idx].sort)
 
         // All directories in a topic load complete
         this.loading = false;

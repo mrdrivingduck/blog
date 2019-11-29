@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/09
+  @version - 2019/11/29
 
   @description - 
     The content component for displaying markdown files
@@ -154,7 +154,7 @@ export default {
     getMarkdown: function () {
       // Get markdown URL
       const mdUrl = this.$store.state.markdown.markdown_url;
-      const idx = this.$store.state.githubapi.url_index;
+      const idx = this.$store.state.content.compIndex;
       const apis = this.$store.state.githubapi.api;
 
       this.$http.get(mdUrl).then(response => {
@@ -185,9 +185,9 @@ export default {
 
     // Get the commit info of the markdown file
     getCommit: function () {
-      const commitUrls = this.$store.state.githubapi.api;
-      const urlIndex = this.$store.state.githubapi.url_index;
-      let commitUrl = commitUrls[urlIndex].commit;
+      const apis = this.$store.state.githubapi.api;
+      const compIndex = this.$store.state.content.compIndex;
+      let commitUrl = apis[compIndex].commit;
       let path = this.$store.state.markdown.path;
 
       this.$http.get(commitUrl + encodeURIComponent(path)).then(response => {

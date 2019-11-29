@@ -118,9 +118,11 @@ export default {
     loadOutlineUrl: function (url, dirObj) {
       // Set loading status of metadata
       this.$set(dirObj, "loading", true);
+      const idx = this.$store.state.content.compIndex;
+      const apis = this.$store.state.githubapi.api;
+      const outlineNameReg = apis[idx].file_filter;
       // Issue HTTP request
       this.$http.get(url).then(response => {
-        const outlineNameReg = this.$store.state.regexpre.outlineNameReg;
         const pdfFormatReg = this.$store.state.regexpre.pdfFormatReg;
         const pptFormatReg = this.$store.state.regexpre.pptFormatReg;
 

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/30
+  @version - 2019/11/29
 
   @description - 
     The aside component for displaying note list
@@ -78,7 +78,9 @@ export default {
 
     // Loading all directories of notes repository
     loadDirectories: function (url) {
-      const dirNameReg = this.$store.state.regexpre.dirNameReg;
+      const apis = this.$store.state.githubapi.api;
+      const dirNameReg = apis[this.index].dir_filter;
+      
       // Set loading status
       this.loading = true;
 
@@ -146,7 +148,7 @@ export default {
           path: noteObj.path
         }
       });
-      this.$store.commit("setCommitUrlIndex", { index: this.index });
+      this.$store.commit("setCurrentAsideIndex", { index: this.index });
       this.$store.commit("setCurrentContent", { currentComponent: "ContentMarkdown" });
     }
   },

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/10/26
+  @version - 2019/11/29
 
   @description - 
     The aside component for displaying Linux-Kernel-Comments
@@ -67,7 +67,8 @@ export default {
 
     // Loading all notes of how-linux-works repository
     loadNotes: function (url) {
-      const chapterReg = this.$store.state.regexpre.chapterNameReg;
+      const apis = this.$store.state.githubapi.api;
+      const chapterReg = apis[this.index].dir_filter;
       // Set loading status
       this.loading = true;
 
@@ -104,8 +105,8 @@ export default {
     clickFolder: function (folder) {
       let url = folder.url;
       this.$store.commit("setNotesUrl", { url });
+      this.$store.commit("setCurrentAsideIndex", { index: this.index });
       this.$store.commit("setCurrentContent", { currentComponent: "ContentNoteList" });
-      this.$store.commit("setCommitUrlIndex", { index: this.index });
     }
 
   },
