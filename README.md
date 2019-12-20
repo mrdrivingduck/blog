@@ -23,6 +23,7 @@ Based on -
 * [Marked.js](https://marked.js.org/) - A markdown parser and compiler. Built for speed.
 * [GitHub Markdown CSS](https://github.com/mrdrivingduck/github-markdown-css) - The minimal amount of CSS to replicate the GitHub Markdown style.
 * [highlight.js](https://github.com/mrdrivingduck/highlight.js) - JavaScript syntax highlighter.
+* [CryptoJS](https://github.com/brix/crypto-js) - JavaScript library of crypto standards.
 * [GitHub API v3](https://developer.github.com/v3/) - The official GitHub REST API v3.
 * [GitHub Pages](https://pages.github.com/) - Websites for you and your projects.
 * [Aliyun](https://www.aliyun.com/) - More Than Just Cloud.

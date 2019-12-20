@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/09
+  @version - 2019/12/20
 
   @description - 
     The index component for displaying emotions
@@ -68,6 +68,8 @@
 </template>
 
 <script>
+import CryptoJS from "crypto-js";
+
 export default {
   props: ["theme"],
   data: function () {
@@ -89,16 +91,19 @@ export default {
 
     getEmotions: function () {
       const repoUrl = this.$store.state.githubapi.emotion.url;
+      const emotionFilter = this.$store.state.githubapi.emotion.file_filter;
       this.loading = true;
       this.emotions = [];
       this.$http.get(repoUrl).then(response => {
 
         for (let i = 0; i < response.data.length; i++) {
-          let { name, url } = response.data[i];
-          this.emotions.push({
-            date: name,
-            url
-          });
+          if (emotionFilter.test(response.data[i].name)) {
+            let { name, url } = response.data[i];
+            this.emotions.push({
+              date: name,
+              url
+            });
+          }
         }
 
         this.emotions.reverse();
@@ -119,10 +124,16 @@ export default {
       this.emotionText = [];
       this.$http.get(this.emotions[index].url).then(response => {
         if (response.data.encoding === "base64") {
-          // Parse encoded Base64 to markdown
-          let text = decodeURIComponent(escape(window.atob(response.data.content)));
+          const key = CryptoJS.enc.Utf8.parse("zhangjt199700000");
+          let base64 = decodeURIComponent(escape(window.atob(response.data.content)));
+          let encodedPlain = CryptoJS.AES.decrypt(base64, key, {
+            mode: CryptoJS.mode.ECB,
+            padding: CryptoJS.pad.Pkcs7
+          });
+          let plain = encodedPlain.toString(CryptoJS.enc.Utf8);
+          
+          this.emotionText = plain.split("\n");
           this.date = this.emotions[index].date;
-          this.emotionText = text.split("\n");
 
         } else {
           // Encoding not support

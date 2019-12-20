@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/28
+  @version - 2019/12/20
 
   @description - 
     The index component for displaying page information
@@ -18,7 +18,7 @@
           @mrdrivingduck
         </el-link>
       </p>
-      <p> Page build by <i> duckling </i> version <b> 0.19.11 </b> </p>
+      <p> Page build by <i> duckling </i> version <b> 0.19.12 </b> </p>
 
     <el-divider></el-divider>
 
@@ -132,6 +132,11 @@ export default {
           name: "highlight.js",
           description: "JavaScript syntax highlighter.",
           link: "https://github.com/mrdrivingduck/highlight.js"
+        },
+        {
+          name: "CryptoJS",
+          description: "JavaScript library of crypto standards.",
+          link: "https://github.com/brix/crypto-js"
         },
         {
           name: "GitHub API v3",
