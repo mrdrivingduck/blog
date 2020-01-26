@@ -144,8 +144,8 @@ export default {
       }
 
       // Issur HTTP request
-      let repo = this.$route.query.repo;
-      let path = this.$route.query.path;
+      const repo = this.$route.query.repo;
+      const path = this.$route.query.path;
       this.getMarkdown(repo, path);
       this.getCommit(repo, path);
     },
@@ -154,8 +154,7 @@ export default {
     getMarkdown: function (repo, path) {
       // Get markdown URL
       const apis = this.$store.state.githubapi.api;
-      const url_suffix = this.$store.state.githubapi.api_suffix;
-      let md_url = apis[repo].content + path + url_suffix;
+      let md_url = apis[repo].content + path;
 
       this.$http.get(md_url).then(response => {
 

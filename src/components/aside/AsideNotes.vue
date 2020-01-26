@@ -147,7 +147,7 @@ export default {
           repo: this.repo,
           path: noteObj.path
         }
-      });
+      }).catch(err => { err });
     }
   },
   

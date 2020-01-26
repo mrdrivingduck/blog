@@ -21,7 +21,7 @@ export default new Router({
       component: () => import("../components/content/ContentMarkdown")
     },
     {
-      path: "/outline",
+      path: "/outlinelist",
       component: () => import("../components/content/ContentPaperOutline")
     },
     {

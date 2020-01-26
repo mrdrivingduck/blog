@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/10/26
+  @version - 2020/01/27
 
   @description - 
     Back to home page
@@ -30,7 +30,8 @@ export default {
   methods: {
 
     backToHome: function () {
-      this.$store.commit("setCurrentContent", { currentComponent: "ContentIndex" });
+      // this.$store.commit("setCurrentContent", { currentComponent: "ContentIndex" });
+      this.$router.push("/").catch(err => { err });
     }
 
   }

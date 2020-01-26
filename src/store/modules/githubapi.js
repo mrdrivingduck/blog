@@ -183,8 +183,7 @@ const state = {
   emotion: {
     url: "https://api.github.com/repos/mrdrivingduck/emotions/contents/",
     file_filter: /^[^.]*$/,
-  },
-  api_suffix: "?ref=master"
+  }
 };
 
 const mutations = {

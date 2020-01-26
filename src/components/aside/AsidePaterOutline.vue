@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/01/26
+  @version - 2020/01/27
 
   @description - 
     The aside component for displaying paper outlines
@@ -77,9 +77,10 @@ export default {
         
         this.outlineDir = [];
         for (let i = 0; i < response.data.length; i++) {
-          if (dirNameReg.test(response.data[i].name) && response.data[i].type === "dir") {
-            let { name, url, sha, html_url } = response.data[i];
-            this.outlineDir.push({ name, url, sha, html_url });
+          if (dirNameReg.test(response.data[i].name) &&
+              response.data[i].type === "dir") {
+            let { name, url, path } = response.data[i];
+            this.outlineDir.push({ name, url, path });
           }
         }
         
@@ -94,10 +95,14 @@ export default {
     },
 
     clickDir: function (item) {
-      let url = item.$attrs.meta.url;
-      this.$store.commit("setOutlineUrl", { url });
-      this.$store.commit("setCurrentAsideIndex", { index: this.index });
-      this.$store.commit("setCurrentContent", { currentComponent: "ContentPaperOutline" });
+      let path = item.$attrs.meta.path;
+      this.$router.push({
+        path: "/outlinelist",
+        query: {
+          repo: this.repo,
+          path
+        }
+      }).catch(err => { err });
     }
 
   },

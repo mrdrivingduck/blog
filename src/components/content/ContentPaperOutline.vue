@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/09
+  @version - 2020/01/27
 
   @description - 
     The content component for displaying paper outlines
@@ -85,8 +85,10 @@ export default {
 
     // Load one of the outline topic
     loadOutlineDirectory: function () {
+      const repo = this.$route.query.repo;
+      const path = this.$route.query.path;
       // Get topic URL
-      const url = this.$store.state.paper_outline.outline_url;
+      const url = this.$store.state.githubapi.api[repo].content + path;
       // Initialize component status
       this.outlines = [];
       this.fail = false;
@@ -94,17 +96,16 @@ export default {
       this.loading = true;
       // Issue HTTP request
       this.$http.get(url).then(response => {
-
         for (let i = 0; i < response.data.length; i++) {
-          let { url, name, sha, html_url } = response.data[i];
+          let { url, name, path } = response.data[i];
           name = name.replace(" -", ":");
-          this.outlines.push({ url, name, sha, html_url });
+          this.outlines.push({ url, name, path });
         }
         // All directories in a topic load complete
         this.loading = false;
         // Start loading outline file metadata in each derectory
         for (let i = 0; i < this.outlines.length; i++) {
-          this.loadOutlineUrl(this.outlines[i].url, this.outlines[i]);
+          this.loadOutlineUrl(this.outlines[i].url, this.outlines[i], repo);
         }
         
       }).catch(error => {
@@ -115,12 +116,11 @@ export default {
     },
 
     // Load outline file metadata in a directory
-    loadOutlineUrl: function (url, dirObj) {
+    loadOutlineUrl: function (url, dirObj, repo) {
       // Set loading status of metadata
       this.$set(dirObj, "loading", true);
-      const idx = this.$store.state.content.compIndex;
       const apis = this.$store.state.githubapi.api;
-      const outlineNameReg = apis[idx].file_filter;
+      const outlineNameReg = apis[repo].file_filter;
       // Issue HTTP request
       this.$http.get(url).then(response => {
         const pdfFormatReg = this.$store.state.regexpre.pdfFormatReg;
@@ -129,9 +129,9 @@ export default {
         for (let i = 0; i < response.data.length; i++) {
           if (outlineNameReg.test(response.data[i].name)) {
             // Filter only outline files in markdown format
-            let { url, sha, size, html_url, path } = response.data[i];
+            let { sha, size, path } = response.data[i];
             // Set the metadata, change loading status
-            this.$set(dirObj, "resource", { url, sha, size, html_url, path });
+            this.$set(dirObj, "resource", { sha, size, path, repo });
             this.$set(dirObj, "loading", false);
 
           } else if (pdfFormatReg.test(response.data[i].name)) {
@@ -151,17 +151,14 @@ export default {
     },
 
     // Jump to the outline detail
-    clickOutline: function (outlineObj) {
-      this.$store.commit("setMarkdownUrl", {
-        url: outlineObj.url,
-        metadata: {
-          link: outlineObj.html_url,
-          sha: outlineObj.sha,
-          size: outlineObj.size,
-          path: outlineObj.path
+    clickOutline: function (obj) {
+      this.$router.push({
+        path: "/markdown",
+        query: {
+          repo: obj.repo,
+          path: obj.path
         }
-      });
-      this.$store.commit("setCurrentContent", { currentComponent: "ContentMarkdown" });
+      }).catch(err => { err });
     },
 
     // Set the background color and text color of the cards
@@ -181,11 +178,6 @@ export default {
   },
   computed: {
 
-    // Listening for the URL changed
-    urlChange: function () {
-      return this.$store.state.paper_outline.outline_url;
-    },
-
     // Listening for the theme changed
     themeChange: function () {
       return this.$store.state.theme.currentThemeIndex;
@@ -193,12 +185,6 @@ export default {
 
   },
   watch: {
-
-    // The URL change triggered
-    // Reinitializing the conponent's status
-    urlChange: function () {
-      this.loadOutlineDirectory();
-    },
 
     // Set the theme of the card
     themeChange: function () {
