@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/01/26
+ * @version 2020/01/27
  * @description
  *    Vuex router for routing components
  */
@@ -17,7 +17,7 @@ export default new Router({
       component: () => import("../components/content/ContentIndex")
     },
     {
-      path: "/md",
+      path: "/markdown",
       component: () => import("../components/content/ContentMarkdown")
     },
     {

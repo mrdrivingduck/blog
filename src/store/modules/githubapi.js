@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/01/26
+ * @version 2020/01/27
  * @description
  *    Vuex store for saving current content component
  */
@@ -183,7 +183,8 @@ const state = {
   emotion: {
     url: "https://api.github.com/repos/mrdrivingduck/emotions/contents/",
     file_filter: /^[^.]*$/,
-  }
+  },
+  api_suffix: "?ref=master"
 };
 
 const mutations = {

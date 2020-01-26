@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/29
+  @version - 2020/01/27
 
   @description - 
     The content component for displaying markdown files
@@ -127,12 +127,10 @@ export default {
 
     initialize: function () {
       // Metadata
-      this.articleLink = this.$store.state.markdown.link;
-      this.articleSha = this.$store.state.markdown.sha;
-      this.articleSize = this.$store.state.markdown.size;
-      this.articleReadingTime = 2 * parseInt(this.articleSize);
+      this.articleLink = "";
+      this.articleSize = NaN;
+      this.articleReadingTime = NaN;
       this.commitLastModification = "";
-      this.commitSha = "";
       this.committer = "";
 
       // Initialize component status
@@ -146,30 +144,38 @@ export default {
       }
 
       // Issur HTTP request
-      this.getMarkdown();
-      this.getCommit();
+      let repo = this.$route.query.repo;
+      let path = this.$route.query.path;
+      this.getMarkdown(repo, path);
+      this.getCommit(repo, path);
     },
 
     // Get the content of markdown file
-    getMarkdown: function () {
+    getMarkdown: function (repo, path) {
       // Get markdown URL
-      const mdUrl = this.$store.state.markdown.markdown_url;
-      const idx = this.$store.state.content.compIndex;
       const apis = this.$store.state.githubapi.api;
+      const url_suffix = this.$store.state.githubapi.api_suffix;
+      let md_url = apis[repo].content + path + url_suffix;
 
-      this.$http.get(mdUrl).then(response => {
+      this.$http.get(md_url).then(response => {
+
+        this.articleLink = response.data.html_url;
+        this.articleSize = response.data.size;
+        this.articleReadingTime = parseInt(2 * parseInt(this.articleSize) / 1024);
+
         if (response.data.encoding === "base64") {
           // Parse encoded Base64 to markdown
           let md = decodeURIComponent(escape(window.atob(response.data.content)));
           // Parse markdown to HTML
           let html = marked(md);
-          this.htmlStr = html.replace(apis[idx].img_matcher, apis[idx].img_prefix);
+          this.htmlStr = html.replace(apis[repo].img_matcher, apis[repo].img_prefix);
           this.$nextTick(this.onChangeTheme);
 
         } else {
           // Encoding not support
           this.htmlStr = "<p> Encoding not support </p>";
         }
+
         // Set loading status
         this.loadingMarkdownComplete = true;
         if (this.loadingCommitComplete) {
@@ -184,17 +190,14 @@ export default {
     },
 
     // Get the commit info of the markdown file
-    getCommit: function () {
+    getCommit: function (repo, path) {
       const apis = this.$store.state.githubapi.api;
-      const compIndex = this.$store.state.content.compIndex;
-      let commitUrl = apis[compIndex].commit;
-      let path = this.$store.state.markdown.path;
+      let commit_url = apis[repo].commit;
 
-      this.$http.get(commitUrl + encodeURIComponent(path)).then(response => {
+      this.$http.get(commit_url + encodeURIComponent(path)).then(response => {
         
         // Get the last commit
-        let { sha, commit, committer } = response.data[0];
-        this.commitSha = sha;
+        let { commit, committer } = response.data[0];
         this.commitLastModification = commit.committer.date;
         this.committer = committer.login;
 
@@ -251,11 +254,6 @@ export default {
   },
   computed: {
 
-    // Triggered when markdown resource URL changes
-    markdownUrlChanged: function () {
-      return this.$store.state.markdown.markdown_url;
-    },
-
     // Triggered when the theme changes
     themeChange: function () {
       return this.$store.state.theme.currentThemeIndex;
@@ -264,15 +262,15 @@ export default {
   },
   watch: {
 
-    // When URL changes, re-initialize to component
-    markdownUrlChanged: function () {
-      this.initialize();
-    },
-
     // When theme changes, reset the style
     themeChange: function () {
       this.$nextTick(this.onChangeTheme);
+    },
+
+    $route: function() {
+      this.initialize();
     }
+
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/01/26
+  @version - 2020/01/27
 
   @description - 
     The aside component for displaying note list
@@ -92,9 +92,9 @@ export default {
         this.noteDir = [];
         for (let i = 0; i < response.data.length; i++) {
           if (dirNameReg.test(response.data[i].name) && response.data[i].type === "dir") {
-            let { name, sha, type, url, html_url } = response.data[i];
+            let { name, url } = response.data[i];
             this.noteDir.push({
-              name, sha, type, url, html_url
+              name, url
             });
           }
         }
@@ -122,11 +122,10 @@ export default {
       this.$http.get(url).then(response => {
         // Inject the content into directory
         let dirNotes = [];
-        console.log(response.data)
         for (let i = 0; i < response.data.length; i++) {
-          let { name, sha, type, size, url, html_url, path } = response.data[i];
+          let { name, path } = response.data[i];
           dirNotes.push({
-            name: name.replace(".md", ""), sha, type, size, url, html_url, path
+            name: name.replace(".md", ""), path
           });
         }
         this.$set(dirObj, "notes", dirNotes);
@@ -142,21 +141,10 @@ export default {
 
     // Jump to the note detail
     clickNote: function (noteObj) {
-      this.$store.commit("setMarkdownUrl", {
-        url: noteObj.url,
-        metadata: {
-          link: noteObj.html_url,
-          sha: noteObj.sha,
-          size: noteObj.size,
-          path: noteObj.path
-        }
-      });
-      this.$store.commit("setCurrentAsideIndex", { index: this.index });
-      this.$store.commit("setCurrentContent", { currentComponent: "ContentMarkdown" });
       this.$router.push({
-        path: "/md",
+        path: "/markdown",
         query: {
-          repos: "notes",
+          repo: this.repo,
           path: noteObj.path
         }
       });
