@@ -17,6 +17,7 @@ Based on -
 
 * [Vue.js](https://vuejs.org/) - 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.
 * [Vuex](https://vuex.vuejs.org/) - 🗃️ Centralized State Management for Vue.js.
+* [Vue Router](https://router.vuejs.org/) - 🚦 The official router for Vue.js.
 * [Vue CLI](https://cli.vuejs.org/) - 🛠️ Standard Tooling for Vue.js Development.
 * [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
 * [Element](https://element.eleme.io/) - A Vue.js 2.0 UI Toolkit for Web.

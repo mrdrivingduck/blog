@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/12/20
+  @version - 2020/01/26
 
   @description - 
     The index component for displaying page information
@@ -18,7 +18,7 @@
           @mrdrivingduck
         </el-link>
       </p>
-      <p> Page build by <i> duckling </i> version <b> 0.19.12 </b> </p>
+      <p> Page build by <i> duckling </i> version <b> 0.20.01 </b> </p>
 
     <el-divider></el-divider>
 
@@ -104,6 +104,11 @@ export default {
           link: "https://vuex.vuejs.org"
         },
         {
+          name: "Vue Router",
+          description: "🚦 The official router for Vue.js.",
+          link: "https://router.vuejs.org/"
+        },
+        {
           name: "Vue CLI",
           description: "🛠️ Standard Tooling for Vue.js Development.",
           link: "https://cli.vuejs.org/"
@@ -164,7 +169,7 @@ export default {
 
     // Get last commit info
     getCommits: function() {
-      const url = this.$store.state.githubapi.api[0].commit;
+      const url = this.$store.state.githubapi.api["user"].commit;
       this.commitLoading = true;
       this.fail = false;
       this.failReason = "";
@@ -190,7 +195,7 @@ export default {
 
     // Get last deploy info
     getDeploys: function() {
-      const url = this.$store.state.githubapi.api[0].deploy;
+      const url = this.$store.state.githubapi.api["user"].deploy;
       this.deployLoading = true;
       this.fail = false;
       this.failReason = "";

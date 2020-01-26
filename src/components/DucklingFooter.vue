@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/29
+  @version - 2020/01/26
 
   @description - 
     The index component for displaying fotter
@@ -19,7 +19,7 @@
 
         <el-col
           :span="13">
-          <p style="float: right; margin-right: 0px">mrdrivingduck©, 2019</p>
+          <p style="float: right; margin-right: 0px">mrdrivingduck©, 2020</p>
         </el-col>
 
         <el-col :span="11">

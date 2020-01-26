@@ -17,12 +17,6 @@ const state = {
       commit: "https://api.github.com/repos/mrdrivingduck/mrdrivingduck.github.io/commits?path=",
       deploy: "https://api.github.com/repos/mrdrivingduck/mrdrivingduck.github.io/deployments"
     },
-    home: {
-      /**
-       * home
-       *    slot only
-       */
-    },
     notes: {
       /**
        * notes content
