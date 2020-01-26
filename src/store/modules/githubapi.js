@@ -1,13 +1,13 @@
 /**
  * @author Mr Dk.
- * @version 2019/12/20
+ * @version 2020/01/26
  * @description
  *    Vuex store for saving current content component
  */
 
 const state = {
-  api: [
-    {
+  api: {
+    user: {
       /**
        * user info
        *    commit - GitHub page repo commit
@@ -17,13 +17,13 @@ const state = {
       commit: "https://api.github.com/repos/mrdrivingduck/mrdrivingduck.github.io/commits?path=",
       deploy: "https://api.github.com/repos/mrdrivingduck/mrdrivingduck.github.io/deployments"
     },
-    {
+    home: {
       /**
        * home
        *    slot only
        */
     },
-    {
+    notes: {
       /**
        * notes content
        *    commit: notes commit record
@@ -37,7 +37,7 @@ const state = {
       file_filter: /^Chapter.*$/,
       dir_filter: /^[A-Z].*$/
     },
-    {
+    paper_outline: {
       /**
        * paper outline content
        *    commit: notes commit record
@@ -51,7 +51,7 @@ const state = {
       file_filter: /^Outline.*$/,
       dir_filter: /^[A-Z].*$/
     },
-    {
+    how_linux_works_notes: {
       /**
        * how linux works notes content
        *    commit: notes commit record
@@ -77,7 +77,7 @@ const state = {
         }
       }
     },
-    {
+    linux_kernel_comments_notes: {
       /**
        * linux kernel comments notes content
        *    commit: notes commit record
@@ -103,7 +103,7 @@ const state = {
         }
       }
     },
-    {
+    linux_kernel_development_notes: {
       /**
        * linux kernel development notes content
        *    commit: notes commit record
@@ -128,7 +128,7 @@ const state = {
         }
       }
     },
-    {
+    us_os_ii_code_notes: {
       /**
        * μC/OS-II notes content
        *    commit: notes commit record
@@ -154,7 +154,7 @@ const state = {
         }
       }
     },
-    {
+    jdk_source_code_analysis: {
       /**
        * JDK source code analysis notes content
        *    commit: notes commit record
@@ -185,7 +185,7 @@ const state = {
         }
       }
     }
-  ],
+  },
   emotion: {
     url: "https://api.github.com/repos/mrdrivingduck/emotions/contents/",
     file_filter: /^[^.]*$/,

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/29
+  @version - 2020/01/26
 
   @description - 
     The aside component for displaying note list
@@ -67,6 +67,8 @@ export default {
 
   data: function () {
     return {
+      repo: "notes",
+
       noteDir: null, // For repository data storage
       loading: true, // For displaying the status of loading data
       fail: false, // For displaying the result of HTTP request
@@ -79,7 +81,7 @@ export default {
     // Loading all directories of notes repository
     loadDirectories: function (url) {
       const apis = this.$store.state.githubapi.api;
-      const dirNameReg = apis[this.index].dir_filter;
+      const dirNameReg = apis[this.repo].dir_filter;
       
       // Set loading status
       this.loading = true;
@@ -120,6 +122,7 @@ export default {
       this.$http.get(url).then(response => {
         // Inject the content into directory
         let dirNotes = [];
+        console.log(response.data)
         for (let i = 0; i < response.data.length; i++) {
           let { name, sha, type, size, url, html_url, path } = response.data[i];
           dirNotes.push({
@@ -150,12 +153,19 @@ export default {
       });
       this.$store.commit("setCurrentAsideIndex", { index: this.index });
       this.$store.commit("setCurrentContent", { currentComponent: "ContentMarkdown" });
+      this.$router.push({
+        path: "/md",
+        query: {
+          repos: "notes",
+          path: noteObj.path
+        }
+      });
     }
   },
   
   created: function () {
     // Initializing the data from GitHub
-    let url = this.$store.state.githubapi.api[this.index].content;
+    let url = this.$store.state.githubapi.api[this.repo].content;
     this.loadDirectories(url);
   }
 }

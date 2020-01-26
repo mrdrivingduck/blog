@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/08/01
+ * @version 2020/01/26
  * @description 
  *    The entry file.
  */
@@ -36,11 +36,16 @@ import App from "./App.vue";
  * Vuex store
  */
 import store from "./store";
+/**
+ * Vue router
+ */
+import router from "./router";
 
 /**
  * Instantiation
  */
 new Vue({
-  store, // register the Vuex store
+  store,  // register the Vuex store
+  router, // register the Vue router
   render: h => h(App),
 }).$mount("#app");

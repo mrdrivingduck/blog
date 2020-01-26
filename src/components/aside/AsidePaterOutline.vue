@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/29
+  @version - 2020/01/26
 
   @description - 
     The aside component for displaying paper outlines
@@ -55,6 +55,8 @@ export default {
   props: ["index"],
   data: function () {
     return  {
+      repo: "paper_outline",
+
       outlineDir: null, // For repository data storage
       loading: true, // For displaying loading status
       fail: false, // Set to true if loading error occurs
@@ -68,7 +70,7 @@ export default {
       this.loading = true;
 
       const apis = this.$store.state.githubapi.api;
-      const dirNameReg = apis[this.index].dir_filter;
+      const dirNameReg = apis[this.repo].dir_filter;
 
       // Issur HTTP Request
       this.$http.get(url).then(response => {
@@ -101,7 +103,7 @@ export default {
   },
   created: function () {
     // Initializing the data from GitHub
-    let url = this.$store.state.githubapi.api[this.index].content;
+    let url = this.$store.state.githubapi.api[this.repo].content;
     this.loadDirectories(url);
   }
 }

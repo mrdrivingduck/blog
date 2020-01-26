@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/29
+  @version - 2020/01/26
 
   @description - 
     The aside component for displaying Linux-Kernel-Comments
@@ -56,6 +56,8 @@ export default {
 
   data: function () {
     return {
+      repo: "linux_kernel_comments_notes",
+
       notes: null, // For repository data storage
       loading: true, // For displaying the status of loading data
       fail: false, // For displaying the result of HTTP request
@@ -68,7 +70,7 @@ export default {
     // Loading all notes of how-linux-works repository
     loadNotes: function (url) {
       const apis = this.$store.state.githubapi.api;
-      const chapterReg = apis[this.index].dir_filter;
+      const chapterReg = apis[this.repo].dir_filter;
       // Set loading status
       this.loading = true;
 
@@ -113,7 +115,7 @@ export default {
   
   created: function () {
     // Initializing the data from GitHub
-    let url = this.$store.state.githubapi.api[this.index].content;
+    let url = this.$store.state.githubapi.api[this.repo].content;
     this.loadNotes(url);
   }
 }
