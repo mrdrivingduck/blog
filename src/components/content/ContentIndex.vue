@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/28
+  @version - 2020/01/26
 
   @description - 
     The content component for displaying pernal information
@@ -153,7 +153,7 @@ export default {
       this.fail = false;
       this.failReason = "";
 
-      let url = this.$store.state.githubapi.api[0].content;
+      let url = this.$store.state.githubapi.api["user"].content;
       this.$http.get(url).then(response => {
         let { name, bio, location, company, login } = response.data;
         this.name = name;
@@ -181,7 +181,7 @@ export default {
     },
 
     // Set the theme of navigation
-    setNavTheme: function () {
+    setNavigationTheme: function () {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       let { backgroundColor, textColor, activeTextColor } = allThemes[themeIndex].aside;
@@ -192,7 +192,7 @@ export default {
 
     setTheme: function () {
       this.setCardTheme();
-      this.setNavTheme();
+      this.setNavigationTheme();
     },
 
     // For selecting sub-component
