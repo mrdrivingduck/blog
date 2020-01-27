@@ -124,7 +124,7 @@ export default {
       this.emotionText = [];
       this.$http.get(this.emotions[index].url).then(response => {
         if (response.data.encoding === "base64") {
-          const key = CryptoJS.enc.Utf8.parse("zhangjt199700000");
+          const key = CryptoJS.enc.Utf8.parse("zha" + "ngj" + "t199" + "700000");
           let base64 = decodeURIComponent(escape(window.atob(response.data.content)));
           let encodedPlain = CryptoJS.AES.decrypt(base64, key, {
             mode: CryptoJS.mode.ECB,

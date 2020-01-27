@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/01/26
+  @version - 2020/01/27
 
   @description - 
     The index component for displaying fotter
@@ -19,7 +19,13 @@
 
         <el-col
           :span="13">
-          <p style="float: right; margin-right: 0px">mrdrivingduck©, 2020</p>
+          <p style="float: right; margin-right: 0px">Page built by
+          <el-link
+            type="primary"
+            href="mailto:mrdrivingduck@gmail.com">
+            mrdrivingduck
+          </el-link>
+          ©2020</p>
         </el-col>
 
         <el-col :span="11">
@@ -39,14 +45,6 @@
         </el-col>
 
       </el-row>
-
-      <p style="text-align: center;">Contact me - 
-        <el-link
-          type="primary"
-          href="mailto:mrdrivingduck@gmail.com">
-          mrdrivingduck@gmail.com
-        </el-link>
-      </p>
 
     </div>
 

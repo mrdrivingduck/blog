@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/09/21
+  @version - 2020/01/27
 
   @description - 
     The index component for displaying technology stack
@@ -54,7 +54,7 @@ export default {
           percentage: 32,
           projects: [
             {
-              description: "Learning kernel code of Linux 0.12",
+              description: "Reading Linux 0.12 kernel source code",
               name: "Linux kernel comments notes",
               link: "https://github.com/mrdrivingduck/linux-kernel-comments-notes"
             },
@@ -66,6 +66,11 @@ export default {
             {
               description: "Programming Ability Test (PAT) of Zhejiang University, 2018.03",
               name: "Score 100"
+            },
+            {
+              description: "Reading μC/OS-II kernel source code",
+              name: "μC/OS-II code analysis",
+              link: "https://github.com/mrdrivingduck/uc-os-ii-code-notes"
             }
           ]
         },
@@ -87,6 +92,11 @@ export default {
               description: "Utility for quick encryption",
               name: "Encryption machine",
               link: "https://github.com/mrdrivingduck/encryption-machine"
+            },
+            {
+              description: "JDK 8 source code analysis",
+              name: "JDK source code analysis",
+              link: "https://github.com/mrdrivingduck/jdk-source-code-analysis"
             }
           ]
         },
@@ -115,7 +125,7 @@ export default {
           percentage: 8,
           projects: [
             {
-              description: "Some experiment programs for data analysis",
+              description: "Scripts for analyzing 802.11 beacon frames.",
               name: "IEEE 802.11 beacon frame analysis",
               link: "https://github.com/mrdrivingduck/beacon-frame-analysis"
             }

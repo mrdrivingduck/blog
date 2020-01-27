@@ -27,6 +27,10 @@ export default new Router({
     {
       path: "/notelist",
       component: () => import("../components/content/ContentNoteList")
+    },
+    {
+      path: "*",
+      component: () => import("../components/content/ContentNotFound")
     }
   ]
 });

@@ -75,8 +75,8 @@
       <el-menu-item index="0"> About Me </el-menu-item>
       <el-menu-item index="1"> Emotions </el-menu-item>
       <el-menu-item index="2"> Tech. Stack </el-menu-item>
-      <el-menu-item index="3"> Social Links </el-menu-item>
-      <el-menu-item index="4"> About this Page </el-menu-item>
+      <el-menu-item index="3"> Links </el-menu-item>
+      <el-menu-item index="4"> About this Blog </el-menu-item>
     </el-menu>
 
     <keep-alive>
@@ -113,7 +113,7 @@ export default {
     IndexEmotion: () => import("./index/IndexEmotion"),
     IndexAbout: () => import("./index/IndexAbout"),
     IndexTechStack: () => import("./index/IndexTechStack"),
-    IndexSocial: () => import("./index/IndexSocial"),
+    IndexLinks: () => import("./index/IndexLinks"),
     IndexPageInfo: () => import("./index/IndexPageInfo")
   },
   data: function () {
@@ -134,7 +134,7 @@ export default {
       // Bottom components selector
       defaultTab: "0",
       selectedTab: 0,
-      tabs: [ "IndexAbout", "IndexEmotion", "IndexTechStack", "IndexSocial", "IndexPageInfo" ],
+      tabs: [ "IndexAbout", "IndexEmotion", "IndexTechStack", "IndexLinks", "IndexPageInfo" ],
 
       // For changing themes
       cardBackgroundColor: null,

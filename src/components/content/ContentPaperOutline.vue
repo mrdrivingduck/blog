@@ -151,12 +151,12 @@ export default {
     },
 
     // Jump to the outline detail
-    clickOutline: function (obj) {
+    clickOutline: function (outline) {
       this.$router.push({
         path: "/markdown",
         query: {
-          repo: obj.repo,
-          path: obj.path
+          repo: outline.repo,
+          path: outline.path
         }
       }).catch(err => { err });
     },
@@ -189,6 +189,10 @@ export default {
     // Set the theme of the card
     themeChange: function () {
       this.setCardTheme();
+    },
+
+    $route: function() {
+      this.loadOutlineDirectory();
     }
 
   }

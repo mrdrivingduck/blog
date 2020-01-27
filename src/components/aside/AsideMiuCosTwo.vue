@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/01/26
+  @version - 2020/01/27
 
   @description - 
     The aside component for displaying μC/OS-II code analysis
@@ -26,7 +26,8 @@
       <el-menu-item
         v-for="(folder, idx) in notes"
         v-loading="loading"
-        @click="clickFolder(folder)"
+        @click="clickFolder"
+        :meta="folder"
         :key="folder.name"
         :index="index + '-' + (idx + 1)">
 
@@ -70,8 +71,8 @@ export default {
     // Loading all notes of how-linux-works repository
     loadNotes: function (url) {
       const apis = this.$store.state.githubapi.api;
-      const dirNameReg = apis[this.repo].dir_filter;
-      
+      const dir_name_reg = apis[this.repo].dir_filter;
+      const sorter = apis[this.repo].sort;
       // Set loading status
       this.loading = true;
 
@@ -79,20 +80,14 @@ export default {
       this.$http.get(url).then(response => {
         this.notes = [];
         for (let i = 0; i < response.data.length; i++) {
-          if (dirNameReg.test(response.data[i].name)) {
-            let { name, sha, size, url, html_url, path } = response.data[i];
-            this.notes.push({
-              name, sha, url, html_url, path, size
-            });
+          if (dir_name_reg.test(response.data[i].name)) {
+            let { name, path } = response.data[i];
+            this.notes.push({ name, path });
           }
         }
 
         // Sort the notes according to chapter index
-        this.notes.sort(function (a, b) {
-          let idxFront = a.name.split("-")[0].split(" ")[1];
-          let idxBack = b.name.split("-")[0].split(" ")[1];
-          return parseFloat(idxFront) - parseFloat(idxBack);
-        });
+        this.notes.sort(sorter);
 
         // Directories loading complete
         this.loading = false;
@@ -105,10 +100,14 @@ export default {
     },
 
     clickFolder: function (folder) {
-      let url = folder.url;
-      this.$store.commit("setNotesUrl", { url });
-      this.$store.commit("setCurrentAsideIndex", { index: this.index });
-      this.$store.commit("setCurrentContent", { currentComponent: "ContentNoteList" });
+      let path = folder.$attrs.meta.path;
+      this.$router.push({
+        path: "/notelist",
+        query: {
+          repo: this.repo,
+          path
+        }
+      }).catch(err => { err });
     }
 
   },

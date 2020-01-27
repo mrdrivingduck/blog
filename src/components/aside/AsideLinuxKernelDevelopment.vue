@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/01/26
+  @version - 2020/01/27
 
   @description - 
     The aside component for displaying Linux Kernel Development notes
@@ -56,10 +56,13 @@ export default {
   methods: {
 
     load: function () {
-      let url = this.$store.state.githubapi.api[this.repo].content;
-      this.$store.commit("setNotesUrl", { url });
-      this.$store.commit("setCurrentAsideIndex", { index: this.index });
-      this.$store.commit("setCurrentContent", { currentComponent: "ContentNoteList" });
+      this.$router.push({
+        path: "/notelist",
+        query: {
+          repo: this.repo,
+          path: ""
+        }
+      }).catch(err => { err });
     }
 
   }

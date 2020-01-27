@@ -20,7 +20,7 @@
 
       <div>
         <p>
-          🔗 Origin: 
+          🔗 Origin Link from GitHub: 
           <el-link type="primary" :href="this.articleLink"> Link from GitHub </el-link>
         </p>
         <!-- <p>

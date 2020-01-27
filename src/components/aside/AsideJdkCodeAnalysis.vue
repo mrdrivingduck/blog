@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/29
+  @version - 2020/01/27
 
   @description - 
     The aside component for displaying JDK source code analysis
@@ -44,6 +44,8 @@ export default {
 
   data: function () {
     return {
+      repo: "jdk_source_code_analysis",
+
       notes: null, // For repository data storage
       loading: false, // For displaying the status of loading data
       fail: false, // For displaying the result of HTTP request
@@ -54,10 +56,13 @@ export default {
   methods: {
 
     load: function () {
-      let url = this.$store.state.githubapi.api[this.index].content;
-      this.$store.commit("setNotesUrl", { url });
-      this.$store.commit("setCurrentAsideIndex", { index: this.index });
-      this.$store.commit("setCurrentContent", { currentComponent: "ContentNoteList" });
+      this.$router.push({
+        path: "/notelist",
+        query: {
+          repo: this.repo,
+          path: ""
+        }
+      }).catch(err => { err });
     }
 
   }

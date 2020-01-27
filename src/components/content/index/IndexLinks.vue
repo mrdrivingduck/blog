@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/27
+  @version - 2020/01/27
 
   @description - 
     The index component for displaying social links
@@ -10,6 +10,8 @@
 
 <template>
   <div :class="theme">
+
+    <h1> 🌊 Social Network Links </h1>
 
     <el-row
       v-for="social in socials"
@@ -43,6 +45,11 @@
       </el-col>
 
     </el-row>
+
+    
+    <!-- <el-divider></el-divider>
+
+    <h1> 🐶 Friend Links </h1> -->
 
   </div>
 </template>
