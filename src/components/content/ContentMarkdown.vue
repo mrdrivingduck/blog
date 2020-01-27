@@ -20,8 +20,8 @@
 
       <div>
         <p>
-          🔗 Origin Link from GitHub: 
-          <el-link type="primary" :href="this.articleLink"> Link from GitHub </el-link>
+          🔗 Origin Link: 
+          <el-link type="primary" :href="this.articleLink"> GitHub </el-link>
         </p>
         <!-- <p>
           <i class="el-icon-lock"></i>
