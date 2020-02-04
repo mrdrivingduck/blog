@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/01/27
+  @version - 2020/02/04
 
   @description - 
     The content component for displaying note list
@@ -38,7 +38,7 @@
           🔏 SHA: <b> {{ note.sha }} </b>
         </p>
         <p>
-          ✒️ Size: <b> {{ note.size }} </b> Bytes
+          💾 Size: <b> {{ note.size }} </b> Bytes
         </p>
 
       </el-card>

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/29
+  @version - 2020/02/04
 
   @description - 
     The aside component for guiding
@@ -41,6 +41,9 @@
       <!-- Sub-menu of JDK source code analysis -->
       <aside-jdk-code-analysis :index="8"></aside-jdk-code-analysis>
 
+      <!-- Sub-menu of JDK source code analysis -->
+      <aside-understanding-the-jvm :index="9"></aside-understanding-the-jvm>
+
     </el-menu>
     
   </div>
@@ -56,7 +59,8 @@ export default {
     AsideLinuxKernelComments: () => import("./aside/AsideLinuxKernelComments"),
     AsideLinuxKernelDevelopment: () => import("./aside/AsideLinuxKernelDevelopment"),
     AsideMiuCosTwo: () => import("./aside/AsideMiuCosTwo"),
-    AsideJdkCodeAnalysis: () => import("./aside/AsideJdkCodeAnalysis")
+    AsideJdkCodeAnalysis: () => import("./aside/AsideJdkCodeAnalysis"),
+    AsideUnderstandingTheJvm: () => import("./aside/AsideUnderstandingTheJVM")
   },
   data: function() {
     return {

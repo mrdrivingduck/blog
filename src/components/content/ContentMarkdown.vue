@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/01/27
+  @version - 2020/02/04
 
   @description - 
     The content component for displaying markdown files
@@ -18,46 +18,44 @@
       shadow="hover"
       v-bind:style="{ backgroundColor: cardBackgroundColor, color: cardTextColor }">
 
-      <div>
-        <p>
-          🔗 Origin Link: 
-          <el-link type="primary" :href="this.articleLink"> GitHub </el-link>
-        </p>
-        <!-- <p>
-          <i class="el-icon-lock"></i>
-          File SHA: <b> {{ this.articleSha }} </b>
-        </p>
-        <p>
-          <i class="el-icon-odometer"></i>
-          File Size: <b> {{ this.articleSize }} </b> KiB
-        </p> -->
-        <p>
-          ⏱️ Estimated Reading Time: <b> {{ this.articleReadingTime }} </b> min
-        </p>
-      </div>
-
-      <div>
-        <!-- <p>
-          <i class="el-icon-lock"></i>
-          Commit SHA: <b> {{ this.commitSha }} </b>
-        </p> -->
-        <p>
-          📅 Last Modification: <b> {{ this.commitLastModification }} </b> by <b> {{ this.committer }} </b>
-        </p>
-      </div>
+      <p>
+        💾 File size: <b> {{ this.articleSize }} </b> KiB
+      </p>
+      <p>
+        ⏱️ Estimated Reading Time: <b> {{ this.articleReadingTime }} </b> min
+      </p>
+      <p>
+        📅 Last Modification: <b> {{ this.commitLastModification }} </b> by <b> {{ this.committer }} </b>
+      </p>
+      <p>
+        🔏 SHA: <b> {{ this.articleSha }} </b>
+      </p>
 
       <el-divider></el-divider>
 
-      <div>
-        <p>
-          📧 Something wrong? - 
-          <el-link
-            type="warning"
-            href="mailto:mrdrivingduck@gmail.com">
-            Tell the author
-          </el-link>
-        </p>
-      </div>
+      <p>
+        🔗 Origin Link?  
+        <el-link type="primary" :href="this.articleLink"> GitHub </el-link>
+      </p>
+      <p>
+        📧 Something wrong? - 
+        <el-link
+          type="warning"
+          href="mailto:mrdrivingduck@gmail.com">
+          Tell me
+        </el-link>
+      </p>
+
+      <p>
+        📌 Copy the link to the clipboard? - 
+        <el-link
+          type="warning"
+          v-clipboard:copy="copyLink"
+          v-clipboard:success="onCopySuccess"
+          v-clipboard:error="onCopyError">
+          Click here
+        </el-link>
+      </p>
 
     </el-card>
 
@@ -120,7 +118,9 @@ export default {
       loading: true, // For displaying loading status
       fail: false, // Set to true if loading error occurs
       failReason: "", // Reason of failure
-      markdownClass: null
+      markdownClass: null,
+
+      copyLink: "",
     };
   },
   methods: {
@@ -143,6 +143,8 @@ export default {
         this.articleReadingTime = 1;
       }
 
+      this.copyLink = "https://mrdrivingduck.github.io/#" + this.$route.fullPath;
+
       // Issur HTTP request
       const repo = this.$route.query.repo;
       const path = this.$route.query.path;
@@ -159,8 +161,9 @@ export default {
       this.$http.get(md_url).then(response => {
 
         this.articleLink = response.data.html_url;
-        this.articleSize = response.data.size;
-        this.articleReadingTime = parseInt(2 * parseInt(this.articleSize) / 1024);
+        this.articleSize = response.data.size / 1024;
+        this.articleReadingTime = parseInt(2 * parseInt(this.articleSize));
+        this.articleSha = response.data.sha;
 
         if (response.data.encoding === "base64") {
           // Parse encoded Base64 to markdown
@@ -244,6 +247,22 @@ export default {
       this.setCodeStyle();
       this.setMarkdownStyle();
       this.setCardStyle();
+    },
+
+    onCopySuccess: function () {
+      this.$notify({
+        title: "Copy successfully 😁",
+        message: "The link is on your clipboard.",
+        type: "success"
+      });
+    },
+
+    onCopyError: function () {
+      this.$notify({
+        title: "Copy failed 😥",
+        message: "There might be a BUG.",
+        type: "error"
+      });
     }
 
   },

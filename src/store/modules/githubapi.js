@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/01/27
+ * @version 2020/02/04
  * @description
  *    Vuex store for saving current content component
  */
@@ -178,6 +178,32 @@ const state = {
           return a - b;
         }
       }
+    },
+    understanding_the_jvm: {
+      /**
+       * Understanding the JVM
+       *    commit: notes commit record
+       *    img_prefix: url replacement prefix of images in the notes
+       *    img_matcher: image url in notes -  <img src="../img/
+       */
+      content: "https://api.github.com/repos/mrdrivingduck/understanding-the-jvm/contents/",
+      commit: "https://api.github.com/repos/mrdrivingduck/understanding-the-jvm/commits?path=",
+      // img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/understanding-the-jvm/master/img/',
+      // img_matcher: /<img\ssrc="\.\.\/img\//g,
+      file_filter: /^.*\.md$/,
+      dir_filter: /^Part.*$/,
+      sort: function (a, b) {
+        let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
+        let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
+
+        // Chapter 12.10 - xxxxxx
+        // Chapter 12 - xxxxxx
+        if (idxFrontArr[0] === idxBackArr[0]) {
+          return parseInt(idxFrontArr[1]) - parseInt(idxBackArr[1]);
+        } else {
+          return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
+        }
+      }
     }
   },
   emotion: {
@@ -186,11 +212,6 @@ const state = {
   }
 };
 
-const mutations = {
-
-};
-
 export default {
-  state,
-  mutations
+  state
 }

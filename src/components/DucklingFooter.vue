@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/01/27
+  @version - 2020/02/05
 
   @description - 
     The index component for displaying fotter
@@ -15,36 +15,33 @@
 
     <div style="margin-bottom: 50px;">
 
-      <el-row type="flex">
+      <div style="text-align: center;">
+        <el-link
+          style="width: 32px; height: 32px;"
+          :underline="false"
+          :href="repo_url">
+          <el-image
+            :src="theme === 'dark' ? github_link_dark : github_link_light"
+            fit="fit">
+          </el-image>
+        </el-link>
+      </div>
 
-        <el-col
-          :span="13">
-          <p style="float: right; margin-right: 0px">Page built by
-          <el-link
-            type="primary"
-            href="mailto:mrdrivingduck@gmail.com">
-            mrdrivingduck
-          </el-link>
-          ©2020</p>
-        </el-col>
-
-        <el-col :span="11">
-          <el-link
-            style="width: 32px; height: 32px; vertical-align:middle; margin-left: 20px"
-            :underline="false"
-            :href="repo_url">
-            <el-image
-              :src="theme === 'dark' ? github_link_dark : github_link_light"
-              fit="fit">
-            </el-image>
-          </el-link>
-
-          <span
-            style="display: inline-block; height: 100%; vertical-align: middle;">
-          </span>
-        </el-col>
-
-      </el-row>
+      <div style="text-align: center;">
+        <p>
+          Copyright © 2018-2020, 
+            <el-link
+              type="primary"
+              href="mailto:mrdrivingduck@gmail.com">
+              Jingtang Zhang
+            </el-link>
+          . <el-link
+              type="primary"
+              href="LICENSE">
+              (MIT License)
+            </el-link>
+        </p>
+      </div>
 
     </div>
 

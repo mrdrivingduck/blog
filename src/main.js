@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/01/26
+ * @version 2020/02/04
  * @description 
  *    The entry file.
  */
@@ -8,7 +8,9 @@
 import Vue from "vue";
 import ElementUI from "element-ui";
 import Axios from "axios";
+import VueClipboard from "vue-clipboard2";
 
+Vue.use(VueClipboard);
 Vue.use(ElementUI);
 Vue.prototype.$http = Axios;
 
