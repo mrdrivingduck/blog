@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/04
+  @version - 2020/02/07
 
   @description - 
     The content component for displaying markdown files
@@ -34,26 +34,28 @@
       <el-divider></el-divider>
 
       <p>
-        🔗 Origin Link?  
-        <el-link type="primary" :href="this.articleLink"> GitHub </el-link>
+        🔗
+        <el-link type="primary" :href="this.articleLink">
+          Origin link from GitHub
+        </el-link>
       </p>
       <p>
-        📧 Something wrong? - 
+        📧
         <el-link
           type="warning"
           href="mailto:mrdrivingduck@gmail.com">
-          Tell me
+          Tell me if there is something wrong
         </el-link>
       </p>
 
       <p>
-        📌 Copy the link to the clipboard? - 
+        📌
         <el-link
           type="warning"
           v-clipboard:copy="copyLink"
           v-clipboard:success="onCopySuccess"
           v-clipboard:error="onCopyError">
-          Click here
+          Copy the link to the clipboard
         </el-link>
       </p>
 
@@ -249,6 +251,7 @@ export default {
       this.setCardStyle();
     },
 
+    // For copying links hint (success)
     onCopySuccess: function () {
       this.$notify({
         title: "Copy successfully 😁",
@@ -257,6 +260,7 @@ export default {
       });
     },
 
+    // For copying links hint (failed)
     onCopyError: function () {
       this.$notify({
         title: "Copy failed 😥",

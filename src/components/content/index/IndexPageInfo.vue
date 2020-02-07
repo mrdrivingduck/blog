@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/01/26
+  @version - 2020/02/07
 
   @description - 
     The index component for displaying page information
@@ -18,7 +18,7 @@
           @mrdrivingduck
         </el-link>
       </p>
-      <p> Page build by <i> duckling </i> version <b> 0.20.01 </b> </p>
+      <p> Page build by <i> duckling </i> version <b> 0.20.02 </b> </p>
 
     <el-divider></el-divider>
 
@@ -28,7 +28,9 @@
 
       <p style="font-size: 30px;"> Last commit </p>
       <p> 📤 {{ lastCommitMessage }} </p>
-      <p><b> ⌚ {{ lastCommitTime }}</b> by <b> {{ lastCommitter }} </b> </p>
+      <p><b> ⌚ {{ lastCommitTime }}</b> by
+        <el-link :href="lastCommitterLink" type="primary"> {{ lastCommitter }} </el-link>
+      </p>
     </div>
 
     <el-divider></el-divider>
@@ -39,7 +41,9 @@
 
       <p style="font-size: 30px;"> Last deploy </p>
       <p><b> 🔏 {{ lastDeploySha }}</b></p>
-      <p><b> ⌚ {{ lastDeployTime }}</b> by <b> {{ lastDeployer }} </b> </p>
+      <p><b> ⌚ {{ lastDeployTime }}</b> by
+        <el-link :href="lastDeployerLink" type="primary"> {{ lastDeployer }} </el-link>
+      </p>
     </div>
 
     <el-divider></el-divider>
@@ -76,14 +80,16 @@ export default {
 
       // Last commit info
       lastCommitTime: null,
-      lastCommitter: null,
       lastCommitMessage: null,
       lastCommitSha: null,
+      lastCommitter: null,
+      lastCommitterLink: null,
       commitLoading: false,
 
       // Last deploy info
       lastDeployTime: null,
       lastDeployer: null,
+      lastDeployerLink: null,
       lastDeploySha: null,
       deployLoading: false,
 
@@ -112,6 +118,11 @@ export default {
           name: "Vue CLI",
           description: "🛠️ Standard Tooling for Vue.js Development.",
           link: "https://cli.vuejs.org/"
+        },
+        {
+          name: "Vue Clipboard 2",
+          description: "A simple vue2 binding to clipboard.js.",
+          link: "https://github.com/Inndy/vue-clipboard2"
         },
         {
           name: "Axios",
@@ -176,11 +187,13 @@ export default {
 
       this.$http.get(url).then(response => {
         // Fill the data
-        let { commit, sha } = response.data[0];
-        let { committer, message } = commit;
-        let { name, date } = committer;
+        let { commit, committer, sha } = response.data[0];
+        let { message } = commit;
+        let { name, date } = commit.committer;
+        let { html_url } = committer;
         this.lastCommitTime = date;
         this.lastCommitter = name;
+        this.lastCommitterLink = html_url;
         this.lastCommitMessage = message;
         this.lastCommitSha = sha;
         // Set commit loading status
@@ -203,10 +216,11 @@ export default {
       this.$http.get(url).then(response => {
         // Fill the data
         let { creator, sha, updated_at } = response.data[0];
-        let { login } = creator;
+        let { login, html_url } = creator;
         this.lastDeployTime = updated_at;
         this.lastDeploySha = sha;
         this.lastDeployer = login;
+        this.lastDeployerLink = html_url;
         // Set deploy loading status
         this.deployLoading = false;
 
