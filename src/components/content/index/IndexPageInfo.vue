@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/07
+  @version - 2020/02/24
 
   @description - 
     The index component for displaying page information
@@ -18,7 +18,7 @@
           @mrdrivingduck
         </el-link>
       </p>
-      <p> Page build by <i> duckling </i> version <b> 0.20.02 </b> </p>
+      <p> Page build by <i> duckling </i> version <b> 0.20.03 </b> </p>
 
     <el-divider></el-divider>
 
@@ -121,7 +121,7 @@ export default {
         },
         {
           name: "Vue Clipboard 2",
-          description: "A simple vue2 binding to clipboard.js.",
+          description: "A simple Vue2 binding to clipboard.js.",
           link: "https://github.com/Inndy/vue-clipboard2"
         },
         {

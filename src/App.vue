@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/10/26
+  @version - 2020/02/24
 
   @description - 
     The entry component.
@@ -45,6 +45,7 @@
 <style>
   .content {
     margin-left: 50px;
+    margin-right: 50px;
   }
 </style>
 
