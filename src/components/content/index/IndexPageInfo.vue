@@ -24,25 +24,21 @@
 
     <div
       v-if="!fail"
-      v-loading="commitLoading">
+      v-loading="loading">
 
-      <p style="font-size: 30px;"> Last commit </p>
-      <p> 📤 {{ lastCommitMessage }} </p>
-      <p><b> ⌚ {{ lastCommitTime }}</b> by
-        <el-link :href="lastCommitterLink" type="primary"> {{ lastCommitter }} </el-link>
+      <p style="font-size: 30px;"> Deployment </p>
+      <p> 📤 {{ deployment.commit.message }} </p>
+      <p>
+        ⌚ Last commit at <b>{{ deployment.commit.committedDate }}</b> by
+        <el-link :href="deployment.commit.committer.user.url" type="primary">
+          {{ deployment.commit.committer.user.name }}
+        </el-link>
       </p>
-    </div>
-
-    <el-divider></el-divider>
-
-    <div
-      v-if="!fail"
-      v-loading="deployLoading">
-
-      <p style="font-size: 30px;"> Last deploy </p>
-      <p><b> 🔏 {{ lastDeploySha }}</b></p>
-      <p><b> ⌚ {{ lastDeployTime }}</b> by
-        <el-link :href="lastDeployerLink" type="primary"> {{ lastDeployer }} </el-link>
+      <p>
+        ⌚ Last deployment at <b>{{ deployment.createdAt }}</b> by
+        <el-link :href="deployment.creator.url" type="primary">
+          {{ deployment.creator.login }}
+        </el-link>
       </p>
     </div>
 
@@ -74,29 +70,9 @@
 
 <script>
 export default {
-  props: [ "theme" ],
+  props: [ "theme", "loading", "fail", "deployment" ],
   data: function() {
     return {
-
-      // Last commit info
-      lastCommitTime: null,
-      lastCommitMessage: null,
-      lastCommitSha: null,
-      lastCommitter: null,
-      lastCommitterLink: null,
-      commitLoading: false,
-
-      // Last deploy info
-      lastDeployTime: null,
-      lastDeployer: null,
-      lastDeployerLink: null,
-      lastDeploySha: null,
-      deployLoading: false,
-
-      // HTTP status
-      fail: false,
-      failReason: "",
-
       // Supporting tech.
       supporting: [
         {
@@ -173,64 +149,6 @@ export default {
     };
   },
   created: function() {
-    this.getCommits();
-    this.getDeploys();
-  },
-  methods: {
-
-    // Get last commit info
-    getCommits: function() {
-      const url = this.$store.state.githubapi.api["user"].commit;
-      this.commitLoading = true;
-      this.fail = false;
-      this.failReason = "";
-
-      this.$http.get(url).then(response => {
-        // Fill the data
-        let { commit, committer, sha } = response.data[0];
-        let { message } = commit;
-        let { name, date } = commit.committer;
-        let { html_url } = committer;
-        this.lastCommitTime = date;
-        this.lastCommitter = name;
-        this.lastCommitterLink = html_url;
-        this.lastCommitMessage = message;
-        this.lastCommitSha = sha;
-        // Set commit loading status
-        this.commitLoading = false;
-
-      }).catch(error => {
-        // HTTP failed
-        this.fail = true;
-        this.failReason = error.message;
-      });
-    },
-
-    // Get last deploy info
-    getDeploys: function() {
-      const url = this.$store.state.githubapi.api["user"].deploy;
-      this.deployLoading = true;
-      this.fail = false;
-      this.failReason = "";
-
-      this.$http.get(url).then(response => {
-        // Fill the data
-        let { creator, sha, updated_at } = response.data[0];
-        let { login, html_url } = creator;
-        this.lastDeployTime = updated_at;
-        this.lastDeploySha = sha;
-        this.lastDeployer = login;
-        this.lastDeployerLink = html_url;
-        // Set deploy loading status
-        this.deployLoading = false;
-
-      }).catch(error => {
-        // HTTP failed
-        this.fail = true;
-        this.failReason = error.message;
-      });
-    }
-
   }
 }
 </script>

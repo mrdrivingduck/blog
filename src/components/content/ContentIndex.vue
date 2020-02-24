@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/01/26
+  @version - 2020/02/24
 
   @description - 
     The content component for displaying pernal information
@@ -33,7 +33,7 @@
             <p>
               <b style="font-size: 25px">{{ name }}</b>
               &nbsp;&nbsp;&nbsp;
-              @{{ aliase }}
+              @mrdrivingduck
             </p>
 
             <el-divider></el-divider>
@@ -71,7 +71,8 @@
       :text-color="this.textColor"
       :active-text-color="this.activeTextColor"
       @select="selectIndex"
-      style="margin-top: 30px;">
+      style="margin-top: 30px;"
+      >
       <el-menu-item index="0"> About Me </el-menu-item>
       <el-menu-item index="1"> Emotions </el-menu-item>
       <el-menu-item index="2"> Tech. Stack </el-menu-item>
@@ -83,6 +84,9 @@
       <component
         style="margin-top: 50px;"
         :theme="theme"
+        :loading="loading"
+        :fail="fail"
+        :deployment="deployment"
         v-bind:is="tabs[selectedTab]">
       </component>
     </keep-alive>
@@ -121,10 +125,12 @@ export default {
 
       // Card info
       name: "",
-      aliase: "",
       bio: "",
       location: "",
       company: "",
+
+      // deployment
+      deployment: null,
 
       // Network status
       loading: true,
@@ -153,14 +159,21 @@ export default {
       this.fail = false;
       this.failReason = "";
 
-      let url = this.$store.state.githubapi.api["user"].content;
-      this.$http.get(url).then(response => {
-        let { name, bio, location, company, login } = response.data;
+      let url = this.$store.state.githubapi.apiv4;
+      let token = this.$store.state.githubapi.pat;
+      let query = this.$store.state.githubapi.query["user"]["content"];
+      this.$http.post(url, { query }, {
+        headers: {
+          "Authorization": "bearer " + token
+        }
+      }).then(response => {
+        let { name, bio, location, company } = response.data.data.user;
         this.name = name;
-        this.aliase = login;
         this.bio = bio;
         this.location = location;
         this.company = company;
+        this.deployment = response.data.data.repository.deployments.nodes[0];
+        console.log(this.deployment)
         // Loading complete
         this.loading = false;
 

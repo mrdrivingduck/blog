@@ -1,21 +1,31 @@
 /**
  * @author Mr Dk.
- * @version 2020/02/04
+ * @version 2020/02/24
  * @description
  *    Vuex store for saving current content component
  */
 
 const state = {
-  api: {
+  apiv4: "https://api.github.com/graphql",
+  pat: "8dabb6716643dcb2e3ce0e45da5eee425c8c8c47",
+  query: {
     user: {
       /**
        * user info
        *    commit - GitHub page repo commit
        *    deploy - GitHub page repo deploy
        */
-      content: "https://api.github.com/users/mrdrivingduck",
-      commit: "https://api.github.com/repos/mrdrivingduck/mrdrivingduck.github.io/commits?path=",
-      deploy: "https://api.github.com/repos/mrdrivingduck/mrdrivingduck.github.io/deployments"
+      content: `query { 
+                  user(login: "mrdrivingduck") { name, location, bio, company },
+                  repository(name: "mrdrivingduck.github.io", owner: "mrdrivingduck") {
+                    deployments(last: 1) {
+                      nodes {
+                        createdAt, creator { login, url },
+                        commit { message, committedDate, committer { user { name, url }, date } }
+                      }
+                    }
+                  }
+                }`
     },
     notes: {
       /**
