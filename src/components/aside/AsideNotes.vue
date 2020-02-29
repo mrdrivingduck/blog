@@ -33,8 +33,9 @@
         <!-- Every notes in a directory -->
         <el-menu-item
           v-for="(note, noteIdx) in directory[dirIdx].object.entries"
-          @click="clickNote(note)"
+          @click="clickNote"
           :key="note.name"
+          :path="dir.name + '/' + note.name"
           :index="index + '-' + (dirIdx + 1) + '-' + (noteIdx + 1)">
 
           <template slot="title">
@@ -61,12 +62,12 @@ export default {
   methods: {
 
     // Jump to the note detail
-    clickNote: function (noteObj) {
+    clickNote: function (note) {
       this.$router.push({
         path: "/markdown",
         query: {
           repo: this.repo,
-          path: noteObj.path
+          path: note.$attrs.path
         }
       }).catch(err => { err });
     }

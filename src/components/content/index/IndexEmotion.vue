@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/12/20
+  @version - 2020/02/29
 
   @description - 
     The index component for displaying emotions
@@ -9,7 +9,10 @@
 -->
 
 <template>
-  <div :class="theme" v-loading="this.loading">
+  <div
+    :class="theme"
+    v-if="!this.loading"
+    v-loading="this.loadingInside">
 
     <el-timeline
       v-if="!fail">
@@ -71,13 +74,13 @@
 import CryptoJS from "crypto-js";
 
 export default {
-  props: ["theme"],
+  props: ["theme", "emotionsDate", "loading"],
   data: function() {
     return {
 
       fail: true,
       failReason: "",
-      loading: true,
+      loadingInside: true,
 
       emotions: [],
       current: 0,
@@ -89,65 +92,79 @@ export default {
 
   methods: {
 
-    getEmotions: function() {
-      const repoUrl = this.$store.state.githubapi.emotion.url;
-      const emotionFilter = this.$store.state.githubapi.emotion.fileFilter;
-      this.loading = true;
-      this.emotions = [];
-      this.$http.get(repoUrl).then(response => {
-
-        for (let i = 0; i < response.data.length; i++) {
-          if (emotionFilter.test(response.data[i].name)) {
-            let { name, url } = response.data[i];
-            this.emotions.push({
-              date: name,
-              url
-            });
-          }
+    getEmotion: function() {
+      const fileFilter = this.$store.state.githubapi.query["emotions"].fileFilter;
+      for (let i = 0; i < this.emotionsDate.length; i++) {
+        if (fileFilter.test(this.emotionsDate[i].name)) {
+          this.emotions.push(this.emotionsDate[i]);
         }
-
+      }
+      if (this.emotions.length > 0) {
         this.emotions.reverse();
         this.getEmotionContent(0);
-
-        this.fail = false;
-        // this.loading = false;
-
-      }).catch(error => {
-        this.fail = true;
-        this.failReason = error.message;
-        this.loading = false;
-      })
+      }
     },
 
-    getEmotionContent: function (index) {
-      this.loading = true;
+    getEmotionContent: function(index) {
+      this.loadingInside = true;
+      this.fail = false;
       this.emotionText = [];
-      this.$http.get(this.emotions[index].url).then(response => {
-        if (response.data.encoding === "base64") {
-          const key = CryptoJS.enc.Utf8.parse("zha" + "ngj" + "t199" + "700000");
-          let base64 = decodeURIComponent(escape(window.atob(response.data.content)));
-          let encodedPlain = CryptoJS.AES.decrypt(base64, key, {
-            mode: CryptoJS.mode.ECB,
-            padding: CryptoJS.pad.Pkcs7
-          });
-          let plain = encodedPlain.toString(CryptoJS.enc.Utf8);
-          
-          this.emotionText = plain.split("\n");
-          this.date = this.emotions[index].date;
 
-        } else {
-          // Encoding not support
-          this.emotionText.push("Encoding not support.");
+      let url = this.$store.state.githubapi.apiv4;
+      let token = this.$store.state.githubapi.pat;
+      let query = this.$store.state.githubapi.query["emotions"].query;
+      query = query.replace(/<date>/, this.emotions[index].name);
+
+      this.$http.post(url, { query }, {
+        headers: {
+          "Authorization": "bearer " + token
         }
+      }).then(response => {
+        let cipher = response.data.data.emotions.object.text;
+        const key = CryptoJS.enc.Utf8.parse("zha" + "ngj" + "t199" + "700000");
+        let encodedPlain = CryptoJS.AES.decrypt(cipher, key, {
+          mode: CryptoJS.mode.ECB,
+          padding: CryptoJS.pad.Pkcs7
+        });
+        let plain = encodedPlain.toString(CryptoJS.enc.Utf8);
+        
+        this.emotionText = plain.split("\n");
+        this.date = this.emotions[index].name;
 
-        this.fail = false;
-        this.loading = false;
+        this.loadingInside = false;
 
       }).catch(error => {
+        // HTTP failed
         this.fail = true;
         this.failReason = error.message;
-        this.loading = false;
-      })
+      });
+
+      // this.$http.get(this.emotions[index].url).then(response => {
+      //   if (response.data.encoding === "base64") {
+      //     const key = CryptoJS.enc.Utf8.parse("zha" + "ngj" + "t199" + "700000");
+      //     let base64 = decodeURIComponent(escape(window.atob(response.data.content)));
+      //     let encodedPlain = CryptoJS.AES.decrypt(base64, key, {
+      //       mode: CryptoJS.mode.ECB,
+      //       padding: CryptoJS.pad.Pkcs7
+      //     });
+      //     let plain = encodedPlain.toString(CryptoJS.enc.Utf8);
+          
+      //     this.emotionText = plain.split("\n");
+      //     this.date = this.emotions[index].date;
+
+      //   } else {
+      //     // Encoding not support
+      //     this.emotionText.push("Encoding not support.");
+      //   }
+
+      //   this.fail = false;
+      //   this.loading = false;
+
+      // }).catch(error => {
+      //   this.fail = true;
+      //   this.failReason = error.message;
+      //   this.loading = false;
+      // })
     },
 
     preEmotion: function() {
@@ -168,7 +185,7 @@ export default {
       if (previous) {
         let str = "Previous Emotion: ";
         if (this.current != this.emotions.length - 1) {
-          return str + "📅 " + this.emotions[this.current + 1].date;
+          return str + "📅 " + this.emotions[this.current + 1].name;
         } else {
           // No more previous emotion
           return str + "😅 no more";
@@ -176,7 +193,7 @@ export default {
       } else {
         let str = "Next Emotion: ";
         if (this.current != 0) {
-          return str + "📅 " + this.emotions[this.current - 1].date;
+          return str + "📅 " + this.emotions[this.current - 1].name;
         } else {
           // No more next emotion
           return str + "😅 no more";
@@ -185,9 +202,9 @@ export default {
     }
     
   },
-
+  
   created: function() {
-    this.getEmotions();
+    this.getEmotion();
   }
 
 }

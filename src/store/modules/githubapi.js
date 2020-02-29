@@ -15,14 +15,24 @@ const state = {
      * User info
      * Commit info
      * Deployment info
+     * Emotions
      */
     user: `query { 
             user(login: "mrdrivingduck") { name, location, bio, company },
-            repository(name: "mrdrivingduck.github.io", owner: "mrdrivingduck") {
+            io: repository(name: "mrdrivingduck.github.io", owner: "mrdrivingduck") {
               deployments(last: 1) {
                 nodes {
                   createdAt, creator { login, url },
                   commit { message, committedDate, committer { user { name, url }, date } }
+                }
+              }
+            },
+            emotions: repository(name: "emotions", owner: "mrdrivingduck") {
+              object(expression: "master:") {
+                ... on Tree {
+                  entries {
+                    name
+                  }
                 }
               }
             }
@@ -54,7 +64,7 @@ const state = {
                   ...getDirectory
                 }
               }
-              us_os_ii_code_notes: repository(name: "uc-os-ii-code-notes", owner: "mrdrivingduck") {
+              uc_os_ii_code_notes: repository(name: "uc-os-ii-code-notes", owner: "mrdrivingduck") {
                 object(expression: "master:") {
                   ...getDirectory
                 }
@@ -73,6 +83,76 @@ const state = {
                 oid
               }
             }`,
+    notelist: `query { 
+                repository(name: "<repo>", owner: "mrdrivingduck") {
+                  object(expression: "master:<path>") {
+                    ... on Tree {
+                      entries {
+                        name
+                        type
+                        oid
+                        object {
+                          ... on Blob {
+                            byteSize
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }`,
+    outline_list: `query { 
+                    repository(name: "<repo>", owner: "mrdrivingduck") {
+                      object(expression: "master:<path>") {
+                        ... on Tree {
+                          entries {
+                            name
+                            object {
+                              ... on Tree {
+                                entries {
+                                  name
+                                  oid
+                                  object {
+                                    ... on Blob {
+                                      byteSize
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }`,
+    markdown: `query { 
+                repository(name: "<repo>", owner: "mrdrivingduck") {
+                  object(expression: "master:<path>") {
+                    ... on Blob {
+                      oid
+                      byteSize
+                      text
+                    }
+                  }
+                  defaultBranchRef {
+                    target {
+                      ... on Commit {
+                        history(path: "<path>") {
+                          nodes {
+                            oid
+                            committedDate
+                            committer {
+                              user {
+                                name
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }`,
 
     notes: {
       /**
@@ -81,8 +161,8 @@ const state = {
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
        */
-      content: "https://api.github.com/repos/mrdrivingduck/notes/contents/",
-      commit: "https://api.github.com/repos/mrdrivingduck/notes/commits?path=",
+      // content: "https://api.github.com/repos/mrdrivingduck/notes/contents/",
+      // commit: "https://api.github.com/repos/mrdrivingduck/notes/commits?path=",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/notes/master/img/',
       imgMatcher: /<img\ssrc="\.\.\/img\//g,
       fileFilter: /^Chapter.*$/,
@@ -95,8 +175,8 @@ const state = {
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
        */
-      content: "https://api.github.com/repos/mrdrivingduck/paper-outline/contents/",
-      commit: "https://api.github.com/repos/mrdrivingduck/paper-outline/commits?path=",
+      // content: "https://api.github.com/repos/mrdrivingduck/paper-outline/contents/",
+      // commit: "https://api.github.com/repos/mrdrivingduck/paper-outline/commits?path=",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/paper-outline/master/img/',
       imgMatcher: /<img\ssrc="\.\.\/\.\.\/img\//g,
       fileFilter: /^Outline.*$/,
@@ -109,8 +189,8 @@ const state = {
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
        */
-      content: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/contents/",
-      commit: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/commits?path=",
+      // content: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/contents/",
+      // commit: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/commits?path=",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/how-linux-works-notes/master/img/',
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
@@ -135,8 +215,8 @@ const state = {
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
        */
-      content: "https://api.github.com/repos/mrdrivingduck/linux-kernel-comments-notes/contents/",
-      commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-comments-notes/commits?path=",
+      // content: "https://api.github.com/repos/mrdrivingduck/linux-kernel-comments-notes/contents/",
+      // commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-comments-notes/commits?path=",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-comments-notes/master/img/',
       imgMatcher: /<img\ssrc="\.\.\/img\//g,
       fileFilter: /^.*\.md$/,
@@ -161,8 +241,8 @@ const state = {
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
        */
-      content: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/contents/",
-      commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/commits?path=",
+      // content: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/contents/",
+      // commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/commits?path=",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-development-notes/master/img/',
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
@@ -179,15 +259,15 @@ const state = {
         }
       }
     },
-    us_os_ii_code_notes: {
+    uc_os_ii_code_notes: {
       /**
        * μC/OS-II notes content
        *    commit: notes commit record
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
        */
-      content: "https://api.github.com/repos/mrdrivingduck/uc-os-ii-code-notes/contents/",
-      commit: "https://api.github.com/repos/mrdrivingduck/uc-os-ii-code-notes/commits?path=",
+      // content: "https://api.github.com/repos/mrdrivingduck/uc-os-ii-code-notes/contents/",
+      // commit: "https://api.github.com/repos/mrdrivingduck/uc-os-ii-code-notes/commits?path=",
       imgPrefix: '',
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^.*\.md$/,
@@ -212,8 +292,8 @@ const state = {
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
        */
-      content: "https://api.github.com/repos/mrdrivingduck/jdk-source-code-analysis/contents/",
-      commit: "https://api.github.com/repos/mrdrivingduck/jdk-source-code-analysis/commits?path=",
+      // content: "https://api.github.com/repos/mrdrivingduck/jdk-source-code-analysis/contents/",
+      // commit: "https://api.github.com/repos/mrdrivingduck/jdk-source-code-analysis/commits?path=",
       imgPrefix: '',
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^(Class|Abstract|Interface).*$/,
@@ -243,8 +323,8 @@ const state = {
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
        */
-      content: "https://api.github.com/repos/mrdrivingduck/understanding-the-jvm/contents/",
-      commit: "https://api.github.com/repos/mrdrivingduck/understanding-the-jvm/commits?path=",
+      // content: "https://api.github.com/repos/mrdrivingduck/understanding-the-jvm/contents/",
+      // commit: "https://api.github.com/repos/mrdrivingduck/understanding-the-jvm/commits?path=",
       // imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/understanding-the-jvm/master/img/',
       // imgMatcher: /<img\ssrc="\.\.\/img\//g,
       fileFilter: /^.*\.md$/,
@@ -261,11 +341,19 @@ const state = {
           return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
         }
       }
+    },
+    emotions: {
+      query: `query { 
+                emotions: repository(name: "emotions", owner: "mrdrivingduck") {
+                  object(expression: "master:<date>") {
+                    ... on Blob {
+                      text
+                    }
+                  }
+                }
+              }`,
+      fileFilter: /^[^.]*$/
     }
-  },
-  emotion: {
-    url: "https://api.github.com/repos/mrdrivingduck/emotions/contents/",
-    fileFilter: /^[^.]*$/,
   }
 };
 

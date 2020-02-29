@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/07
+  @version - 2020/02/29
 
   @description - 
     The content component for displaying paper outlines
@@ -40,11 +40,11 @@
           </span>
           <el-button
             style="float: right" type="text"
-            @click="clickOutline(outline.resource)">
+            @click="clickOutline(outline)">
             Detail
           </el-button>
         </div>
-        <div v-loading="outline.loading">
+        <div>
           <div v-if="outline.resource">
             <p>
               💾 File size: <b> {{ outline.resource.size }} </b> KiB
@@ -62,15 +62,19 @@
                 Copy the link to the clipboard
               </el-link>
             </p>
-            <p>
-              🖨️
-              <el-link :href="outline.pdf.download_url" type="primary">
-                Paper download </el-link>
-            </p>
-            <p v-if="outline.slide ? true : false" v-loading="outline.loading">
-              📽️ <el-link :href="outline.slide.download_url" type="primary"> Slides download </el-link>
-            </p>
           </div>
+          <p v-if="outline.pdf ? true : false">
+            🖨️
+            <el-link :href="outline.pdf.download_url" type="primary">
+              Paper download
+            </el-link>
+          </p>
+          <p v-if="outline.slide ? true : false">
+            📽️
+            <el-link :href="outline.slide.download_url" type="primary">
+              Slides download
+            </el-link>
+          </p>
         </div>
 
       </el-card>
@@ -124,67 +128,69 @@ export default {
     loadOutlineDirectory: function() {
       const repo = this.$route.query.repo;
       const path = this.$route.query.path;
-      // Get topic URL
-      const url = this.$store.state.githubapi.api[repo].content + path;
-      // Initialize component status
+
       this.outlines = [];
       this.fail = false;
       this.failReason = "";
       this.loading = true;
-      // Issue HTTP request
-      this.$http.get(url).then(response => {
-        for (let i = 0; i < response.data.length; i++) {
-          let { url, name, path } = response.data[i];
-          name = name.replace(" -", ":");
-          this.outlines.push({ url, name, path });
-          this.loadOutlineUrl(this.outlines[i], repo);
+
+      const api = this.$store.state.githubapi.query;
+      const url = this.$store.state.githubapi.apiv4;
+      const token = this.$store.state.githubapi.pat;
+
+      const regExpr = api[repo].fileFilter;
+      const pdfFormatReg = this.$store.state.regexpre.pdfFormatReg;
+      const pptFormatReg = this.$store.state.regexpre.pptFormatReg;
+
+      let query = api.outline_list;
+      query = query.replace("<repo>", repo.replace(/_/g, "-"));
+      query = query.replace("<path>", path);
+
+      this.$http.post(url, { query }, {
+        headers: {
+          "Authorization": "bearer " + token
         }
-        // All directories in a topic load complete
-        this.loading = false;
-        
-      }).catch(error => {
-        // HTTP failure
-        this.fail = true;
-        this.failReason = error.message;
-      });
-    },
-
-    // Load outline file metadata in a directory
-    loadOutlineUrl: function (dirObj, repo) {
-      // Set loading status of metadata
-      this.$set(dirObj, "loading", true);
-      const apis = this.$store.state.githubapi.api;
-      const outlineNameReg = apis[repo].fileFilter;
-      // Issue HTTP request
-      this.$http.get(dirObj.url).then(response => {
-        const pdfFormatReg = this.$store.state.regexpre.pdfFormatReg;
-        const pptFormatReg = this.$store.state.regexpre.pptFormatReg;
-
-        for (let i = 0; i < response.data.length; i++) {
-          if (outlineNameReg.test(response.data[i].name)) {
-            // Filter only outline files in markdown format
-            let { sha, size, path } = response.data[i];
-            // Set the metadata, change loading status
-            this.$set(dirObj, "resource", {
-              sha, path, repo, size: size / 1024,
-              copyLink: "https://mrdrivingduck.github.io/#/markdown?repo=" + repo + "&path=" + path
-            });
-            this.$set(dirObj, "loading", false);
-
-          } else if (pdfFormatReg.test(response.data[i].name)) {
-            let { download_url } = response.data[i];
-            this.$set(dirObj, "pdf", { download_url });
-          } else if (pptFormatReg.test(response.data[i].name)) {
-            let { download_url } = response.data[i];
-            this.$set(dirObj, "slide", { download_url });
+      }).then(response => {
+        let originData = response.data.data.repository.object.entries;
+        for (let i = 0; i < originData.length; i++) {
+          this.outlines.push({
+            name: originData[i].name.replace(" -", ":"),
+            path: path + "/" + originData[i].name,
+            repo: repo
+          });
+          for (let j = 0; j < originData[i].object.entries.length; j++) {
+            if (regExpr.test(originData[i].object.entries[j].name)) {
+              this.$set(this.outlines[i], "resource", {
+                sha: originData[i].object.entries[j].oid,
+                path: this.outlines[i].path + "/" + originData[i].object.entries[j].name,
+                size: originData[i].object.entries[j].object.byteSize / 1024,
+                copyLink: "https://mrdrivingduck.github.io/#/markdown?repo="
+                            + repo + "&path=" + this.outlines[i].path + "/"
+                            + originData[i].object.entries[j].name
+              });
+            } else if (pdfFormatReg.test(originData[i].object.entries[j].name)) {
+              this.$set(this.outlines[i], "pdf", {
+                download_url: "https://raw.githubusercontent.com/mrdrivingduck/paper-outline/master/" +
+                              this.outlines[i].path + "/" + originData[i].object.entries[j].name
+              });
+            } else if (pptFormatReg.test(originData[i].object.entries[j].name)) {
+              this.$set(this.outlines[i], "slide", {
+                download_url: "https://raw.githubusercontent.com/mrdrivingduck/paper-outline/master/" +
+                              this.outlines[i].path + "/" + originData[i].object.entries[j].name
+              });
+            }
           }
         }
 
+        // Loading completed.
+        this.loading = false;
+
       }).catch(error => {
-        // HTTP failure
+        // HTTP failed
         this.fail = true;
         this.failReason = error.message;
       });
+
     },
 
     // Jump to the outline detail
@@ -193,7 +199,7 @@ export default {
         path: "/markdown",
         query: {
           repo: outline.repo,
-          path: outline.path
+          path: outline.resource.path
         }
       }).catch(err => { err });
     },

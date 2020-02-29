@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/07
+  @version - 2020/02/29
 
   @description - 
     The content component for displaying note list
@@ -47,9 +47,9 @@
         <p>
           💾 File size: <b> {{ note.size }} </b> KiB
         </p>
-        <p v-loading="note.loading">
+        <!-- <p v-loading="note.loading">
           📅 Last Modification: <b> {{ note.commitLastModification }} </b> by <b> {{ note.committer }} </b>
-        </p>
+        </p> -->
         <p>
           🔏 SHA: <b> {{ note.sha }} </b>
         </p>
@@ -114,70 +114,53 @@ export default {
 
     // Load one of the outline topic
     loadNoteDirectory: function() {
-      const repo = this.$route.query.repo;
-      const path = this.$route.query.path;
-      const apis = this.$store.state.githubapi.api;
-      const reg_expr = apis[repo].fileFilter;
-      const fileFilter = apis[repo].sort;
-
-      // Get topic URL
-      const url = this.$store.state.githubapi.api[repo].content + path;
-
-      // Initialize component status
       this.notes = [];
       this.currentPage = 1;
       this.fail = false;
       this.failReason = "";
       this.loading = true;
 
-      // Issue HTTP request
-      this.$http.get(url).then(response => {
-        for (let i = 0; i < response.data.length; i++) {
-          if (reg_expr.test(response.data[i].name)) {
-            let { name, path, sha, size } = response.data[i];
+      const repo = this.$route.query.repo;
+      const path = this.$route.query.path;
+      const api = this.$store.state.githubapi.query;
+      const url = this.$store.state.githubapi.apiv4;
+      const token = this.$store.state.githubapi.pat;
+
+      const regExpr = api[repo].fileFilter;
+      const sorter = api[repo].sort;
+
+      let query = api.notelist;
+      query = query.replace("<repo>", repo.replace(/_/g, "-"));
+      query = query.replace("<path>", path);
+
+      this.$http.post(url, { query }, {
+        headers: {
+          "Authorization": "bearer " + token
+        }
+      }).then(response => {
+        let originData = response.data.data.repository.object.entries;
+        for (let i = 0; i < originData.length; i++) {
+          if (regExpr.test(originData[i].name)) {
             this.notes.push({
-              name: name.replace(".md", ""), path, sha, repo,
-              size: size / 1024,
+              name: originData[i].name.replace(".md", ""),
+              repo,
+              path: path + "/" + originData[i].name,
+              sha: originData[i].oid,
+              size: originData[i].object.byteSize / 1024,
               copyLink: "https://mrdrivingduck.github.io/#/markdown?repo="
-                          + repo + "&path=" + path
+                          + repo + "&path=" + path + "/" + originData[i].name
             });
           }
         }
 
-        this.notes.sort(fileFilter);
+        // Sort all the notes according to the sorter.
+        this.notes.sort(sorter);
 
-        // All directories in a topic load complete
+        // Loading completed.
         this.loading = false;
 
-        for (let i = 0; i < this.notes.length; i++) {
-          this.loadCommitInfo(this.notes[i], repo);
-        }
-        
       }).catch(error => {
-        // HTTP failure
-        this.fail = true;
-        this.failReason = error.message;
-      });
-    },
-
-    // Load the latest commit info of the file
-    loadCommitInfo: function (fileObj, repo) {
-      this.$set(fileObj, "loading", true);
-      const apis = this.$store.state.githubapi.api;
-      let commit_url = apis[repo].commit;
-
-      this.$http.get(commit_url + encodeURIComponent(fileObj.path)).then(response => {
-        
-        // Get the last commit
-        let { commit, committer } = response.data[0];
-        this.$set(fileObj, "commitLastModification", commit.committer.date);
-        this.$set(fileObj, "committer", committer.login);
-
-        // Set loading status
-        this.$set(fileObj, "loading", false);
-
-      }).catch(error => {
-        // HTTP failure
+        // HTTP failed
         this.fail = true;
         this.failReason = error.message;
       });

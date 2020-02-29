@@ -24,7 +24,7 @@
       <el-menu-item
         v-for="(folder, idx) in directory"
         @click="clickFolder"
-        :meta="folder"
+        :path="folder.name"
         :key="folder.name"
         :index="index + '-' + (idx + 1)">
 
@@ -51,12 +51,11 @@ export default {
   methods: {
 
     clickFolder: function (folder) {
-      let path = folder.$attrs.meta.path;
       this.$router.push({
         path: "/notelist",
         query: {
           repo: this.repo,
-          path
+          path: folder.$attrs.path
         }
       }).catch(err => { err });
     }

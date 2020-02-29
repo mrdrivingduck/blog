@@ -49,7 +49,7 @@
       <!-- Sub-menu of μC/OS-II -->
       <aside-miu-cos-two
         :index="7"
-        :directory="asideData['us_os_ii_code_notes']"
+        :directory="asideData['uc_os_ii_code_notes']"
       ></aside-miu-cos-two>
 
       <!-- Sub-menu of JDK source code analysis -->
@@ -120,9 +120,10 @@ export default {
       this.fail = false;
       this.failReason = "";
 
-      let url = this.$store.state.githubapi.apiv4;
-      let token = this.$store.state.githubapi.pat;
-      let query = this.$store.state.githubapi.query;
+      const url = this.$store.state.githubapi.apiv4;
+      const token = this.$store.state.githubapi.pat;
+      const query = this.$store.state.githubapi.query;
+      
       this.$http.post(url, { query: query["aside"] }, {
         headers: {
           "Authorization": "bearer " + token

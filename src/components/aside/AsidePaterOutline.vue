@@ -23,7 +23,7 @@
       <el-menu-item
         v-for="(dir, dirIdx) in directory"
         @click="clickDir"
-        :meta="dir"
+        :path="dir.name"
         :key="dir.name"
         :index="index + '-' + (dirIdx + 1)">
 
@@ -47,13 +47,12 @@ export default {
   },
   methods: {
 
-    clickDir: function (item) {
-      let path = item.$attrs.meta.path;
+    clickDir: function (folder) {
       this.$router.push({
         path: "/outlinelist",
         query: {
           repo: this.repo,
-          path
+          path: folder.$attrs.path
         }
       }).catch(err => { err });
     }

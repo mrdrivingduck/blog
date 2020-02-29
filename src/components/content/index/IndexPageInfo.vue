@@ -23,8 +23,7 @@
     <el-divider></el-divider>
 
     <div
-      v-if="!fail"
-      v-loading="loading">
+      v-if="!fail">
 
       <p style="font-size: 30px;"> Deployment </p>
       <p> 📤 {{ deployment.commit.message }} </p>
@@ -70,9 +69,11 @@
 
 <script>
 export default {
-  props: [ "theme", "loading", "fail", "deployment" ],
+  props: [ "theme", "fail", "deployment" ],
   data: function() {
     return {
+      // deployment: null,
+
       // Supporting tech.
       supporting: [
         {
@@ -147,8 +148,6 @@ export default {
         }
       ]
     };
-  },
-  created: function() {
   }
 }
 </script>

@@ -9,7 +9,7 @@
 -->
 
 <template>
-  <div :theme="theme">
+  <div :theme="theme" v-loading="loading">
 
     <el-row :gutter="20">
 
@@ -26,7 +26,6 @@
         <div>
 
           <el-card
-            v-loading="loading"
             v-if="!fail"
             :style="{ backgroundColor: cardBackgroundColor, color: cardTextColor }">
 
@@ -86,7 +85,8 @@
         :theme="theme"
         :loading="loading"
         :fail="fail"
-        :deployment="deployment"
+        :deployment="deployData"
+        :emotionsDate="emotionsData"
         v-bind:is="tabs[selectedTab]">
       </component>
     </keep-alive>
@@ -129,8 +129,9 @@ export default {
       location: "",
       company: "",
 
-      // deployment
-      deployment: null,
+      // Public index data
+      deployData: null,
+      emotionsData: null,
 
       // Network status
       loading: true,
@@ -167,13 +168,14 @@ export default {
           "Authorization": "bearer " + token
         }
       }).then(response => {
+        this.deployData = response.data.data.io.deployments.nodes[0];
+        this.emotionsData = response.data.data.emotions.object.entries;
         let { name, bio, location, company } = response.data.data.user;
         this.name = name;
         this.bio = bio;
         this.location = location;
         this.company = company;
-        this.deployment = response.data.data.repository.deployments.nodes[0];
-        // Loading complete
+
         this.loading = false;
 
       }).catch(error => {

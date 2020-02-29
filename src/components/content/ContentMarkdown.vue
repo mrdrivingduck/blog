@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/07
+  @version - 2020/02/29
 
   @description - 
     The content component for displaying markdown files
@@ -11,64 +11,68 @@
 <template>
   <div>
 
-    <el-card
+    <div 
       v-if="!fail"
-      v-loading="loading"
-      class="basicinfo"
-      shadow="hover"
-      v-bind:style="{ backgroundColor: cardBackgroundColor, color: cardTextColor }">
+      v-loading="loading">
 
-      <p>
-        💾 File size: <b> {{ this.articleSize }} </b> KiB
-      </p>
-      <p>
-        ⏱️ Estimated Reading Time: <b> {{ this.articleReadingTime }} </b> min
-      </p>
-      <p>
-        📅 Last Modification: <b> {{ this.commitLastModification }} </b> by <b> {{ this.committer }} </b>
-      </p>
-      <p>
-        🔏 SHA: <b> {{ this.articleSha }} </b>
-      </p>
+      <el-card
+        class="basicinfo"
+        shadow="hover"
+        v-bind:style="{ backgroundColor: cardBackgroundColor, color: cardTextColor }">
 
-      <el-divider></el-divider>
+        <p>
+          💾 File size: <b> {{ this.articleSize }} </b> KiB
+        </p>
+        <p>
+          ⏱️ Estimated Reading Time: <b> {{ this.articleReadingTime }} </b> min
+        </p>
+        <p>
+          🧷 Created at: <b> {{ this.firstCreatedAt }} </b> by <b> {{ this.firstCreatedAtBy }} </b>
+        </p>
+        <p>
+          📅 Last Modification: <b> {{ this.lastCommitAt }} </b> by <b> {{ this.lastCommitter }} </b>
+        </p>
+        <p>
+          🔏 SHA: <b> {{ this.articleSha }} </b>
+        </p>
 
-      <p>
-        🔗
-        <el-link type="primary" :href="this.articleLink">
-          Origin link from GitHub
-        </el-link>
-      </p>
-      <p>
-        📧
-        <el-link
-          type="warning"
-          href="mailto:mrdrivingduck@gmail.com">
-          Tell me if there is something wrong
-        </el-link>
-      </p>
-      <p>
-        📌
-        <el-link
-          type="warning"
-          v-clipboard:copy="copyLink"
-          v-clipboard:success="onCopySuccess"
-          v-clipboard:error="onCopyError">
-          Copy the link to the clipboard
-        </el-link>
-      </p>
+        <el-divider></el-divider>
 
-    </el-card>
+        <p>
+          🔗
+          <el-link type="primary" :href="this.articleLink">
+            Origin link from GitHub
+          </el-link>
+        </p>
+        <p>
+          📧
+          <el-link
+            type="warning"
+            href="mailto:mrdrivingduck@gmail.com">
+            Tell me if there is something wrong
+          </el-link>
+        </p>
+        <p>
+          📌
+          <el-link
+            type="warning"
+            v-clipboard:copy="copyLink"
+            v-clipboard:success="onCopySuccess"
+            v-clipboard:error="onCopyError">
+            Copy the link to the clipboard
+          </el-link>
+        </p>
 
-    <!-- Display markdown -->
-    <!-- Code highlighting supported -->
-    <div
-      v-bind:class="this.markdownClass"
-      ref="markdown"
-      v-if="!fail"
-      v-loading="loading"
-      v-html="htmlStr">
-      {{ htmlStr }}
+      </el-card>
+
+      <!-- Display markdown -->
+      <!-- Code highlighting supported -->
+      <div
+        v-bind:class="this.markdownClass"
+        ref="markdown"
+        v-html="htmlStr">
+        {{ htmlStr }}
+      </div>
     </div>
 
     <!-- Load failure -->
@@ -107,9 +111,10 @@ export default {
       articleReadingTime: "",
 
       // Commit info
-      commitLastModification: "",
-      commitSha: "",
-      committer: "",
+      lastCommitAt: "",
+      lastCommitter: "",
+      firstCreatedAt: "",
+      firstCreatedAtBy: "",
       
       // loading status of each part
       loadingMarkdownComplete: false,
@@ -131,8 +136,10 @@ export default {
       this.articleLink = "";
       this.articleSize = NaN;
       this.articleReadingTime = NaN;
-      this.commitLastModification = "";
-      this.committer = "";
+      this.lastCommitAt = "";
+      this.lastCommitter = "";
+      this.firstCreatedAt = "";
+      this.firstCreatedAtBy = "";
 
       // Initialize component status
       this.htmlStr = ""
@@ -150,71 +157,51 @@ export default {
       const repo = this.$route.query.repo;
       const path = this.$route.query.path;
       this.getMarkdown(repo, path);
-      this.getCommit(repo, path);
     },
 
     // Get the content of markdown file
     getMarkdown: function (repo, path) {
-      // Get markdown URL
-      const apis = this.$store.state.githubapi.api;
-      let md_url = apis[repo].content + path;
 
-      this.$http.get(md_url).then(response => {
+      const api = this.$store.state.githubapi.query;
+      const url = this.$store.state.githubapi.apiv4;
+      const token = this.$store.state.githubapi.pat;
 
-        this.articleLink = response.data.html_url;
-        this.articleSize = response.data.size / 1024;
+      let query = api.markdown;
+      query = query.replace(/<repo>/, repo.replace(/_/g, "-"));
+      query = query.replace(/<path>/g, path);
+
+      this.$http.post(url, { query }, {
+        headers: {
+          "Authorization": "bearer " + token
+        }
+      }).then(response => {
+        let originData = response.data.data.repository;
+
+        this.articleLink = "https://github.com/mrdrivingduck/" + repo.replace(/_/g, "-")
+                            + "/blob/master/" + path;
+        this.articleSize = originData.object.byteSize / 1024;
         this.articleReadingTime = parseInt(2 * parseInt(this.articleSize));
-        this.articleSha = response.data.sha;
+        this.articleSha = originData.object.oid;
 
-        if (response.data.encoding === "base64") {
-          // Parse encoded Base64 to markdown
-          let md = decodeURIComponent(escape(window.atob(response.data.content)));
-          // Parse markdown to HTML
-          let html = marked(md);
-          this.htmlStr = html.replace(apis[repo].imgMatcher, apis[repo].imgPrefix);
-          this.$nextTick(this.onChangeTheme);
-
-        } else {
-          // Encoding not support
-          this.htmlStr = "<p> Encoding not support </p>";
-        }
-
-        // Set loading status
-        this.loadingMarkdownComplete = true;
-        if (this.loadingCommitComplete) {
-          this.loading = false;
-        }
-
-      }).catch(error => {
-        // HTTP failure
-        this.fail = true;
-        this.failReason = error.message;
-      });
-    },
-
-    // Get the commit info of the markdown file
-    getCommit: function (repo, path) {
-      const apis = this.$store.state.githubapi.api;
-      let commit_url = apis[repo].commit;
-
-      this.$http.get(commit_url + encodeURIComponent(path)).then(response => {
+        let commits = originData.defaultBranchRef.target.history.nodes;
+        this.lastCommitAt = commits[0].committedDate;
+        this.lastCommitter = commits[0].committer.user.name;
+        this.firstCreatedAt = commits[commits.length - 1].committedDate;
+        this.firstCreatedAtBy = commits[commits.length - 1].committer.user.name;
         
-        // Get the last commit
-        let { commit, committer } = response.data[0];
-        this.commitLastModification = commit.committer.date;
-        this.committer = committer.login;
+        let html = marked(originData.object.text);
+        this.htmlStr = html.replace(api[repo].imgMatcher, api[repo].imgPrefix);
+        this.$nextTick(this.onChangeTheme);
 
-        // Set loading status
-        this.loadingCommitComplete = true;
-        if (this.loadingMarkdownComplete) {
-          this.loading = false;
-        }
+        // Loading completed.
+        this.loading = false;
 
       }).catch(error => {
-        // HTTP failure
+        // HTTP failed
         this.fail = true;
         this.failReason = error.message;
       });
+
     },
 
     // Highlight the code into corresponding theme
