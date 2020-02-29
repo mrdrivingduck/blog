@@ -31,7 +31,7 @@
 
 export default {
   name: "HeaderSlider",
-  data: function () {
+  data: function() {
     return  {
       theme: 0,
       marks: null
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
 
-    initialize: function () {
+    initialize: function() {
       this.marks = {};
       this.theme = this.$store.state.theme.currentThemeIndex;
 
@@ -54,7 +54,7 @@ export default {
     }
 
   },
-  created: function () {
+  created: function() {
     this.initialize();
   },
   computed: {

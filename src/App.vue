@@ -73,7 +73,7 @@ export default {
     },
 
     // Set the background color of HTML page
-    setBackgroundStyle: function () {
+    setBackgroundStyle: function() {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       // Get DOM of <body> and set the style
@@ -84,7 +84,7 @@ export default {
 
   },
   
-  mounted: function () {
+  mounted: function() {
     // Called after DOM is mounted
     this.setTheme();
     this.setBackgroundStyle();
@@ -92,7 +92,7 @@ export default {
   computed: {
 
     // Listen for theme index changes
-    themeChange: function () {
+    themeChange: function() {
       return this.$store.state.theme.currentThemeIndex;
     }
 
@@ -100,7 +100,7 @@ export default {
   watch: {
 
     // Triggered when changing theme
-    themeChange: function () {
+    themeChange: function() {
       this.setTheme();
       this.setBackgroundStyle();
     }

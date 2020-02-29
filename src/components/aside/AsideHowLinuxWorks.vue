@@ -1,11 +1,11 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/01/27
+  @version - 2020/02/29
 
   @description - 
     The aside component for displaying How-Linux-Works
-    Loading the resource from GitHub using GitHub API v3
+    Loading the resource from GitHub using GitHub API v4
 
 -->
 
@@ -14,8 +14,6 @@
 
     <!-- item -->
     <el-menu-item
-      v-if="!fail"
-      v-loading="loading"
       @click="this.load"
       :index="this.index + ''">
       
@@ -24,16 +22,6 @@
       </template>
 
     </el-menu-item>
-
-    <!-- Loading failure -->
-    <el-alert
-      v-if="fail"
-      title="Loading failed"
-      type="error"
-      :description="failReason"
-      :closable="false"
-      show-icon>
-    </el-alert>
     
   </div>
 </template>
@@ -42,20 +30,15 @@
 export default {
   props: ["index"],
 
-  data: function () {
+  data: function() {
     return {
-      repo: "how_linux_works_notes",
-
-      notes: null, // For repository data storage
-      loading: false, // For displaying the status of loading data
-      fail: false, // For displaying the result of HTTP request
-      failReason: "" // For displaying the reason of HTTP request failure
+      repo: "how_linux_works_notes"
     }
   },
 
   methods: {
 
-    load: function () {
+    load: function() {
       this.$router.push({
         path: "/notelist",
         query: {

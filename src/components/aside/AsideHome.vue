@@ -29,7 +29,7 @@ export default {
   props: ["index"],
   methods: {
 
-    backToHome: function () {
+    backToHome: function() {
       // this.$store.commit("setCurrentContent", { currentComponent: "ContentIndex" });
       this.$router.push("/").catch(err => { err });
     }

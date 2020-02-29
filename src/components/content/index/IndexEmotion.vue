@@ -72,7 +72,7 @@ import CryptoJS from "crypto-js";
 
 export default {
   props: ["theme"],
-  data: function () {
+  data: function() {
     return {
 
       fail: true,
@@ -89,9 +89,9 @@ export default {
 
   methods: {
 
-    getEmotions: function () {
+    getEmotions: function() {
       const repoUrl = this.$store.state.githubapi.emotion.url;
-      const emotionFilter = this.$store.state.githubapi.emotion.file_filter;
+      const emotionFilter = this.$store.state.githubapi.emotion.fileFilter;
       this.loading = true;
       this.emotions = [];
       this.$http.get(repoUrl).then(response => {
@@ -150,14 +150,14 @@ export default {
       })
     },
 
-    preEmotion: function () {
+    preEmotion: function() {
       if (!(this.current === this.emotions.length - 1)) {
         this.current++;
         this.getEmotionContent(this.current);
       }
     },
 
-    nextEmotion: function () {
+    nextEmotion: function() {
       if (!(this.current === 0)) {
         this.current--;
         this.getEmotionContent(this.current);
@@ -186,7 +186,7 @@ export default {
     
   },
 
-  created: function () {
+  created: function() {
     this.getEmotions();
   }
 

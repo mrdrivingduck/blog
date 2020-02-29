@@ -94,7 +94,7 @@
 export default {
   name: "ContentNoteList",
   props: [ "theme" ],
-  data: function () {
+  data: function() {
     return  {
       notes: null, // Note array
       loading: true, // For displaying loading status
@@ -113,12 +113,12 @@ export default {
   methods: {
 
     // Load one of the outline topic
-    loadNoteDirectory: function () {
+    loadNoteDirectory: function() {
       const repo = this.$route.query.repo;
       const path = this.$route.query.path;
       const apis = this.$store.state.githubapi.api;
-      const reg_expr = apis[repo].file_filter;
-      const file_filter = apis[repo].sort;
+      const reg_expr = apis[repo].fileFilter;
+      const fileFilter = apis[repo].sort;
 
       // Get topic URL
       const url = this.$store.state.githubapi.api[repo].content + path;
@@ -144,7 +144,7 @@ export default {
           }
         }
 
-        this.notes.sort(file_filter);
+        this.notes.sort(fileFilter);
 
         // All directories in a topic load complete
         this.loading = false;
@@ -195,7 +195,7 @@ export default {
     },
 
     // Set the background color and text color of the cards
-    setCardTheme: function () {
+    setCardTheme: function() {
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       const allThemes = this.$store.state.theme.themes;
       let { backgroundColor, textColor } = allThemes[themeIndex].card;
@@ -209,7 +209,7 @@ export default {
     },
 
     // For copying links hint (success)
-    onCopySuccess: function () {
+    onCopySuccess: function() {
       this.$notify({
         title: "Copy successfully 😁",
         message: "The link is on your clipboard.",
@@ -218,7 +218,7 @@ export default {
     },
 
     // For copying links hint (failed)
-    onCopyError: function () {
+    onCopyError: function() {
       this.$notify({
         title: "Copy failed 😥",
         message: "There might be a BUG.",
@@ -227,7 +227,7 @@ export default {
     }
 
   },
-  created: function () {
+  created: function() {
     // Initializing the data from GitHub
     this.loadNoteDirectory();
     this.setCardTheme();
@@ -235,7 +235,7 @@ export default {
   computed: {
 
     // Listening for the theme changed
-    themeChange: function () {
+    themeChange: function() {
       return this.$store.state.theme.currentThemeIndex;
     }
 
@@ -243,7 +243,7 @@ export default {
   watch: {
 
     // Set the theme of the card
-    themeChange: function () {
+    themeChange: function() {
       this.setCardTheme();
     },
 

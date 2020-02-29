@@ -1,73 +1,120 @@
 /**
  * @author Mr Dk.
- * @version 2020/02/24
+ * @version 2020/02/29
  * @description
  *    Vuex store for saving current content component
  */
 
 const state = {
+  // GitHub API v4 entry point
   apiv4: "https://api.github.com/graphql",
+  // Personal access token
   pat: "8dabb6716643dcb2e3ce0e45da5eee425c8c8c47",
   query: {
-    user: {
-      /**
-       * user info
-       *    commit - GitHub page repo commit
-       *    deploy - GitHub page repo deploy
-       */
-      content: `query { 
-                  user(login: "mrdrivingduck") { name, location, bio, company },
-                  repository(name: "mrdrivingduck.github.io", owner: "mrdrivingduck") {
-                    deployments(last: 1) {
-                      nodes {
-                        createdAt, creator { login, url },
-                        commit { message, committedDate, committer { user { name, url }, date } }
+    /**
+     * User info
+     * Commit info
+     * Deployment info
+     */
+    user: `query { 
+            user(login: "mrdrivingduck") { name, location, bio, company },
+            repository(name: "mrdrivingduck.github.io", owner: "mrdrivingduck") {
+              deployments(last: 1) {
+                nodes {
+                  createdAt, creator { login, url },
+                  commit { message, committedDate, committer { user { name, url }, date } }
+                }
+              }
+            }
+          }`,
+    /**
+     * All info in 'Aside'
+     */
+    aside: `query {
+              notes: repository(name: "notes", owner: "mrdrivingduck") {
+                object(expression: "master:") {
+                  ... on Tree {
+                    entries {
+                      name
+                      type
+                      object {
+                        ...getDirectory
                       }
                     }
                   }
-                }`
-    },
+                }
+              }
+              paper_outline: repository(name: "paper-outline", owner: "mrdrivingduck") {
+                object(expression: "master:") {
+                  ...getDirectory
+                }
+              }
+              linux_kernel_comments_notes: repository(name: "linux-kernel-comments-notes", owner: "mrdrivingduck") {
+                object(expression: "master:") {
+                  ...getDirectory
+                }
+              }
+              us_os_ii_code_notes: repository(name: "uc-os-ii-code-notes", owner: "mrdrivingduck") {
+                object(expression: "master:") {
+                  ...getDirectory
+                }
+              }
+              understanding_the_jvm: repository(name: "understanding-the-jvm", owner: "mrdrivingduck") {
+                object(expression: "master:") {
+                  ...getDirectory
+                }
+              }
+            }
+
+            fragment getDirectory on Tree {
+              entries {
+                name
+                type
+                oid
+              }
+            }`,
+
     notes: {
       /**
        * notes content
        *    commit: notes commit record
-       *    img_prefix: url replacement prefix of images in the notes
-       *    img_matcher: image url in notes -  <img src="../img/
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
        */
       content: "https://api.github.com/repos/mrdrivingduck/notes/contents/",
       commit: "https://api.github.com/repos/mrdrivingduck/notes/commits?path=",
-      img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/notes/master/img/',
-      img_matcher: /<img\ssrc="\.\.\/img\//g,
-      file_filter: /^Chapter.*$/,
-      dir_filter: /^[A-Z].*$/
+      imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/notes/master/img/',
+      imgMatcher: /<img\ssrc="\.\.\/img\//g,
+      fileFilter: /^Chapter.*$/,
+      dirFilter: /^[A-Z].*$/
     },
     paper_outline: {
       /**
        * paper outline content
        *    commit: notes commit record
-       *    img_prefix: url replacement prefix of images in the notes
-       *    img_matcher: image url in notes -  <img src="../img/
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
        */
       content: "https://api.github.com/repos/mrdrivingduck/paper-outline/contents/",
       commit: "https://api.github.com/repos/mrdrivingduck/paper-outline/commits?path=",
-      img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/paper-outline/master/img/',
-      img_matcher: /<img\ssrc="\.\.\/\.\.\/img\//g,
-      file_filter: /^Outline.*$/,
-      dir_filter: /^[A-Z].*$/
+      imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/paper-outline/master/img/',
+      imgMatcher: /<img\ssrc="\.\.\/\.\.\/img\//g,
+      fileFilter: /^Outline.*$/,
+      dirFilter: /^[A-Z].*$/
     },
     how_linux_works_notes: {
       /**
        * how linux works notes content
        *    commit: notes commit record
-       *    img_prefix: url replacement prefix of images in the notes
-       *    img_matcher: image url in notes -  <img src="../img/
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
        */
       content: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/contents/",
       commit: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/commits?path=",
-      img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/how-linux-works-notes/master/img/',
-      img_matcher: /<img\ssrc="\.\/img\//g,
-      file_filter: /^Chapter.*$/,
-      // dir_filter: /^Chapter.*$/
+      imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/how-linux-works-notes/master/img/',
+      imgMatcher: /<img\ssrc="\.\/img\//g,
+      fileFilter: /^Chapter.*$/,
+      // dirFilter: /^Chapter.*$/
       sort: function (a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
@@ -85,15 +132,15 @@ const state = {
       /**
        * linux kernel comments notes content
        *    commit: notes commit record
-       *    img_prefix: url replacement prefix of images in the notes
-       *    img_matcher: image url in notes -  <img src="../img/
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
        */
       content: "https://api.github.com/repos/mrdrivingduck/linux-kernel-comments-notes/contents/",
       commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-comments-notes/commits?path=",
-      img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-comments-notes/master/img/',
-      img_matcher: /<img\ssrc="\.\.\/img\//g,
-      file_filter: /^.*\.md$/,
-      dir_filter: /^Chapter.*$/,
+      imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-comments-notes/master/img/',
+      imgMatcher: /<img\ssrc="\.\.\/img\//g,
+      fileFilter: /^.*\.md$/,
+      dirFilter: /^Chapter.*$/,
       sort: function (a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
@@ -111,14 +158,14 @@ const state = {
       /**
        * linux kernel development notes content
        *    commit: notes commit record
-       *    img_prefix: url replacement prefix of images in the notes
-       *    img_matcher: image url in notes -  <img src="../img/
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
        */
       content: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/contents/",
       commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/commits?path=",
-      img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-development-notes/master/img/',
-      img_matcher: /<img\ssrc="\.\/img\//g,
-      file_filter: /^Chapter.*$/,
+      imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-development-notes/master/img/',
+      imgMatcher: /<img\ssrc="\.\/img\//g,
+      fileFilter: /^Chapter.*$/,
       sort: function (a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
@@ -136,15 +183,15 @@ const state = {
       /**
        * μC/OS-II notes content
        *    commit: notes commit record
-       *    img_prefix: url replacement prefix of images in the notes
-       *    img_matcher: image url in notes -  <img src="../img/
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
        */
       content: "https://api.github.com/repos/mrdrivingduck/uc-os-ii-code-notes/contents/",
       commit: "https://api.github.com/repos/mrdrivingduck/uc-os-ii-code-notes/commits?path=",
-      img_prefix: '',
-      img_matcher: /<img\ssrc="\.\/img\//g,
-      file_filter: /^.*\.md$/,
-      dir_filter: /^Chapter.*$/,
+      imgPrefix: '',
+      imgMatcher: /<img\ssrc="\.\/img\//g,
+      fileFilter: /^.*\.md$/,
+      dirFilter: /^Chapter.*$/,
       sort: function (a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
@@ -162,14 +209,14 @@ const state = {
       /**
        * JDK source code analysis notes content
        *    commit: notes commit record
-       *    img_prefix: url replacement prefix of images in the notes
-       *    img_matcher: image url in notes -  <img src="../img/
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
        */
       content: "https://api.github.com/repos/mrdrivingduck/jdk-source-code-analysis/contents/",
       commit: "https://api.github.com/repos/mrdrivingduck/jdk-source-code-analysis/commits?path=",
-      img_prefix: '',
-      img_matcher: /<img\ssrc="\.\/img\//g,
-      file_filter: /^(Class|Abstract|Interface).*$/,
+      imgPrefix: '',
+      imgMatcher: /<img\ssrc="\.\/img\//g,
+      fileFilter: /^(Class|Abstract|Interface).*$/,
       sort: function(a, b) {
         const a_key = a.name.split(" ")[0];
         const b_key = b.name.split(" ")[0];
@@ -193,15 +240,15 @@ const state = {
       /**
        * Understanding the JVM
        *    commit: notes commit record
-       *    img_prefix: url replacement prefix of images in the notes
-       *    img_matcher: image url in notes -  <img src="../img/
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
        */
       content: "https://api.github.com/repos/mrdrivingduck/understanding-the-jvm/contents/",
       commit: "https://api.github.com/repos/mrdrivingduck/understanding-the-jvm/commits?path=",
-      // img_prefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/understanding-the-jvm/master/img/',
-      // img_matcher: /<img\ssrc="\.\.\/img\//g,
-      file_filter: /^.*\.md$/,
-      dir_filter: /^Part.*$/,
+      // imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/understanding-the-jvm/master/img/',
+      // imgMatcher: /<img\ssrc="\.\.\/img\//g,
+      fileFilter: /^.*\.md$/,
+      dirFilter: /^Part.*$/,
       sort: function (a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
@@ -218,7 +265,7 @@ const state = {
   },
   emotion: {
     url: "https://api.github.com/repos/mrdrivingduck/emotions/contents/",
-    file_filter: /^[^.]*$/,
+    fileFilter: /^[^.]*$/,
   }
 };
 

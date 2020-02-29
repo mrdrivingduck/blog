@@ -96,7 +96,7 @@ import hljs from "duckling-highlight";
 
 export default {
   name: "ContentMarkdown",
-  data: function () {
+  data: function() {
     return  {
       // Info in the card
       cardBackgroundColor: "",
@@ -126,7 +126,7 @@ export default {
   },
   methods: {
 
-    initialize: function () {
+    initialize: function() {
       // Metadata
       this.articleLink = "";
       this.articleSize = NaN;
@@ -171,7 +171,7 @@ export default {
           let md = decodeURIComponent(escape(window.atob(response.data.content)));
           // Parse markdown to HTML
           let html = marked(md);
-          this.htmlStr = html.replace(apis[repo].img_matcher, apis[repo].img_prefix);
+          this.htmlStr = html.replace(apis[repo].imgMatcher, apis[repo].imgPrefix);
           this.$nextTick(this.onChangeTheme);
 
         } else {
@@ -218,7 +218,7 @@ export default {
     },
 
     // Highlight the code into corresponding theme
-    setCodeStyle: function () {
+    setCodeStyle: function() {
       const allThemes = this.$store.state.theme.themes;
       const currentTheme = this.$store.state.theme.currentThemeIndex;
       let blocks = this.$refs.markdown.querySelectorAll('pre code');
@@ -228,14 +228,14 @@ export default {
     },
 
     // Set the corresponding markdown theme
-    setMarkdownStyle: function () {
+    setMarkdownStyle: function() {
       const allThemes = this.$store.state.theme.themes;
       const currentTheme = this.$store.state.theme.currentThemeIndex;
       this.markdownClass = allThemes[currentTheme].content.markdown;
     },
 
     // Set the theme of card on the top
-    setCardStyle: function () {
+    setCardStyle: function() {
       const allThemes = this.$store.state.theme.themes;
       const currentTheme = this.$store.state.theme.currentThemeIndex;
       let { backgroundColor, textColor } = allThemes[currentTheme].card;
@@ -244,14 +244,14 @@ export default {
     },
 
     // Called when the theme changes
-    onChangeTheme: function () {
+    onChangeTheme: function() {
       this.setCodeStyle();
       this.setMarkdownStyle();
       this.setCardStyle();
     },
 
     // For copying links hint (success)
-    onCopySuccess: function () {
+    onCopySuccess: function() {
       this.$notify({
         title: "Copy successfully 😁",
         message: "The link is on your clipboard.",
@@ -260,7 +260,7 @@ export default {
     },
 
     // For copying links hint (failed)
-    onCopyError: function () {
+    onCopyError: function() {
       this.$notify({
         title: "Copy failed 😥",
         message: "There might be a BUG.",
@@ -269,14 +269,14 @@ export default {
     }
 
   },
-  created: function () {
+  created: function() {
     // Initialize the content from GitHub
     this.initialize();
   },
   computed: {
 
     // Triggered when the theme changes
-    themeChange: function () {
+    themeChange: function() {
       return this.$store.state.theme.currentThemeIndex;
     }
 
@@ -284,7 +284,7 @@ export default {
   watch: {
 
     // When theme changes, reset the style
-    themeChange: function () {
+    themeChange: function() {
       this.$nextTick(this.onChangeTheme);
     },
 

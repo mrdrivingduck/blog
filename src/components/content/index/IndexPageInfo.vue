@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/24
+  @version - 2020/02/29
 
   @description - 
     The index component for displaying page information
@@ -29,13 +29,13 @@
       <p style="font-size: 30px;"> Deployment </p>
       <p> 📤 {{ deployment.commit.message }} </p>
       <p>
-        ⌚ Last commit at <b>{{ deployment.commit.committedDate }}</b> by
+        ⌚ Committed at <b>{{ deployment.commit.committedDate }}</b> by
         <el-link :href="deployment.commit.committer.user.url" type="primary">
           {{ deployment.commit.committer.user.name }}
         </el-link>
       </p>
       <p>
-        ⌚ Last deployment at <b>{{ deployment.createdAt }}</b> by
+        ⌚ Deployed at <b>{{ deployment.createdAt }}</b> by
         <el-link :href="deployment.creator.url" type="primary">
           {{ deployment.creator.login }}
         </el-link>
@@ -131,9 +131,9 @@ export default {
           link: "https://github.com/brix/crypto-js"
         },
         {
-          name: "GitHub API v3",
-          description: "The official GitHub REST API v3.",
-          link: "https://developer.github.com/v3/"
+          name: "GitHub API v4",
+          description: "The official GitHub GraphQL API v4.",
+          link: "https://developer.github.com/v4/"
         },
         {
           name: "GitHub Pages",

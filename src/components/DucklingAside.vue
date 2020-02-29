@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/04
+  @version - 2020/02/29
 
   @description - 
     The aside component for guiding
@@ -13,6 +13,8 @@
     
     <!-- The menu on the left -->
     <el-menu
+      v-if="!fail"
+      v-loading="loading"
       :default-openeds="[]"
       :background-color="this.backgroundColor"
       :text-color="this.textColor"
@@ -21,30 +23,55 @@
       <aside-home :index="1"></aside-home>
 
       <!-- Sub-menu of notes -->
-      <aside-notes :index="2"></aside-notes>
+      <aside-notes
+        :index="2"
+        :directory="asideData['notes']"
+      ></aside-notes>
 
       <!-- Sub-menu of paper-outline -->
-      <aside-paper-outline :index="3"></aside-paper-outline>
+      <aside-paper-outline
+        :index="3"
+        :directory="asideData['paper_outline']"
+      ></aside-paper-outline>
 
       <!-- Sub-menu of how-linux-works -->
       <aside-how-linux-works :index="4"></aside-how-linux-works>
 
       <!-- Sub-menu of linux-kernel-comments-notes -->
-      <aside-linux-kernel-comments :index="5"></aside-linux-kernel-comments>
+      <aside-linux-kernel-comments
+        :index="5"
+        :directory="asideData['linux_kernel_comments_notes']"
+      ></aside-linux-kernel-comments>
 
       <!-- Sub-menu of linux-kernel-development-notes -->
       <aside-linux-kernel-development :index="6"></aside-linux-kernel-development>
 
       <!-- Sub-menu of μC/OS-II -->
-      <aside-miu-cos-two :index="7"></aside-miu-cos-two>
+      <aside-miu-cos-two
+        :index="7"
+        :directory="asideData['us_os_ii_code_notes']"
+      ></aside-miu-cos-two>
 
       <!-- Sub-menu of JDK source code analysis -->
       <aside-jdk-code-analysis :index="8"></aside-jdk-code-analysis>
 
       <!-- Sub-menu of JDK source code analysis -->
-      <aside-understanding-the-jvm :index="9"></aside-understanding-the-jvm>
+      <aside-understanding-the-jvm
+        :index="9"
+        :directory="asideData['understanding_the_jvm']"
+      ></aside-understanding-the-jvm>
 
     </el-menu>
+
+    <!-- Loading failure -->
+    <el-alert
+      v-if="fail"
+      title="Loading failed"
+      type="error"
+      :description="failReason"
+      :closable="false"
+      show-icon>
+    </el-alert>
     
   </div>
 </template>
@@ -66,29 +93,80 @@ export default {
     return {
       backgroundColor: null,
       textColor: null,
-      activeTextColor: null
+      activeTextColor: null,
+
+      loading: true,
+      fail: true,
+      failReason: "",
+
+      asideData: {}
     };
   },
   methods: {
 
     // For changing theme of menu
-    setTheme: function () {
+    setTheme: function() {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       let { backgroundColor, textColor, activeTextColor } = allThemes[themeIndex].aside;
       this.backgroundColor = backgroundColor;
       this.textColor = textColor;
       this.activeTextColor = activeTextColor;
+    },
+
+    // Load aside through GitHub API
+    loadAside: function() {
+      this.loading = true;
+      this.fail = false;
+      this.failReason = "";
+
+      let url = this.$store.state.githubapi.apiv4;
+      let token = this.$store.state.githubapi.pat;
+      let query = this.$store.state.githubapi.query;
+      this.$http.post(url, { query: query["aside"] }, {
+        headers: {
+          "Authorization": "bearer " + token
+        }
+      }).then(response => {
+        let originData = response.data.data;
+
+        this.asideData = {};
+        for (let key in originData) {
+          this.asideData[key] = [];
+          for (let i = 0; i < originData[key].object.entries.length; i++) {
+            const filter = query[key].dirFilter;
+            const name = originData[key].object.entries[i].name;
+            const type = originData[key].object.entries[i].type;
+            if (filter.test(name) && type === "tree") {
+              this.asideData[key].push(originData[key].object.entries[i]);
+            }
+            const sorter = query[key].sort;
+            if (sorter) {
+              this.asideData[key].sort(sorter);
+            }
+          }
+        }
+
+        // Loading complete
+        this.loading = false;
+      }).catch(error => {
+        // HTTP failed
+        this.fail = true;
+        this.failReason = error.message;
+      });
     }
 
   },
-  mounted: function () {
+  mounted: function() {
     this.setTheme(); // Initialize the theme
+  },
+  created: function() {
+    this.loadAside();
   },
   computed: {
 
     // Listening theme changing
-    themeChange: function () {
+    themeChange: function() {
       return this.$store.state.theme.currentThemeIndex;
     }
 
@@ -96,7 +174,7 @@ export default {
   watch: {
 
     // Trigger theme changing
-    themeChange: function () {
+    themeChange: function() {
       this.setTheme();
     }
 

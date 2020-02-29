@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/24
+  @version - 2020/02/29
 
   @description - 
     The content component for displaying pernal information
@@ -120,7 +120,7 @@ export default {
     IndexLinks: () => import("./index/IndexLinks"),
     IndexPageInfo: () => import("./index/IndexPageInfo")
   },
-  data: function () {
+  data: function() {
     return {
 
       // Card info
@@ -154,14 +154,14 @@ export default {
   methods: {
 
     // For initializing personal info card
-    initializeCardInfo: function () {
+    initializeCardInfo: function() {
       this.loading = true;
       this.fail = false;
       this.failReason = "";
 
       let url = this.$store.state.githubapi.apiv4;
       let token = this.$store.state.githubapi.pat;
-      let query = this.$store.state.githubapi.query["user"]["content"];
+      let query = this.$store.state.githubapi.query["user"];
       this.$http.post(url, { query }, {
         headers: {
           "Authorization": "bearer " + token
@@ -173,7 +173,6 @@ export default {
         this.location = location;
         this.company = company;
         this.deployment = response.data.data.repository.deployments.nodes[0];
-        console.log(this.deployment)
         // Loading complete
         this.loading = false;
 
@@ -185,7 +184,7 @@ export default {
     },
 
     // Set the theme of personal info card
-    setCardTheme: function () {
+    setCardTheme: function() {
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       const allThemes = this.$store.state.theme.themes;
       let { backgroundColor, textColor } = allThemes[themeIndex].card;
@@ -194,7 +193,7 @@ export default {
     },
 
     // Set the theme of navigation
-    setNavigationTheme: function () {
+    setNavigationTheme: function() {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       let { backgroundColor, textColor, activeTextColor } = allThemes[themeIndex].aside;
@@ -203,7 +202,7 @@ export default {
       this.activeTextColor = activeTextColor;
     },
 
-    setTheme: function () {
+    setTheme: function() {
       this.setCardTheme();
       this.setNavigationTheme();
     },
@@ -214,14 +213,14 @@ export default {
     }
 
   },
-  mounted: function () {
+  mounted: function() {
     this.initializeCardInfo();
     this.setTheme();
   },
   computed: {
     
     // Triggered when changing theme
-    themeChange: function () {
+    themeChange: function() {
       return this.$store.state.theme.currentThemeIndex;
     }
 
@@ -229,7 +228,7 @@ export default {
   watch: {
 
     // Triggered to change the theme
-    themeChange: function () {
+    themeChange: function() {
       this.setTheme();
     }
     

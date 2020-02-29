@@ -102,7 +102,7 @@
 export default {
   name: "ContentPaperOutline",
   props: [ "theme" ],
-  data: function () {
+  data: function() {
     return  {
       outlines: null, // For outlines in a repository directory
       loading: true, // For displaying loading status
@@ -121,7 +121,7 @@ export default {
   methods: {
 
     // Load one of the outline topic
-    loadOutlineDirectory: function () {
+    loadOutlineDirectory: function() {
       const repo = this.$route.query.repo;
       const path = this.$route.query.path;
       // Get topic URL
@@ -154,7 +154,7 @@ export default {
       // Set loading status of metadata
       this.$set(dirObj, "loading", true);
       const apis = this.$store.state.githubapi.api;
-      const outlineNameReg = apis[repo].file_filter;
+      const outlineNameReg = apis[repo].fileFilter;
       // Issue HTTP request
       this.$http.get(dirObj.url).then(response => {
         const pdfFormatReg = this.$store.state.regexpre.pdfFormatReg;
@@ -199,7 +199,7 @@ export default {
     },
 
     // Set the background color and text color of the cards
-    setCardTheme: function () {
+    setCardTheme: function() {
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       const allThemes = this.$store.state.theme.themes;
       let { backgroundColor, textColor } = allThemes[themeIndex].card;
@@ -213,7 +213,7 @@ export default {
     },
 
     // For copying links hint (success)
-    onCopySuccess: function () {
+    onCopySuccess: function() {
       this.$notify({
         title: "Copy successfully 😁",
         message: "The link is on your clipboard.",
@@ -222,7 +222,7 @@ export default {
     },
 
     // For copying links hint (failed)
-    onCopyError: function () {
+    onCopyError: function() {
       this.$notify({
         title: "Copy failed 😥",
         message: "There might be a BUG.",
@@ -231,7 +231,7 @@ export default {
     }
 
   },
-  created: function () {
+  created: function() {
     // Initializing the data from GitHub
     this.loadOutlineDirectory();
     this.setCardTheme();
@@ -239,7 +239,7 @@ export default {
   computed: {
 
     // Listening for the theme changed
-    themeChange: function () {
+    themeChange: function() {
       return this.$store.state.theme.currentThemeIndex;
     }
 
@@ -247,7 +247,7 @@ export default {
   watch: {
 
     // Set the theme of the card
-    themeChange: function () {
+    themeChange: function() {
       this.setCardTheme();
     },
 
