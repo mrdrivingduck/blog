@@ -20,7 +20,7 @@ Based on -
 * [Vuex](https://vuex.vuejs.org/) - 🗃️ Centralized State Management for Vue.js.
 * [Vue Router](https://router.vuejs.org/) - 🚦 The official router for Vue.js.
 * [Vue CLI](https://cli.vuejs.org/) - 🛠️ Standard Tooling for Vue.js Development.
-* [Vue Clipboard 2](https://github.com/Inndy/vue-clipboard2) - A simple Vue2 binding to clipboard.js.
+* [Vue Clipboard 2](https://github.com/Inndy/vue-clipboard2) - A simple Vue 2 binding to clipboard.js.
 * [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
 * [Element](https://element.eleme.io/) - A Vue.js 2.0 UI Toolkit for Web.
 * [Marked.js](https://marked.js.org/) - A markdown parser and compiler. Built for speed.

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/29
+  @version - 2020/03/01
 
   @description - 
     The index component for displaying page information
@@ -98,7 +98,7 @@ export default {
         },
         {
           name: "Vue Clipboard 2",
-          description: "A simple Vue2 binding to clipboard.js.",
+          description: "A simple Vue 2 binding to clipboard.js.",
           link: "https://github.com/Inndy/vue-clipboard2"
         },
         {

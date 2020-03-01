@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/29
+  @version - 2020/03/01
 
   @description - 
     The content component for displaying note list
@@ -144,11 +144,13 @@ export default {
             this.notes.push({
               name: originData[i].name.replace(".md", ""),
               repo,
-              path: path + "/" + originData[i].name,
+              path: path === "" ? originData[i].name : (path + "/" + originData[i].name),
               sha: originData[i].oid,
               size: originData[i].object.byteSize / 1024,
               copyLink: "https://mrdrivingduck.github.io/#/markdown?repo="
-                          + repo + "&path=" + path + "/" + originData[i].name
+                          + repo + "&path=" + (path === "" ?
+                                                originData[i].name :
+                                                (path + "/" + originData[i].name))
             });
           }
         }
