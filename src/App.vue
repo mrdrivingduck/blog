@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/24
+  @version - 2020/03/02
 
   @description - 
     The entry component.
@@ -23,12 +23,12 @@
     <el-container>
 
       <!-- Aside on the left -->
-      <el-aside width=30%>
+      <el-aside width=27%>
         <duckling-aside></duckling-aside>
       </el-aside>
 
       <!-- Content on the right -->
-      <el-main width=70% class="content">
+      <el-main width=73% class="content">
         <duckling-content :theme="theme"></duckling-content>
       </el-main>
       
@@ -44,8 +44,8 @@
 
 <style>
   .content {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 45px;
+    margin-right: 45px;
   }
 </style>
 
