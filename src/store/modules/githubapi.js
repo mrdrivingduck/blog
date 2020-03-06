@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/02/29
+ * @version 2020/03/06
  * @description
  *    Vuex store for saving current content component
  */
@@ -141,7 +141,7 @@ const state = {
                           nodes {
                             oid
                             committedDate
-                            committer {
+                            author {
                               user {
                                 name
                               }

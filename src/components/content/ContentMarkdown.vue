@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/29
+  @version - 2020/03/06
 
   @description - 
     The content component for displaying markdown files
@@ -176,20 +176,23 @@ export default {
         }
       }).then(response => {
         let originData = response.data.data.repository;
+        let markdown = originData.object.text;
 
         this.articleLink = "https://github.com/mrdrivingduck/" + repo.replace(/_/g, "-")
                             + "/blob/master/" + path;
         this.articleSize = originData.object.byteSize / 1024;
-        this.articleReadingTime = parseInt(2 * parseInt(this.articleSize));
+        // this.articleReadingTime = parseInt(1.4 * parseInt(this.articleSize));
+        // 400 words per minute
+        this.articleReadingTime = parseInt(markdown.length / 400);
         this.articleSha = originData.object.oid;
 
         let commits = originData.defaultBranchRef.target.history.nodes;
         this.lastCommitAt = commits[0].committedDate;
-        this.lastCommitter = commits[0].committer.user.name;
+        this.lastCommitter = commits[0].author.user.name;
         this.firstCreatedAt = commits[commits.length - 1].committedDate;
-        this.firstCreatedAtBy = commits[commits.length - 1].committer.user.name;
+        this.firstCreatedAtBy = commits[commits.length - 1].author.user.name;
         
-        let html = marked(originData.object.text);
+        let html = marked(markdown);
         this.htmlStr = html.replace(api[repo].imgMatcher, api[repo].imgPrefix);
         this.$nextTick(this.onChangeTheme);
 
