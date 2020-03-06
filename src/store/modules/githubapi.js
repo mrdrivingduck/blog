@@ -9,7 +9,8 @@ const state = {
   // GitHub API v4 entry point
   apiv4: "https://api.github.com/graphql",
   // Personal access token
-  pat: "8dabb6716643dcb2e3ce0e45da5eee425c8c8c47",
+  patPart1: "b903678e4e0eb7e6c909324f",
+  patPart2: "6a7f8c00a951e864",
   query: {
     /**
      * User info

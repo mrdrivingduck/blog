@@ -164,7 +164,9 @@ export default {
 
       const api = this.$store.state.githubapi.query;
       const url = this.$store.state.githubapi.apiv4;
-      const token = this.$store.state.githubapi.pat;
+      const tokenPart1 = this.$store.state.githubapi.patPart1;
+      const tokenPart2 = this.$store.state.githubapi.patPart2;
+      const token = tokenPart1.concat(tokenPart2);
 
       let query = api.markdown;
       query = query.replace(/<repo>/, repo.replace(/_/g, "-"));

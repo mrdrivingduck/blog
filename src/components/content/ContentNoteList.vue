@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/03/01
+  @version - 2020/03/06
 
   @description - 
     The content component for displaying note list
@@ -124,7 +124,9 @@ export default {
       const path = this.$route.query.path;
       const api = this.$store.state.githubapi.query;
       const url = this.$store.state.githubapi.apiv4;
-      const token = this.$store.state.githubapi.pat;
+      const tokenPart1 = this.$store.state.githubapi.patPart1;
+      const tokenPart2 = this.$store.state.githubapi.patPart2;
+      const token = tokenPart1.concat(tokenPart2);
 
       const regExpr = api[repo].fileFilter;
       const sorter = api[repo].sort;

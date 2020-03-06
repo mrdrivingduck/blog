@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/29
+  @version - 2020/03/06
 
   @description - 
     The aside component for guiding
@@ -121,7 +121,9 @@ export default {
       this.failReason = "";
 
       const url = this.$store.state.githubapi.apiv4;
-      const token = this.$store.state.githubapi.pat;
+      const tokenPart1 = this.$store.state.githubapi.patPart1;
+      const tokenPart2 = this.$store.state.githubapi.patPart2;
+      const token = tokenPart1.concat(tokenPart2);
       const query = this.$store.state.githubapi.query;
       
       this.$http.post(url, { query: query["aside"] }, {

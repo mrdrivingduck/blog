@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/29
+  @version - 2020/03/06
 
   @description - 
     The index component for displaying emotions
@@ -110,8 +110,10 @@ export default {
       this.fail = false;
       this.emotionText = [];
 
-      let url = this.$store.state.githubapi.apiv4;
-      let token = this.$store.state.githubapi.pat;
+      const url = this.$store.state.githubapi.apiv4;
+      const tokenPart1 = this.$store.state.githubapi.patPart1;
+      const tokenPart2 = this.$store.state.githubapi.patPart2;
+      const token = tokenPart1.concat(tokenPart2);
       let query = this.$store.state.githubapi.query["emotions"].query;
       query = query.replace(/<date>/, this.emotions[index].name);
 

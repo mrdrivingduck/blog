@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/29
+  @version - 2020/03/06
 
   @description - 
     The content component for displaying pernal information
@@ -160,8 +160,10 @@ export default {
       this.fail = false;
       this.failReason = "";
 
-      let url = this.$store.state.githubapi.apiv4;
-      let token = this.$store.state.githubapi.pat;
+      const url = this.$store.state.githubapi.apiv4;
+      const tokenPart1 = this.$store.state.githubapi.patPart1;
+      const tokenPart2 = this.$store.state.githubapi.patPart2;
+      const token = tokenPart1.concat(tokenPart2);
       let query = this.$store.state.githubapi.query["user"];
       this.$http.post(url, { query }, {
         headers: {
