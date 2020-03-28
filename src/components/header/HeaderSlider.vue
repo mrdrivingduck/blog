@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/07/21
+  @version - 2020/03/28
 
   @description - 
     Slider for changing themes.
@@ -45,7 +45,13 @@ export default {
 
       let allThemes = this.$store.state.theme.themes;
       for (let i = 0; i < allThemes.length; i++) {
-        this.$set(this.marks, i, allThemes[i].name);
+        this.$set(this.marks, i, {
+          label: allThemes[i].name,
+          style: {
+            color: "#9567e4"
+          }
+        });
+        console.log(allThemes[i].name)
       }
     },
 
