@@ -1,10 +1,10 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/03/06
+  @version - 2020/04/13
 
   @description - 
-    The aside component for guiding
+    The aside component for guiding.
 
 -->
 
@@ -20,44 +20,47 @@
       :text-color="this.textColor"
       :active-text-color="this.activeTextColor">
 
-      <aside-home :index="1"></aside-home>
+      <aside-home-page :index="1"></aside-home-page>
+
+      <aside-index :index="2"></aside-index>
 
       <!-- Sub-menu of notes -->
       <aside-notes
-        :index="2"
+        :index="3"
         :directory="asideData['notes']"
       ></aside-notes>
 
       <!-- Sub-menu of paper-outline -->
       <aside-paper-outline
-        :index="3"
+        :index="4"
         :directory="asideData['paper_outline']"
       ></aside-paper-outline>
 
       <!-- Sub-menu of how-linux-works -->
-      <aside-how-linux-works :index="4"></aside-how-linux-works>
+      <aside-how-linux-works :index="5"></aside-how-linux-works>
 
       <!-- Sub-menu of linux-kernel-comments-notes -->
       <aside-linux-kernel-comments
-        :index="5"
+        :index="6"
         :directory="asideData['linux_kernel_comments_notes']"
       ></aside-linux-kernel-comments>
 
       <!-- Sub-menu of linux-kernel-development-notes -->
-      <aside-linux-kernel-development :index="6"></aside-linux-kernel-development>
+      <aside-linux-kernel-development :index="7"
+      ></aside-linux-kernel-development>
 
       <!-- Sub-menu of μC/OS-II -->
       <aside-miu-cos-two
-        :index="7"
+        :index="8"
         :directory="asideData['uc_os_ii_code_notes']"
       ></aside-miu-cos-two>
 
       <!-- Sub-menu of JDK source code analysis -->
-      <aside-jdk-code-analysis :index="8"></aside-jdk-code-analysis>
+      <aside-jdk-code-analysis :index="9"></aside-jdk-code-analysis>
 
       <!-- Sub-menu of JDK source code analysis -->
       <aside-understanding-the-jvm
-        :index="9"
+        :index="10"
         :directory="asideData['understanding_the_jvm']"
       ></aside-understanding-the-jvm>
 
@@ -79,7 +82,8 @@
 <script>
 export default {
   components: {
-    AsideHome: () => import("./aside/AsideHome"),
+    AsideHomePage: () => import("./aside/AsideHomePage"),
+    AsideIndex: () => import("./aside/AsideIndex"),
     AsideNotes: () => import("./aside/AsideNotes"),
     AsidePaperOutline: () => import("./aside/AsidePaterOutline"),
     AsideHowLinuxWorks: () => import("./aside/AsideHowLinuxWorks"),

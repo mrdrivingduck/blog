@@ -1,10 +1,10 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/01/27
+  @version - 2020/04/13
 
   @description - 
-    Back to home page
+    Back to blog index page.
 
 -->
 
@@ -12,11 +12,11 @@
   <div>
 
     <el-menu-item
-      @click="this.backToHome"
+      @click="this.backToBlogIndex"
       :index="this.index + ''">
       
       <template slot="title">
-        <span> 👀 Home </span>
+        <span> 👀 Blog Index </span>
       </template>
 
     </el-menu-item>
@@ -29,7 +29,7 @@ export default {
   props: ["index"],
   methods: {
 
-    backToHome: function() {
+    backToBlogIndex: function() {
       // this.$store.commit("setCurrentContent", { currentComponent: "ContentIndex" });
       this.$router.push("/").catch(err => { err });
     }

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/03/06
+  @version - 2020/04/13
 
   @description - 
     The content component for displaying pernal information
@@ -11,7 +11,7 @@
 <template>
   <div :theme="theme" v-loading="loading">
 
-    <el-row :gutter="20">
+    <el-row :gutter="24" type="flex" align="middle" justify="center">
 
       <el-col :span="6">
         <div>
@@ -22,7 +22,7 @@
         </div>
       </el-col>
 
-      <el-col :span="14">
+      <el-col :span="14" :offset="1">
         <div>
 
           <el-card
