@@ -1,10 +1,10 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/03/06
+  @version - 2020/04/15
 
   @description - 
-    The content component for displaying paper outlines
+    The content component for displaying paper outlines.
 
 -->
 
@@ -19,10 +19,11 @@
 
       <!-- Divide each page -->
       <el-pagination
-        v-if="Math.ceil(outlines.length / pageSize) > 1"
+        hide-on-single-page="true"
         style="text-align: center;"
         layout="prev, pager, next"
         :page-count="Math.ceil(outlines.length / pageSize)"
+        :current-page="currentPage"
         @current-change="handleCurrentChange">
       </el-pagination>
 
@@ -81,10 +82,11 @@
 
       <!-- Divide each page -->
       <el-pagination
-        v-if="Math.ceil(outlines.length / pageSize) > 1"
+        hide-on-single-page="true"
         style="text-align: center;"
         layout="prev, pager, next"
         :page-count="Math.ceil(outlines.length / pageSize)"
+        :current-page="currentPage"
         @current-change="handleCurrentChange">
       </el-pagination>
     </div>

@@ -1,10 +1,10 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/03/06
+  @version - 2020/04/15
 
   @description - 
-    The content component for displaying note list
+    The content component for displaying note list.
 
 -->
 
@@ -19,10 +19,11 @@
 
       <!-- Divide each page -->
       <el-pagination
-        v-if="Math.ceil(notes.length / pageSize) > 1"
+        hide-on-single-page="true"
         style="text-align: center;"
         layout="prev, pager, next"
         :page-count="Math.ceil(notes.length / pageSize)"
+        :current-page="currentPage"
         @current-change="handleCurrentChange">
       </el-pagination>
 
@@ -68,10 +69,11 @@
 
       <!-- Divide each page -->
       <el-pagination
-        v-if="Math.ceil(notes.length / pageSize) > 1"
+        hide-on-single-page="true"
         style="text-align: center;"
         layout="prev, pager, next"
         :page-count="Math.ceil(notes.length / pageSize)"
+        :current-page="currentPage"
         @current-change="handleCurrentChange">
       </el-pagination>
 
