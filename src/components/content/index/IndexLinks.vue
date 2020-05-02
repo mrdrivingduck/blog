@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/01/27
+  @version - 2020/05/02
 
   @description - 
     The index component for displaying social links
@@ -87,6 +87,13 @@ export default {
           link: "https://twitter.com/mrdrivingduck",
           icon_light: "icon/twitter-light.svg",
           icon_dark: "icon/twitter-dark.svg"
+        },
+        {
+          name: "LinkedIn",
+          login: "Jingtang Zhang",
+          link: "https://www.linkedin.com/in/jingtang-zhang-b38a76167/",
+          icon_light: "icon/linkedin-light.svg",
+          icon_dark: "icon/linkedin-dark.svg"
         },
         {
           name: "Weibo",
