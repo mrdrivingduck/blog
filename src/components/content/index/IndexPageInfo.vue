@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/05/19
+  @version - 2020/05/30
 
   @description - 
     The index component for displaying page information
@@ -18,7 +18,7 @@
           @mrdrivingduck
         </el-link>
       </p>
-      <p> Page build by <i> duckling </i> version <b> 0.20.05 </b> </p>
+      <p> Page build by <i> duckling </i> version <b> 0.20.06 </b> </p>
 
     <el-divider></el-divider>
 

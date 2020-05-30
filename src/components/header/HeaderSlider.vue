@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/03/28
+  @version - 2020/05/30
 
   @description - 
     Slider for changing themes.
@@ -51,7 +51,7 @@ export default {
             color: "#9567e4"
           }
         });
-        console.log(allThemes[i].name)
+        // console.log(allThemes[i].name)
       }
     },
 
