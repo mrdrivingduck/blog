@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/04/15
+  @version - 2020/06/07
 
   @description - 
     The content component for displaying note list.
@@ -19,7 +19,7 @@
 
       <!-- Divide each page -->
       <el-pagination
-        hide-on-single-page="true"
+        :hide-on-single-page="true"
         style="text-align: center;"
         layout="prev, pager, next"
         :page-count="Math.ceil(notes.length / pageSize)"
@@ -69,7 +69,7 @@
 
       <!-- Divide each page -->
       <el-pagination
-        hide-on-single-page="true"
+        :hide-on-single-page="true"
         style="text-align: center;"
         layout="prev, pager, next"
         :page-count="Math.ceil(notes.length / pageSize)"
