@@ -1,6 +1,6 @@
-# duckling
+# blog
 
-🦆 Dynamic blog system.
+🦆 Dynamic blog system based on [Vue.js](https://vuejs.org/).
 
 Created by : Mr Dk.
 
@@ -12,9 +12,7 @@ Created by : Mr Dk.
 
 ## About
 
-A dynamic blog system of myself.
-
-Based on - 
+A dynamic blog system implemented by myself. Supported by:
 
 * [Vue.js](https://vuejs.org/) - 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.
 * [Vuex](https://vuex.vuejs.org/) - 🗃️ Centralized State Management for Vue.js.
@@ -30,6 +28,7 @@ Based on -
 * [GitHub API v4](https://developer.github.com/v4/) - The official GitHub GraphQL API v4.
 * [GitHub Pages](https://pages.github.com/) - Websites for you and your projects.
 * [Aliyun](https://www.aliyun.com/) - More Than Just Cloud.
+* [Travis CI](https://www.travis-ci.org/) - Test and Deploy Your Code with Confidence.
 
 ---
 
@@ -66,7 +65,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## License
 
-Copyright © 2018-2020, Jingtang Zhang. ([MIT License](public/LICENSE))
+Copyright © 2018-2020, Jingtang Zhang. ([MIT License](LICENSE))
 
 ---
 
