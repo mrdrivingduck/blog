@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/04/13
+  @version - 2020/06/16
 
   @description - 
     The aside component for guiding.
@@ -125,8 +125,8 @@ export default {
       this.failReason = "";
 
       const url = this.$store.state.githubapi.apiv4;
-      const tokenPart1 = this.$store.state.githubapi.patPart1;
-      const tokenPart2 = this.$store.state.githubapi.patPart2;
+      const tokenPart1 = process.env.VUE_APP_TOKEN_PART_1;
+      const tokenPart2 = process.env.VUE_APP_TOKEN_PART_2;
       const token = tokenPart1.concat(tokenPart2);
       const query = this.$store.state.githubapi.query;
       
