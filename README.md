@@ -10,6 +10,10 @@ Created by : Mr Dk.
 
 ---
 
+## Build Status
+
+[![Build Status](https://www.travis-ci.org/mrdrivingduck/blog.svg?branch=master)](https://www.travis-ci.org/mrdrivingduck/blog)
+
 ## About
 
 A dynamic blog system implemented by myself. Supported by:
