@@ -19,11 +19,18 @@ const state = {
      */
     user: `query { 
             user(login: "mrdrivingduck") { name, location, bio, company },
-            io: repository(name: "mrdrivingduck.github.io", owner: "mrdrivingduck") {
+            io: repository(name: "blog", owner: "mrdrivingduck") {
               deployments(last: 1) {
                 nodes {
                   createdAt, creator { login, url },
                   commit { message, committedDate, committer { user { name, url }, date } }
+                }
+              },
+              object(expression: "master:package.json") {
+                ... on Blob {
+                  oid
+                  byteSize
+                  text
                 }
               }
             },

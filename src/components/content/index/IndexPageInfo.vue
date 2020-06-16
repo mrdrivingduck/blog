@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/05/30
+  @version - 2020/06/16
 
   @description - 
     The index component for displaying page information
@@ -18,7 +18,7 @@
           @mrdrivingduck
         </el-link>
       </p>
-      <p> Page build by <i> duckling </i> version <b> 0.20.07 </b> </p>
+      <p> Blog page build version: <b> {{ blogVersion }} </b> </p>
 
     <el-divider></el-divider>
 
@@ -69,7 +69,7 @@
 
 <script>
 export default {
-  props: [ "theme", "fail", "deployment" ],
+  props: [ "theme", "fail", "deployment", "blogVersion" ],
   data: function() {
     return {
       // deployment: null,
@@ -145,6 +145,11 @@ export default {
           name: "Aliyun",
           description: "More Than Just Cloud.",
           link: "https://www.aliyun.com/"
+        },
+        {
+          name: "Travis CI",
+          description: "Test and Deploy Your Code with Confidence.",
+          link: "https://www.travis-ci.org/"
         }
       ]
     };

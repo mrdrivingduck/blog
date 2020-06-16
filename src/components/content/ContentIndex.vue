@@ -85,6 +85,7 @@
         :theme="theme"
         :loading="loading"
         :fail="fail"
+        :blogVersion="blogVersion"
         :deployment="deployData"
         :emotionsDate="emotionsData"
         v-bind:is="tabs[selectedTab]">
@@ -130,6 +131,7 @@ export default {
       company: "",
 
       // Public index data
+      blogVersion: null,
       deployData: null,
       emotionsData: null,
 
@@ -170,6 +172,7 @@ export default {
           "Authorization": "bearer " + token
         }
       }).then(response => {
+        this.blogVersion = JSON.parse(response.data.data.io.object.text).version;
         this.deployData = response.data.data.io.deployments.nodes[0];
         this.emotionsData = response.data.data.emotions.object.entries;
         let { name, bio, location, company } = response.data.data.user;
