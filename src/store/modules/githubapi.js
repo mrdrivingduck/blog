@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/06/16
+ * @version 2020/06/17
  * @description
  *    Vuex store for saving current content component
  */
@@ -23,15 +23,25 @@ const state = {
               deployments(last: 1) {
                 nodes {
                   createdAt, creator { login, url },
-                  commit { message, committedDate, committer { user { name, url }, date } }
+                  commit { message, committedDate, committer { user { name, url } } }
                 }
               },
-              object(expression: "master:package.json") {
-                ... on Blob {
-                  oid
-                  byteSize
-                  text
+              ref(qualifiedName: "master") {
+                target {
+                  ... on Commit {
+                    history(first: 1) {
+                      edges {
+                        node {
+                          oid, message, committedDate
+                          committer { user { name, url } }
+                        }
+                      }
+                    }
+                  }
                 }
+              }
+              object(expression: "master:package.json") {
+                ... on Blob { oid, byteSize, text }
               }
             },
             emotions: repository(name: "emotions", owner: "mrdrivingduck") {
@@ -52,11 +62,7 @@ const state = {
                 object(expression: "master:") {
                   ... on Tree {
                     entries {
-                      name
-                      type
-                      object {
-                        ...getDirectory
-                      }
+                      name, type, object { ...getDirectory }
                     }
                   }
                 }
@@ -84,20 +90,14 @@ const state = {
             }
 
             fragment getDirectory on Tree {
-              entries {
-                name
-                type
-                oid
-              }
+              entries { name, type, oid }
             }`,
     notelist: `query { 
                 repository(name: "<repo>", owner: "mrdrivingduck") {
                   object(expression: "master:<path>") {
                     ... on Tree {
                       entries {
-                        name
-                        type
-                        oid
+                        name, type, oid
                         object {
                           ... on Blob {
                             byteSize
@@ -117,8 +117,7 @@ const state = {
                             object {
                               ... on Tree {
                                 entries {
-                                  name
-                                  oid
+                                  name, oid
                                   object {
                                     ... on Blob {
                                       byteSize
@@ -136,9 +135,7 @@ const state = {
                 repository(name: "<repo>", owner: "mrdrivingduck") {
                   object(expression: "master:<path>") {
                     ... on Blob {
-                      oid
-                      byteSize
-                      text
+                      oid, byteSize, text
                     }
                   }
                   defaultBranchRef {
@@ -146,13 +143,7 @@ const state = {
                       ... on Commit {
                         history(path: "<path>") {
                           nodes {
-                            oid
-                            committedDate
-                            author {
-                              user {
-                                name
-                              }
-                            }
+                            oid, committedDate, author { user { name } }
                           }
                         }
                       }

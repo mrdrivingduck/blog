@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/06/16
+  @version - 2020/06/17
 
   @description - 
     The content component for displaying pernal information
@@ -174,6 +174,7 @@ export default {
       }).then(response => {
         this.blogVersion = JSON.parse(response.data.data.io.object.text).version;
         this.deployData = response.data.data.io.deployments.nodes[0];
+        this.$set(this.deployData, "commitData", response.data.data.io.ref.target.history.edges[0].node);
         this.emotionsData = response.data.data.emotions.object.entries;
         let { name, bio, location, company } = response.data.data.user;
         this.name = name;

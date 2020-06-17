@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/06/16
+  @version - 2020/06/17
 
   @description - 
     The index component for displaying page information
@@ -26,17 +26,17 @@
       v-if="!fail">
 
       <p style="font-size: 30px;"> Deployment </p>
-      <p> 📤 {{ deployment.commit.message }} </p>
+      <p> 📤 {{ deployment.commitData.message }} </p>
       <p>
-        ⌚ Committed at <b>{{ deployment.commit.committedDate }}</b> by
-        <el-link :href="deployment.commit.committer.user.url" type="primary">
-          {{ deployment.commit.committer.user.name }}
+        ⌚ Committed at <b>{{ deployment.commitData.committedDate }}</b> by
+        <el-link :href="deployment.commitData.committer.user.url" type="primary">
+          {{ deployment.commitData.committer.user.name }}
         </el-link>
       </p>
       <p>
-        ⌚ Deployed at <b>{{ deployment.createdAt }}</b> by
-        <el-link :href="deployment.creator.url" type="primary">
-          {{ deployment.creator.login }}
+        ⌚ Deployed at <b>{{ deployment.commit.committedDate }}</b> by
+        <el-link :href="deployment.commit.committer.user.url" type="primary">
+          {{ deployment.commit.committer.user.name }}
         </el-link>
       </p>
     </div>
