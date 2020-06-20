@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/06/16
+  @version - 2020/06/20
 
   @description - 
     The content component for displaying markdown files
@@ -151,7 +151,7 @@ export default {
         this.articleReadingTime = 1;
       }
 
-      this.copyLink = "https://mrdrivingduck.github.io/#" + this.$route.fullPath;
+      this.copyLink = "https://mrdrivingduck.github.io/blog/#" + this.$route.fullPath;
 
       // Issur HTTP request
       const repo = this.$route.query.repo;

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/05
+  @version - 2020/06/19
 
   @description - 
     The index component for displaying fotter
@@ -64,7 +64,7 @@ export default {
     return {
       github_link_dark: "icon/github-circle-dark.svg",
       github_link_light: "icon/github-circle-light.svg",
-      repo_url: "https://github.com/mrdrivingduck/mrdrivingduck.github.io"
+      repo_url: "https://github.com/mrdrivingduck/blog"
     };
   }
 }
