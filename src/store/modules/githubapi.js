@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/06/17
+ * @version 2020/06/21
  * @description
  *    Vuex store for saving current content component
  */
@@ -9,6 +9,8 @@ const state = {
   // GitHub API v4 entry point
   // apiv4: "https://api.github.com/graphql",
   apiv4: "https://koera.vultr.mrdrivingduck.cn/blog/apiv4",
+
+  baseUrl: "https://mrdrivingduck.github.io/blog/#",
   
   query: {
     /**

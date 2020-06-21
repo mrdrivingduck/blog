@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/03/28
+ * @version 2020/03/28
  * @description
  *    Vuex store for saving theme information
  */

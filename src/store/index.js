@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2019/01/27
+ * @version 2020/01/27
  * @description
  *    Entry of different modules of Vuex store.
  */
