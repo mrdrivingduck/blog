@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/06/17
+  @version - 2020/06/27
 
   @description - 
     The content component for displaying pernal information
@@ -47,6 +47,13 @@
                 mrdrivingduck@gmail.com
               </el-link>
             </p>
+
+            <github-button
+              href="https://github.com/mrdrivingduck"
+              :data-color-scheme="buttonTheme"
+              data-size="large" data-show-count="true">
+              Follow @mrdrivingduck
+            </github-button>
 
           </el-card>
 
@@ -111,10 +118,14 @@
 </style>
 
 <script>
+import GithubButton from "vue-github-button";
+
 export default {
   name: "ContentIndex",
   props: [ "theme" ],
   components: {
+    GithubButton,
+    
     IndexEmotion: () => import("./index/IndexEmotion"),
     IndexAbout: () => import("./index/IndexAbout"),
     IndexTechStack: () => import("./index/IndexTechStack"),
@@ -151,7 +162,9 @@ export default {
       // Navigation
       backgroundColor: null,
       textColor: null,
-      activeTextColor: null
+      activeTextColor: null,
+
+      buttonTheme: "no-preference: light; light: dark; dark: light;"
     };
   },
   methods: {
@@ -198,6 +211,7 @@ export default {
       let { backgroundColor, textColor } = allThemes[themeIndex].card;
       this.cardBackgroundColor = backgroundColor;
       this.cardTextColor = textColor;
+      this.buttonTheme = allThemes[themeIndex].buttonStyle;
     },
 
     // Set the theme of navigation

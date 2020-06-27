@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/06/21
+ * @version 2020/06/27
  * @description
  *    Vuex store for saving current content component
  */
@@ -163,6 +163,7 @@ const state = {
        */
       // content: "https://api.github.com/repos/mrdrivingduck/notes/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/notes/commits?path=",
+      link: "https://github.com/mrdrivingduck/notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/notes/master/img/',
       imgMatcher: /<img\ssrc="\.\.\/img\//g,
       fileFilter: /^Chapter.*$/,
@@ -177,6 +178,7 @@ const state = {
        */
       // content: "https://api.github.com/repos/mrdrivingduck/paper-outline/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/paper-outline/commits?path=",
+      link: "https://github.com/mrdrivingduck/paper-outline",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/paper-outline/master/img/',
       imgMatcher: /<img\ssrc="\.\.\/\.\.\/img\//g,
       fileFilter: /^Outline.*$/,
@@ -191,6 +193,7 @@ const state = {
        */
       // content: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/commits?path=",
+      link: "https://github.com/mrdrivingduck/how-linux-works-notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/how-linux-works-notes/master/img/',
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
@@ -217,6 +220,7 @@ const state = {
        */
       // content: "https://api.github.com/repos/mrdrivingduck/linux-kernel-comments-notes/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-comments-notes/commits?path=",
+      link: "https://github.com/mrdrivingduck/linux-kernel-comments-notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-comments-notes/master/img/',
       imgMatcher: /<img\ssrc="\.\.\/img\//g,
       fileFilter: /^.*\.md$/,
@@ -243,6 +247,7 @@ const state = {
        */
       // content: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/commits?path=",
+      link: "https://github.com/mrdrivingduck/linux-kernel-development-notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-development-notes/master/img/',
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
@@ -268,6 +273,7 @@ const state = {
        */
       // content: "https://api.github.com/repos/mrdrivingduck/uc-os-ii-code-notes/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/uc-os-ii-code-notes/commits?path=",
+      link: "https://github.com/mrdrivingduck/uc-os-ii-code-notes",
       imgPrefix: '',
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^.*\.md$/,
@@ -294,6 +300,7 @@ const state = {
        */
       // content: "https://api.github.com/repos/mrdrivingduck/jdk-source-code-analysis/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/jdk-source-code-analysis/commits?path=",
+      link: "https://github.com/mrdrivingduck/jdk-source-code-analysis",
       imgPrefix: '',
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^(Class|Abstract|Interface).*$/,
@@ -327,6 +334,7 @@ const state = {
       // commit: "https://api.github.com/repos/mrdrivingduck/understanding-the-jvm/commits?path=",
       // imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/understanding-the-jvm/master/img/',
       // imgMatcher: /<img\ssrc="\.\.\/img\//g,
+      link: "https://github.com/mrdrivingduck/understanding-the-jvm",
       fileFilter: /^.*\.md$/,
       dirFilter: /^Part.*$/,
       sort: function (a, b) {
