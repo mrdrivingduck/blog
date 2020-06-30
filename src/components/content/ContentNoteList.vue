@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/06/16
+  @version - 2020/06/27
 
   @description - 
     The content component for displaying note list.
@@ -16,6 +16,71 @@
       :class="theme"
       v-if="!fail"
       v-loading="loading">
+
+      <el-row :gutter="24" type="flex" align="middle" justify="center">
+
+        <el-col :span="4">
+          <div>
+            <github-button
+              :href="repoLink"
+              :data-color-scheme="buttonTheme"
+              data-icon="octicon-star"
+              data-size="large" data-show-count="true">
+              Star
+            </github-button>
+          </div>
+        </el-col>
+
+        <el-col :span="4">
+          <div>
+            <github-button
+              :href="repoLinkFork"
+              :data-color-scheme="buttonTheme"
+              data-icon="octicon-repo-forked"
+              data-size="large" data-show-count="true">
+              Fork
+            </github-button>
+          </div>
+        </el-col>
+
+        <el-col :span="4">
+          <div>
+            <github-button
+              :href="repoLinkWatch"
+              :data-color-scheme="buttonTheme"
+              data-icon="octicon-eye"
+              data-size="large" data-show-count="true">
+              Watch
+            </github-button>
+          </div>
+        </el-col>
+
+        <el-col :span="4">
+          <div>
+            <github-button
+              :href="repoLinkIssue"
+              :data-color-scheme="buttonTheme"
+              data-icon="octicon-issue-opened"
+              data-size="large" data-show-count="true">
+              Issue
+            </github-button>
+          </div>
+        </el-col>
+
+        <el-col :span="4">
+          <div>
+            <github-button
+              href="https://github.com/sponsors/mrdrivingduck"
+              :data-color-scheme="buttonTheme"
+              data-icon="octicon-heart" data-size="large">
+              Sponsor
+            </github-button>
+          </div>
+        </el-col>
+
+      </el-row>
+
+      <el-divider></el-divider>
 
       <!-- Divide each page -->
       <el-pagination
@@ -93,8 +158,11 @@
 </template>
 
 <script>
+import GithubButton from "vue-github-button";
+
 export default {
   name: "ContentNoteList",
+  components: { GithubButton },
   props: [ "theme" ],
   data: function() {
     return  {
@@ -109,7 +177,10 @@ export default {
 
       // For paging
       currentPage: 1,
-      pageSize: 6
+      pageSize: 6,
+
+      repoLink: "",
+      buttonTheme: "no-preference: light; light: dark; dark: light;"
     };
   },
   methods: {
@@ -132,6 +203,7 @@ export default {
 
       const regExpr = api[repo].fileFilter;
       const sorter = api[repo].sort;
+      this.repoLink = api[repo].link;
 
       let query = api.notelist;
       query = query.replace("<repo>", repo.replace(/_/g, "-"));
@@ -151,7 +223,7 @@ export default {
               path: path === "" ? originData[i].name : (path + "/" + originData[i].name),
               sha: originData[i].oid,
               size: originData[i].object.byteSize / 1024,
-              copyLink: "https://mrdrivingduck.github.io/#/markdown?repo="
+              copyLink: "https://mrdrivingduck.github.io/blog/#/markdown?repo="
                           + repo + "&path=" + (path === "" ?
                                                 originData[i].name :
                                                 (path + "/" + originData[i].name))
@@ -190,6 +262,7 @@ export default {
       let { backgroundColor, textColor } = allThemes[themeIndex].card;
       this.cardBackgroundColor = backgroundColor;
       this.cardTextColor = textColor;
+      this.buttonTheme = allThemes[themeIndex].buttonStyle;
     },
 
     // For changing the current-page variable
@@ -226,6 +299,18 @@ export default {
     // Listening for the theme changed
     themeChange: function() {
       return this.$store.state.theme.currentThemeIndex;
+    },
+
+    repoLinkFork: function() {
+      return this.repoLink + "/fork"
+    },
+
+    repoLinkWatch: function() {
+      return this.repoLink + "/subscription"
+    },
+
+    repoLinkIssue: function() {
+      return this.repoLink + "/issues"
     }
 
   },

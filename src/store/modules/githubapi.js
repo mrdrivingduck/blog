@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/06/16
+ * @version 2020/06/30
  * @description
  *    Vuex store for saving current content component
  */
@@ -9,6 +9,8 @@ const state = {
   // GitHub API v4 entry point
   // apiv4: "https://api.github.com/graphql",
   apiv4: "https://koera.vultr.mrdrivingduck.cn/blog/apiv4",
+
+  baseUrl: "https://mrdrivingduck.github.io/blog/#",
   
   query: {
     /**
@@ -23,15 +25,25 @@ const state = {
               deployments(last: 1) {
                 nodes {
                   createdAt, creator { login, url },
-                  commit { message, committedDate, committer { user { name, url }, date } }
+                  commit { message, committedDate, committer { user { name, url } } }
                 }
               },
-              object(expression: "master:package.json") {
-                ... on Blob {
-                  oid
-                  byteSize
-                  text
+              ref(qualifiedName: "master") {
+                target {
+                  ... on Commit {
+                    history(first: 1) {
+                      edges {
+                        node {
+                          oid, message, committedDate
+                          committer { user { name, url } }
+                        }
+                      }
+                    }
+                  }
                 }
+              }
+              object(expression: "master:package.json") {
+                ... on Blob { oid, byteSize, text }
               }
             },
             emotions: repository(name: "emotions", owner: "mrdrivingduck") {
@@ -52,11 +64,7 @@ const state = {
                 object(expression: "master:") {
                   ... on Tree {
                     entries {
-                      name
-                      type
-                      object {
-                        ...getDirectory
-                      }
+                      name, type, object { ...getDirectory }
                     }
                   }
                 }
@@ -81,23 +89,22 @@ const state = {
                   ...getDirectory
                 }
               }
+              redis_implementation_notes: repository(name: "redis-implementation-notes", owner: "mrdrivingduck") {
+                object(expression: "master:") {
+                  ...getDirectory
+                }
+              }
             }
 
             fragment getDirectory on Tree {
-              entries {
-                name
-                type
-                oid
-              }
+              entries { name, type, oid }
             }`,
     notelist: `query { 
                 repository(name: "<repo>", owner: "mrdrivingduck") {
                   object(expression: "master:<path>") {
                     ... on Tree {
                       entries {
-                        name
-                        type
-                        oid
+                        name, type, oid
                         object {
                           ... on Blob {
                             byteSize
@@ -117,8 +124,7 @@ const state = {
                             object {
                               ... on Tree {
                                 entries {
-                                  name
-                                  oid
+                                  name, oid
                                   object {
                                     ... on Blob {
                                       byteSize
@@ -136,9 +142,7 @@ const state = {
                 repository(name: "<repo>", owner: "mrdrivingduck") {
                   object(expression: "master:<path>") {
                     ... on Blob {
-                      oid
-                      byteSize
-                      text
+                      oid, byteSize, text
                     }
                   }
                   defaultBranchRef {
@@ -146,13 +150,7 @@ const state = {
                       ... on Commit {
                         history(path: "<path>") {
                           nodes {
-                            oid
-                            committedDate
-                            author {
-                              user {
-                                name
-                              }
-                            }
+                            oid, committedDate, author { user { name } }
                           }
                         }
                       }
@@ -170,6 +168,7 @@ const state = {
        */
       // content: "https://api.github.com/repos/mrdrivingduck/notes/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/notes/commits?path=",
+      link: "https://github.com/mrdrivingduck/notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/notes/master/img/',
       imgMatcher: /<img\ssrc="\.\.\/img\//g,
       fileFilter: /^Chapter.*$/,
@@ -184,6 +183,7 @@ const state = {
        */
       // content: "https://api.github.com/repos/mrdrivingduck/paper-outline/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/paper-outline/commits?path=",
+      link: "https://github.com/mrdrivingduck/paper-outline",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/paper-outline/master/img/',
       imgMatcher: /<img\ssrc="\.\.\/\.\.\/img\//g,
       fileFilter: /^Outline.*$/,
@@ -198,6 +198,7 @@ const state = {
        */
       // content: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/commits?path=",
+      link: "https://github.com/mrdrivingduck/how-linux-works-notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/how-linux-works-notes/master/img/',
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
@@ -224,6 +225,7 @@ const state = {
        */
       // content: "https://api.github.com/repos/mrdrivingduck/linux-kernel-comments-notes/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-comments-notes/commits?path=",
+      link: "https://github.com/mrdrivingduck/linux-kernel-comments-notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-comments-notes/master/img/',
       imgMatcher: /<img\ssrc="\.\.\/img\//g,
       fileFilter: /^.*\.md$/,
@@ -250,6 +252,7 @@ const state = {
        */
       // content: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/commits?path=",
+      link: "https://github.com/mrdrivingduck/linux-kernel-development-notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-development-notes/master/img/',
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
@@ -275,6 +278,7 @@ const state = {
        */
       // content: "https://api.github.com/repos/mrdrivingduck/uc-os-ii-code-notes/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/uc-os-ii-code-notes/commits?path=",
+      link: "https://github.com/mrdrivingduck/uc-os-ii-code-notes",
       imgPrefix: '',
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^.*\.md$/,
@@ -301,6 +305,7 @@ const state = {
        */
       // content: "https://api.github.com/repos/mrdrivingduck/jdk-source-code-analysis/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/jdk-source-code-analysis/commits?path=",
+      link: "https://github.com/mrdrivingduck/jdk-source-code-analysis",
       imgPrefix: '',
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^(Class|Abstract|Interface).*$/,
@@ -334,6 +339,34 @@ const state = {
       // commit: "https://api.github.com/repos/mrdrivingduck/understanding-the-jvm/commits?path=",
       // imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/understanding-the-jvm/master/img/',
       // imgMatcher: /<img\ssrc="\.\.\/img\//g,
+      link: "https://github.com/mrdrivingduck/understanding-the-jvm",
+      fileFilter: /^.*\.md$/,
+      dirFilter: /^Part.*$/,
+      sort: function (a, b) {
+        let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
+        let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
+
+        // Chapter 12.10 - xxxxxx
+        // Chapter 12 - xxxxxx
+        if (idxFrontArr[0] === idxBackArr[0]) {
+          return parseInt(idxFrontArr[1]) - parseInt(idxBackArr[1]);
+        } else {
+          return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
+        }
+      }
+    },
+    redis_implementation_notes: {
+      /**
+       * Redis implementation notes
+       *    commit: notes commit record
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
+       */
+      // content: "https://api.github.com/repos/mrdrivingduck/redis-implementation-notes/contents/",
+      // commit: "https://api.github.com/repos/mrdrivingduck/redis-implementation-notes/commits?path=",
+      // imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/redis-implementation-notes/master/img/',
+      // imgMatcher: /<img\ssrc="\.\.\/img\//g,
+      link: "https://github.com/mrdrivingduck/redis-implementation-notes",
       fileFilter: /^.*\.md$/,
       dirFilter: /^Part.*$/,
       sort: function (a, b) {

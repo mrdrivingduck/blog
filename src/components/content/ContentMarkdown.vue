@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/06/16
+  @version - 2020/06/27
 
   @description - 
     The content component for displaying markdown files
@@ -63,6 +63,14 @@
           </el-link>
         </p>
 
+        <github-button
+          :href="repoLink"
+          :data-color-scheme="buttonTheme"
+          data-icon="octicon-star"
+          data-size="large" data-show-count="true">
+          Star
+        </github-button>
+
       </el-card>
 
       <!-- Display markdown -->
@@ -97,9 +105,11 @@
 <script>
 import marked from "marked";
 import hljs from "duckling-highlight";
+import GithubButton from "vue-github-button";
 
 export default {
   name: "ContentMarkdown",
+  components: { GithubButton },
   data: function() {
     return  {
       // Info in the card
@@ -127,6 +137,8 @@ export default {
       markdownClass: null,
 
       copyLink: "",
+      repoLink: "",
+      buttonTheme: "no-preference: light; light: dark; dark: light;"
     };
   },
   methods: {
@@ -151,7 +163,7 @@ export default {
         this.articleReadingTime = 1;
       }
 
-      this.copyLink = "https://mrdrivingduck.github.io/#" + this.$route.fullPath;
+      this.copyLink = this.$store.state.githubapi.baseUrl + this.$route.fullPath;
 
       // Issur HTTP request
       const repo = this.$route.query.repo;
@@ -171,6 +183,8 @@ export default {
       let query = api.markdown;
       query = query.replace(/<repo>/, repo.replace(/_/g, "-"));
       query = query.replace(/<path>/g, path);
+
+      this.repoLink = api[repo].link;
 
       this.$http.post(url, { query }, {
         headers: {
@@ -233,6 +247,7 @@ export default {
       let { backgroundColor, textColor } = allThemes[currentTheme].card;
       this.cardBackgroundColor = backgroundColor;
       this.cardTextColor = textColor;
+      this.buttonTheme = allThemes[currentTheme].buttonStyle;
     },
 
     // Called when the theme changes

@@ -33,6 +33,7 @@ A dynamic blog system implemented by myself. Supported by:
 * [GitHub Pages](https://pages.github.com/) - Websites for you and your projects.
 * [Aliyun](https://www.aliyun.com/) - More Than Just Cloud.
 * [Travis CI](https://www.travis-ci.org/) - Test and Deploy Your Code with Confidence.
+* [GitHub Buttons](https://buttons.github.io/) - Unofficial github:button component for Vue.js.
 
 ---
 

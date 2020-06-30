@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/01/27
+  @version - 2020/06/21
 
   @description - 
     The index component for displaying technology stack
@@ -51,7 +51,7 @@ export default {
       stack: [
         {
           language: "C/C++",
-          percentage: 32,
+          percentage: 40,
           projects: [
             {
               description: "Reading Linux 0.12 kernel source code",
@@ -76,7 +76,7 @@ export default {
         },
         {
           language: "Java",
-          percentage: 40,
+          percentage: 45,
           projects: [
             {
               description: "Some network program",
@@ -102,7 +102,7 @@ export default {
         },
         {
           language: "JavaScript",
-          percentage: 24,
+          percentage: 20,
           projects: [
             {
               description: "Node.js / Vue.js"
@@ -111,7 +111,7 @@ export default {
         },
         {
           language: "Verilog HDL",
-          percentage: 14,
+          percentage: 12,
           projects: [
             {
               description: "NSCSCC (Loongson Cup), Summer of 2017",
@@ -122,7 +122,7 @@ export default {
         },
         {
           language: "Python",
-          percentage: 8,
+          percentage: 10,
           projects: [
             {
               description: "Scripts for analyzing 802.11 beacon frames.",
