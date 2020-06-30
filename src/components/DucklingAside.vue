@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/06/16
+  @version - 2020/06/30
 
   @description - 
     The aside component for guiding.
@@ -58,11 +58,17 @@
       <!-- Sub-menu of JDK source code analysis -->
       <aside-jdk-code-analysis :index="9"></aside-jdk-code-analysis>
 
-      <!-- Sub-menu of JDK source code analysis -->
+      <!-- Sub-menu of Understanding-JVM -->
       <aside-understanding-the-jvm
         :index="10"
         :directory="asideData['understanding_the_jvm']"
       ></aside-understanding-the-jvm>
+
+      <!-- Sub-menu of Redis-Implementation -->
+      <aside-redis-implementation
+        :index="11"
+        :directory="asideData['redis_implementation_notes']"
+      ></aside-redis-implementation>
 
     </el-menu>
 
@@ -91,7 +97,8 @@ export default {
     AsideLinuxKernelDevelopment: () => import("./aside/AsideLinuxKernelDevelopment"),
     AsideMiuCosTwo: () => import("./aside/AsideMiuCosTwo"),
     AsideJdkCodeAnalysis: () => import("./aside/AsideJdkCodeAnalysis"),
-    AsideUnderstandingTheJvm: () => import("./aside/AsideUnderstandingTheJVM")
+    AsideUnderstandingTheJvm: () => import("./aside/AsideUnderstandingTheJVM"),
+    AsideRedisImplementation: () => import("./aside/AsideRedisImplementation")
   },
   data: function() {
     return {

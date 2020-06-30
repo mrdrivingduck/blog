@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/06/27
+ * @version 2020/06/30
  * @description
  *    Vuex store for saving current content component
  */
@@ -85,6 +85,11 @@ const state = {
                 }
               }
               understanding_the_jvm: repository(name: "understanding-the-jvm", owner: "mrdrivingduck") {
+                object(expression: "master:") {
+                  ...getDirectory
+                }
+              }
+              redis_implementation_notes: repository(name: "redis-implementation-notes", owner: "mrdrivingduck") {
                 object(expression: "master:") {
                   ...getDirectory
                 }
@@ -335,6 +340,33 @@ const state = {
       // imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/understanding-the-jvm/master/img/',
       // imgMatcher: /<img\ssrc="\.\.\/img\//g,
       link: "https://github.com/mrdrivingduck/understanding-the-jvm",
+      fileFilter: /^.*\.md$/,
+      dirFilter: /^Part.*$/,
+      sort: function (a, b) {
+        let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
+        let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
+
+        // Chapter 12.10 - xxxxxx
+        // Chapter 12 - xxxxxx
+        if (idxFrontArr[0] === idxBackArr[0]) {
+          return parseInt(idxFrontArr[1]) - parseInt(idxBackArr[1]);
+        } else {
+          return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
+        }
+      }
+    },
+    redis_implementation_notes: {
+      /**
+       * Redis implementation notes
+       *    commit: notes commit record
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
+       */
+      // content: "https://api.github.com/repos/mrdrivingduck/redis-implementation-notes/contents/",
+      // commit: "https://api.github.com/repos/mrdrivingduck/redis-implementation-notes/commits?path=",
+      // imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/redis-implementation-notes/master/img/',
+      // imgMatcher: /<img\ssrc="\.\.\/img\//g,
+      link: "https://github.com/mrdrivingduck/redis-implementation-notes",
       fileFilter: /^.*\.md$/,
       dirFilter: /^Part.*$/,
       sort: function (a, b) {
