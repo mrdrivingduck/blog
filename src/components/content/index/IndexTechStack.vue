@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/06/21
+  @version - 2020/07/01
 
   @description - 
     The index component for displaying technology stack
@@ -54,23 +54,33 @@ export default {
           percentage: 40,
           projects: [
             {
-              description: "Reading Linux 0.12 kernel source code",
+              description: "🐧 Kernel module for signature verification of ELF files.",
+              name: "ELF sig-verify module",
+              // link: "https://github.com/mrdrivingduck/linux-kernel-elf-sig-verify-module"
+            },
+            {
+              description: "🐧 Adding digital signature into ELF binary files.",
+              name: "Linux ELF binary signer",
+              // link: "https://github.com/mrdrivingduck/linux-elf-binary-signer"
+            },
+            {
+              description: "🐧 Notes of reading Linux kernel source code.",
               name: "Linux kernel comments notes",
               link: "https://github.com/mrdrivingduck/linux-kernel-comments-notes"
             },
             {
-              description: "R(C++) API of DolphinDB©",
+              description: "🐬 R(C++)-API of DolphinDB server.",
               name: "DolphinDB R-API",
               link: "https://github.com/mrdrivingduck/api-r"
             },
             {
-              description: "Programming Ability Test (PAT) of Zhejiang University, 2018.03",
-              name: "Score 100"
-            },
-            {
-              description: "Reading μC/OS-II kernel source code",
+              description: "🐤 Notes of reading μC/OS-II code.",
               name: "μC/OS-II code analysis",
               link: "https://github.com/mrdrivingduck/uc-os-ii-code-notes"
+            },
+            {
+              description: "Programming Ability Test (PAT) of Zhejiang University, 2018.03",
+              name: "Score 100"
             }
           ]
         },
@@ -79,33 +89,35 @@ export default {
           percentage: 45,
           projects: [
             {
-              description: "Some network program",
+              description: "☕ Notes of reading JDK 8 source code.",
+              name: "JDK source code analysis",
+              link: "https://github.com/mrdrivingduck/jdk-source-code-analysis"
+            },
+            {
+              description: "🌉 A Java client for Kismet RESTful API.",
               name: "kismet Java client",
               link: "https://github.com/mrdrivingduck/kismet-Jclient"
             },
             {
-              description: "Small tools for file encryption/decryption",
+              description: "🤐 Code for file encryption/decryption.",
               name: "File privacy protector",
               link: "https://github.com/mrdrivingduck/file-privacy-protector"
             },
             {
-              description: "Utility for quick encryption",
+              description: "🔒 A Java wrapper for simple encryption/decryption.",
               name: "Encryption machine",
               link: "https://github.com/mrdrivingduck/encryption-machine"
-            },
-            {
-              description: "JDK 8 source code analysis",
-              name: "JDK source code analysis",
-              link: "https://github.com/mrdrivingduck/jdk-source-code-analysis"
             }
           ]
         },
         {
-          language: "JavaScript",
+          language: "JavaScript (Node.js / Vue.js)",
           percentage: 20,
           projects: [
             {
-              description: "Node.js / Vue.js"
+              description: "🦆 Dynamic blog system based on Vue.js.",
+              name: "blog",
+              link: "https://github.com/mrdrivingduck/blog"
             }
           ]
         },
@@ -114,8 +126,8 @@ export default {
           percentage: 12,
           projects: [
             {
-              description: "NSCSCC (Loongson Cup), Summer of 2017",
-              name: "MIPS 32-bit 5-stage pipeline CPU",
+              description: "🔌 A 32-bit MIPS CPU supporting 57 instructions for NSCSCC (Loongson Cup), Summer of 2017.",
+              name: "mips32-CPU",
               link: "https://github.com/mrdrivingduck/mips32-CPU"
             }
           ]
@@ -125,7 +137,7 @@ export default {
           percentage: 10,
           projects: [
             {
-              description: "Scripts for analyzing 802.11 beacon frames.",
+              description: "🐌 Scripts for analyzing 802.11 beacon frames.",
               name: "IEEE 802.11 beacon frame analysis",
               link: "https://github.com/mrdrivingduck/beacon-frame-analysis"
             }
@@ -136,7 +148,7 @@ export default {
           percentage: 10,
           projects: [
             {
-              description: "Some VSTO tools for Microsoft Office©",
+              description: "⚙️ Tools for automatic jobs with MS Office.",
               name: "Office utilities",
               link: "https://github.com/mrdrivingduck/office-utilities"
             }
