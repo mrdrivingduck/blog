@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/07/01
+  @version - 2020/07/06
 
   @description - 
     The index component for displaying page information
@@ -29,7 +29,7 @@
 
       <el-row :gutter="24" type="flex" align="middle" justify="start">
 
-        <el-col :span="4">
+        <el-col :span="3.5">
           <div>
             <github-button
               href="https://github.com/mrdrivingduck/blog"
@@ -41,7 +41,7 @@
           </div>
         </el-col>
 
-        <el-col :span="4">
+        <el-col :span="3.5">
           <div>
             <github-button
               href="https://github.com/mrdrivingduck/blog/issues"
@@ -53,7 +53,7 @@
           </div>
         </el-col>
 
-        <el-col :span="4">
+        <el-col :span="3.5">
           <div>
             <github-button
               href="https://github.com/sponsors/mrdrivingduck"
