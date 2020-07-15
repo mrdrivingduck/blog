@@ -1,10 +1,10 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/05/02
+  @version - 2020/07/15
 
   @description - 
-    The index component for displaying social links
+    The index component for displaying social links and friend links.
 
 -->
 
@@ -32,7 +32,7 @@
         </div>
       </el-col>
 
-      <!-- Social link url -->
+      <!-- Social link URL -->
       <el-col :span="16">
         <p>
           {{ social.name }} -
@@ -46,10 +46,43 @@
 
     </el-row>
 
-    
-    <!-- <el-divider></el-divider>
 
-    <h1> 🐶 Friend Links </h1> -->
+
+    <el-divider></el-divider>
+
+
+
+    <h1> 🐶 Friend Links </h1>
+    <el-row
+      v-for="friend in friends"
+      :key="friend.name"
+      type="flex">
+
+      <el-col :span="3">
+        <div style="height: 100%; float: right; margin-right: 20px">
+          <el-avatar
+            :src="friend.avatar" :size="32" shape="square"
+            style="vertical-align:middle;">
+            <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"/>
+          </el-avatar>
+          <span
+            style="display: inline-block; height: 100%; vertical-align: middle;">
+          </span>
+        </div>
+      </el-col>
+
+      <!-- Friend link URL -->
+      <el-col :span="16">
+        <p>
+          <el-link
+            type="primary"
+            :href="friend.link">
+            {{ friend.name }}
+          </el-link>
+        </p>
+      </el-col>
+
+    </el-row>
 
   </div>
 </template>
@@ -101,6 +134,23 @@ export default {
           link: "https://weibo.com/u/1638054144",
           icon_light: "icon/weibo-light.svg",
           icon_dark: "icon/weibo-dark.svg"
+        }
+      ],
+      friends: [
+        {
+          name: "Triple-Z",
+          avatar: "https://avatars.githubusercontent.com/Triple-Z",
+          link: "https://blog.triplez.cn/"
+        },
+        {
+          name: "Lewis-Lu",
+          avatar: "https://avatars.githubusercontent.com/Lewis-Lu",
+          link: "http://lewissoft.com/"
+        },
+        {
+          name: "zonghuaxiansheng",
+          avatar: "https://avatars.githubusercontent.com/zonghuaxiansheng",
+          link: "https://github.com/zonghuaxiansheng"
         }
       ]
     };
