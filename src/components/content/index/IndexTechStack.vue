@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/07/01
+  @version - 2020/07/03
 
   @description - 
     The index component for displaying technology stack
@@ -69,14 +69,14 @@ export default {
               link: "https://github.com/mrdrivingduck/linux-kernel-comments-notes"
             },
             {
-              description: "🐬 R(C++)-API of DolphinDB server.",
-              name: "DolphinDB R-API",
-              link: "https://github.com/mrdrivingduck/api-r"
-            },
-            {
               description: "🐤 Notes of reading μC/OS-II code.",
               name: "μC/OS-II code analysis",
               link: "https://github.com/mrdrivingduck/uc-os-ii-code-notes"
+            },
+            {
+              description: "🐬 R(C++)-API of DolphinDB server.",
+              name: "DolphinDB R-API",
+              link: "https://github.com/mrdrivingduck/api-r"
             },
             {
               description: "Programming Ability Test (PAT) of Zhejiang University, 2018.03",

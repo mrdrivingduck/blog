@@ -1,6 +1,6 @@
 {
   "name": "duckling",
-  "version": "0.20.07",
+  "version": "0.20.08",
   "author": {
     "name": "mrdrivingduck",
     "email": "mrdrivingduck@gmail.com",
@@ -19,20 +19,19 @@
     "duckling-highlight": "0.0.4",
     "duckling-markdown-css": "0.0.3",
     "element-ui": "^2.13.2",
-    "marked": "^1.1.0",
-    "npm-check-updates": "^7.0.1",
+    "marked": "^1.1.1",
     "vue": "^2.6.11",
     "vue-clipboard2": "^0.3.1",
     "vue-github-button": "^1.2.0",
     "vue-router": "^3.3.4",
-    "vuex": "^3.4.0"
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.4.4",
-    "@vue/cli-plugin-eslint": "^4.4.4",
-    "@vue/cli-service": "^4.4.4",
+    "@vue/cli-plugin-babel": "^4.4.6",
+    "@vue/cli-plugin-eslint": "^4.4.6",
+    "@vue/cli-service": "^4.4.6",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.2.0",
+    "eslint": "^7.5.0",
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
   },
