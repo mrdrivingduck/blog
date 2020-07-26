@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/07/15
+  @version - 2020/07/26
 
   @description - 
     The index component for displaying social links and friend links.
@@ -10,47 +10,6 @@
 
 <template>
   <div :class="theme">
-
-    <h1> 🌊 Social Network Links </h1>
-
-    <el-row
-      v-for="social in socials"
-      :key="social.name"
-      type="flex">
-
-      <!-- Social icon -->
-      <el-col :span="3">
-        <div style="height: 100%; float: right; margin-right: 20px">
-          <el-image
-            style="width: 32px; height: 32px; vertical-align:middle;"
-            :src="theme === 'dark' ? social.icon_dark : social.icon_light"
-            fit="fit">
-          </el-image>
-          <span
-            style="display: inline-block; height: 100%; vertical-align: middle;">
-          </span>
-        </div>
-      </el-col>
-
-      <!-- Social link URL -->
-      <el-col :span="16">
-        <p>
-          {{ social.name }} -
-          <el-link
-            type="primary"
-            :href="social.link">
-            @{{ social.login }}
-          </el-link>
-        </p>
-      </el-col>
-
-    </el-row>
-
-
-
-    <el-divider></el-divider>
-
-
 
     <h1> 🐶 Friend Links </h1>
     <el-row
@@ -78,6 +37,46 @@
             type="primary"
             :href="friend.link">
             {{ friend.name }}
+          </el-link>
+        </p>
+      </el-col>
+
+    </el-row>
+
+
+
+    <el-divider></el-divider>
+
+
+
+    <h1> 🌊 Social Network Links </h1>
+    <el-row
+      v-for="social in socials"
+      :key="social.name"
+      type="flex">
+
+      <!-- Social icon -->
+      <el-col :span="3">
+        <div style="height: 100%; float: right; margin-right: 20px">
+          <el-image
+            style="width: 32px; height: 32px; vertical-align:middle;"
+            :src="theme === 'dark' ? social.icon_dark : social.icon_light"
+            fit="fit">
+          </el-image>
+          <span
+            style="display: inline-block; height: 100%; vertical-align: middle;">
+          </span>
+        </div>
+      </el-col>
+
+      <!-- Social link URL -->
+      <el-col :span="16">
+        <p>
+          {{ social.name }} -
+          <el-link
+            type="primary"
+            :href="social.link">
+            @{{ social.login }}
           </el-link>
         </p>
       </el-col>

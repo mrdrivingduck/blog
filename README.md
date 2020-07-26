@@ -39,27 +39,27 @@ A dynamic blog system implemented by myself. Supported by:
 
 ## Project setup
 
-```bash
+```console
 $ npm install
 ```
 
 ### Compiles and hot-reloads for development
-```bash
+```console
 $ npm run serve
 ```
 
 ### Compiles and minifies for production
-```bash
+```console
 $ npm run build
 ```
 
 ### Run your tests
-```bash
+```console
 $ npm run test
 ```
 
 ### Lints and fixes files
-```bash
+```console
 $ npm run lint
 ```
 
