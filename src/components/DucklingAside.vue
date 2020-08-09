@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/06/30
+  @version - 2020/08/09
 
   @description - 
     The aside component for guiding.
@@ -70,6 +70,12 @@
         :directory="asideData['redis_implementation_notes']"
       ></aside-redis-implementation>
 
+      <!-- Sub-menu of Understanding-Nginx -->
+      <aside-understanding-nginx
+        :index="12"
+        :directory="asideData['understanding_nginx_notes']"
+      ></aside-understanding-nginx>
+
     </el-menu>
 
     <!-- Loading failure -->
@@ -98,7 +104,8 @@ export default {
     AsideMiuCosTwo: () => import("./aside/AsideMiuCosTwo"),
     AsideJdkCodeAnalysis: () => import("./aside/AsideJdkCodeAnalysis"),
     AsideUnderstandingTheJvm: () => import("./aside/AsideUnderstandingTheJVM"),
-    AsideRedisImplementation: () => import("./aside/AsideRedisImplementation")
+    AsideRedisImplementation: () => import("./aside/AsideRedisImplementation"),
+    AsideUnderstandingNginx: () => import("./aside/AsideUnderstandingNginx")
   },
   data: function() {
     return {

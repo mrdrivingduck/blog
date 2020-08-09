@@ -1,13 +1,17 @@
 /**
  * @author Mr Dk.
- * @version 2020/06/30
+ * @version 2020/08/09
  * @description
  *    Vuex store for saving current content component
  */
 
 const state = {
   // GitHub API v4 entry point
-  // apiv4: "https://api.github.com/graphql",
+  // apiv4: "https://api.github.com/graphql"
+  // Caddy file configuration:
+  //     proxy /blog/apiv4 https://api.github.com/graphql {
+  //         without /blog/apiv4
+  //     }
   apiv4: "https://koera.vultr.mrdrivingduck.cn/blog/apiv4",
 
   baseUrl: "https://mrdrivingduck.github.io/blog/#",
@@ -90,6 +94,11 @@ const state = {
                 }
               }
               redis_implementation_notes: repository(name: "redis-implementation-notes", owner: "mrdrivingduck") {
+                object(expression: "master:") {
+                  ...getDirectory
+                }
+              }
+              understanding_nginx_notes: repository(name: "understanding-nginx-notes", owner: "mrdrivingduck") {
                 object(expression: "master:") {
                   ...getDirectory
                 }
@@ -367,6 +376,33 @@ const state = {
       // imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/redis-implementation-notes/master/img/',
       // imgMatcher: /<img\ssrc="\.\.\/img\//g,
       link: "https://github.com/mrdrivingduck/redis-implementation-notes",
+      fileFilter: /^.*\.md$/,
+      dirFilter: /^Part.*$/,
+      sort: function (a, b) {
+        let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
+        let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
+
+        // Chapter 12.10 - xxxxxx
+        // Chapter 12 - xxxxxx
+        if (idxFrontArr[0] === idxBackArr[0]) {
+          return parseInt(idxFrontArr[1]) - parseInt(idxBackArr[1]);
+        } else {
+          return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
+        }
+      }
+    },
+    understanding_nginx_notes: {
+      /**
+       * Understanding Nginx
+       *    commit: notes commit record
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
+       */
+      // content: "https://api.github.com/repos/mrdrivingduck/understanding-nginx-notes/contents/",
+      // commit: "https://api.github.com/repos/mrdrivingduck/understanding-nginx-notes/commits?path=",
+      // imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/understanding-nginx-notes/master/img/',
+      // imgMatcher: /<img\ssrc="\.\.\/img\//g,
+      link: "https://github.com/mrdrivingduck/understanding-nginx-notes",
       fileFilter: /^.*\.md$/,
       dirFilter: /^Part.*$/,
       sort: function (a, b) {

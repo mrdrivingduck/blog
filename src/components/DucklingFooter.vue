@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/06/19
+  @version - 2020/08/09
 
   @description - 
     The index component for displaying fotter
@@ -33,7 +33,7 @@
             <el-link
               type="primary"
               href="mailto:mrdrivingduck@gmail.com">
-              Jingtang Zhang
+              Jingt. Zhang
             </el-link>
           . <el-link
               type="primary"
