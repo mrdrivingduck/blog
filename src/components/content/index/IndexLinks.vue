@@ -138,17 +138,17 @@ export default {
       friends: [
         {
           name: "Triple-Z",
-          avatar: "https://avatars.githubusercontent.com/Triple-Z",
+          avatar: "https://koera.vultr.mrdrivingduck.cn/blog/githubavatar/Triple-Z",
           link: "https://blog.triplez.cn/"
         },
         {
           name: "Lewis-Lu",
-          avatar: "https://avatars.githubusercontent.com/Lewis-Lu",
+          avatar: "https://koera.vultr.mrdrivingduck.cn/blog/githubavatar/Lewis-Lu",
           link: "http://lewissoft.com/"
         },
         {
           name: "zonghuaxiansheng",
-          avatar: "https://avatars.githubusercontent.com/zonghuaxiansheng",
+          avatar: "https://koera.vultr.mrdrivingduck.cn/blog/githubavatar/zonghuaxiansheng",
           link: "https://github.com/zonghuaxiansheng"
         }
       ]

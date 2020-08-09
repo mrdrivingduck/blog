@@ -12,7 +12,11 @@ const state = {
   //     proxy /blog/apiv4 https://api.github.com/graphql {
   //         without /blog/apiv4
   //     }
+  //     proxy /blog/githubavatar https://avatars.githubusercontent.com {
+  //         without /blog/githubavatar
+  //     }
   apiv4: "https://koera.vultr.mrdrivingduck.cn/blog/apiv4",
+  apiAvatar: "https://koera.vultr.mrdrivingduck.cn/blog/githubavatar",
 
   baseUrl: "https://mrdrivingduck.github.io/blog/#",
   
