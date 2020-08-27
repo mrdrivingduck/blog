@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/07/03
+  @version - 2020/08/27
 
   @description - 
     The index component for displaying technology stack
@@ -51,26 +51,26 @@ export default {
       stack: [
         {
           language: "C/C++",
-          percentage: 40,
+          percentage: 45,
           projects: [
             {
-              description: "🐧 Kernel module for signature verification of ELF files.",
-              name: "ELF sig-verify module",
-              // link: "https://github.com/mrdrivingduck/linux-kernel-elf-sig-verify-module"
+              description: "🔏 Kernel module for signature verification of ELF files.",
+              name: "ELF SV module",
+              link: "https://github.com/NUAA-WatchDog/linux-kernel-elf-sig-verify-module"
             },
             {
-              description: "🐧 Adding digital signature into ELF binary files.",
-              name: "Linux ELF binary signer",
-              // link: "https://github.com/mrdrivingduck/linux-elf-binary-signer"
+              description: "✒️ Adding digital signature into ELF binary files.",
+              name: "Linux ELF Binary Signer",
+              link: "https://github.com/NUAA-WatchDog/linux-elf-binary-signer"
             },
             {
               description: "🐧 Notes of reading Linux kernel source code.",
-              name: "Linux kernel comments notes",
+              name: "Linux Kernel Comments Notes",
               link: "https://github.com/mrdrivingduck/linux-kernel-comments-notes"
             },
             {
               description: "🐤 Notes of reading μC/OS-II code.",
-              name: "μC/OS-II code analysis",
+              name: "μC/OS-II Code Analysis",
               link: "https://github.com/mrdrivingduck/uc-os-ii-code-notes"
             },
             {
@@ -86,37 +86,37 @@ export default {
         },
         {
           language: "Java",
-          percentage: 45,
+          percentage: 50,
           projects: [
             {
               description: "☕ Notes of reading JDK 8 source code.",
-              name: "JDK source code analysis",
+              name: "JDK Source Code Analysis",
               link: "https://github.com/mrdrivingduck/jdk-source-code-analysis"
             },
             {
               description: "🌉 A Java client for Kismet RESTful API.",
-              name: "kismet Java client",
+              name: "Kismet Java Client",
               link: "https://github.com/mrdrivingduck/kismet-Jclient"
             },
             {
               description: "🤐 Code for file encryption/decryption.",
-              name: "File privacy protector",
+              name: "File Privacy Protector",
               link: "https://github.com/mrdrivingduck/file-privacy-protector"
             },
             {
               description: "🔒 A Java wrapper for simple encryption/decryption.",
-              name: "Encryption machine",
+              name: "Encryption Machine",
               link: "https://github.com/mrdrivingduck/encryption-machine"
             }
           ]
         },
         {
           language: "JavaScript (Node.js / Vue.js)",
-          percentage: 20,
+          percentage: 16,
           projects: [
             {
               description: "🦆 Dynamic blog system based on Vue.js.",
-              name: "blog",
+              name: "Blog",
               link: "https://github.com/mrdrivingduck/blog"
             }
           ]
@@ -127,7 +127,7 @@ export default {
           projects: [
             {
               description: "🔌 A 32-bit MIPS CPU supporting 57 instructions for NSCSCC (Loongson Cup), Summer of 2017.",
-              name: "mips32-CPU",
+              name: "MIPS-32 CPU",
               link: "https://github.com/mrdrivingduck/mips32-CPU"
             }
           ]
@@ -138,7 +138,7 @@ export default {
           projects: [
             {
               description: "🐌 Scripts for analyzing 802.11 beacon frames.",
-              name: "IEEE 802.11 beacon frame analysis",
+              name: "IEEE 802.11 Beacon Frame Analysis",
               link: "https://github.com/mrdrivingduck/beacon-frame-analysis"
             }
           ]
@@ -149,7 +149,7 @@ export default {
           projects: [
             {
               description: "⚙️ Tools for automatic jobs with MS Office.",
-              name: "Office utilities",
+              name: "Office Utilities",
               link: "https://github.com/mrdrivingduck/office-utilities"
             }
           ]
