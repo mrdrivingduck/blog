@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/08/09
+ * @version 2020/08/28
  * @description
  *    Vuex store for saving current content component
  */
@@ -174,7 +174,7 @@ const state = {
 
     notes: {
       /**
-       * notes content
+       * Notes content
        *    commit: notes commit record
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
@@ -189,7 +189,7 @@ const state = {
     },
     paper_outline: {
       /**
-       * paper outline content
+       * Paper outline content
        *    commit: notes commit record
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
@@ -204,7 +204,7 @@ const state = {
     },
     how_linux_works_notes: {
       /**
-       * how linux works notes content
+       * How linux works notes content
        *    commit: notes commit record
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
@@ -231,7 +231,7 @@ const state = {
     },
     linux_kernel_comments_notes: {
       /**
-       * linux kernel comments notes content
+       * Linux kernel comments notes content
        *    commit: notes commit record
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
@@ -258,7 +258,7 @@ const state = {
     },
     linux_kernel_development_notes: {
       /**
-       * linux kernel development notes content
+       * Linux kernel development notes content
        *    commit: notes commit record
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
@@ -409,6 +409,31 @@ const state = {
       link: "https://github.com/mrdrivingduck/understanding-nginx-notes",
       fileFilter: /^.*\.md$/,
       dirFilter: /^Part.*$/,
+      sort: function (a, b) {
+        let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
+        let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
+
+        // Chapter 12.10 - xxxxxx
+        // Chapter 12 - xxxxxx
+        if (idxFrontArr[0] === idxBackArr[0]) {
+          return parseInt(idxFrontArr[1]) - parseInt(idxBackArr[1]);
+        } else {
+          return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
+        }
+      }
+    },
+    spring_microservices_notes: {
+      /**
+       * Spring microservices in action content
+       *    commit: notes commit record
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
+       */
+      link: "https://github.com/mrdrivingduck/spring-microservices-notes",
+      imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/spring-microservices-notes/master/img/',
+      imgMatcher: /<img\ssrc="\.\/img\//g,
+      fileFilter: /^Chapter.*$/,
+      // dirFilter: /^Chapter.*$/
       sort: function (a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");

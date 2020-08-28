@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/08/09
+  @version - 2020/08/28
 
   @description - 
     The aside component for guiding.
@@ -76,6 +76,12 @@
         :directory="asideData['understanding_nginx_notes']"
       ></aside-understanding-nginx>
 
+      <!-- Sub-menu of Spring Microservices in Action -->
+      <aside-spring-microservices-in-action
+        :index="13"
+        :directory="asideData['spring_microservices_notes']"
+      ></aside-spring-microservices-in-action>
+
     </el-menu>
 
     <!-- Loading failure -->
@@ -105,7 +111,8 @@ export default {
     AsideJdkCodeAnalysis: () => import("./aside/AsideJdkCodeAnalysis"),
     AsideUnderstandingTheJvm: () => import("./aside/AsideUnderstandingTheJVM"),
     AsideRedisImplementation: () => import("./aside/AsideRedisImplementation"),
-    AsideUnderstandingNginx: () => import("./aside/AsideUnderstandingNginx")
+    AsideUnderstandingNginx: () => import("./aside/AsideUnderstandingNginx"),
+    AsideSpringMicroservicesInAction: () => import("./aside/AsideSpringMicroservicesInAction")
   },
   data: function() {
     return {
