@@ -1,14 +1,22 @@
 /**
  * @author Mr Dk.
- * @version 2020/06/30
+ * @version 2020/08/28
  * @description
  *    Vuex store for saving current content component
  */
 
 const state = {
   // GitHub API v4 entry point
-  // apiv4: "https://api.github.com/graphql",
+  // apiv4: "https://api.github.com/graphql"
+  // Caddy file configuration:
+  //     proxy /blog/apiv4 https://api.github.com/graphql {
+  //         without /blog/apiv4
+  //     }
+  //     proxy /blog/githubavatar https://avatars.githubusercontent.com {
+  //         without /blog/githubavatar
+  //     }
   apiv4: "https://koera.vultr.mrdrivingduck.cn/blog/apiv4",
+  apiAvatar: "https://koera.vultr.mrdrivingduck.cn/blog/githubavatar",
 
   baseUrl: "https://mrdrivingduck.github.io/blog/#",
   
@@ -94,6 +102,11 @@ const state = {
                   ...getDirectory
                 }
               }
+              understanding_nginx_notes: repository(name: "understanding-nginx-notes", owner: "mrdrivingduck") {
+                object(expression: "master:") {
+                  ...getDirectory
+                }
+              }
             }
 
             fragment getDirectory on Tree {
@@ -161,7 +174,7 @@ const state = {
 
     notes: {
       /**
-       * notes content
+       * Notes content
        *    commit: notes commit record
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
@@ -176,7 +189,7 @@ const state = {
     },
     paper_outline: {
       /**
-       * paper outline content
+       * Paper outline content
        *    commit: notes commit record
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
@@ -191,7 +204,7 @@ const state = {
     },
     how_linux_works_notes: {
       /**
-       * how linux works notes content
+       * How linux works notes content
        *    commit: notes commit record
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
@@ -218,7 +231,7 @@ const state = {
     },
     linux_kernel_comments_notes: {
       /**
-       * linux kernel comments notes content
+       * Linux kernel comments notes content
        *    commit: notes commit record
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
@@ -245,7 +258,7 @@ const state = {
     },
     linux_kernel_development_notes: {
       /**
-       * linux kernel development notes content
+       * Linux kernel development notes content
        *    commit: notes commit record
        *    imgPrefix: url replacement prefix of images in the notes
        *    imgMatcher: image url in notes -  <img src="../img/
@@ -369,6 +382,58 @@ const state = {
       link: "https://github.com/mrdrivingduck/redis-implementation-notes",
       fileFilter: /^.*\.md$/,
       dirFilter: /^Part.*$/,
+      sort: function (a, b) {
+        let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
+        let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
+
+        // Chapter 12.10 - xxxxxx
+        // Chapter 12 - xxxxxx
+        if (idxFrontArr[0] === idxBackArr[0]) {
+          return parseInt(idxFrontArr[1]) - parseInt(idxBackArr[1]);
+        } else {
+          return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
+        }
+      }
+    },
+    understanding_nginx_notes: {
+      /**
+       * Understanding Nginx
+       *    commit: notes commit record
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
+       */
+      // content: "https://api.github.com/repos/mrdrivingduck/understanding-nginx-notes/contents/",
+      // commit: "https://api.github.com/repos/mrdrivingduck/understanding-nginx-notes/commits?path=",
+      // imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/understanding-nginx-notes/master/img/',
+      // imgMatcher: /<img\ssrc="\.\.\/img\//g,
+      link: "https://github.com/mrdrivingduck/understanding-nginx-notes",
+      fileFilter: /^.*\.md$/,
+      dirFilter: /^Part.*$/,
+      sort: function (a, b) {
+        let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
+        let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
+
+        // Chapter 12.10 - xxxxxx
+        // Chapter 12 - xxxxxx
+        if (idxFrontArr[0] === idxBackArr[0]) {
+          return parseInt(idxFrontArr[1]) - parseInt(idxBackArr[1]);
+        } else {
+          return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
+        }
+      }
+    },
+    spring_microservices_notes: {
+      /**
+       * Spring microservices in action content
+       *    commit: notes commit record
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
+       */
+      link: "https://github.com/mrdrivingduck/spring-microservices-notes",
+      imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/spring-microservices-notes/master/img/',
+      imgMatcher: /<img\ssrc="\.\/img\//g,
+      fileFilter: /^Chapter.*$/,
+      // dirFilter: /^Chapter.*$/
       sort: function (a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");

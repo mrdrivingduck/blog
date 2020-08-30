@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/07/26
+  @version - 2020/08/27
 
   @description - 
     The index component for displaying social links and friend links.
@@ -37,6 +37,43 @@
             type="primary"
             :href="friend.link">
             {{ friend.name }}
+          </el-link>
+        </p>
+      </el-col>
+
+    </el-row>
+
+
+
+    <el-divider></el-divider>
+
+
+    <h1> 🐺 Team Links </h1>
+    <el-row
+      v-for="team in teams"
+      :key="team.name"
+      type="flex">
+
+      <el-col :span="3">
+        <div style="height: 100%; float: right; margin-right: 20px">
+          <el-avatar
+            :src="team.avatar" :size="32" shape="square"
+            style="vertical-align:middle;">
+            <img src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"/>
+          </el-avatar>
+          <span
+            style="display: inline-block; height: 100%; vertical-align: middle;">
+          </span>
+        </div>
+      </el-col>
+
+      <!-- Team link URL -->
+      <el-col :span="16">
+        <p>
+          <el-link
+            type="primary"
+            :href="team.link">
+            {{ team.name }}
           </el-link>
         </p>
       </el-col>
@@ -138,20 +175,27 @@ export default {
       friends: [
         {
           name: "Triple-Z",
-          avatar: "https://avatars.githubusercontent.com/Triple-Z",
+          avatar: "https://koera.vultr.mrdrivingduck.cn/blog/githubavatar/Triple-Z",
           link: "https://blog.triplez.cn/"
         },
         {
           name: "Lewis-Lu",
-          avatar: "https://avatars.githubusercontent.com/Lewis-Lu",
+          avatar: "https://koera.vultr.mrdrivingduck.cn/blog/githubavatar/Lewis-Lu",
           link: "http://lewissoft.com/"
         },
         {
           name: "zonghuaxiansheng",
-          avatar: "https://avatars.githubusercontent.com/zonghuaxiansheng",
+          avatar: "https://koera.vultr.mrdrivingduck.cn/blog/githubavatar/zonghuaxiansheng",
           link: "https://github.com/zonghuaxiansheng"
         }
-      ]
+      ],
+      teams: [
+        {
+          name: "NUAA WatchDog",
+          avatar: "https://koera.vultr.mrdrivingduck.cn/blog/githubavatar/NUAA-WatchDog",
+          link: "https://github.com/NUAA-WatchDog"
+        }
+      ] 
     };
   }
 }
