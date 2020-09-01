@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/08/09
+  @version - 2020/09/01
 
   @description - 
     The index component for displaying fotter
@@ -40,6 +40,24 @@
               href="LICENSE">
               (MIT License)
             </el-link>
+        </p>
+      </div>
+
+            <div style="text-align: center;">
+        <p>
+          由
+            <el-link
+              type="primary"
+              href="http://nginx.org/">
+              Nginx on Ubuntu
+            </el-link>
+          /
+            <el-link
+              type="primary"
+              href="https://pages.github.com/">
+              GitHub Pages
+            </el-link>
+          双线驱动
         </p>
       </div>
 

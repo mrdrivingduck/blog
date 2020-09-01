@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/04/13
+  @version - 2020/09/01
 
   @description - 
     Back to my home page.
@@ -30,7 +30,7 @@ export default {
   methods: {
 
     jumpToHomePage: function() {
-      window.location.href = "https://mrdrivingduck.cn";
+      window.location.href = "https://www.mrdrivingduck.cn";
     }
 
   }
