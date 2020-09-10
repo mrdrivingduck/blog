@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/06/16
+  @version - 2020/09/10
 
   @description - 
     The index component for displaying emotions
@@ -9,63 +9,99 @@
 -->
 
 <template>
-  <div
-    :class="theme"
-    v-if="!this.loading"
-    v-loading="this.loadingInside">
+  <div :class="theme">
 
-    <el-timeline
-      v-if="!fail">
-      
-      <el-timeline-item
-        :key="0"
-        placement="top"
-        type="info">
+    <el-row
+      type="flex">
 
-        <el-link
-          v-if="!fail"
-          :type="(this.current === this.emotions.length - 1) ? 'info' : 'primary'"
-          @click="preEmotion">
-          {{ this.emotionLinkText(true) }}
-        </el-link>
-      </el-timeline-item>
+      <!-- Social icon -->
+      <el-col :span="3">
+        <div style="height: 100%; float: right; margin-right: 20px">
+          <el-image
+            style="width: 32px; height: 32px; vertical-align:middle;"
+            :src="theme === 'dark' ? tgchannel.icon_dark : tgchannel.icon_light"
+            fit="fit">
+          </el-image>
+          <span
+            style="display: inline-block; height: 100%; vertical-align: middle;">
+          </span>
+        </div>
+      </el-col>
 
-      <el-timeline-item
-        :key="1"
-        placement="top"
-        size="large"
-        type="primary">
-
-        <h1 style="font-size: 28px;"> {{ "💭 " + this.date }} </h1>
-        <p style="font-size: 18px;" v-for="(line, index) in emotionText" :key="index">
-          {{ line }} <br/>
+      <!-- Social link URL -->
+      <el-col :span="16">
+        <p>
+          {{ tgchannel.name }} -
+          <el-link
+            type="primary"
+            :href="tgchannel.link">
+            @{{ tgchannel.login }}
+          </el-link>
         </p>
+      </el-col>
 
-      </el-timeline-item>
+    </el-row>
 
-      <el-timeline-item
-        :key="2"
-        placement="top"
-        type="info">
+    <el-divider></el-divider>
 
-        <el-link
-          v-if="!fail"
-          :type="(this.current === 0) ? 'info' : 'primary'"
-          @click="nextEmotion">
-          {{ this.emotionLinkText(false) }}
-        </el-link>
-      </el-timeline-item>
+    <div
+      v-if="!this.loading"
+      v-loading="this.loadingInside">
 
-    </el-timeline>
+      <el-timeline
+        v-if="!fail">
+        
+        <el-timeline-item
+          :key="0"
+          placement="top"
+          type="info">
 
-    <el-alert
-      v-if="fail"
-      title="Loading failed"
-      type="error"
-      :description="failReason"
-      :closable="false"
-      show-icon>
-    </el-alert>
+          <el-link
+            v-if="!fail"
+            :type="(this.current === this.emotions.length - 1) ? 'info' : 'primary'"
+            @click="preEmotion">
+            {{ this.emotionLinkText(true) }}
+          </el-link>
+        </el-timeline-item>
+
+        <el-timeline-item
+          :key="1"
+          placement="top"
+          size="large"
+          type="primary">
+
+          <h1 style="font-size: 28px;"> {{ "💭 " + this.date }} </h1>
+          <p style="font-size: 18px;" v-for="(line, index) in emotionText" :key="index">
+            {{ line }} <br/>
+          </p>
+
+        </el-timeline-item>
+
+        <el-timeline-item
+          :key="2"
+          placement="top"
+          type="info">
+
+          <el-link
+            v-if="!fail"
+            :type="(this.current === 0) ? 'info' : 'primary'"
+            @click="nextEmotion">
+            {{ this.emotionLinkText(false) }}
+          </el-link>
+        </el-timeline-item>
+
+      </el-timeline>
+
+      <el-alert
+        v-if="fail"
+        title="Loading failed"
+        type="error"
+        :description="failReason"
+        :closable="false"
+        show-icon>
+      </el-alert>
+
+    </div>
 
   </div>
 </template>
@@ -85,7 +121,15 @@ export default {
       emotions: [],
       current: 0,
       date: "",
-      emotionText: []
+      emotionText: [],
+
+      tgchannel: {
+        icon_light: "icon/telegram-light.svg",
+        icon_dark: "icon/telegram-dark.svg",
+        name: "Subscribe my Telegram channel",
+        link: "https://t.me/mrdrivingduck_trumpet",
+        login: "Mr Dk.'s Trumpet"
+      }
 
     };
   },
@@ -113,6 +157,7 @@ export default {
       const url = this.$store.state.githubapi.apiv4;
       const tokenPart1 = process.env.VUE_APP_TOKEN_PART_1;
       const tokenPart2 = process.env.VUE_APP_TOKEN_PART_2;
+      const emotionDecrypt = process.env.VUE_APP_EMOTION_DECRYPT;
       const token = tokenPart1.concat(tokenPart2);
       let query = this.$store.state.githubapi.query["emotions"].query;
       query = query.replace(/<date>/, this.emotions[index].name);
@@ -123,7 +168,7 @@ export default {
         }
       }).then(response => {
         let cipher = response.data.data.emotions.object.text;
-        const key = CryptoJS.enc.Utf8.parse("zha" + "ngj" + "t199" + "700000");
+        const key = CryptoJS.enc.Utf8.parse(emotionDecrypt);
         let encodedPlain = CryptoJS.AES.decrypt(cipher, key, {
           mode: CryptoJS.mode.ECB,
           padding: CryptoJS.pad.Pkcs7
@@ -140,33 +185,6 @@ export default {
         this.fail = true;
         this.failReason = error.message;
       });
-
-      // this.$http.get(this.emotions[index].url).then(response => {
-      //   if (response.data.encoding === "base64") {
-      //     const key = CryptoJS.enc.Utf8.parse("zha" + "ngj" + "t199" + "700000");
-      //     let base64 = decodeURIComponent(escape(window.atob(response.data.content)));
-      //     let encodedPlain = CryptoJS.AES.decrypt(base64, key, {
-      //       mode: CryptoJS.mode.ECB,
-      //       padding: CryptoJS.pad.Pkcs7
-      //     });
-      //     let plain = encodedPlain.toString(CryptoJS.enc.Utf8);
-          
-      //     this.emotionText = plain.split("\n");
-      //     this.date = this.emotions[index].date;
-
-      //   } else {
-      //     // Encoding not support
-      //     this.emotionText.push("Encoding not support.");
-      //   }
-
-      //   this.fail = false;
-      //   this.loading = false;
-
-      // }).catch(error => {
-      //   this.fail = true;
-      //   this.failReason = error.message;
-      //   this.loading = false;
-      // })
     },
 
     preEmotion: function() {

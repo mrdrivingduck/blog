@@ -43,7 +43,7 @@
         </p>
       </div>
 
-            <div style="text-align: center;">
+      <div style="text-align: center;">
         <p>
           由
             <el-link

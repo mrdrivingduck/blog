@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/08/27
+  @version - 2020/09/10
 
   @description - 
     The index component for displaying social links and friend links.
@@ -142,6 +142,13 @@ export default {
           link: "https://gitlab.com/mrdrivingduck",
           icon_light: "icon/gitlab-light.svg",
           icon_dark: "icon/gitlab-dark.svg"
+        },
+        {
+          name: "Telegram",
+          login: "mrdrivingduck",
+          link: "https://t.me/mrdrivingduck",
+          icon_light: "icon/telegram-light.svg",
+          icon_dark: "icon/telegram-dark.svg"
         },
         {
           name: "Instagram",
