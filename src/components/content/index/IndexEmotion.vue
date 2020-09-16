@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/09/10
+  @version - 2020/09/16
 
   @description - 
     The index component for displaying emotions
@@ -10,39 +10,6 @@
 
 <template>
   <div :class="theme">
-
-    <el-row
-      type="flex">
-
-      <!-- Social icon -->
-      <el-col :span="3">
-        <div style="height: 100%; float: right; margin-right: 20px">
-          <el-image
-            style="width: 32px; height: 32px; vertical-align:middle;"
-            :src="theme === 'dark' ? tgchannel.icon_dark : tgchannel.icon_light"
-            fit="fit">
-          </el-image>
-          <span
-            style="display: inline-block; height: 100%; vertical-align: middle;">
-          </span>
-        </div>
-      </el-col>
-
-      <!-- Social link URL -->
-      <el-col :span="16">
-        <p>
-          {{ tgchannel.name }} -
-          <el-link
-            type="primary"
-            :href="tgchannel.link">
-            @{{ tgchannel.login }}
-          </el-link>
-        </p>
-      </el-col>
-
-    </el-row>
-
-    <el-divider></el-divider>
 
     <div
       v-if="!this.loading"
@@ -102,6 +69,41 @@
       </el-alert>
 
     </div>
+
+
+    <el-divider></el-divider>
+
+
+    <el-row
+      type="flex">
+
+      <!-- Social icon -->
+      <el-col :span="3">
+        <div style="height: 100%; float: right; margin-right: 20px">
+          <el-image
+            style="width: 32px; height: 32px; vertical-align:middle;"
+            :src="theme === 'dark' ? tgchannel.icon_dark : tgchannel.icon_light"
+            fit="fit">
+          </el-image>
+          <span
+            style="display: inline-block; height: 100%; vertical-align: middle;">
+          </span>
+        </div>
+      </el-col>
+
+      <!-- Social link URL -->
+      <el-col :span="16">
+        <p>
+          {{ tgchannel.name }} -
+          <el-link
+            type="primary"
+            :href="tgchannel.link">
+            @{{ tgchannel.login }}
+          </el-link>
+        </p>
+      </el-col>
+
+    </el-row>
 
   </div>
 </template>
