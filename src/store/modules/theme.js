@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/06/27
+ * @version 2020/09/25
  * @description
  *    Vuex store for saving theme information
  */
@@ -23,7 +23,7 @@ const state = {
         backgroundColor: "#ffffff",
         textColor: "#000000"
       },
-      buttonStyle: "no-preference: light; light: dark; dark: light;"
+      buttonStyle: "light"
     },
     {
       name: "Dark",
@@ -41,7 +41,7 @@ const state = {
         backgroundColor: "#2d2d2d",
         textColor: "#ffffff"
       },
-      buttonStyle: "no-preference: dark; light: light; dark: dark;"
+      buttonStyle: "dark"
     }
   ],
   currentThemeIndex: 0

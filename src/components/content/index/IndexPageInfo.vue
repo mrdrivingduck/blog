@@ -11,6 +11,7 @@
 <template>
   <div :class="theme">
 
+    <div>
       <p style="font-size: 30px;"> Page </p>
       <p>
         Developed by: 🦆 <b> Mr Dk. </b>
@@ -65,6 +66,7 @@
         </el-col>
 
       </el-row>
+    </div>
 
     <el-divider></el-divider>
 
