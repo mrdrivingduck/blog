@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2019/11/09
+  @version - 2020/10/10
 
   @description - 
     The index component for displaying pernal information
@@ -13,9 +13,9 @@
 
     <h1>🍺 Hobby</h1>
     <ul>
-      <li><p> 🏸 Badminton </p></li>
-      <li><p> 💪 Bodybuilding </p></li>
+      <li><p> 💪 Workout </p></li>
       <li><p> 🚘 Driving </p></li>
+      <li><p> 🏸 Badminton </p></li>
       <li><p> 💻 Technology </p></li>
     </ul>
     
