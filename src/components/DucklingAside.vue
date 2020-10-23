@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/08/28
+  @version - 2020/10/23
 
   @description - 
     The aside component for guiding.
@@ -98,21 +98,35 @@
 </template>
 
 <script>
+import AsideHomePage from "./aside/AsideHomePage"
+import AsideIndex from "./aside/AsideIndex"
+import AsideNotes from "./aside/AsideNotes"
+import AsidePaperOutline from "./aside/AsidePaterOutline"
+import AsideHowLinuxWorks from "./aside/AsideHowLinuxWorks"
+import AsideLinuxKernelComments from "./aside/AsideLinuxKernelComments"
+import AsideLinuxKernelDevelopment from "./aside/AsideLinuxKernelDevelopment"
+import AsideMiuCosTwo from "./aside/AsideMiuCosTwo"
+import AsideJdkCodeAnalysis from "./aside/AsideJdkCodeAnalysis"
+import AsideUnderstandingTheJvm from "./aside/AsideUnderstandingTheJVM"
+import AsideRedisImplementation from "./aside/AsideRedisImplementation"
+import AsideUnderstandingNginx from "./aside/AsideUnderstandingNginx"
+import AsideSpringMicroservicesInAction from "./aside/AsideSpringMicroservicesInAction"
+
 export default {
   components: {
-    AsideHomePage: () => import("./aside/AsideHomePage"),
-    AsideIndex: () => import("./aside/AsideIndex"),
-    AsideNotes: () => import("./aside/AsideNotes"),
-    AsidePaperOutline: () => import("./aside/AsidePaterOutline"),
-    AsideHowLinuxWorks: () => import("./aside/AsideHowLinuxWorks"),
-    AsideLinuxKernelComments: () => import("./aside/AsideLinuxKernelComments"),
-    AsideLinuxKernelDevelopment: () => import("./aside/AsideLinuxKernelDevelopment"),
-    AsideMiuCosTwo: () => import("./aside/AsideMiuCosTwo"),
-    AsideJdkCodeAnalysis: () => import("./aside/AsideJdkCodeAnalysis"),
-    AsideUnderstandingTheJvm: () => import("./aside/AsideUnderstandingTheJVM"),
-    AsideRedisImplementation: () => import("./aside/AsideRedisImplementation"),
-    AsideUnderstandingNginx: () => import("./aside/AsideUnderstandingNginx"),
-    AsideSpringMicroservicesInAction: () => import("./aside/AsideSpringMicroservicesInAction")
+    AsideHomePage,
+    AsideIndex,
+    AsideNotes,
+    AsidePaperOutline,
+    AsideHowLinuxWorks,
+    AsideLinuxKernelComments,
+    AsideLinuxKernelDevelopment,
+    AsideMiuCosTwo,
+    AsideJdkCodeAnalysis,
+    AsideUnderstandingTheJvm,
+    AsideRedisImplementation,
+    AsideUnderstandingNginx,
+    AsideSpringMicroservicesInAction
   },
   data: function() {
     return {

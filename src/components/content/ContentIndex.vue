@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/06/27
+  @version - 2020/10/23
 
   @description - 
     The content component for displaying pernal information
@@ -120,17 +120,23 @@
 <script>
 import GithubButton from "vue-github-button";
 
+import IndexEmotion from "./index/IndexEmotion"
+import IndexAbout from "./index/IndexAbout"
+import IndexTechStack from "./index/IndexTechStack"
+import IndexLinks from "./index/IndexLinks"
+import IndexPageInfo from "./index/IndexPageInfo"
+
 export default {
   name: "ContentIndex",
   props: [ "theme" ],
   components: {
     GithubButton,
     
-    IndexEmotion: () => import("./index/IndexEmotion"),
-    IndexAbout: () => import("./index/IndexAbout"),
-    IndexTechStack: () => import("./index/IndexTechStack"),
-    IndexLinks: () => import("./index/IndexLinks"),
-    IndexPageInfo: () => import("./index/IndexPageInfo")
+    IndexEmotion,
+    IndexAbout,
+    IndexTechStack,
+    IndexLinks,
+    IndexPageInfo
   },
   data: function() {
     return {
