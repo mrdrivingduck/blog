@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/09/25
+ * @version 2020/10/23
  * @description
  *    Vuex store for saving theme information
  */
@@ -44,7 +44,7 @@ const state = {
       buttonStyle: "dark"
     }
   ],
-  currentThemeIndex: 0
+  currentThemeIndex: new Date().getMonth() % 2
 };
 
 const mutations = {
