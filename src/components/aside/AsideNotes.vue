@@ -53,7 +53,7 @@
 export default {
   props: ["index", "directory"],
 
-  data: function() {
+  data() {
     return {
       repo: "notes"
     }
@@ -62,7 +62,7 @@ export default {
   methods: {
 
     // Jump to the note detail
-    clickNote: function (note) {
+    clickNote(note) {
       this.$router.push({
         path: "/markdown",
         query: {

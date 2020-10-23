@@ -49,7 +49,7 @@ const state = {
 
 const mutations = {
   
-  setCurrentTheme: function (state, { themeIndex }) {
+  setCurrentTheme(state, { themeIndex }) {
     state.currentThemeIndex = themeIndex;
   }
 

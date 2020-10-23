@@ -29,7 +29,7 @@ export default {
   props: ["index"],
   methods: {
 
-    jumpToHomePage: function() {
+    jumpToHomePage() {
       window.location.href = "https://www.mrdrivingduck.cn";
     }
 

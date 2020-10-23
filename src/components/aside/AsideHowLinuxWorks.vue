@@ -30,7 +30,7 @@
 export default {
   props: ["index"],
 
-  data: function() {
+  data() {
     return {
       repo: "how_linux_works_notes"
     }
@@ -38,7 +38,7 @@ export default {
 
   methods: {
 
-    load: function() {
+    load() {
       this.$router.push({
         path: "/notelist",
         query: {

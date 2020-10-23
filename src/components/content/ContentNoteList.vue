@@ -164,7 +164,7 @@ export default {
   name: "ContentNoteList",
   components: { GithubButton },
   props: [ "theme" ],
-  data: function() {
+  data() {
     return  {
       notes: null, // Note array
       loading: true, // For displaying loading status
@@ -186,7 +186,7 @@ export default {
   methods: {
 
     // Load one of the outline topic
-    loadNoteDirectory: function() {
+    loadNoteDirectory() {
       this.notes = [];
       this.currentPage = 1;
       this.fail = false;
@@ -245,7 +245,7 @@ export default {
     },
 
     // Jump to the outline detail
-    clickNote: function (note) {
+    clickNote(note) {
       this.$router.push({
         path: "/markdown",
         query: {
@@ -256,7 +256,7 @@ export default {
     },
 
     // Set the background color and text color of the cards
-    setCardTheme: function() {
+    setCardTheme() {
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       const allThemes = this.$store.state.theme.themes;
       let { backgroundColor, textColor } = allThemes[themeIndex].card;
@@ -266,12 +266,12 @@ export default {
     },
 
     // For changing the current-page variable
-    handleCurrentChange: function (currentPage) {
+    handleCurrentChange(currentPage) {
       this.currentPage = currentPage;
     },
 
     // For copying links hint (success)
-    onCopySuccess: function() {
+    onCopySuccess() {
       this.$notify({
         title: "Copy successfully 😁",
         message: "The link is on your clipboard.",
@@ -280,7 +280,7 @@ export default {
     },
 
     // For copying links hint (failed)
-    onCopyError: function() {
+    onCopyError() {
       this.$notify({
         title: "Copy failed 😥",
         message: "There might be a BUG.",
@@ -289,7 +289,7 @@ export default {
     }
 
   },
-  created: function() {
+  created() {
     // Initializing the data from GitHub
     this.loadNoteDirectory();
     this.setCardTheme();
@@ -297,19 +297,19 @@ export default {
   computed: {
 
     // Listening for the theme changed
-    themeChange: function() {
+    themeChange() {
       return this.$store.state.theme.currentThemeIndex;
     },
 
-    repoLinkFork: function() {
+    repoLinkFork() {
       return this.repoLink + "/fork"
     },
 
-    repoLinkWatch: function() {
+    repoLinkWatch() {
       return this.repoLink + "/subscription"
     },
 
-    repoLinkIssue: function() {
+    repoLinkIssue() {
       return this.repoLink + "/issues"
     }
 
@@ -317,11 +317,11 @@ export default {
   watch: {
 
     // Set the theme of the card
-    themeChange: function() {
+    themeChange() {
       this.setCardTheme();
     },
 
-    $route: function() {
+    $route() {
       this.loadNoteDirectory();
     }
 

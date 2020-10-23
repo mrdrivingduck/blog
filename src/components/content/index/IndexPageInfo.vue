@@ -121,7 +121,7 @@ import GithubButton from "vue-github-button";
 export default {
   props: [ "theme", "fail", "deployment", "blogVersion" ],
   components: { GithubButton },
-  data: function() {
+  data() {
     return {
       buttonTheme: null,
 
@@ -214,27 +214,27 @@ export default {
   },
   methods: {
 
-    setTheme: function() {
+    setTheme() {
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       const allThemes = this.$store.state.theme.themes;
       this.buttonTheme = allThemes[themeIndex].buttonStyle;
     }
 
   },
-  created: function() {
+  created() {
     this.setTheme();
   },
   computed: {
 
     // Listening for the theme changed
-    themeChange: function() {
+    themeChange() {
       return this.$store.state.theme.currentThemeIndex;
     }
 
   },
   watch: {
 
-    themeChange: function() {
+    themeChange() {
       this.setTheme();
     }
 

@@ -128,7 +128,7 @@ export default {
     AsideUnderstandingNginx,
     AsideSpringMicroservicesInAction
   },
-  data: function() {
+  data() {
     return {
       backgroundColor: null,
       textColor: null,
@@ -144,7 +144,7 @@ export default {
   methods: {
 
     // For changing theme of menu
-    setTheme: function() {
+    setTheme() {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       let { backgroundColor, textColor, activeTextColor } = allThemes[themeIndex].aside;
@@ -154,7 +154,7 @@ export default {
     },
 
     // Load aside through GitHub API
-    loadAside: function() {
+    loadAside() {
       this.loading = true;
       this.fail = false;
       this.failReason = "";
@@ -199,16 +199,16 @@ export default {
     }
 
   },
-  mounted: function() {
+  mounted() {
     this.setTheme(); // Initialize the theme
   },
-  created: function() {
+  created() {
     this.loadAside();
   },
   computed: {
 
     // Listening theme changing
-    themeChange: function() {
+    themeChange() {
       return this.$store.state.theme.currentThemeIndex;
     }
 
@@ -216,7 +216,7 @@ export default {
   watch: {
 
     // Trigger theme changing
-    themeChange: function() {
+    themeChange() {
       this.setTheme();
     }
 

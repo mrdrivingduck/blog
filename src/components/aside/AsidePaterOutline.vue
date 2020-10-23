@@ -40,14 +40,14 @@
 <script>
 export default {
   props: ["index", "directory"],
-  data: function() {
+  data() {
     return  {
       repo: "paper_outline"
     };
   },
   methods: {
 
-    clickDir: function (folder) {
+    clickDir(folder) {
       this.$router.push({
         path: "/outlinelist",
         query: {

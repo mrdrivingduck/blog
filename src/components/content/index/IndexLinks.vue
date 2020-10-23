@@ -126,7 +126,7 @@
 <script>
 export default {
   props: [ "theme" ],
-  data: function() {
+  data() {
     return {
       socials: [
         {
