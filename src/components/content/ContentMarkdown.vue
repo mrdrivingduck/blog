@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/06/27
+  @version - 2020/10/23
 
   @description - 
     The content component for displaying markdown files
@@ -79,7 +79,7 @@
         v-bind:class="this.markdownClass"
         ref="markdown"
         v-html="htmlStr">
-        {{ htmlStr }}
+        <!-- {{ htmlStr }} -->
       </div>
     </div>
 
