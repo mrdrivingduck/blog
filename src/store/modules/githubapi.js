@@ -216,7 +216,7 @@ const state = {
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
       // dirFilter: /^Chapter.*$/
-      sort: function (a, b) {
+      sort(a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
 
@@ -243,7 +243,7 @@ const state = {
       imgMatcher: /<img\ssrc="\.\.\/img\//g,
       fileFilter: /^.*\.md$/,
       dirFilter: /^Chapter.*$/,
-      sort: function (a, b) {
+      sort(a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
 
@@ -269,7 +269,7 @@ const state = {
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-development-notes/master/img/',
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
-      sort: function (a, b) {
+      sort(a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
 
@@ -296,7 +296,7 @@ const state = {
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^.*\.md$/,
       dirFilter: /^Chapter.*$/,
-      sort: function (a, b) {
+      sort(a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
 
@@ -322,7 +322,7 @@ const state = {
       imgPrefix: '',
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^(Class|Abstract|Interface).*$/,
-      sort: function(a, b) {
+      sort(a, b) {
         const a_key = a.name.split(" ")[0];
         const b_key = b.name.split(" ")[0];
 
@@ -355,7 +355,7 @@ const state = {
       link: "https://github.com/mrdrivingduck/understanding-the-jvm",
       fileFilter: /^.*\.md$/,
       dirFilter: /^Part.*$/,
-      sort: function (a, b) {
+      sort(a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
 
@@ -382,7 +382,7 @@ const state = {
       link: "https://github.com/mrdrivingduck/redis-implementation-notes",
       fileFilter: /^.*\.md$/,
       dirFilter: /^Part.*$/,
-      sort: function (a, b) {
+      sort(a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
 
@@ -409,7 +409,7 @@ const state = {
       link: "https://github.com/mrdrivingduck/understanding-nginx-notes",
       fileFilter: /^.*\.md$/,
       dirFilter: /^Part.*$/,
-      sort: function (a, b) {
+      sort(a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
 
@@ -434,7 +434,7 @@ const state = {
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
       // dirFilter: /^Chapter.*$/
-      sort: function (a, b) {
+      sort(a, b) {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
 

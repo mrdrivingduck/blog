@@ -42,7 +42,7 @@
 export default {
   props: ["index", "directory"],
 
-  data: function() {
+  data() {
     return {
       repo: "redis_implementation_notes"
     }
@@ -50,7 +50,7 @@ export default {
 
   methods: {
 
-    clickFolder: function (folder) {
+    clickFolder(folder) {
       this.$router.push({
         path: "/notelist",
         query: {

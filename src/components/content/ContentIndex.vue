@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/06/27
+  @version - 2020/10/23
 
   @description - 
     The content component for displaying pernal information
@@ -120,19 +120,25 @@
 <script>
 import GithubButton from "vue-github-button";
 
+import IndexEmotion from "./index/IndexEmotion"
+import IndexAbout from "./index/IndexAbout"
+import IndexTechStack from "./index/IndexTechStack"
+import IndexLinks from "./index/IndexLinks"
+import IndexPageInfo from "./index/IndexPageInfo"
+
 export default {
   name: "ContentIndex",
   props: [ "theme" ],
   components: {
     GithubButton,
     
-    IndexEmotion: () => import("./index/IndexEmotion"),
-    IndexAbout: () => import("./index/IndexAbout"),
-    IndexTechStack: () => import("./index/IndexTechStack"),
-    IndexLinks: () => import("./index/IndexLinks"),
-    IndexPageInfo: () => import("./index/IndexPageInfo")
+    IndexEmotion,
+    IndexAbout,
+    IndexTechStack,
+    IndexLinks,
+    IndexPageInfo
   },
-  data: function() {
+  data() {
     return {
 
       // Card info
@@ -170,7 +176,7 @@ export default {
   methods: {
 
     // For initializing personal info card
-    initializeCardInfo: function() {
+    initializeCardInfo() {
       this.loading = true;
       this.fail = false;
       this.failReason = "";
@@ -205,7 +211,7 @@ export default {
     },
 
     // Set the theme of personal info card
-    setCardTheme: function() {
+    setCardTheme() {
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       const allThemes = this.$store.state.theme.themes;
       let { backgroundColor, textColor } = allThemes[themeIndex].card;
@@ -215,7 +221,7 @@ export default {
     },
 
     // Set the theme of navigation
-    setNavigationTheme: function() {
+    setNavigationTheme() {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       let { backgroundColor, textColor, activeTextColor } = allThemes[themeIndex].aside;
@@ -224,25 +230,25 @@ export default {
       this.activeTextColor = activeTextColor;
     },
 
-    setTheme: function() {
+    setTheme() {
       this.setCardTheme();
       this.setNavigationTheme();
     },
 
     // For selecting sub-component
-    selectIndex: function (key) {
+    selectIndex (key) {
       this.selectedTab = key;
     }
 
   },
-  mounted: function() {
+  mounted() {
     this.initializeCardInfo();
     this.setTheme();
   },
   computed: {
     
     // Triggered when changing theme
-    themeChange: function() {
+    themeChange() {
       return this.$store.state.theme.currentThemeIndex;
     }
 
@@ -250,7 +256,7 @@ export default {
   watch: {
 
     // Triggered to change the theme
-    themeChange: function() {
+    themeChange() {
       this.setTheme();
     }
     

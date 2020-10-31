@@ -31,15 +31,15 @@
 
 export default {
   name: "HeaderSlider",
-  data: function() {
-    return  {
+  data() {
+    return {
       theme: 0,
       marks: null
     };
   },
   methods: {
 
-    initialize: function() {
+    initialize() {
       this.marks = {};
       this.theme = this.$store.state.theme.currentThemeIndex;
 
@@ -55,12 +55,12 @@ export default {
       }
     },
 
-    onThemeChange: function (themeIndex) {
+    onThemeChange(themeIndex) {
       this.$store.commit("setCurrentTheme", { themeIndex });
     }
 
   },
-  created: function() {
+  created() {
     this.initialize();
   },
   computed: {

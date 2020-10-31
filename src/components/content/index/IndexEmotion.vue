@@ -113,7 +113,7 @@ import CryptoJS from "crypto-js";
 
 export default {
   props: ["theme", "emotionsDate", "loading"],
-  data: function() {
+  data() {
     return {
 
       fail: true,
@@ -138,7 +138,7 @@ export default {
 
   methods: {
 
-    getEmotion: function() {
+    getEmotion() {
       const fileFilter = this.$store.state.githubapi.query["emotions"].fileFilter;
       for (let i = 0; i < this.emotionsDate.length; i++) {
         if (fileFilter.test(this.emotionsDate[i].name)) {
@@ -151,7 +151,7 @@ export default {
       }
     },
 
-    getEmotionContent: function(index) {
+    getEmotionContent(index) {
       this.loadingInside = true;
       this.fail = false;
       this.emotionText = [];
@@ -189,21 +189,21 @@ export default {
       });
     },
 
-    preEmotion: function() {
+    preEmotion() {
       if (!(this.current === this.emotions.length - 1)) {
         this.current++;
         this.getEmotionContent(this.current);
       }
     },
 
-    nextEmotion: function() {
+    nextEmotion() {
       if (!(this.current === 0)) {
         this.current--;
         this.getEmotionContent(this.current);
       }
     },
 
-    emotionLinkText: function (previous) {
+    emotionLinkText (previous) {
       if (previous) {
         let str = "Previous Emotion: ";
         if (this.current != this.emotions.length - 1) {
@@ -225,7 +225,7 @@ export default {
     
   },
   
-  created: function() {
+  created() {
     this.getEmotion();
   }
 

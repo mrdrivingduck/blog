@@ -58,7 +58,7 @@ export default {
     DucklingContent: () => import("./components/DucklingContent"),
     DucklingFooter: () => import("./components/DucklingFooter")
   },
-  data: function() {
+  data() {
     return {
       theme: null
     };
@@ -66,14 +66,14 @@ export default {
   methods: {
 
     // Set the theme in props
-    setTheme: function() {
+    setTheme() {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       this.theme = allThemes[themeIndex].name.toLowerCase();
     },
 
     // Set the background color of HTML page
-    setBackgroundStyle: function() {
+    setBackgroundStyle() {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       // Get DOM of <body> and set the style
@@ -84,7 +84,7 @@ export default {
 
   },
   
-  mounted: function() {
+  mounted() {
     // Called after DOM is mounted
     this.setTheme();
     this.setBackgroundStyle();
@@ -92,7 +92,7 @@ export default {
   computed: {
 
     // Listen for theme index changes
-    themeChange: function() {
+    themeChange() {
       return this.$store.state.theme.currentThemeIndex;
     }
 
@@ -100,7 +100,7 @@ export default {
   watch: {
 
     // Triggered when changing theme
-    themeChange: function() {
+    themeChange() {
       this.setTheme();
       this.setBackgroundStyle();
     }

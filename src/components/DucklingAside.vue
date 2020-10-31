@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/08/28
+  @version - 2020/10/23
 
   @description - 
     The aside component for guiding.
@@ -98,23 +98,37 @@
 </template>
 
 <script>
+import AsideHomePage from "./aside/AsideHomePage"
+import AsideIndex from "./aside/AsideIndex"
+import AsideNotes from "./aside/AsideNotes"
+import AsidePaperOutline from "./aside/AsidePaterOutline"
+import AsideHowLinuxWorks from "./aside/AsideHowLinuxWorks"
+import AsideLinuxKernelComments from "./aside/AsideLinuxKernelComments"
+import AsideLinuxKernelDevelopment from "./aside/AsideLinuxKernelDevelopment"
+import AsideMiuCosTwo from "./aside/AsideMiuCosTwo"
+import AsideJdkCodeAnalysis from "./aside/AsideJdkCodeAnalysis"
+import AsideUnderstandingTheJvm from "./aside/AsideUnderstandingTheJVM"
+import AsideRedisImplementation from "./aside/AsideRedisImplementation"
+import AsideUnderstandingNginx from "./aside/AsideUnderstandingNginx"
+import AsideSpringMicroservicesInAction from "./aside/AsideSpringMicroservicesInAction"
+
 export default {
   components: {
-    AsideHomePage: () => import("./aside/AsideHomePage"),
-    AsideIndex: () => import("./aside/AsideIndex"),
-    AsideNotes: () => import("./aside/AsideNotes"),
-    AsidePaperOutline: () => import("./aside/AsidePaterOutline"),
-    AsideHowLinuxWorks: () => import("./aside/AsideHowLinuxWorks"),
-    AsideLinuxKernelComments: () => import("./aside/AsideLinuxKernelComments"),
-    AsideLinuxKernelDevelopment: () => import("./aside/AsideLinuxKernelDevelopment"),
-    AsideMiuCosTwo: () => import("./aside/AsideMiuCosTwo"),
-    AsideJdkCodeAnalysis: () => import("./aside/AsideJdkCodeAnalysis"),
-    AsideUnderstandingTheJvm: () => import("./aside/AsideUnderstandingTheJVM"),
-    AsideRedisImplementation: () => import("./aside/AsideRedisImplementation"),
-    AsideUnderstandingNginx: () => import("./aside/AsideUnderstandingNginx"),
-    AsideSpringMicroservicesInAction: () => import("./aside/AsideSpringMicroservicesInAction")
+    AsideHomePage,
+    AsideIndex,
+    AsideNotes,
+    AsidePaperOutline,
+    AsideHowLinuxWorks,
+    AsideLinuxKernelComments,
+    AsideLinuxKernelDevelopment,
+    AsideMiuCosTwo,
+    AsideJdkCodeAnalysis,
+    AsideUnderstandingTheJvm,
+    AsideRedisImplementation,
+    AsideUnderstandingNginx,
+    AsideSpringMicroservicesInAction
   },
-  data: function() {
+  data() {
     return {
       backgroundColor: null,
       textColor: null,
@@ -130,7 +144,7 @@ export default {
   methods: {
 
     // For changing theme of menu
-    setTheme: function() {
+    setTheme() {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       let { backgroundColor, textColor, activeTextColor } = allThemes[themeIndex].aside;
@@ -140,7 +154,7 @@ export default {
     },
 
     // Load aside through GitHub API
-    loadAside: function() {
+    loadAside() {
       this.loading = true;
       this.fail = false;
       this.failReason = "";
@@ -185,16 +199,16 @@ export default {
     }
 
   },
-  mounted: function() {
+  mounted() {
     this.setTheme(); // Initialize the theme
   },
-  created: function() {
+  created() {
     this.loadAside();
   },
   computed: {
 
     // Listening theme changing
-    themeChange: function() {
+    themeChange() {
       return this.$store.state.theme.currentThemeIndex;
     }
 
@@ -202,7 +216,7 @@ export default {
   watch: {
 
     // Trigger theme changing
-    themeChange: function() {
+    themeChange() {
       this.setTheme();
     }
 

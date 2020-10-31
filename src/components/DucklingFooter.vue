@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/09/01
+  @version - 2020/10/10
 
   @description - 
     The index component for displaying fotter
@@ -35,17 +35,18 @@
               href="mailto:mrdrivingduck@gmail.com">
               Jingt. Zhang
             </el-link>
-          . <el-link
-              type="primary"
-              href="LICENSE">
-              (MIT License)
-            </el-link>
+          . All rights reserved.
+          <!-- <el-link
+            type="primary"
+            href="LICENSE">
+            (MIT License)
+          </el-link> -->
         </p>
       </div>
 
       <div style="text-align: center;">
         <p>
-          由
+          Powered by
             <el-link
               type="primary"
               href="http://nginx.org/">
@@ -57,7 +58,6 @@
               href="https://pages.github.com/">
               GitHub Pages
             </el-link>
-          双线驱动
         </p>
       </div>
 
