@@ -15,7 +15,6 @@
   "dependencies": {
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
-    "crypto-js": "^4.0.0",
     "duckling-highlight": "0.0.4",
     "duckling-markdown-css": "0.0.3",
     "element-ui": "^2.14.0",
