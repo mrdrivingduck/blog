@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/10/23
+  @version - 2020/11/01
 
   @description - 
     The content component for displaying pernal information
@@ -80,7 +80,6 @@
       style="margin-top: 30px;"
       >
       <el-menu-item index="0"> About Me </el-menu-item>
-      <el-menu-item index="1"> Emotions </el-menu-item>
       <el-menu-item index="2"> Tech. Stack </el-menu-item>
       <el-menu-item index="3"> Links </el-menu-item>
       <el-menu-item index="4"> About this Blog </el-menu-item>
@@ -120,7 +119,6 @@
 <script>
 import GithubButton from "vue-github-button";
 
-import IndexEmotion from "./index/IndexEmotion"
 import IndexAbout from "./index/IndexAbout"
 import IndexTechStack from "./index/IndexTechStack"
 import IndexLinks from "./index/IndexLinks"
@@ -131,8 +129,7 @@ export default {
   props: [ "theme" ],
   components: {
     GithubButton,
-    
-    IndexEmotion,
+
     IndexAbout,
     IndexTechStack,
     IndexLinks,

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/07/06
+  @version - 2020/11/01
 
   @description - 
     The index component for displaying page information
@@ -178,11 +178,6 @@ export default {
           name: "highlight.js",
           description: "JavaScript syntax highlighter.",
           link: "https://github.com/mrdrivingduck/highlight.js"
-        },
-        {
-          name: "CryptoJS",
-          description: "JavaScript library of crypto standards.",
-          link: "https://github.com/brix/crypto-js"
         },
         {
           name: "GitHub API v4",

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/09/10
+  @version - 2020/11/01
 
   @description - 
     The index component for displaying social links and friend links.
@@ -81,9 +81,7 @@
     </el-row>
 
 
-
     <el-divider></el-divider>
-
 
 
     <h1> 🌊 Social Network Links </h1>
@@ -114,6 +112,42 @@
             type="primary"
             :href="social.link">
             @{{ social.login }}
+          </el-link>
+        </p>
+      </el-col>
+
+    </el-row>
+
+
+    <el-divider></el-divider>
+
+
+    <h1> 🎷 Channel </h1>
+    <el-row
+      type="flex">
+
+      <!-- Social icon -->
+      <el-col :span="3">
+        <div style="height: 100%; float: right; margin-right: 20px">
+          <el-image
+            style="width: 32px; height: 32px; vertical-align:middle;"
+            :src="theme === 'dark' ? tgchannel.icon_dark : tgchannel.icon_light"
+            fit="fit">
+          </el-image>
+          <span
+            style="display: inline-block; height: 100%; vertical-align: middle;">
+          </span>
+        </div>
+      </el-col>
+
+      <!-- Social link URL -->
+      <el-col :span="16">
+        <p>
+          {{ tgchannel.name }} -
+          <el-link
+            type="primary"
+            :href="tgchannel.link">
+            @{{ tgchannel.login }}
           </el-link>
         </p>
       </el-col>
@@ -202,7 +236,14 @@ export default {
           avatar: "https://koera.vultr.mrdrivingduck.cn/blog/githubavatar/NUAA-WatchDog",
           link: "https://github.com/NUAA-WatchDog"
         }
-      ] 
+      ],
+      tgchannel: {
+        icon_light: "icon/telegram-light.svg",
+        icon_dark: "icon/telegram-dark.svg",
+        name: "Subscribe my Telegram channel",
+        link: "https://t.me/mrdrivingduck_trumpet",
+        login: "Mr Dk.'s Trumpet"
+      }
     };
   }
 }
