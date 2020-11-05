@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/08/28
+ * @version 2020/11/05
  * @description
  *    Vuex store for saving current content component
  */
@@ -25,11 +25,10 @@ const state = {
      * User info
      * Commit info
      * Deployment info
-     * Emotions
      */
     user: `query { 
             user(login: "mrdrivingduck") { name, location, bio, company },
-            io: repository(name: "blog", owner: "mrdrivingduck") {
+            git: repository(name: "blog", owner: "mrdrivingduck") {
               deployments(last: 1) {
                 nodes {
                   createdAt, creator { login, url },
@@ -52,15 +51,6 @@ const state = {
               }
               object(expression: "master:package.json") {
                 ... on Blob { oid, byteSize, text }
-              }
-            },
-            emotions: repository(name: "emotions", owner: "mrdrivingduck") {
-              object(expression: "master:") {
-                ... on Tree {
-                  entries {
-                    name
-                  }
-                }
               }
             }
           }`,
@@ -446,18 +436,6 @@ const state = {
           return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
         }
       }
-    },
-    emotions: {
-      query: `query { 
-                emotions: repository(name: "emotions", owner: "mrdrivingduck") {
-                  object(expression: "master:<date>") {
-                    ... on Blob {
-                      text
-                    }
-                  }
-                }
-              }`,
-      fileFilter: /^[^.]*$/
     }
   }
 };
