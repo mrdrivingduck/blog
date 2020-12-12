@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/10/10
+  @version - 2020/12/12
 
   @description - 
     The index component for displaying fotter
@@ -13,7 +13,7 @@
 
     <el-divider></el-divider>
 
-    <div style="margin-bottom: 50px;">
+    <div style="padding-bottom: 50px;">
 
       <div style="text-align: center;">
         <el-link
