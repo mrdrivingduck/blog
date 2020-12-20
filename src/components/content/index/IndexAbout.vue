@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/10/10
+  @version - 2020/12/20
 
   @description - 
     The index component for displaying pernal information
@@ -32,24 +32,24 @@
 
         <h2>{{ edu.time }}</h2>
         <p style="font-size: 20px;">
-          {{ edu.university_en }}
+          {{ edu.school_en }}
           <br>
-          {{ edu.university_zh }}
+          {{ edu.school_zh }}
         </p>
-        <p style="font-size: 16px;">
+        <p style="font-size: 16px;" v-if="edu.college_zh">
           {{ edu.college_en }}
           <br>
           {{ edu.college_zh }}
         </p>
-        <p style="font-size: 16px;">
+        <p style="font-size: 16px;" v-if="edu.major_zh">
           {{ edu.major_en }} - {{ edu.major_zh }} 
           <i :class="edu.major_icon"></i>
         </p>
-        <p style="font-size: 16px;">
+        <p style="font-size: 16px;" v-if="edu.academic_zh">
           {{ edu.academic_en }} - {{ edu.academic_zh }}
           <i :class="edu.academic_status"></i>
         </p>
-        <p style="font-size: 16px;">
+        <p style="font-size: 16px;" v-if="edu.location_zh">
           {{ edu.location_en }} - {{ edu.location_zh }}
         </p>
 
@@ -94,8 +94,8 @@ export default {
       educations: [
         {
           time: "2019.09 - NOW",
-          university_en: "Nanjing University of Aeronautics and Astronautics",
-          university_zh: "南京航空航天大学",
+          school_en: "Nanjing University of Aeronautics and Astronautics",
+          school_zh: "南京航空航天大学",
           college_en: "College of Computer Science and Technology / College of Artificial Intelligence",
           college_zh: "计算机科学与技术学院 / 人工智能学院",
           major_en: "🔑 Cyberspace Security",
@@ -109,8 +109,8 @@ export default {
         },
         {
           time: "2015.09 - 2019.06",
-          university_en: "Nanjing University of Aeronautics and Astronautics",
-          university_zh: "南京航空航天大学",
+          school_en: "Nanjing University of Aeronautics and Astronautics",
+          school_zh: "南京航空航天大学",
           college_en: "College of Computer Science and Technology / College of Artificial Intelligence",
           college_zh: "计算机科学与技术学院 / 人工智能学院",
           major_en: "🔌 IoT. Engineering",
@@ -121,6 +121,15 @@ export default {
           // academic_status: "el-icon-s-check",
           location_en: "🚩 Nanjing, Jiangsu, P.R.China",
           location_zh: "江苏省南京市"
+        },
+        {
+          time: "2012.09 - 2015.06",
+          school_en: "Zhejiang Ningbo High School",
+          school_zh: "浙江省宁波中学",
+          academic_en: "🧒 Senior H.S.",
+          academic_zh: "高级中学",
+          location_en: "🚩 Ningbo, Zhejiang, P.R.China",
+          location_zh: "浙江省宁波市"
         }
       ],
       works: [
