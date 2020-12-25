@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/10/23
+  @version - 2020/12/25
 
   @description - 
     The content component for displaying markdown files
@@ -101,6 +101,9 @@
     margin-bottom: 50px;
   }
 </style>
+
+<style src="duckling-markdown-css/github-markdown.css"></style>
+<style src="duckling-markdown-css/github-markdown-dark.css"></style>
 
 <script>
 import marked from "marked";
