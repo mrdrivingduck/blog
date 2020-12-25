@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/12/25
+ * @version 2020/12/25 🎅
  * @description 
  *    The entry file.
  */
@@ -21,10 +21,6 @@ Vue.prototype.$http = Axios;
 // Element-UI's style
 // import "element-ui/lib/theme-chalk/index.css";
 import "../theme/index.css" // Self-define theme
-
-// Code highlighting style
-import "duckling-highlight/styles/atom-one-light.css";
-import "duckling-highlight/styles/atom-one-dark.css";
 
 /**
  * Main component
