@@ -69,7 +69,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## License
 
-Copyright © 2018-2020, Jingtang Zhang. ([MIT License](LICENSE))
+Copyright © 2018-2021, Jingtang Zhang. ([MIT License](LICENSE))
 
 ---
 
