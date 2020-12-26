@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/11/01
+  @version - 2020/12/26
 
   @description - 
     The index component for displaying page information
@@ -170,14 +170,14 @@ export default {
           link: "https://marked.js.org/"
         },
         {
-          name: "GitHub Markdown CSS",
-          description: "The minimal amount of CSS to replicate the GitHub Markdown style.",
-          link: "https://github.com/mrdrivingduck/github-markdown-css"
+          name: "Highlight.js",
+          description: "JavaScript syntax highlighter.",
+          link: "https://github.com/highlightjs/highlight.js/"
         },
         {
-          name: "highlight.js",
-          description: "JavaScript syntax highlighter.",
-          link: "https://github.com/mrdrivingduck/highlight.js"
+          name: "GitHub Markdown CSS Dark",
+          description: "The minimal amount of CSS to replicate the GitHub Markdown style.",
+          link: "https://github.com/mrdrivingduck/github-markdown-css"
         },
         {
           name: "GitHub API v4",
@@ -190,19 +190,19 @@ export default {
           link: "https://pages.github.com/"
         },
         {
-          name: "Aliyun",
-          description: "More Than Just Cloud.",
-          link: "https://www.aliyun.com/"
-        },
-        {
-          name: "Travis CI",
-          description: "Test and Deploy Your Code with Confidence.",
-          link: "https://www.travis-ci.org/"
+          name: "GitHub Actions",
+          description: "Automate your workflow from idea to production.",
+          link: "https://github.com/features/actions"
         },
         {
           name: "GitHub Buttons",
           description: "Unofficial github:button component for Vue.js.",
           link: "https://buttons.github.io/"
+        },
+        {
+          name: "Aliyun",
+          description: "More Than Just Cloud.",
+          link: "https://www.aliyun.com/"
         }
       ]
     };
