@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/12/25 🎅
+  @version - 2020/12/26
 
   @description - 
     The content component for displaying markdown files
@@ -201,8 +201,8 @@ export default {
 
       const api = this.$store.state.githubapi.query;
       const url = this.$store.state.githubapi.apiv4;
-      const tokenPart1 = process.env.VUE_APP_TOKEN_PART_1;
-      const tokenPart2 = process.env.VUE_APP_TOKEN_PART_2;
+      const tokenPart1 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_1;
+      const tokenPart2 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_2;
       const token = tokenPart1.concat(tokenPart2);
 
       let query = api.markdown;

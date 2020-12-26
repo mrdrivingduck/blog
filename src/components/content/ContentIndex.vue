@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/11/05
+  @version - 2020/12/26
 
   @description - 
     The content component for displaying pernal information
@@ -177,8 +177,8 @@ export default {
       this.failReason = "";
 
       const url = this.$store.state.githubapi.apiv4;
-      const tokenPart1 = process.env.VUE_APP_TOKEN_PART_1;
-      const tokenPart2 = process.env.VUE_APP_TOKEN_PART_2;
+      const tokenPart1 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_1;
+      const tokenPart2 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_2;
       const token = tokenPart1.concat(tokenPart2);
       let query = this.$store.state.githubapi.query["user"];
       this.$http.post(url, { query }, {
