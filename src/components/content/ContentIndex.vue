@@ -9,7 +9,7 @@
 -->
 
 <template>
-  <div :theme="theme" v-loading="loading">
+  <div :theme="theme" :class="theme" v-loading="loading">
 
     <el-row :gutter="24" type="flex" align="middle" justify="center">
 

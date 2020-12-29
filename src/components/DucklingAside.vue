@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/12/26
+  @version - 2020/12/29
 
   @description - 
     The aside component for guiding.
@@ -15,6 +15,7 @@
     <el-menu
       v-if="!fail"
       v-loading="loading"
+      :class="theme"
       :default-openeds="[]"
       :background-color="this.backgroundColor"
       :text-color="this.textColor"
@@ -113,6 +114,7 @@ import AsideUnderstandingNginx from "./aside/AsideUnderstandingNginx"
 import AsideSpringMicroservicesInAction from "./aside/AsideSpringMicroservicesInAction"
 
 export default {
+  props: [ "theme" ],
   components: {
     AsideHomePage,
     AsideIndex,

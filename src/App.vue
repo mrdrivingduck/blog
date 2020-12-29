@@ -24,7 +24,7 @@
 
       <!-- Aside on the left -->
       <el-aside width=27%>
-        <duckling-aside></duckling-aside>
+        <duckling-aside :theme="theme"></duckling-aside>
       </el-aside>
 
       <!-- Content on the right -->
@@ -43,6 +43,12 @@
 </template>
 
 <style>
+  .dark .el-loading-mask {
+    background-color:  #282c34
+  }
+  .light .el-loading-mask {
+    background-color:  #ffffff
+  }
   .content {
     margin-left: 45px;
     margin-right: 45px;
