@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/12/26
+  @version - 2020/12/29
 
   @description - 
     The index component for displaying page information
@@ -12,7 +12,7 @@
   <div :class="theme">
 
     <div>
-      <p style="font-size: 30px;"> Page </p>
+      <p class="title"> Page Author </p>
       <p>
         Developed by: 🦆 <b> Mr Dk. </b>
         <el-link type="primary" href="https://github.com/mrdrivingduck">
@@ -25,11 +25,39 @@
         data-size="large" data-show-count="true">
         Follow @mrdrivingduck
       </github-button>
+    </div>
 
-      <p> Blog page build version: <b> {{ blogVersion }} </b> </p>
+    <el-divider></el-divider>
+
+    <div v-if="!fail">
+      <p class="title"> Build and Deployment Status </p>
+
+      <p>
+      <el-image :src="badges[0].url"/> <el-image :src="badges[1].url"/>
+      </p>
+
+      <p>
+        🛠️ Build version:
+        <b> {{ blogVersion }} </b>
+      </p>
+
+      <p> 🧱 Features: {{ deployment.commitData.message }} </p>
+
+      <p>
+        🎁 Committed at: <b>{{ deployment.commit.committedDate }}</b> by
+        <el-link :href="deployment.commit.committer.user.url" type="primary">
+          {{ deployment.commit.committer.user.name }}
+        </el-link>
+      </p>
+
+      <p>
+        🎊 Deployed at: <b>{{ deployment.createdAt }}</b> by
+        <el-link :href="deployment.creator.url" type="primary">
+          {{ deployment.creator.login }}
+        </el-link>
+      </p>
 
       <el-row :gutter="24" type="flex" align="middle" justify="start">
-
         <el-col :span="3.5">
           <div>
             <github-button
@@ -64,34 +92,12 @@
             </github-button>
           </div>
         </el-col>
-
       </el-row>
     </div>
 
     <el-divider></el-divider>
 
-    <div
-      v-if="!fail">
-
-      <p style="font-size: 30px;"> Deployment </p>
-      <p> 📤 {{ deployment.commitData.message }} </p>
-      <p>
-        ⌚ Committed at <b>{{ deployment.commit.committedDate }}</b> by
-        <el-link :href="deployment.commit.committer.user.url" type="primary">
-          {{ deployment.commit.committer.user.name }}
-        </el-link>
-      </p>
-      <p>
-        ⌚ Deployed at <b>{{ deployment.createdAt }}</b> by
-        <el-link :href="deployment.creator.url" type="primary">
-          {{ deployment.creator.login }}
-        </el-link>
-      </p>
-    </div>
-
-    <el-divider></el-divider>
-
-    <p style="font-size: 30px;"> Supported by </p>
+    <p class="title"> Supported by </p>
     <p
       v-for="support in supporting"
       :key="support.name">
@@ -114,6 +120,12 @@
 
   </div>
 </template>
+
+<style scoped>
+  .title {
+    font-size: 30px
+  }
+</style>
 
 <script>
 import GithubButton from "vue-github-button";
@@ -203,6 +215,17 @@ export default {
           name: "Aliyun",
           description: "More Than Just Cloud.",
           link: "https://www.aliyun.com/"
+        }
+      ],
+
+      badges: [
+        {
+          name: "Build and Deploy",
+          url: "https://github.com/mrdrivingduck/blog/workflows/Build%20and%20Deploy/badge.svg"
+        },
+        {
+          name: "Build Only",
+          url: "https://github.com/mrdrivingduck/blog/workflows/Build%20Only/badge.svg"
         }
       ]
     };
