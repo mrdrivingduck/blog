@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/10/23
+  @version - 2020/12/26
 
   @description - 
     The content component for displaying markdown files
@@ -73,6 +73,17 @@
 
       </el-card>
 
+      <!-- CSS CDN: https://www.bootcdn.cn/highlight.js/ -->
+      <div ref="styles">
+        <div v-for="theme in highlightThemeList" :key="theme">
+          <link
+            rel="stylesheet"
+            disabled
+            :title="theme"
+            :href="'https://cdn.bootcdn.net/ajax/libs/highlight.js/10.4.1/styles/' + theme + '.min.css'">
+        </div>
+      </div>
+
       <!-- Display markdown -->
       <!-- Code highlighting supported -->
       <div
@@ -102,9 +113,12 @@
   }
 </style>
 
+<style src="duckling-markdown-css/github-markdown.css"></style>
+<style src="duckling-markdown-css/github-markdown-dark.css"></style>
+
 <script>
 import marked from "marked";
-import hljs from "duckling-highlight";
+import hljs from "highlight.js";
 import GithubButton from "vue-github-button";
 
 export default {
@@ -136,6 +150,10 @@ export default {
       failReason: "", // Reason of failure
       markdownClass: null,
 
+      preHighlightThemeIndex: null,
+      currentHighlightThemeIndex: null,
+      highlightThemeList: [],
+
       copyLink: "",
       repoLink: "",
       buttonTheme: "no-preference: light; light: dark; dark: light;"
@@ -144,6 +162,13 @@ export default {
   methods: {
 
     initialize() {
+      // Code highlight theme
+      const allThemes = this.$store.state.theme.themes;
+      this.highlightThemeList = [];
+      for (let i = 0; i < allThemes.length; i++) {
+        this.highlightThemeList.push(allThemes[i].content.highlight);
+      }
+      
       // Metadata
       this.articleLink = "";
       this.articleSize = NaN;
@@ -176,8 +201,8 @@ export default {
 
       const api = this.$store.state.githubapi.query;
       const url = this.$store.state.githubapi.apiv4;
-      const tokenPart1 = process.env.VUE_APP_TOKEN_PART_1;
-      const tokenPart2 = process.env.VUE_APP_TOKEN_PART_2;
+      const tokenPart1 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_1;
+      const tokenPart2 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_2;
       const token = tokenPart1.concat(tokenPart2);
 
       let query = api.markdown;
@@ -225,12 +250,18 @@ export default {
 
     // Highlight the code into corresponding theme
     setCodeStyle() {
+      this.$refs.markdown.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightBlock(block);
+      });
+
       const allThemes = this.$store.state.theme.themes;
-      const currentTheme = this.$store.state.theme.currentThemeIndex;
-      let blocks = this.$refs.markdown.querySelectorAll('pre code');
-      blocks.forEach((block) => {
-        hljs.highlightBlock(block, allThemes[currentTheme].content.highlight);
-      })
+      const currentTheme = allThemes[this.currentHighlightThemeIndex].content.highlight;
+      this.$refs.styles.querySelector(`link[title="${currentTheme}"]`).removeAttribute("disabled");
+
+      if (this.preHighlightThemeIndex !== undefined) {
+        const preTheme = allThemes[this.preHighlightThemeIndex].content.highlight
+        this.$refs.styles.querySelector(`link[title="${preTheme}"]`).setAttribute("disabled", "");
+      }
     },
 
     // Set the corresponding markdown theme
@@ -291,8 +322,13 @@ export default {
   watch: {
 
     // When theme changes, reset the style
-    themeChange() {
-      this.$nextTick(this.onChangeTheme);
+    themeChange: {
+      handler(newThemeIndex, oldThemeIndex) {
+        this.currentHighlightThemeIndex = newThemeIndex;
+        this.preHighlightThemeIndex = oldThemeIndex;
+        this.$nextTick(this.onChangeTheme);
+      },
+      immediate: true
     },
 
     $route() {

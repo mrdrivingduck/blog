@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/11/01
+ * @version 2020/12/25 🎅
  * @description
  *    Vuex store for saving theme information
  */
@@ -11,7 +11,7 @@ const state = {
       name: "Light",
       background: "#ffffff",
       content: {
-        highlight: "atom-one-light",
+        highlight: "github-gist",
         markdown: "markdown-body"
       },
       aside: {
@@ -29,7 +29,7 @@ const state = {
       name: "Dark",
       background: "#282c34",
       content: {
-        highlight: "atom-one-dark",
+        highlight: "obsidian",
         markdown: "markdown-body-dark",
       },
       aside: {

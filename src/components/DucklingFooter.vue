@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/12/12
+  @version - 2020/12/25 🎅
 
   @description - 
     The index component for displaying fotter
@@ -29,7 +29,7 @@
 
       <div style="text-align: center;">
         <p>
-          Copyright © 2018-2020, 
+          Copyright © 2018-2021, 
             <el-link
               type="primary"
               href="mailto:mrdrivingduck@gmail.com">

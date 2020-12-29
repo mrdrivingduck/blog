@@ -12,8 +12,7 @@ Created by : Mr Dk.
 
 ## Build Status
 
-[![Build Status](https://www.travis-ci.org/mrdrivingduck/blog.svg?branch=master)](https://www.travis-ci.org/mrdrivingduck/blog)
-
+![Build and Deploy](https://github.com/mrdrivingduck/blog/workflows/Build%20and%20Deploy/badge.svg?branch=master)
 ## About
 
 A dynamic blog system implemented by myself. Supported by:
@@ -26,50 +25,57 @@ A dynamic blog system implemented by myself. Supported by:
 * [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
 * [Element](https://element.eleme.io/) - A Vue.js 2.0 UI Toolkit for Web.
 * [Marked.js](https://marked.js.org/) - A markdown parser and compiler. Built for speed.
-* [GitHub Markdown CSS](https://github.com/mrdrivingduck/github-markdown-css) - The minimal amount of CSS to replicate the GitHub Markdown style.
-* [highlight.js](https://github.com/mrdrivingduck/highlight.js) - JavaScript syntax highlighter.
+* [Highlight.js](https://github.com/highlightjs/highlight.js) - JavaScript syntax highlighter.
+* [GitHub Markdown CSS Dark](https://github.com/mrdrivingduck/github-markdown-css) - The minimal amount of CSS to replicate the GitHub Markdown style.
 * [GitHub API v4](https://developer.github.com/v4/) - The official GitHub GraphQL API v4.
 * [GitHub Pages](https://pages.github.com/) - Websites for you and your projects.
-* [Aliyun](https://www.aliyun.com/) - More Than Just Cloud.
-* [Travis CI](https://www.travis-ci.org/) - Test and Deploy Your Code with Confidence.
+* [GitHub Actions](https://github.com/features/actions) - Automate your workflow from idea to production.
 * [GitHub Buttons](https://buttons.github.io/) - Unofficial github:button component for Vue.js.
+* [Aliyun](https://www.aliyun.com/) - More Than Just Cloud.
 
 ---
 
 ## Project setup
 
-```console
-$ npm install
+### Install dependencies
+
+```bash
+npm install
 ```
 
 ### Compiles and hot-reloads for development
-```console
-$ npm run serve
+
+```bash
+npm run serve
 ```
 
 ### Compiles and minifies for production
-```console
-$ npm run build
+
+```bash
+npm run build
 ```
 
 ### Run your tests
-```console
-$ npm run test
+
+```bash
+npm run test
 ```
 
 ### Lints and fixes files
-```console
-$ npm run lint
+
+```bash
+npm run lint
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ---
 
 ## License
 
-Copyright © 2018-2020, Jingtang Zhang. ([MIT License](LICENSE))
+Copyright © 2018-2021, Jingtang Zhang. ([MIT License](LICENSE))
 
 ---
 
