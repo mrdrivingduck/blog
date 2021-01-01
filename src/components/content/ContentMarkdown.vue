@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/12/26
+  @version - 2020/12/29
 
   @description - 
     The content component for displaying markdown files
@@ -11,7 +11,8 @@
 <template>
   <div>
 
-    <div 
+    <div
+      :class="theme"
       v-if="!fail"
       v-loading="loading">
 
@@ -124,6 +125,7 @@ import GithubButton from "vue-github-button";
 export default {
   name: "ContentMarkdown",
   components: { GithubButton },
+  props: [ "theme" ],
   data() {
     return  {
       // Info in the card

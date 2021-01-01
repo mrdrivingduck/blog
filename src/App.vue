@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/03/02
+  @version - 2020/12/29
 
   @description - 
     The entry component.
@@ -12,7 +12,7 @@
   <div id="app" ref="rootDiv">
 
     <!-- Back to top -->
-    <el-backtop></el-backtop>
+    <el-backtop v-bind:style="{ backgroundColor: this.backTopColor }"/>
 
     <!-- Header -->
     <el-header>
@@ -24,7 +24,7 @@
 
       <!-- Aside on the left -->
       <el-aside width=27%>
-        <duckling-aside></duckling-aside>
+        <duckling-aside :theme="theme"></duckling-aside>
       </el-aside>
 
       <!-- Content on the right -->
@@ -43,6 +43,12 @@
 </template>
 
 <style>
+  .dark .el-loading-mask {
+    background-color:  #282c34
+  }
+  .light .el-loading-mask {
+    background-color:  #ffffff
+  }
   .content {
     margin-left: 45px;
     margin-right: 45px;
@@ -60,7 +66,8 @@ export default {
   },
   data() {
     return {
-      theme: null
+      theme: null,
+      backTopColor: null,
     };
   },
   methods: {
@@ -70,6 +77,7 @@ export default {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       this.theme = allThemes[themeIndex].name.toLowerCase();
+      this.backTopColor = allThemes[themeIndex].card.backgroundColor;
     },
 
     // Set the background color of HTML page

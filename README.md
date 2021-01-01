@@ -12,7 +12,11 @@ Created by : Mr Dk.
 
 ## Build Status
 
-![Build and Deploy](https://github.com/mrdrivingduck/blog/workflows/Build%20and%20Deploy/badge.svg?branch=master)
+| Environment | Status                                                       |
+| ----------- | ------------------------------------------------------------ |
+| Development | ![Build Only](https://github.com/mrdrivingduck/blog/workflows/Build%20Only/badge.svg) |
+| Production  | ![Build and Deploy](https://github.com/mrdrivingduck/blog/workflows/Build%20and%20Deploy/badge.svg?branch=master) |
+
 ## About
 
 A dynamic blog system implemented by myself. Supported by:
