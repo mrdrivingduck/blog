@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/08/27
+  @version - 2021/01/01 🎆
 
   @description - 
     The index component for displaying technology stack
@@ -33,6 +33,7 @@
 
         <!-- Progress bar -->
         <el-progress
+          :class="theme"
           :percentage="item.percentage"
           :stroke-width="24"
           :text-inside="true"
@@ -79,6 +80,11 @@ export default {
               link: "https://github.com/mrdrivingduck/api-r"
             },
             {
+              description: "👨‍🦲 The way to become bareheaded.",
+              name: "LeetCode Solutions",
+              link: "https://github.com/mrdrivingduck/leet-code"
+            },
+            {
               description: "Programming Ability Test (PAT) of Zhejiang University, 2018.03",
               name: "Score 100"
             }
@@ -92,6 +98,11 @@ export default {
               description: "☕ Notes of reading JDK 8 source code.",
               name: "JDK Source Code Analysis",
               link: "https://github.com/mrdrivingduck/jdk-source-code-analysis"
+            },
+            {
+              description: "🎞️ Synchronize repositories between VCSs as mirrors.",
+              name: "Repository Mirror Synchronizer",
+              link: "https://github.com/mrdrivingduck/repo-mirror-sync"
             },
             {
               description: "🌉 A Java client for Kismet RESTful API.",

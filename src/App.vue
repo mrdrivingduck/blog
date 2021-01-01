@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/12/29
+  @version - 2021/01/01 🎆
 
   @description - 
     The entry component.
@@ -49,6 +49,12 @@
   .light .el-loading-mask {
     background-color:  #ffffff
   }
+  .dark .el-progress-bar__outer {
+    background-color: #3b3b3b
+  }
+  .light .el-progress-bar__outer {
+    background-color: #ebeef5;
+  }
   .content {
     margin-left: 45px;
     margin-right: 45px;
@@ -77,7 +83,7 @@ export default {
       const allThemes = this.$store.state.theme.themes;
       const themeIndex = this.$store.state.theme.currentThemeIndex;
       this.theme = allThemes[themeIndex].name.toLowerCase();
-      this.backTopColor = allThemes[themeIndex].card.backgroundColor;
+      this.backTopColor = allThemes[themeIndex].backTopColor;
     },
 
     // Set the background color of HTML page

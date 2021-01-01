@@ -1,8 +1,7 @@
 /**
  * @author Mr Dk.
- * @version 2020/12/25 🎅
- * @description
- *    Vuex store for saving theme information
+ * @version 2021/01/01 🎆
+ * @description Vuex store for saving theme information
  */
 
 const state = {
@@ -23,6 +22,7 @@ const state = {
         backgroundColor: "#ffffff",
         textColor: "#000000"
       },
+      backTopColor: "#ffffff",
       buttonStyle: "light"
     },
     {
@@ -41,6 +41,7 @@ const state = {
         backgroundColor: "#2d2d2d",
         textColor: "#ffffff"
       },
+      backTopColor: "#3d3d3d",
       buttonStyle: "dark"
     }
   ],
