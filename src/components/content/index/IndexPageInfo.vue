@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/12/29
+  @version - 2021/01/02
 
   @description - 
     The index component for displaying page information
@@ -41,17 +41,20 @@
         <b> {{ blogVersion }} </b>
       </p>
 
-      <p> 🧱 Features: {{ deployment.commitData.message }} </p>
+      <p>
+        🧱 Features:
+        {{ deployment.commitData.message }}
+      </p>
 
       <p>
-        🎁 Committed at: <b>{{ deployment.commit.committedDate }}</b> by
+        ✒️ Committed at: <b>{{ deployment.commit.committedDate }}</b> by
         <el-link :href="deployment.commit.committer.user.url" type="primary">
           {{ deployment.commit.committer.user.name }}
         </el-link>
       </p>
 
       <p>
-        🎊 Deployed at: <b>{{ deployment.createdAt }}</b> by
+        📦 Deployed at: <b>{{ deployment.createdAt }}</b> by
         <el-link :href="deployment.creator.url" type="primary">
           {{ deployment.creator.login }}
         </el-link>
