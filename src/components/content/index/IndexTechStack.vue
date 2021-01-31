@@ -122,6 +122,17 @@ export default {
           ]
         },
         {
+          language: "Verilog HDL",
+          percentage: 12,
+          projects: [
+            {
+              description: "🔌 A 32-bit MIPS CPU supporting 57 instructions for NSCSCC (Loongson Cup), Summer of 2017.",
+              name: "MIPS-32 CPU",
+              link: "https://github.com/mrdrivingduck/mips32-CPU"
+            }
+          ]
+        },
+        {
           language: "JavaScript (Node.js / Vue.js)",
           percentage: 16,
           projects: [
@@ -133,13 +144,13 @@ export default {
           ]
         },
         {
-          language: "Verilog HDL",
-          percentage: 12,
+          language: "R",
+          percentage: 10,
           projects: [
             {
-              description: "🔌 A 32-bit MIPS CPU supporting 57 instructions for NSCSCC (Loongson Cup), Summer of 2017.",
-              name: "MIPS-32 CPU",
-              link: "https://github.com/mrdrivingduck/mips32-CPU"
+              description: "🐬 R-API of DolphinDB server.",
+              name: "DolphinDB R-API",
+              link: "https://github.com/dolphindb/api-r"
             }
           ]
         },
