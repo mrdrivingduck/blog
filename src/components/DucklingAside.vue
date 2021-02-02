@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/12/29
+  @version - 2021/01/31
 
   @description - 
     The aside component for guiding.
@@ -57,7 +57,10 @@
       ></aside-miu-cos-two>
 
       <!-- Sub-menu of JDK source code analysis -->
-      <aside-jdk-code-analysis :index="9"></aside-jdk-code-analysis>
+      <aside-jdk-code-analysis
+        :index="9"
+        :directory="asideData['jdk_source_code_analysis']"
+      ></aside-jdk-code-analysis>
 
       <!-- Sub-menu of Understanding-JVM -->
       <aside-understanding-the-jvm
@@ -177,19 +180,23 @@ export default {
         this.asideData = {};
         for (let key in originData) {
           this.asideData[key] = [];
-          for (let i = 0; i < originData[key].object.entries.length; i++) {
-            const filter = query[key].dirFilter;
+          const filter = query[key].dirFilter;
+          const sorter = query[key].sort;
+
+          for (let i = 0; i < originData[key].object.entries.length; i++) {  
             const name = originData[key].object.entries[i].name;
             const type = originData[key].object.entries[i].type;
             if (filter.test(name) && type === "tree") {
               this.asideData[key].push(originData[key].object.entries[i]);
             }
-            const sorter = query[key].sort;
-            if (sorter) {
-              this.asideData[key].sort(sorter);
-            }
+          }
+          
+          if (sorter) {
+            this.asideData[key].sort(sorter);
           }
         }
+
+        console.log(this.asideData)
 
         // Loading complete
         this.loading = false;

@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/11/05
+ * @version 2021/01/31
  * @description
  *    Vuex store for saving current content component
  */
@@ -78,6 +78,11 @@ const state = {
                 }
               }
               uc_os_ii_code_notes: repository(name: "uc-os-ii-code-notes", owner: "mrdrivingduck") {
+                object(expression: "master:") {
+                  ...getDirectory
+                }
+              }
+              jdk_source_code_analysis: repository(name: "jdk-source-code-analysis", owner: "mrdrivingduck") {
                 object(expression: "master:") {
                   ...getDirectory
                 }
@@ -311,7 +316,9 @@ const state = {
       link: "https://github.com/mrdrivingduck/jdk-source-code-analysis",
       imgPrefix: '',
       imgMatcher: /<img\ssrc="\.\/img\//g,
-      fileFilter: /^(Class|Abstract|Interface).*$/,
+      // fileFilter: /^(Class|Abstract|Interface).*$/,
+      fileFilter: /^.*\.md$/,
+      dirFilter: /^java.*$/,
       sort(a, b) {
         const a_key = a.name.split(" ")[0];
         const b_key = b.name.split(" ")[0];
