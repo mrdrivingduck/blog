@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/12/26
+  @version - 2021/02/03
 
   @description - 
     The content component for displaying note list.
@@ -186,7 +186,7 @@ export default {
   methods: {
 
     // Load one of the outline topic
-    loadNoteDirectory() {
+    loadNoteDirectory(url) {
       this.notes = [];
       this.currentPage = 1;
       this.fail = false;
@@ -196,7 +196,6 @@ export default {
       const repo = this.$route.query.repo;
       const path = this.$route.query.path;
       const api = this.$store.state.githubapi.query;
-      const url = this.$store.state.githubapi.apiv4;
       const tokenPart1 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_1;
       const tokenPart2 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_2;
       const token = tokenPart1.concat(tokenPart2);
@@ -239,8 +238,13 @@ export default {
 
       }).catch(error => {
         // HTTP failed
-        this.fail = true;
-        this.failReason = error.message;
+        const fallbackUrl = this.$store.state.githubapi.apiv4Fallback;
+        if (url === fallbackUrl) {
+          this.fail = true;
+          this.failReason = error.message;
+        } else {
+          this.loadNoteDirectory(fallbackUrl);
+        }
       });
     },
 
@@ -291,7 +295,8 @@ export default {
   },
   created() {
     // Initializing the data from GitHub
-    this.loadNoteDirectory();
+    const url = this.$store.state.githubapi.apiv4;
+    this.loadNoteDirectory(url);
     this.setCardTheme();
   },
   computed: {
@@ -322,7 +327,8 @@ export default {
     },
 
     $route() {
-      this.loadNoteDirectory();
+      const url = this.$store.state.githubapi.apiv4;
+      this.loadNoteDirectory(url);
     }
 
   }

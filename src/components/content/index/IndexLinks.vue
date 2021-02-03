@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/11/01
+  @version - 2021/02/03
 
   @description - 
     The index component for displaying social links and friend links.
@@ -213,30 +213,8 @@ export default {
           icon_dark: "icon/weibo-dark.svg"
         }
       ],
-      friends: [
-        {
-          name: "Triple-Z",
-          avatar: "https://koera.vultr.mrdrivingduck.cn/blog/githubavatar/Triple-Z",
-          link: "https://blog.triplez.cn/"
-        },
-        {
-          name: "Lewis-Lu",
-          avatar: "https://koera.vultr.mrdrivingduck.cn/blog/githubavatar/Lewis-Lu",
-          link: "http://lewissoft.com/"
-        },
-        {
-          name: "zonghuaxiansheng",
-          avatar: "https://koera.vultr.mrdrivingduck.cn/blog/githubavatar/zonghuaxiansheng",
-          link: "https://github.com/zonghuaxiansheng"
-        }
-      ],
-      teams: [
-        {
-          name: "NUAA WatchDog",
-          avatar: "https://koera.vultr.mrdrivingduck.cn/blog/githubavatar/NUAA-WatchDog",
-          link: "https://github.com/NUAA-WatchDog"
-        }
-      ],
+      friends: [],
+      teams: [],
       tgchannel: {
         icon_light: "icon/telegram-light.svg",
         icon_dark: "icon/telegram-dark.svg",
@@ -245,6 +223,33 @@ export default {
         login: "Mr Dk.'s Trumpet"
       }
     };
+  },
+  created() {
+    const avatarUrlPrefix = this.$store.state.githubapi.apiAvatar;
+    this.friends = [
+      {
+        name: "Triple-Z",
+        avatar: avatarUrlPrefix + "/Triple-Z",
+        link: "https://blog.triplez.cn/"
+      },
+      {
+        name: "Lewis-Lu",
+        avatar: avatarUrlPrefix + "/Lewis-Lu",
+        link: "http://lewissoft.com/"
+      },
+      {
+        name: "zonghuaxiansheng",
+        avatar: avatarUrlPrefix + "/zonghuaxiansheng",
+        link: "https://github.com/zonghuaxiansheng"
+      }
+    ];
+    this.teams = [
+      {
+        name: "NUAA WatchDog",
+        avatar: avatarUrlPrefix + "/NUAA-WatchDog",
+        link: "https://github.com/NUAA-WatchDog"
+      }
+    ];
   }
 }
 </script>
