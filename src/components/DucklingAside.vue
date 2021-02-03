@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/01/31
+  @version - 2021/02/03
 
   @description - 
     The aside component for guiding.
@@ -159,12 +159,11 @@ export default {
     },
 
     // Load aside through GitHub API
-    loadAside() {
+    loadAside(url) {
       this.loading = true;
       this.fail = false;
       this.failReason = "";
 
-      const url = this.$store.state.githubapi.apiv4;
       const tokenPart1 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_1;
       const tokenPart2 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_2;
       const token = tokenPart1.concat(tokenPart2);
@@ -196,14 +195,17 @@ export default {
           }
         }
 
-        console.log(this.asideData)
-
         // Loading complete
         this.loading = false;
       }).catch(error => {
         // HTTP failed
-        this.fail = true;
-        this.failReason = error.message;
+        const fallbackUrl = this.$store.state.githubapi.apiv4Fallback;
+        if (url === fallbackUrl) {
+          this.fail = true;
+          this.failReason = error.message;
+        } else {
+          this.loadAside(fallbackUrl);
+        }
       });
     }
 
@@ -212,7 +214,8 @@ export default {
     this.setTheme(); // Initialize the theme
   },
   created() {
-    this.loadAside();
+    const url = this.$store.state.githubapi.apiv4;
+    this.loadAside(url);
   },
   computed: {
 

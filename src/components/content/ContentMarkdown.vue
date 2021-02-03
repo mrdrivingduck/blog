@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/12/29
+  @version - 2021/02/03
 
   @description - 
     The content component for displaying markdown files
@@ -195,14 +195,13 @@ export default {
       // Issur HTTP request
       const repo = this.$route.query.repo;
       const path = this.$route.query.path;
-      this.getMarkdown(repo, path);
+      const apiUrl = this.$store.state.githubapi.apiv4;
+      this.getMarkdown(repo, path, apiUrl);
     },
 
     // Get the content of markdown file
-    getMarkdown(repo, path) {
-
+    getMarkdown(repo, path, url) {
       const api = this.$store.state.githubapi.query;
-      const url = this.$store.state.githubapi.apiv4;
       const tokenPart1 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_1;
       const tokenPart2 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_2;
       const token = tokenPart1.concat(tokenPart2);
@@ -244,8 +243,13 @@ export default {
 
       }).catch(error => {
         // HTTP failed
-        this.fail = true;
-        this.failReason = error.message;
+        const fallbackUrl = this.$store.state.githubapi.apiv4Fallback;
+        if (url === fallbackUrl) {
+          this.fail = true;
+          this.failReason = error.message;
+        } else {
+          this.getMarkdown(repo, path, fallbackUrl);
+        }
       });
 
     },
