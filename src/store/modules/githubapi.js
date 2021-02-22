@@ -209,8 +209,8 @@ const state = {
       // commit: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/commits?path=",
       link: "https://github.com/mrdrivingduck/how-linux-works-notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/how-linux-works-notes/master/img/',
-      imgMatcher: /<img\ssrc="\.\/img\//g,
       branch: "master",
+      imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
       // dirFilter: /^Chapter.*$/
       sort(a, b) {
@@ -264,6 +264,7 @@ const state = {
       // commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/commits?path=",
       link: "https://github.com/mrdrivingduck/linux-kernel-development-notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-development-notes/master/img/',
+      branch: "master",
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
       sort(a, b) {
@@ -430,6 +431,7 @@ const state = {
        */
       link: "https://github.com/mrdrivingduck/spring-microservices-notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/spring-microservices-notes/master/img/',
+      branch: "master",
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
       // dirFilter: /^Chapter.*$/
@@ -455,8 +457,8 @@ const state = {
        */
       link: "https://github.com/mrdrivingduck/netty-in-action-notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/netty-in-action-notes/master/img/',
-      imgMatcher: /<img\ssrc="\.\/img\//g,
       branch: "main",
+      imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^\d.*$/,
       sort(a, b) {
         let idxFrontArr = a.name.split(" ")[0].split(".");
