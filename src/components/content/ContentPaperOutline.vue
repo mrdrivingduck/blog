@@ -220,9 +220,9 @@ export default {
       this.repoLink = api[repo].link;
 
       let query = api.outline_list;
-      query = query.replace("<repo>", repo.replace(/_/g, "-"));
-      query = query.replace("<branch>", branch);
-      query = query.replace("<path>", path);
+      query = query.replace(/<repo>/g, repo.replace(/_/g, "-"));
+      query = query.replace(/<branch>/g, branch);
+      query = query.replace(/<path>/g, path);
 
       this.$http.post(url, { query }, {
         headers: {

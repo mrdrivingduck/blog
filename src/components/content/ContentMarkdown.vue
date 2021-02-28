@@ -208,8 +208,8 @@ export default {
 
       const branch = api[repo].branch;
       let query = api.markdown;
-      query = query.replace(/<repo>/, repo.replace(/_/g, "-"));
-      query = query.replace("<branch>", branch);
+      query = query.replace(/<repo>/g, repo.replace(/_/g, "-"));
+      query = query.replace(/<branch>/g, branch);
       query = query.replace(/<path>/g, path);
 
       this.repoLink = api[repo].link;
