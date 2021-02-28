@@ -223,7 +223,7 @@ export default {
         let markdown = originData.object.text;
 
         this.articleLink = "https://github.com/mrdrivingduck/" + repo.replace(/_/g, "-")
-                            + "/blob/master/" + path;
+                            + "/blob/" + branch + "/" + path;
         this.articleSize = originData.object.byteSize / 1024;
         // this.articleReadingTime = parseInt(1.4 * parseInt(this.articleSize));
         // 400 words per minute
