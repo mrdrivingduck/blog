@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/02/03
+  @version - 2021/02/23
 
   @description - 
     The content component for displaying note list.
@@ -202,10 +202,12 @@ export default {
 
       const regExpr = api[repo].fileFilter;
       const sorter = api[repo].sort;
+      const branch = api[repo].branch;
       this.repoLink = api[repo].link;
 
       let query = api.notelist;
       query = query.replace("<repo>", repo.replace(/_/g, "-"));
+      query = query.replace("<branch>", branch);
       query = query.replace("<path>", path);
 
       this.$http.post(url, { query }, {

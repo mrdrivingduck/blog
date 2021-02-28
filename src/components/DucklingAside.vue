@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/02/03
+  @version - 2021/02/22
 
   @description - 
     The aside component for guiding.
@@ -86,6 +86,12 @@
         :directory="asideData['spring_microservices_notes']"
       ></aside-spring-microservices-in-action>
 
+      <!-- Sub-menu of Netty in Action -->
+      <aside-netty-in-action
+        :index="14"
+        :directory="asideData['netty_in_action_notes']"
+      ></aside-netty-in-action>
+
     </el-menu>
 
     <!-- Loading failure -->
@@ -115,6 +121,7 @@ import AsideUnderstandingTheJvm from "./aside/AsideUnderstandingTheJVM"
 import AsideRedisImplementation from "./aside/AsideRedisImplementation"
 import AsideUnderstandingNginx from "./aside/AsideUnderstandingNginx"
 import AsideSpringMicroservicesInAction from "./aside/AsideSpringMicroservicesInAction"
+import AsideNettyInAction from "./aside/AsideNettyInAction"
 
 export default {
   props: [ "theme" ],
@@ -131,7 +138,8 @@ export default {
     AsideUnderstandingTheJvm,
     AsideRedisImplementation,
     AsideUnderstandingNginx,
-    AsideSpringMicroservicesInAction
+    AsideSpringMicroservicesInAction,
+    AsideNettyInAction
   },
   data() {
     return {

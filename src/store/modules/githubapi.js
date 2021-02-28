@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2021/02/03
+ * @version 2021/02/23
  * @description
  *    Vuex store for saving current content component
  */
@@ -110,7 +110,7 @@ const state = {
             }`,
     notelist: `query { 
                 repository(name: "<repo>", owner: "mrdrivingduck") {
-                  object(expression: "master:<path>") {
+                  object(expression: "<branch>:<path>") {
                     ... on Tree {
                       entries {
                         name, type, oid
@@ -203,12 +203,13 @@ const state = {
        * How linux works notes content
        *    commit: notes commit record
        *    imgPrefix: url replacement prefix of images in the notes
-       *    imgMatcher: image url in notes -  <img src="../img/
+       *    imgMatcher: image url in notes -  <img src="./img/
        */
       // content: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/contents/",
       // commit: "https://api.github.com/repos/mrdrivingduck/how-linux-works-notes/commits?path=",
       link: "https://github.com/mrdrivingduck/how-linux-works-notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/how-linux-works-notes/master/img/',
+      branch: "master",
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
       // dirFilter: /^Chapter.*$/
@@ -263,6 +264,7 @@ const state = {
       // commit: "https://api.github.com/repos/mrdrivingduck/linux-kernel-development-notes/commits?path=",
       link: "https://github.com/mrdrivingduck/linux-kernel-development-notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/linux-kernel-development-notes/master/img/',
+      branch: "master",
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
       sort(a, b) {
@@ -429,6 +431,7 @@ const state = {
        */
       link: "https://github.com/mrdrivingduck/spring-microservices-notes",
       imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/spring-microservices-notes/master/img/',
+      branch: "master",
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^Chapter.*$/,
       // dirFilter: /^Chapter.*$/
@@ -438,6 +441,31 @@ const state = {
 
         // Chapter 12.10 - xxxxxx
         // Chapter 12 - xxxxxx
+        if (idxFrontArr[0] === idxBackArr[0]) {
+          return parseInt(idxFrontArr[1]) - parseInt(idxBackArr[1]);
+        } else {
+          return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
+        }
+      }
+    },
+    netty_in_action_notes: {
+      /**
+       * Netty in Action content
+       *    commit: notes commit record
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="./img/
+       */
+      link: "https://github.com/mrdrivingduck/netty-in-action-notes",
+      imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/netty-in-action-notes/master/img/',
+      branch: "main",
+      imgMatcher: /<img\ssrc="\.\/img\//g,
+      fileFilter: /^\d.*$/,
+      sort(a, b) {
+        let idxFrontArr = a.name.split(" ")[0].split(".");
+        let idxBackArr = b.name.split(" ")[0].split(".");
+
+        // 3 - xxxxxx
+        // 3.1 - xxxxxx
         if (idxFrontArr[0] === idxBackArr[0]) {
           return parseInt(idxFrontArr[1]) - parseInt(idxBackArr[1]);
         } else {
