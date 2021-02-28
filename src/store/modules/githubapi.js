@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2021/02/23
+ * @version 2021/02/28
  * @description
  *    Vuex store for saving current content component
  */
@@ -126,7 +126,7 @@ const state = {
               }`,
     outline_list: `query { 
                     repository(name: "<repo>", owner: "mrdrivingduck") {
-                      object(expression: "master:<path>") {
+                      object(expression: "<branch>:<path>") {
                         ... on Tree {
                           entries {
                             name
@@ -149,7 +149,7 @@ const state = {
                   }`,
     markdown: `query { 
                 repository(name: "<repo>", owner: "mrdrivingduck") {
-                  object(expression: "master:<path>") {
+                  object(expression: "<branch>:<path>") {
                     ... on Blob {
                       oid, byteSize, text
                     }
