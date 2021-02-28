@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/02/23
+  @version - 2021/02/28
 
   @description - 
     The content component for displaying note list.
@@ -206,9 +206,9 @@ export default {
       this.repoLink = api[repo].link;
 
       let query = api.notelist;
-      query = query.replace("<repo>", repo.replace(/_/g, "-"));
-      query = query.replace("<branch>", branch);
-      query = query.replace("<path>", path);
+      query = query.replace(/<repo>/g, repo.replace(/_/g, "-"));
+      query = query.replace(/<branch>/g, branch);
+      query = query.replace(/<path>/g, path);
 
       this.$http.post(url, { query }, {
         headers: {

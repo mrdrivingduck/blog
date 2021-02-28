@@ -208,8 +208,8 @@ export default {
 
       const branch = api[repo].branch;
       let query = api.markdown;
-      query = query.replace(/<repo>/, repo.replace(/_/g, "-"));
-      query = query.replace("<branch>", branch);
+      query = query.replace(/<repo>/g, repo.replace(/_/g, "-"));
+      query = query.replace(/<branch>/g, branch);
       query = query.replace(/<path>/g, path);
 
       this.repoLink = api[repo].link;
@@ -223,7 +223,7 @@ export default {
         let markdown = originData.object.text;
 
         this.articleLink = "https://github.com/mrdrivingduck/" + repo.replace(/_/g, "-")
-                            + "/blob/master/" + path;
+                            + "/blob/" + branch + "/" + path;
         this.articleSize = originData.object.byteSize / 1024;
         // this.articleReadingTime = parseInt(1.4 * parseInt(this.articleSize));
         // 400 words per minute
