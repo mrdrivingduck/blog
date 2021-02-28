@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/02/03
+  @version - 2021/02/28
 
   @description - 
     The content component for displaying markdown files
@@ -206,8 +206,10 @@ export default {
       const tokenPart2 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_2;
       const token = tokenPart1.concat(tokenPart2);
 
+      const branch = api[repo].branch;
       let query = api.markdown;
       query = query.replace(/<repo>/, repo.replace(/_/g, "-"));
+      query = query.replace("<branch>", branch);
       query = query.replace(/<path>/g, path);
 
       this.repoLink = api[repo].link;
@@ -217,6 +219,7 @@ export default {
           "Authorization": "bearer " + token
         }
       }).then(response => {
+        console.log(response.data.data)
         let originData = response.data.data.repository;
         let markdown = originData.object.text;
 

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/02/03
+  @version - 2021/02/28
 
   @description - 
     The content component for displaying paper outlines.
@@ -213,6 +213,7 @@ export default {
       const token = tokenPart1.concat(tokenPart2);
 
       const regExpr = api[repo].fileFilter;
+      const branch = api[repo].branch;
       const pdfFormatReg = this.$store.state.regexpre.pdfFormatReg;
       const pptFormatReg = this.$store.state.regexpre.pptFormatReg;
 
@@ -220,6 +221,7 @@ export default {
 
       let query = api.outline_list;
       query = query.replace("<repo>", repo.replace(/_/g, "-"));
+      query = query.replace("<branch>", branch);
       query = query.replace("<path>", path);
 
       this.$http.post(url, { query }, {
