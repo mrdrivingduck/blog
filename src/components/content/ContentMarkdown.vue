@@ -219,7 +219,6 @@ export default {
           "Authorization": "bearer " + token
         }
       }).then(response => {
-        console.log(response.data.data)
         let originData = response.data.data.repository;
         let markdown = originData.object.text;
 
