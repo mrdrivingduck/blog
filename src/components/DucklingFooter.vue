@@ -33,7 +33,7 @@
             <el-link
               type="primary"
               href="mailto:mrdrivingduck@gmail.com">
-              Jingt. Zhang
+              Jingtang Zhang
             </el-link>
           . All rights reserved.
           <!-- <el-link
