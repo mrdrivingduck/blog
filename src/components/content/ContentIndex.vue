@@ -9,7 +9,7 @@
 -->
 
 <template>
-  <div :theme="theme" :class="theme" v-loading="loading">
+  <div :class="theme" v-loading="loading">
 
     <el-row :gutter="24" type="flex" align="middle" justify="center">
 
@@ -99,21 +99,6 @@
 
   </div>
 </template>
-
-<style>
-  .dark h1, .dark h2, .dark p, .dark li {
-    color: #ffffff;
-  }
-  .dark h1 {
-    margin-top: 50px;
-  }
-  .light h1, .light h2, .light p, .light li {
-    color: #000000;
-  }
-  .light h1 {
-    margin-top: 50px;
-  }
-</style>
 
 <script>
 import GithubButton from "vue-github-button";
