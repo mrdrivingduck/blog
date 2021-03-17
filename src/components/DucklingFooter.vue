@@ -1,10 +1,10 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/12/25 🎅
+  @version - 2021/03/17
 
   @description - 
-    The index component for displaying fotter
+    The index component for displaying fotter.
 
 -->
 
@@ -45,19 +45,21 @@
       </div>
 
       <div style="text-align: center;">
+        <p> 🤛 Powered by 🤜 </p>
         <p>
-          Powered by
             <el-link
               type="primary"
               href="http://nginx.org/">
               Nginx on Ubuntu
             </el-link>
+          (Inside Mainland China)
           /
             <el-link
               type="primary"
               href="https://pages.github.com/">
               GitHub Pages
             </el-link>
+          (Outside Mainland China)
         </p>
       </div>
 

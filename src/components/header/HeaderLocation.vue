@@ -58,7 +58,7 @@ export default {
           // requesting server outside China (GitHub pages)
           // but the IP is inside
           this.hint(
-            "Your IP Address is more suitable to request the site inside China mainland.",
+            "Your IP Address is more suitable to request the site inside Mainland China.",
             "Hint",
             "https://" + this.$store.state.githubapi.baseHostInChina + "/blog/#" + this.$route.fullPath
           );
@@ -66,7 +66,7 @@ export default {
           // requesting server inside China
           // but the IP is outside
           this.hint(
-            "Your IP Address is more suitable to request the site outside China mainland.",
+            "Your IP Address is more suitable to request the site outside Mainland China.",
             "Hint",
             this.$store.state.githubapi.baseUrl + this.$route.fullPath
           );
