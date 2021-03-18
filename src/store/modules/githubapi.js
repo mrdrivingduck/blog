@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2021/03/17
+ * @version 2021/03/18
  * @description
  *    Vuex store for saving current content component
  */
@@ -19,7 +19,7 @@ const state = {
   apiv4Fallback: "https://koera.vultr.mrdrivingduck.cn/blog/apiv4",
   apiAvatar: "https://avatars.githubusercontent.com",
 
-  baseUrl: "https://mrdrivingduck.github.io/blog/#",
+  baseUrl: "https://mrdrivingduck.github.io/blog",
   baseHostInChina: "www.mrdrivingduck.cn",
   
   query: {
