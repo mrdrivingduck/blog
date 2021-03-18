@@ -45,7 +45,6 @@
       </div>
 
       <div style="text-align: center;">
-        <!-- <p> 🤛  🤜 </p> -->
         <p>
           Powered by
             <el-link
