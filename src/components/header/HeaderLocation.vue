@@ -54,26 +54,40 @@ export default {
         this.location = window.ip.cname;
 
         // jump to different mirroring sites if necessary
-        if (!this.isWebsiteInsideChina() && this.isIPInsideChina(this.location)) {
+        if (this.isWebsiteDebug()) {
+          if (!this.isIPInsideChina()) {
+            this.hint(
+              "DEBUG: Your IP Address is more suitable to request the site outside Mainland China.",
+              "Hint",
+              window.location.href.replace(
+                window.location.origin,
+                this.$store.state.githubapi.baseUrl
+              )
+            );
+          }
+        } else if (!this.isWebsiteInsideChina() && this.isIPInsideChina()) {
           // requesting server outside China (GitHub pages)
           // but the IP is inside
           this.hint(
             "Your IP Address is more suitable to request the site inside Mainland China.",
             "Hint",
             window.location.href.replace(
-              window.location.origin,
-              "https://" + this.$store.state.githubapi.baseHostInChina + "/blog"
+              this.$store.state.githubapi.baseHost,
+              "www." + this.$store.state.githubapi.baseHostInChina
             )
           );
-        } else if (this.isWebsiteInsideChina() && !this.isIPInsideChina(this.location)) {
+        } else if (this.isWebsiteInsideChina() && !this.isIPInsideChina()) {
           // requesting server inside China
           // but the IP is outside
           this.hint(
             "Your IP Address is more suitable to request the site outside Mainland China.",
             "Hint",
             window.location.href.replace(
-              window.location.origin,
-              this.$store.state.githubapi.baseUrl
+              "www." + this.$store.state.githubapi.baseHostInChina,
+              this.$store.state.githubapi.baseHost
+            ).replace(
+              this.$store.state.githubapi.baseHostInChina,
+              this.$store.state.githubapi.baseHost
             )
           );
         }
@@ -96,10 +110,17 @@ export default {
       });
     },
 
+    isWebsiteDebug() {
+      if (window.location.href.indexOf("localhost") != -1) {
+        return true;
+      }
+      return false;
+    },
+
     isWebsiteInsideChina() {
       const url = window.location.href;
       const hostInChina = this.$store.state.githubapi.baseHostInChina;
-      if (url.indexOf(hostInChina) != -1 || url.indexOf("localhost") != -1) {
+      if (url.indexOf(hostInChina) != -1) {
         return true;
       }
       return false;

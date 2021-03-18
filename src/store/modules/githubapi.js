@@ -20,7 +20,8 @@ const state = {
   apiAvatar: "https://avatars.githubusercontent.com",
 
   baseUrl: "https://mrdrivingduck.github.io/blog",
-  baseHostInChina: "www.mrdrivingduck.cn",
+  baseHost: "mrdrivingduck.github.io",
+  baseHostInChina: "mrdrivingduck.cn",
   
   query: {
     /**
