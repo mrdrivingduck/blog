@@ -45,12 +45,19 @@
       </div>
 
       <div style="text-align: center;">
-        <p> 🤛 Powered by 🤜 </p>
+        <!-- <p> 🤛  🤜 </p> -->
         <p>
+          Powered by
             <el-link
               type="primary"
-              href="http://nginx.org/">
-              Nginx on Ubuntu
+              href="https://nginx.org/">
+              Nginx
+            </el-link>
+          on
+            <el-link
+              type="primary"
+              href="https://www.aliyun.com/">
+              Aliyun
             </el-link>
           (Inside Mainland China)
           /
