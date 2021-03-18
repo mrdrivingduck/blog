@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/01/01 🎆
+  @version - 2021/03/17
 
   @description - 
     The entry component.
@@ -16,7 +16,7 @@
 
     <!-- Header -->
     <el-header>
-      <duckling-header></duckling-header>
+      <duckling-header :theme="theme"></duckling-header>
     </el-header>
 
     <!-- Central part -->
@@ -58,6 +58,19 @@
   .content {
     margin-left: 45px;
     margin-right: 45px;
+  }
+
+  .dark h1, .dark h2, .dark p, .dark li {
+    color: #ffffff;
+  }
+  .dark h1 {
+    margin-top: 50px;
+  }
+  .light h1, .light h2, .light p, .light li {
+    color: #000000;
+  }
+  .light h1 {
+    margin-top: 50px;
   }
 </style>
 

@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2021/02/28
+ * @version 2021/03/17
  * @description
  *    Vuex store for saving current content component
  */
@@ -20,6 +20,7 @@ const state = {
   apiAvatar: "https://avatars.githubusercontent.com",
 
   baseUrl: "https://mrdrivingduck.github.io/blog/#",
+  baseHostInChina: "www.mrdrivingduck.cn",
   
   query: {
     /**

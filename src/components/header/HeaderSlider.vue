@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/05/30
+  @version - 2021/03/17
 
   @description - 
     Slider for changing themes.
@@ -23,12 +23,7 @@
   </div>
 </template>
 
-<style>
-
-</style>
-
 <script>
-
 export default {
   name: "HeaderSlider",
   data() {
