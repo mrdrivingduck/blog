@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/02/28
+  @version - 2021/03/18
 
   @description - 
     The content component for displaying markdown files
@@ -190,7 +190,7 @@ export default {
         this.articleReadingTime = 1;
       }
 
-      this.copyLink = this.$store.state.githubapi.baseUrl + this.$route.fullPath;
+      this.copyLink = this.$store.state.githubapi.baseUrl + "/#" + this.$route.fullPath;
 
       // Issur HTTP request
       const repo = this.$route.query.repo;

@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/03/17
+  @version - 2021/03/18
 
   @description - 
     Component for displaying IP address.
@@ -60,7 +60,10 @@ export default {
           this.hint(
             "Your IP Address is more suitable to request the site inside Mainland China.",
             "Hint",
-            "https://" + this.$store.state.githubapi.baseHostInChina + "/blog/#" + this.$route.fullPath
+            window.location.href.replace(
+              window.location.origin,
+              "https://" + this.$store.state.githubapi.baseHostInChina + "/blog"
+            )
           );
         } else if (this.isWebsiteInsideChina() && !this.isIPInsideChina(this.location)) {
           // requesting server inside China
@@ -68,7 +71,10 @@ export default {
           this.hint(
             "Your IP Address is more suitable to request the site outside Mainland China.",
             "Hint",
-            this.$store.state.githubapi.baseUrl + this.$route.fullPath
+            window.location.href.replace(
+              window.location.origin,
+              this.$store.state.githubapi.baseUrl
+            )
           );
         }
       }
