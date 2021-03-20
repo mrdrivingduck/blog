@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/03/18
+  @version - 2021/03/20
 
   @description - 
     Component for displaying IP address.
@@ -42,7 +42,9 @@ export default {
         "四川", "贵州", "云南",
         "陕西", "甘肃", "青海",
         // "台湾", "香港", "澳门"
-        "内蒙古", "广西", "西藏", "宁夏", "新疆"
+        "内蒙古", "广西", "西藏", "宁夏", "新疆",
+
+        "CHINA"
       ]
     };
   },
