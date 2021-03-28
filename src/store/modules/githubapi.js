@@ -16,7 +16,7 @@ const state = {
   //         without /blog/githubavatar
   //     }
   apiv4: "https://api.github.com/graphql",
-  apiv4Fallback: "https://koera.vultr.mrdrivingduck.cn/blog/apiv4",
+  apiv4Proxy: "https://koera.vultr.mrdrivingduck.cn/blog/apiv4",
   apiAvatar: "https://avatars.githubusercontent.com",
 
   baseUrl: "https://mrdrivingduck.github.io/blog",

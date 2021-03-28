@@ -245,7 +245,7 @@ export default {
 
       }).catch(error => {
         // HTTP failed
-        const fallbackUrl = this.$store.state.githubapi.apiv4Fallback;
+        const fallbackUrl = this.$store.state.githubapi.apiv4Proxy;
         if (url === fallbackUrl) {
           this.fail = true;
           this.failReason = error.message;
