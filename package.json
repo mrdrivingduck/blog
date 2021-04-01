@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "core-js": "^3.9.1",
+    "core-js": "^3.10.0",
     "duckling-markdown-css": "4.0.1",
     "element-ui": "^2.15.1",
     "marked": "^2.0.1",
@@ -29,8 +29,8 @@
     "@vue/cli-plugin-eslint": "^4.5.12",
     "@vue/cli-service": "^4.5.12",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.22.0",
-    "eslint-plugin-vue": "^7.7.0",
+    "eslint": "^7.23.0",
+    "eslint-plugin-vue": "^7.8.0",
     "vue-template-compiler": "^2.6.12"
   },
   "eslintConfig": {

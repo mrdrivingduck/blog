@@ -37,8 +37,6 @@ A dynamic blog system implemented by myself. Supported by:
 * [GitHub Buttons](https://buttons.github.io/) - Unofficial github:button component for Vue.js.
 * [Aliyun](https://www.aliyun.com/) - More Than Just Cloud.
 
----
-
 ## Project setup
 
 ### Install dependencies
@@ -74,8 +72,6 @@ npm run lint
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
-
----
 
 ## License
 
