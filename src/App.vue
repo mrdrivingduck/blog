@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/03/17
+  @version - 2021/04/03
 
   @description - 
     The entry component.
@@ -41,6 +41,12 @@
 
   </div>
 </template>
+
+<style>
+  body {
+    font-family: "Microsoft YaHei","PingFang SC",Arial,"Helvetica Neue",Helvetica,"Hiragino Sans GB","微软雅黑",sans-serif;
+  }
+</style>
 
 <style>
   .dark .el-loading-mask {
