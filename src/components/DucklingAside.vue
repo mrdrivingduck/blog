@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/02/22
+  @version - 2021/04/11
 
   @description - 
     The aside component for guiding.
@@ -92,6 +92,12 @@
         :directory="asideData['netty_in_action_notes']"
       ></aside-netty-in-action>
 
+      <!-- Sub-menu of The Annotated STL Sources -->
+      <aside-annotated-stl
+        :index="15"
+        :directory="asideData['the_annotated_stl_sources_notes']"
+      ></aside-annotated-stl>
+
     </el-menu>
 
     <!-- Loading failure -->
@@ -122,6 +128,7 @@ import AsideRedisImplementation from "./aside/AsideRedisImplementation"
 import AsideUnderstandingNginx from "./aside/AsideUnderstandingNginx"
 import AsideSpringMicroservicesInAction from "./aside/AsideSpringMicroservicesInAction"
 import AsideNettyInAction from "./aside/AsideNettyInAction"
+import AsideAnnotatedStl from "./aside/AsideAnnotatedSTL"
 
 export default {
   props: [ "theme" ],
@@ -139,7 +146,8 @@ export default {
     AsideRedisImplementation,
     AsideUnderstandingNginx,
     AsideSpringMicroservicesInAction,
-    AsideNettyInAction
+    AsideNettyInAction,
+    AsideAnnotatedStl
   },
   data() {
     return {

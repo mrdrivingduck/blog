@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2021/03/18
+ * @version 2021/04/11
  * @description
  *    Vuex store for saving current content component
  */
@@ -25,9 +25,9 @@ const state = {
   
   query: {
     /**
-     * User info
-     * Commit info
-     * Deployment info
+     * 1. user info
+     * 2. commit info
+     * 3. deployment info
      */
     user: `query { 
             user(login: "mrdrivingduck") { name, location, bio, company },
@@ -58,7 +58,7 @@ const state = {
             }
           }`,
     /**
-     * All info in 'Aside'
+     * All info in 'Aside', including directory.
      */
     aside: `query {
               notes: repository(name: "notes", owner: "mrdrivingduck") {
@@ -102,6 +102,11 @@ const state = {
               }
               understanding_nginx_notes: repository(name: "understanding-nginx-notes", owner: "mrdrivingduck") {
                 object(expression: "master:") {
+                  ...getDirectory
+                }
+              }
+              the_annotated_stl_sources_notes: repository(name: "the-annotated-stl-sources-notes", owner: "mrdrivingduck") {
+                object(expression: "main:") {
                   ...getDirectory
                 }
               }
@@ -466,7 +471,7 @@ const state = {
        *    imgMatcher: image url in notes -  <img src="./img/
        */
       link: "https://github.com/mrdrivingduck/netty-in-action-notes",
-      imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/netty-in-action-notes/master/img/',
+      imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/netty-in-action-notes/main/img/',
       branch: "main",
       imgMatcher: /<img\ssrc="\.\/img\//g,
       fileFilter: /^\d.*$/,
@@ -482,7 +487,35 @@ const state = {
           return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
         }
       }
-    }
+    },
+    the_annotated_stl_sources_notes: {
+      /**
+       * The Annotated STL Sources
+       *    commit: notes commit record
+       *    imgPrefix: url replacement prefix of images in the notes
+       *    imgMatcher: image url in notes -  <img src="../img/
+       */
+      // content: "https://api.github.com/repos/mrdrivingduck/the-annotated-stl-sources-notes/contents/",
+      // commit: "https://api.github.com/repos/mrdrivingduck/the-annotated-stl-sources-notes/commits?path=",
+      // imgPrefix: '<img src="https://raw.githubusercontent.com/mrdrivingduck/the-annotated-stl-sources-notes/main/img/',
+      // imgMatcher: /<img\ssrc="\.\.\/img\//g,
+      link: "https://github.com/mrdrivingduck/the-annotated-stl-sources-notes",
+      branch: "main",
+      fileFilter: /^.*\.md$/,
+      dirFilter: /^Chapter.*$/,
+      sort(a, b) {
+        let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
+        let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
+
+        // Chapter 12.10 - xxxxxx
+        // Chapter 12 - xxxxxx
+        if (idxFrontArr[0] === idxBackArr[0]) {
+          return parseInt(idxFrontArr[1]) - parseInt(idxBackArr[1]);
+        } else {
+          return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
+        }
+      }
+    },
   }
 };
 
