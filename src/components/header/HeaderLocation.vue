@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/04/12
+  @version - 2021/04/14
 
   @description - 
     Component for displaying IP address.
@@ -13,7 +13,7 @@
 
     <p align="right" v-if="ipAddress">
       <!-- {{ ipAddress + " (" + location + ") " }} -->
-      {{ "Your IP address is in: " + location }}
+      {{ "Your current IP address is in: " + location }}
     </p>
     
   </div>
