@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2021/01/01 🎆
+ * @version 2021/04/18
  * @description Vuex store for saving theme information
  */
 
@@ -10,7 +10,7 @@ const state = {
       name: "Light",
       background: "#ffffff",
       content: {
-        highlight: "github-gist",
+        highlight: "isbl-editor-light", // arduino-light
         markdown: "markdown-body"
       },
       aside: {
@@ -29,7 +29,7 @@ const state = {
       name: "Dark",
       background: "#282c34",
       content: {
-        highlight: "obsidian",
+        highlight: "gml",  // monokai obsidian
         markdown: "markdown-body-dark",
       },
       aside: {
@@ -60,4 +60,3 @@ export default {
   state,
   mutations
 }
-  
