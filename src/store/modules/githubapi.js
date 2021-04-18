@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2021/04/11
+ * @version 2021/04/18
  * @description
  *    Vuex store for saving current content component
  */
@@ -507,13 +507,16 @@ const state = {
         let idxFrontArr = a.name.split("-")[0].split(" ")[1].split(".");
         let idxBackArr = b.name.split("-")[0].split(" ")[1].split(".");
 
-        // Chapter 12.10 - xxxxxx
-        // Chapter 12 - xxxxxx
-        if (idxFrontArr[0] === idxBackArr[0]) {
-          return parseInt(idxFrontArr[1]) - parseInt(idxBackArr[1]);
-        } else {
-          return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
+        // Chapter 6.7.1 - xxxxxx
+        // Chapter 6.7 - xxxxxx
+        // Chapter 6 - xxxxxx
+        for (let i = 0; i < 3; i++) {
+          if (idxFrontArr[i] !== idxBackArr[i]) {
+            return parseInt(idxFrontArr[i]) - parseInt(idxBackArr[i]);
+          }
         }
+        
+        return parseInt(idxFrontArr[0]) - parseInt(idxBackArr[0]);
       }
     },
   }
