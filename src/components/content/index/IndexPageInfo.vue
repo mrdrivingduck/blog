@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/01/02
+  @version - 2021/04/18
 
   @description - 
     The index component for displaying page information
@@ -218,6 +218,11 @@ export default {
           name: "Aliyun",
           description: "More Than Just Cloud.",
           link: "https://www.aliyun.com/"
+        },
+        {
+          name: "百度统计",
+          description: "领先的中文网站分析平台",
+          "link": "https://tongji.baidu.com/"
         }
       ],
 

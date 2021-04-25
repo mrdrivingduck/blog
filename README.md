@@ -36,6 +36,7 @@ A dynamic blog system implemented by myself. Supported by:
 * [GitHub Actions](https://github.com/features/actions) - Automate your workflow from idea to production.
 * [GitHub Buttons](https://buttons.github.io/) - Unofficial github:button component for Vue.js.
 * [Aliyun](https://www.aliyun.com/) - More Than Just Cloud.
+* [百度统计](https://tongji.baidu.com/) - 领先的中文网站分析平台
 
 ## Project setup
 

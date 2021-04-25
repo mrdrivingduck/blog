@@ -1,8 +1,8 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/01/01 🎆
-
+  @version - 2021/04/25
+  
   @description - 
     The index component for displaying technology stack
 
@@ -105,9 +105,9 @@ export default {
               link: "https://github.com/mrdrivingduck/repo-mirror-sync"
             },
             {
-              description: "🌉 A Java client for Kismet RESTful API.",
+              description: "🌉 A Java client for kismet RESTful API.",
               name: "Kismet Java Client",
-              link: "https://github.com/mrdrivingduck/kismet-Jclient"
+              link: "https://github.com/mrdrivingduck/kismet-java-client"
             },
             {
               description: "🤐 Code for file encryption/decryption.",
