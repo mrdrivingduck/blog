@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/03/17
+  @version - 2021/04/25
 
   @description - 
     The index component for displaying fotter.
@@ -73,15 +73,6 @@
 
   </div>
 </template>
-
-<style>
-  .dark p {
-    color: #ffffff;
-  }
-  .light p {
-    color: #000000;
-  }
-</style>
 
 <script>
 export default {
