@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2021/04/18
+ * @version 2021/05/13
  * @description
  *    Vuex store for saving current content component
  */
@@ -16,7 +16,6 @@ const state = {
   //         without /blog/githubavatar
   //     }
   apiv4: "https://api.github.com/graphql",
-  apiv4Proxy: "https://koera.vultr.mrdrivingduck.cn/blog/apiv4",
   apiAvatar: "https://avatars.githubusercontent.com",
 
   baseUrl: "https://mrdrivingduck.github.io/blog",

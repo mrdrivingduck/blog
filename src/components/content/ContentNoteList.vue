@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/02/28
+  @version - 2021/05/13
 
   @description - 
     The content component for displaying note list.
@@ -240,13 +240,8 @@ export default {
 
       }).catch(error => {
         // HTTP failed
-        const fallbackUrl = this.$store.state.githubapi.apiv4Proxy;
-        if (url === fallbackUrl) {
-          this.fail = true;
-          this.failReason = error.message;
-        } else {
-          this.loadNoteDirectory(fallbackUrl);
-        }
+        this.fail = true;
+        this.failReason = error.message;
       });
     },
 
