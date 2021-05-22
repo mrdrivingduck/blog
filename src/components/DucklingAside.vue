@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/04/11
+  @version - 2021/05/13
 
   @description - 
     The aside component for guiding.
@@ -215,13 +215,8 @@ export default {
         this.loading = false;
       }).catch(error => {
         // HTTP failed
-        const fallbackUrl = this.$store.state.githubapi.apiv4Proxy;
-        if (url === fallbackUrl) {
-          this.fail = true;
-          this.failReason = error.message;
-        } else {
-          this.loadAside(fallbackUrl);
-        }
+        this.fail = true;
+        this.failReason = error.message;
       });
     }
 
