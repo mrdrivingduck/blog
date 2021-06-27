@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/05/13
+  @version - 2021/06/26
 
   @description - 
     The content component for displaying markdown files
@@ -81,7 +81,7 @@
             rel="stylesheet"
             disabled
             :title="theme"
-            :href="'https://cdn.bootcdn.net/ajax/libs/highlight.js/10.6.0/styles/' + theme + '.min.css'">
+            :href="'https://cdn.bootcdn.net/ajax/libs/highlight.js/11.0.1/styles/' + theme + '.min.css'">
         </div>
       </div>
 
@@ -256,7 +256,7 @@ export default {
     // Highlight the code into corresponding theme
     setCodeStyle() {
       this.$refs.markdown.querySelectorAll('pre code').forEach((block) => {
-        hljs.highlightBlock(block);
+        hljs.highlightElement(block);
       });
 
       const allThemes = this.$store.state.theme.themes;
