@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/02/29
+  @version - 2021/08/08
 
   @description - 
     The aside component for displaying paper outlines
@@ -16,7 +16,7 @@
       :index="this.index + ''">
       
       <template slot="title">
-        <span> 🔍 Paper Outline </span>
+        <span> 🔍 Paper Outline (Archive) </span>
       </template>
 
       <!-- Every directories -->

@@ -45,7 +45,8 @@ const state = {
       buttonStyle: "dark"
     }
   ],
-  currentThemeIndex: new Date().getSeconds() % 2
+  // currentThemeIndex: new Date().getSeconds() % 2
+  currentThemeIndex: 1
 };
 
 const mutations = {
