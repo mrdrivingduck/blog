@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/06/26
+  @version - 2021/08/08
 
   @description - 
     The content component for displaying markdown files
@@ -19,7 +19,10 @@
       <el-card
         class="basicinfo"
         shadow="hover"
-        v-bind:style="{ backgroundColor: cardBackgroundColor, color: cardTextColor }">
+        v-bind:style="{
+          backgroundColor: cardBackgroundColor,
+          color: cardTextColor }"
+        >
 
         <p>
           💾 File size: <b> {{ this.articleSize }} </b> KiB
@@ -54,14 +57,10 @@
           </el-link>
         </p>
         <p>
-          📌
-          <el-link
-            type="warning"
-            v-clipboard:copy="copyLink"
-            v-clipboard:success="onCopySuccess"
-            v-clipboard:error="onCopyError">
-            Copy the link to the clipboard
-          </el-link>
+          <link-clipboard
+            :url="copyLink"
+            hint="Copy the link to the clipboard"
+          ></link-clipboard>
         </p>
 
         <github-button
@@ -81,7 +80,8 @@
             rel="stylesheet"
             disabled
             :title="theme"
-            :href="'https://cdn.bootcdn.net/ajax/libs/highlight.js/11.0.1/styles/' + theme + '.min.css'">
+            :href="'https://cdn.bootcdn.net/ajax/libs/highlight.js/11.0.1/styles/'
+                   + theme + '.min.css'">
         </div>
       </div>
 
@@ -118,14 +118,18 @@
 <style src="duckling-markdown-css/github-markdown-dark.css"></style>
 
 <script>
-// import marked from "marked";
 import MarkdownIt from 'markdown-it'
 import hljs from "highlight.js";
 import GithubButton from "vue-github-button";
 
+import LinkClipboard from "../util/LinkClipboard"
+
 export default {
   name: "ContentMarkdown",
-  components: { GithubButton },
+  components: {
+    GithubButton,
+    LinkClipboard
+  },
   props: [ "theme" ],
   data() {
     return  {
@@ -191,7 +195,8 @@ export default {
         this.articleReadingTime = 1;
       }
 
-      this.copyLink = this.$store.state.githubapi.baseUrl + "/#" + this.$route.fullPath;
+      this.copyLink = this.$store.state.githubapi.baseUrl +
+                      "/#" + this.$route.fullPath;
 
       // Issur HTTP request
       const repo = this.$route.query.repo;
@@ -223,8 +228,9 @@ export default {
         let originData = response.data.data.repository;
         let markdown = originData.object.text;
 
-        this.articleLink = "https://github.com/mrdrivingduck/" + repo.replace(/_/g, "-")
-                            + "/blob/" + branch + "/" + path;
+        this.articleLink = "https://github.com/mrdrivingduck/" +
+                           repo.replace(/_/g, "-") +
+                           "/blob/" + branch + "/" + path;
         this.articleSize = originData.object.byteSize / 1024;
         // this.articleReadingTime = parseInt(1.4 * parseInt(this.articleSize));
         // 400 words per minute
@@ -260,12 +266,16 @@ export default {
       });
 
       const allThemes = this.$store.state.theme.themes;
-      const currentTheme = allThemes[this.currentHighlightThemeIndex].content.highlight;
+      const currentTheme = allThemes[this.currentHighlightThemeIndex]
+                             .content.highlight;
       this.$refs.styles.querySelector(`link[title="${currentTheme}"]`).removeAttribute("disabled");
 
       if (this.preHighlightThemeIndex !== undefined) {
-        const preTheme = allThemes[this.preHighlightThemeIndex].content.highlight
-        this.$refs.styles.querySelector(`link[title="${preTheme}"]`).setAttribute("disabled", "");
+        const preTheme = allThemes[this.preHighlightThemeIndex]
+                           .content.highlight
+        this.$refs.styles
+          .querySelector(`link[title="${preTheme}"]`)
+          .setAttribute("disabled", "");
       }
     },
 
@@ -291,24 +301,6 @@ export default {
       this.setCodeStyle();
       this.setMarkdownStyle();
       this.setCardStyle();
-    },
-
-    // For copying links hint (success)
-    onCopySuccess() {
-      this.$notify({
-        title: "Copy successfully 😁",
-        message: "The link is on your clipboard.",
-        type: "success"
-      });
-    },
-
-    // For copying links hint (failed)
-    onCopyError() {
-      this.$notify({
-        title: "Copy failed 😥",
-        message: "There might be a BUG.",
-        type: "error"
-      });
     }
 
   },

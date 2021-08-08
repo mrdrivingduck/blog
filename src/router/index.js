@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2020/01/27
+ * @version 2021/08/08
  * @description
  *    Vuex router for routing components
  */
@@ -27,6 +27,14 @@ export default new Router({
     {
       path: "/notelist",
       component: () => import("../components/content/ContentNoteList")
+    },
+    {
+      path: "/issues",
+      component: () => import("../components/content/ContentIssues")
+    },
+    {
+      path: "/issuetimeline",
+      component: () => import("../components/content/ContentIssueTimeline")
     },
     {
       path: "*",

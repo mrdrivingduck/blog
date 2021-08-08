@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2021/05/13
+ * @version 2021/08/08
  * @description
  *    Vuex store for saving current content component
  */
@@ -21,6 +21,8 @@ const state = {
   baseUrl: "https://mrdrivingduck.github.io/blog",
   baseHost: "mrdrivingduck.github.io",
   baseHostInChina: "mrdrivingduck.cn",
+
+  githubBaseUrl: "https://github.com/mrdrivingduck/",
   
   query: {
     /**
@@ -173,6 +175,57 @@ const state = {
                   }
                 }
               }`,
+    issues_meta: `query {
+                    paper_outline: repository(name: "paper-outline", owner: "mrdrivingduck") {
+                      issues(states: [OPEN], orderBy: {
+                        direction: DESC
+                        field: UPDATED_AT
+                      }, last: 100) {
+                        nodes {
+                          number
+                          url
+                          createdAt
+                          updatedAt
+                          lastEditedAt
+                          title
+                  
+                          labels(last: 100) {
+                            nodes {
+                              color
+                              name
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }`,
+    issue: `query {
+              paper_outline: repository(name: "paper-outline", owner: "mrdrivingduck") {
+                issue(number: <number>) {
+                  createdAt
+                  updatedAt
+                  title
+                  url
+                  bodyHTML
+                  databaseId
+                  
+                  comments(last: 100) {
+                    nodes {
+                      updatedAt
+                      bodyHTML
+                      databaseId
+                    }
+                  }
+                  
+                  labels(last: 100) {
+                    nodes {
+                      color
+                      name
+                    }
+                  }
+                }
+              }
+            }`,
 
     notes: {
       /**

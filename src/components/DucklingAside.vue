@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/05/13
+  @version - 2021/08/08
 
   @description - 
     The aside component for guiding.
@@ -31,70 +31,73 @@
         :directory="asideData['notes']"
       ></aside-notes>
 
-      <!-- Sub-menu of paper-outline -->
-      <aside-paper-outline
-        :index="4"
+      <!-- Sub-menu of paper-outline (issue) -->
+      <aside-paper-outline :index="4"></aside-paper-outline>
+
+      <!-- Sub-menu of paper-outline (archive) -->
+      <aside-paper-outline-archive
+        :index="5"
         :directory="asideData['paper_outline']"
-      ></aside-paper-outline>
+      ></aside-paper-outline-archive>
 
       <!-- Sub-menu of how-linux-works -->
-      <aside-how-linux-works :index="5"></aside-how-linux-works>
+      <aside-how-linux-works :index="6"></aside-how-linux-works>
 
       <!-- Sub-menu of linux-kernel-comments-notes -->
       <aside-linux-kernel-comments
-        :index="6"
+        :index="7"
         :directory="asideData['linux_kernel_comments_notes']"
       ></aside-linux-kernel-comments>
 
       <!-- Sub-menu of linux-kernel-development-notes -->
-      <aside-linux-kernel-development :index="7"
+      <aside-linux-kernel-development :index="8"
       ></aside-linux-kernel-development>
 
       <!-- Sub-menu of μC/OS-II -->
       <aside-miu-cos-two
-        :index="8"
+        :index="9"
         :directory="asideData['uc_os_ii_code_notes']"
       ></aside-miu-cos-two>
 
       <!-- Sub-menu of JDK source code analysis -->
       <aside-jdk-code-analysis
-        :index="9"
+        :index="10"
         :directory="asideData['jdk_source_code_analysis']"
       ></aside-jdk-code-analysis>
 
       <!-- Sub-menu of Understanding-JVM -->
       <aside-understanding-the-jvm
-        :index="10"
+        :index="11"
         :directory="asideData['understanding_the_jvm']"
       ></aside-understanding-the-jvm>
 
       <!-- Sub-menu of Redis-Implementation -->
       <aside-redis-implementation
-        :index="11"
+        :index="12"
         :directory="asideData['redis_implementation_notes']"
       ></aside-redis-implementation>
 
       <!-- Sub-menu of Understanding-Nginx -->
       <aside-understanding-nginx
-        :index="12"
+        :index="13"
         :directory="asideData['understanding_nginx_notes']"
       ></aside-understanding-nginx>
 
       <!-- Sub-menu of Spring Microservices in Action -->
       <aside-spring-microservices-in-action
-        :index="13"
+        :index="14"
         :directory="asideData['spring_microservices_notes']"
       ></aside-spring-microservices-in-action>
 
       <!-- Sub-menu of Netty in Action -->
       <aside-netty-in-action
-        :index="14"
+        :index="15"
         :directory="asideData['netty_in_action_notes']"
       ></aside-netty-in-action>
 
       <!-- Sub-menu of The Annotated STL Sources -->
       <aside-annotated-stl
-        :index="15"
+        :index="16"
         :directory="asideData['the_annotated_stl_sources_notes']"
       ></aside-annotated-stl>
 
@@ -117,7 +120,8 @@
 import AsideHomePage from "./aside/AsideHomePage"
 import AsideIndex from "./aside/AsideIndex"
 import AsideNotes from "./aside/AsideNotes"
-import AsidePaperOutline from "./aside/AsidePaterOutline"
+import AsidePaperOutline from "./aside/AsidePaperOutline"
+import AsidePaperOutlineArchive from "./aside/AsidePaperOutlineArchive"
 import AsideHowLinuxWorks from "./aside/AsideHowLinuxWorks"
 import AsideLinuxKernelComments from "./aside/AsideLinuxKernelComments"
 import AsideLinuxKernelDevelopment from "./aside/AsideLinuxKernelDevelopment"
@@ -137,6 +141,7 @@ export default {
     AsideIndex,
     AsideNotes,
     AsidePaperOutline,
+    AsidePaperOutlineArchive,
     AsideHowLinuxWorks,
     AsideLinuxKernelComments,
     AsideLinuxKernelDevelopment,

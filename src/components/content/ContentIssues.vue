@@ -4,7 +4,7 @@
   @version - 2021/08/08
 
   @description - 
-    The content component for displaying note list.
+    The content component for displaying issues.
 
 -->
 
@@ -87,41 +87,46 @@
         :hide-on-single-page="true"
         style="text-align: center;"
         layout="prev, pager, next"
-        :page-count="Math.ceil(notes.length / pageSize)"
+        :page-count="Math.ceil(issues.length / pageSize)"
         :current-page="currentPage"
         @current-change="handleCurrentChange">
       </el-pagination>
 
-      <!-- Every card for note -->
+      <!-- Every card for issue -->
       <el-card
-        v-for="note in notes.slice((currentPage - 1) * pageSize, currentPage * pageSize)"
-        :key="note.sha"
+        v-for="issue in issues.slice((currentPage - 1) * pageSize, currentPage * pageSize)"
+        :key="issue.number"
         shadow="hover"
         style="margin-bottom: 15px;"
         :style="{ backgroundColor: cardBackgroundColor, color: cardTextColor }">
 
         <div slot="header">
           <span>
-            <b> 📑 {{ note.name }} </b>
+            <b> 📃 {{ issue.title }} </b>
           </span>
           <el-button
             style="float: right" type="text"
-            @click="clickNote(note)">
+            @click="clickIssue(issue)">
             Detail
           </el-button>
         </div>
+        <el-tag
+          effect="dark"
+          v-for="tag in issue.labels.nodes"
+          :key="tag.color"
+          :color="'#' + tag.color"> {{ tag.name }} </el-tag>
         <p>
-          💾 File size: <b> {{ note.size }} </b> KiB
+          ⏰ Last update: <b> {{ issue.updatedAt }} </b>
         </p>
-        <!-- <p v-loading="note.loading">
-          📅 Last Modification: <b> {{ note.commitLastModification }} </b> by <b> {{ note.committer }} </b>
-        </p> -->
         <p>
-          🔏 SHA: <b> {{ note.sha }} </b>
+          🔗
+          <el-link type="primary" :href="issue.url">
+            Origin link from GitHub
+          </el-link>
         </p>
         <p>
           <link-clipboard
-            :url="note.copyLink"
+            :url="issue.copyLink"
             hint="Copy the link to the clipboard"
           ></link-clipboard>
         </p>
@@ -133,7 +138,7 @@
         :hide-on-single-page="true"
         style="text-align: center;"
         layout="prev, pager, next"
-        :page-count="Math.ceil(notes.length / pageSize)"
+        :page-count="Math.ceil(issues.length / pageSize)"
         :current-page="currentPage"
         @current-change="handleCurrentChange">
       </el-pagination>
@@ -155,10 +160,10 @@
 
 <script>
 import GithubButton from "vue-github-button";
-import LinkClipboard from '../util/LinkClipboard';
+import LinkClipboard from "../util/LinkClipboard"
 
 export default {
-  name: "ContentNoteList",
+  name: "ContentIssues",
   components: {
     GithubButton,
     LinkClipboard
@@ -166,7 +171,6 @@ export default {
   props: [ "theme" ],
   data() {
     return  {
-      notes: null, // Note array
       loading: true, // For displaying loading status
       fail: false, // Set to true if loading error occurs
       failReason: "", // Reason of failure
@@ -175,86 +179,18 @@ export default {
       cardBackgroundColor: null,
       cardTextColor: null,
 
+      issues: [],
+
       // For paging
       currentPage: 1,
       pageSize: 6,
 
+      repo: "paper-outline",
       repoLink: "",
       buttonTheme: "no-preference: light; light: dark; dark: light;"
     };
   },
   methods: {
-
-    // Load one of the outline topic
-    loadNoteDirectory(url) {
-      this.notes = [];
-      this.currentPage = 1;
-      this.fail = false;
-      this.failReason = "";
-      this.loading = true;
-
-      const repo = this.$route.query.repo;
-      const path = this.$route.query.path;
-      const api = this.$store.state.githubapi.query;
-      const tokenPart1 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_1;
-      const tokenPart2 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_2;
-      const token = tokenPart1.concat(tokenPart2);
-
-      const regExpr = api[repo].fileFilter;
-      const sorter = api[repo].sort;
-      const branch = api[repo].branch;
-      this.repoLink = api[repo].link;
-
-      let query = api.notelist;
-      query = query.replace(/<repo>/g, repo.replace(/_/g, "-"));
-      query = query.replace(/<branch>/g, branch);
-      query = query.replace(/<path>/g, path);
-
-      this.$http.post(url, { query }, {
-        headers: {
-          "Authorization": "bearer " + token
-        }
-      }).then(response => {
-        let originData = response.data.data.repository.object.entries;
-        for (let i = 0; i < originData.length; i++) {
-          if (regExpr.test(originData[i].name)) {
-            this.notes.push({
-              name: originData[i].name.replace(".md", ""),
-              repo,
-              path: path === "" ? originData[i].name : (path + "/" + originData[i].name),
-              sha: originData[i].oid,
-              size: originData[i].object.byteSize / 1024,
-              copyLink: "https://mrdrivingduck.github.io/blog/#/markdown?repo="
-                          + repo + "&path=" + (path === "" ?
-                                                originData[i].name :
-                                                (path + "/" + originData[i].name))
-            });
-          }
-        }
-
-        // Sort all the notes according to the sorter.
-        this.notes.sort(sorter);
-
-        // Loading completed.
-        this.loading = false;
-
-      }).catch(error => {
-        // HTTP failed
-        this.fail = true;
-        this.failReason = error.message;
-      });
-    },
-
-    // Jump to the outline detail
-    clickNote(note) {
-      this.$router.push({
-        path: "/markdown",
-        query: {
-          repo: note.repo,
-          path: note.path
-        }
-      }).catch(err => { err });
-    },
 
     // Set the background color and text color of the cards
     setCardTheme() {
@@ -271,12 +207,60 @@ export default {
       this.currentPage = currentPage;
     },
 
+    loadIssues(url) {
+      const api = this.$store.state.githubapi.query
+      const baseUrl = this.$store.state.githubapi.baseUrl
+      const tokenPart1 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_1
+      const tokenPart2 = process.env.VUE_APP_GITHUB_API_TOKEN_PART_2
+      const token = tokenPart1.concat(tokenPart2)
+
+      let query = api.issues_meta
+
+      this.$http.post(url, { query }, {
+        headers: {
+          "Authorization": "bearer " + token
+        }
+      }).then(response => {
+        
+        this.issues = response
+                      .data
+                      .data["paper_outline"]["issues"]["nodes"]
+
+        for (let issue of this.issues) {
+          issue["copyLink"] = baseUrl + "/#/issuetimeline?" +
+                              "repo=" + this.repo +
+                              "&number=" + issue.number
+        }
+
+        // Loading completed.
+        this.loading = false
+
+      }).catch(error => {
+        // HTTP failed
+        this.fail = true
+        this.failReason = error.message
+      })
+
+    },
+
+    clickIssue(issue) {
+      this.$router.push({
+        path: "/issuetimeline",
+        query: {
+          repo: this.repo,
+          number: issue.number
+        }
+      }).catch(err => { err });
+    },
+
   },
   created() {
     // Initializing the data from GitHub
-    const url = this.$store.state.githubapi.apiv4;
-    this.loadNoteDirectory(url);
-    this.setCardTheme();
+    const url = this.$store.state.githubapi.apiv4
+    const baseUrl = this.$store.state.githubapi.githubBaseUrl
+    this.repoLink = baseUrl + this.repo
+    this.loadIssues(url)
+    this.setCardTheme()
   },
   computed: {
 
@@ -294,10 +278,9 @@ export default {
     },
 
     $route() {
-      const url = this.$store.state.githubapi.apiv4;
-      this.loadNoteDirectory(url);
     }
 
   }
 }
 </script>
+

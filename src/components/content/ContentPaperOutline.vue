@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/05/13
+  @version - 2021/08/08
 
   @description - 
     The content component for displaying paper outlines.
@@ -34,7 +34,7 @@
         <el-col :span="4">
           <div>
             <github-button
-              :href="repoLinkFork"
+              :href="this.repoLink + '/fork'"
               :data-color-scheme="buttonTheme"
               data-icon="octicon-repo-forked"
               data-size="large" data-show-count="true">
@@ -46,7 +46,7 @@
         <el-col :span="4">
           <div>
             <github-button
-              :href="repoLinkWatch"
+              :href="this.repoLink + '/subscription'"
               :data-color-scheme="buttonTheme"
               data-icon="octicon-eye"
               data-size="large" data-show-count="true">
@@ -58,7 +58,7 @@
         <el-col :span="4">
           <div>
             <github-button
-              :href="repoLinkIssue"
+              :href="this.repoLink + '/issues'"
               :data-color-scheme="buttonTheme"
               data-icon="octicon-issue-opened"
               data-size="large" data-show-count="true">
@@ -119,14 +119,10 @@
               🔏 SHA: <b> {{ outline.resource.sha }} </b>
             </p>
             <p>
-              📌
-              <el-link
-                type="warning"
-                v-clipboard:copy="outline.resource.copyLink"
-                v-clipboard:success="onCopySuccess"
-                v-clipboard:error="onCopyError">
-                Copy the link to the clipboard
-              </el-link>
+              <link-clipboard
+                :url="outline.resource.copyLink"
+                hint="Copy the link to the clipboard"
+              ></link-clipboard>
             </p>
           </div>
           <p v-if="outline.pdf ? true : false">
@@ -171,10 +167,14 @@
 
 <script>
 import GithubButton from "vue-github-button";
+import LinkClipboard from '../util/LinkClipboard';
 
 export default {
   name: "ContentPaperOutline",
-  components: { GithubButton },
+  components: {
+    GithubButton,
+    LinkClipboard
+  },
   props: [ "theme" ],
   data() {
     return  {
@@ -295,24 +295,6 @@ export default {
     // For changing the current-page variable
     handleCurrentChange(currentPage) {
       this.currentPage = currentPage;
-    },
-
-    // For copying links hint (success)
-    onCopySuccess() {
-      this.$notify({
-        title: "Copy successfully 😁",
-        message: "The link is on your clipboard.",
-        type: "success"
-      });
-    },
-
-    // For copying links hint (failed)
-    onCopyError() {
-      this.$notify({
-        title: "Copy failed 😥",
-        message: "There might be a BUG.",
-        type: "error"
-      });
     }
 
   },
@@ -327,18 +309,6 @@ export default {
     // Listening for the theme changed
     themeChange() {
       return this.$store.state.theme.currentThemeIndex;
-    },
-
-    repoLinkFork() {
-      return this.repoLink + "/fork"
-    },
-
-    repoLinkWatch() {
-      return this.repoLink + "/subscription"
-    },
-
-    repoLinkIssue() {
-      return this.repoLink + "/issues"
     }
 
   },
@@ -357,32 +327,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  /* Transparent background */
-  .el-pager li,
-  .el-pagination .btn-next,
-  .el-pagination .btn-prev,
-  .el-pagination button:disabled {
-    background: #ffffff00;
-  }
-
-  .dark .el-pager li.active,
-  .dark .el-pager li:hover,
-  .dark .el-pagination button:hover {
-    color: #ffd04b;
-  }
-  .dark .el-pager li,
-  .dark .el-pagination button:enabled {
-    color: #ffffff;
-  }
-  .dark .el-pagination button:disabled {
-    color: #707275;
-  }
-
-  .light .el-pager li.active,
-  .light .el-pager li:hover,
-  .light .el-pagination button:hover {
-    color: #9567e4;
-  }
-</style>
