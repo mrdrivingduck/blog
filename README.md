@@ -78,5 +78,3 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 Copyright © 2018-2021, Jingtang Zhang. ([MIT License](LICENSE))
 
----
-
