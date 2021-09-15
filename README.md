@@ -21,22 +21,22 @@ Created by : Mr Dk.
 
 A dynamic blog system implemented by myself. Supported by:
 
-* [Vue.js](https://vuejs.org/) - 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.
-* [Vuex](https://vuex.vuejs.org/) - 🗃️ Centralized State Management for Vue.js.
-* [Vue Router](https://router.vuejs.org/) - 🚦 The official router for Vue.js.
-* [Vue CLI](https://cli.vuejs.org/) - 🛠️ Standard Tooling for Vue.js Development.
-* [Vue Clipboard 2](https://github.com/Inndy/vue-clipboard2) - A simple Vue 2 binding to clipboard.js.
-* [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
-* [Element](https://element.eleme.io/) - A Vue.js 2.0 UI Toolkit for Web.
-* [Markdown-it](https://markdown-it.github.io/) - Markdown parser, done right.
-* [Highlight.js](https://github.com/highlightjs/highlight.js) - JavaScript syntax highlighter.
-* [GitHub Markdown CSS Dark](https://github.com/mrdrivingduck/github-markdown-css) - The minimal amount of CSS to replicate the GitHub Markdown style.
-* [GitHub API v4](https://developer.github.com/v4/) - The official GitHub GraphQL API v4.
-* [GitHub Pages](https://pages.github.com/) - Websites for you and your projects.
-* [GitHub Actions](https://github.com/features/actions) - Automate your workflow from idea to production.
-* [GitHub Buttons](https://buttons.github.io/) - Unofficial github:button component for Vue.js.
-* [Aliyun](https://www.aliyun.com/) - More Than Just Cloud.
-* [百度统计](https://tongji.baidu.com/) - 领先的中文网站分析平台
+- [Vue.js](https://vuejs.org/) - 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web.
+- [Vuex](https://vuex.vuejs.org/) - 🗃️ Centralized State Management for Vue.js.
+- [Vue Router](https://router.vuejs.org/) - 🚦 The official router for Vue.js.
+- [Vue CLI](https://cli.vuejs.org/) - 🛠️ Standard Tooling for Vue.js Development.
+- [Vue Clipboard 2](https://github.com/Inndy/vue-clipboard2) - A simple Vue 2 binding to clipboard.js.
+- [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
+- [Element](https://element.eleme.io/) - A Vue.js 2.0 UI Toolkit for Web.
+- [Marked.js](https://marked.js.org/) - A markdown parser and compiler. Built for speed.
+- [Highlight.js](https://github.com/highlightjs/highlight.js) - JavaScript syntax highlighter.
+- [GitHub Markdown CSS Dark](https://github.com/mrdrivingduck/github-markdown-css) - The minimal amount of CSS to replicate the GitHub Markdown style.
+- [GitHub API v4](https://developer.github.com/v4/) - The official GitHub GraphQL API v4.
+- [GitHub Pages](https://pages.github.com/) - Websites for you and your projects.
+- [GitHub Actions](https://github.com/features/actions) - Automate your workflow from idea to production.
+- [GitHub Buttons](https://buttons.github.io/) - Unofficial github:button component for Vue.js.
+- [Aliyun](https://www.aliyun.com/) - More Than Just Cloud.
+- [百度统计](https://tongji.baidu.com/) - 领先的中文网站分析平台
 
 ## Project setup
 

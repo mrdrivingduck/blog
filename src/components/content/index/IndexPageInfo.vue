@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/04/26
+  @version - 2021/09/15
 
   @description - 
     The index component for displaying page information
@@ -131,7 +131,7 @@
 </style>
 
 <script>
-import GithubButton from "vue-github-button";
+import GithubButton from "vue-github-button"
 
 export default {
   props: [ "theme", "fail", "deployment", "blogVersion" ],
@@ -180,9 +180,9 @@ export default {
           link: "https://element.eleme.io/"
         },
         {
-          name: "Markdown-it",
-          description: "Markdown parser, done right.",
-          link: "https://markdown-it.github.io/"
+          name: "Marked.js",
+          description: "A markdown parser and compiler. Built for speed.",
+          link: "https://marked.js.org/"
         },
         {
           name: "Highlight.js",
@@ -236,32 +236,32 @@ export default {
           url: "https://github.com/mrdrivingduck/blog/workflows/Build%20Only/badge.svg"
         }
       ]
-    };
+    }
   },
   methods: {
 
     setTheme() {
-      const themeIndex = this.$store.state.theme.currentThemeIndex;
-      const allThemes = this.$store.state.theme.themes;
-      this.buttonTheme = allThemes[themeIndex].buttonStyle;
+      const themeIndex = this.$store.state.theme.currentThemeIndex
+      const allThemes = this.$store.state.theme.themes
+      this.buttonTheme = allThemes[themeIndex].buttonStyle
     }
 
   },
   created() {
-    this.setTheme();
+    this.setTheme()
   },
   computed: {
 
     // Listening for the theme changed
     themeChange() {
-      return this.$store.state.theme.currentThemeIndex;
+      return this.$store.state.theme.currentThemeIndex
     }
 
   },
   watch: {
 
     themeChange() {
-      this.setTheme();
+      this.setTheme()
     }
 
   }
