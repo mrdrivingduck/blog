@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2020/12/20
+  @version - 2021/09/12
 
   @description - 
     The index component for displaying pernal information
@@ -134,7 +134,16 @@ export default {
       ],
       works: [
         {
-          time: "2018.07 - 2018-08",
+          time: "2021.05 - 2021.09",
+          company_en: "Alibaba Cloud Computing Co. Ltd.",
+          company_zh: "阿里云计算有限公司",
+          job_en: "🖥️ PolarDB DBMS Kernel Engineer (internship)",
+          job_zh: "PolarDB 数据库内核工程师 (实习)",
+          location_en: "🚩 Hangzhou, Zhejiang, P.R.China",
+          location_zh: "浙江省杭州市"
+        },
+        {
+          time: "2018.07 - 2018.08",
           company_en: "DolphinDB, Inc.",
           company_zh: "智臾科技有限公司",
           job_en: "🖥️ Software Engineering (internship)",
