@@ -1,6 +1,22 @@
+<div align="center">
+
 # blog
 
 🦆 Dynamic blog system based on [Vue.js](https://vuejs.org/).
+
+[![vue](https://img.shields.io/badge/Vue.js-lightgreen?style=for-the-badge&logo=vuedotjs)](https://vuejs.org/)
+[![github](https://img.shields.io/badge/GitHub-black?style=for-the-badge&logo=github)](https://github.com/)
+[![github-pages](https://img.shields.io/badge/GitHub%20Pages-black?style=for-the-badge&logo=githubpages)](https://pages.github.com/)
+[![github-actions](https://img.shields.io/badge/GitHub%20Actions-black?style=for-the-badge&logo=githubactions)](https://github.com/features/actions)
+[![ubuntu](https://img.shields.io/badge/Ubuntu-grey?style=for-the-badge&logo=ubuntu)](https://ubuntu.com/)
+[![nginx](https://img.shields.io/badge/Nginx-blue?style=for-the-badge&logo=nginx)](https://www.nginx.com/)
+[![aliyun](https://img.shields.io/badge/Alibaba%20Cloud-blueviolet?style=for-the-badge&logo=alibabacloud)](https://cn.aliyun.com/)
+[![baidu](https://img.shields.io/badge/Baidu-2932E1?style=for-the-badge&logo=baidu)](https://tongji.baidu.com/)
+[![license](https://img.shields.io/github/license/mrdrivingduck/blog?style=for-the-badge)](https://github.com/mrdrivingduck/blog/blob/main/LICENSE)
+
+</div>
+
+---
 
 Created by : Mr Dk.
 
@@ -8,14 +24,12 @@ Created by : Mr Dk.
 
 @Nanjing, Jiangsu, China
 
----
-
 ## Build Status
 
-| Environment | Status                                                       |
+| Branch | Status                                                       |
 | ----------- | ------------------------------------------------------------ |
-| Development | ![Build Only](https://github.com/mrdrivingduck/blog/workflows/Build%20Only/badge.svg) |
-| Production  | ![Build and Deploy](https://github.com/mrdrivingduck/blog/workflows/Build%20and%20Deploy/badge.svg?branch=master) |
+| Dev (Development) | [![github-actions-build](https://img.shields.io/github/workflow/status/mrdrivingduck/blog/Build%20Only?style=for-the-badge&logo=githubactions)](https://github.com/mrdrivingduck/blog/actions/workflows/build-only.yml) |
+| Main (Deployment)  | [![github-actions-depoly](https://img.shields.io/github/workflow/status/mrdrivingduck/blog/Build%20and%20Deploy?style=for-the-badge&logo=githubactions)](https://github.com/mrdrivingduck/blog/actions/workflows/build-and-deploy.yml) |
 
 ## About
 
