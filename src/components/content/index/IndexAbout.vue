@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/09/12
+  @version - 2021/11/08
 
   @description - 
     The index component for displaying pernal information
@@ -19,6 +19,22 @@
       <li><p> 💻 Technology </p></li>
     </ul>
     
+    <el-divider></el-divider>
+
+    <h1>📚 Publications</h1>
+
+    <ul>
+      <li
+        v-for="(publication, index) in publications"
+        :key="index">
+        <p>
+          {{ publication.source }}: 
+          <el-link type=primary :href=publication.bibtex> {{ publication.title }} </el-link>
+          <b> ({{ publication.level }}) </b>
+        </p>
+      </li>
+    </ul>
+
     <el-divider></el-divider>
 
     <h1>🎓 Education</h1>
@@ -150,6 +166,14 @@ export default {
           job_zh: "软件工程师 (实习)",
           location_en: "🚩 Hangzhou, Zhejiang, P.R.China",
           location_zh: "浙江省杭州市"
+        }
+      ],
+      publications: [
+        {
+          source: "ICSME'2021",
+          title: "Revisiting Test Cases to Boost Generate-and-Validate Program Repair",
+          level: "CCF-B",
+          bibtex: "https://scholar.googleusercontent.com/scholar.bib?q=info:QNPxEnKhKbsJ:scholar.google.com/&output=citation&scisdr=CgUNnRP0ELnF9APTU1U:AAGBfm0AAAAAYYjVS1WZgEunDyseOttG8owW0NY73dDT&scisig=AAGBfm0AAAAAYYjVS0Bq6QyNnM2ue3MqTyqhmqwkSR5M&scisf=4&ct=citation&cd=-1&hl=zh-CN&scfhb=1"
         }
       ]
     };
