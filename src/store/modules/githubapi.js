@@ -1,6 +1,6 @@
 /**
  * @author Mr Dk.
- * @version 2021/08/08
+ * @version 2021/11/08
  * @description
  *    Vuex store for saving current content component
  */
@@ -39,7 +39,7 @@ const state = {
                   commit { message, committedDate, committer { user { name, url } } }
                 }
               },
-              ref(qualifiedName: "master") {
+              ref(qualifiedName: "main") {
                 target {
                   ... on Commit {
                     history(first: 1) {
@@ -53,7 +53,7 @@ const state = {
                   }
                 }
               }
-              object(expression: "master:package.json") {
+              object(expression: "main:package.json") {
                 ... on Blob { oid, byteSize, text }
               }
             }

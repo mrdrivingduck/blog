@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/09/15
+  @version - 2021/11/08
 
   @description - 
     The index component for displaying page information
@@ -42,15 +42,15 @@
       </p>
 
       <p>
-        🧱 Features:
-        {{ deployment.commitData.message }}
-      </p>
-
-      <p>
         ✒️ Committed at: <b>{{ deployment.commit.committedDate }}</b> by
         <el-link :href="deployment.commit.committer.user.url" type="primary">
           {{ deployment.commit.committer.user.name }}
         </el-link>
+      </p>
+
+      <p>
+        🧱 Deployment notes:
+        <b> {{ deployment.commit.message }} </b>
       </p>
 
       <p>
@@ -228,12 +228,12 @@ export default {
 
       badges: [
         {
-          name: "Build and Deploy",
-          url: "https://github.com/mrdrivingduck/blog/workflows/Build%20and%20Deploy/badge.svg"
+          name: "Build Only",
+          url: "https://img.shields.io/github/workflow/status/mrdrivingduck/blog/Build%20Only?label=Build&logo=githubactions&logoColor=yellow&style=for-the-badge"
         },
         {
-          name: "Build Only",
-          url: "https://github.com/mrdrivingduck/blog/workflows/Build%20Only/badge.svg"
+          name: "Build and Deploy",
+          url: "https://img.shields.io/github/workflow/status/mrdrivingduck/blog/Build%20and%20Deploy?label=Deploy&logo=githubactions&logoColor=yellow&style=for-the-badge"
         }
       ]
     }

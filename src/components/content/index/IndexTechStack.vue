@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/04/25
+  @version - 2021/11/08
   
   @description - 
     The index component for displaying technology stack
@@ -51,9 +51,14 @@ export default {
     return {
       stack: [
         {
-          language: "C/C++",
-          percentage: 45,
+          language: "C",
+          percentage: 50,
           projects: [
+            {
+              description: "🐻 PolarDB for PostgreSQL DBMS kernel.",
+              name: "PolarDB for PostgreSQL",
+              link: "https://github.com/ApsaraDB/PolarDB-for-PostgreSQL"
+            },
             {
               description: "🔏 Kernel module for signature verification of ELF files.",
               name: "ELF SV module",
@@ -73,6 +78,17 @@ export default {
               description: "🐤 Notes of reading μC/OS-II code.",
               name: "μC/OS-II Code Analysis",
               link: "https://github.com/mrdrivingduck/uc-os-ii-code-notes"
+            }
+          ]
+        },
+        {
+          language: "C++",
+          percentage: 30,
+          projects: [
+            {
+              description: "⚒️ STL source code analysis.",
+              name: "The Annotated STL Sources",
+              link: "https://github.com/mrdrivingduck/the-annotated-stl-sources-notes"
             },
             {
               description: "🐬 R(C++)-API of DolphinDB server.",

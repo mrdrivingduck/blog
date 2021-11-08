@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/04/25
+  @version - 2021/11/08
 
   @description - 
     The index component for displaying fotter.
@@ -56,7 +56,7 @@
             <el-link
               type="primary"
               href="https://www.aliyun.com/">
-              Aliyun
+              Alibaba Cloud
             </el-link>
           (Inside Mainland China)
           /
