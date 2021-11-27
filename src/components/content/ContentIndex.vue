@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/05/13
+  @version - 2021/11/08
 
   @description - 
     The content component for displaying pernal information
@@ -173,6 +173,10 @@ export default {
         this.blogVersion = JSON.parse(response.data.data.git.object.text).version;
         this.deployData = response.data.data.git.deployments.nodes[0];
         this.$set(this.deployData, "commitData", response.data.data.git.ref.target.history.edges[0].node);
+        
+        let deployTokens = this.deployData.commit.message.split(' ');
+        deployTokens[6] = deployTokens[6].substring(0, 6) + "...";
+        this.deployData.commit.message = deployTokens.join(' ');
         
         let { name, bio, location, company } = response.data.data.user;
         this.name = name;
