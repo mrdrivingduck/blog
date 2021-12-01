@@ -14,8 +14,8 @@
   },
   "dependencies": {
     "axios": "^0.24.0",
-    "core-js": "^3.19.1",
-    "duckling-markdown-css": "4.0.3",
+    "core-js": "^3.19.2",
+    "duckling-markdown-css": "4.0.4",
     "element-ui": "^2.15.6",
     "marked": "^4.0.5",
     "vue": "^2.6.14",
