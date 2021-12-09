@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/11/08
+  @version - 2021/12/09
 
   @description - 
     The index component for displaying page information
@@ -180,9 +180,9 @@ export default {
           link: "https://element.eleme.io/"
         },
         {
-          name: "Marked.js",
-          description: "A markdown parser and compiler. Built for speed.",
-          link: "https://marked.js.org/"
+          name: "Markdown-it",
+          description: "Markdown parser done right. Fast and easy to extend.",
+          link: "https://markdown-it.github.io/"
         },
         {
           name: "Highlight.js",

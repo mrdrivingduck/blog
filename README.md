@@ -42,7 +42,7 @@ A dynamic blog system implemented by myself. Supported by:
 - [Vue Clipboard 2](https://github.com/Inndy/vue-clipboard2) - A simple Vue 2 binding to clipboard.js.
 - [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
 - [Element](https://element.eleme.io/) - A Vue.js 2.0 UI Toolkit for Web.
-- [Marked.js](https://marked.js.org/) - A markdown parser and compiler. Built for speed.
+- [Markdown-it](https://markdown-it.github.io/) - Markdown parser done right. Fast and easy to extend.
 - [Highlight.js](https://github.com/highlightjs/highlight.js) - JavaScript syntax highlighter.
 - [GitHub Markdown CSS Dark](https://github.com/mrdrivingduck/github-markdown-css) - The minimal amount of CSS to replicate the GitHub Markdown style.
 - [GitHub API v4](https://developer.github.com/v4/) - The official GitHub GraphQL API v4.
