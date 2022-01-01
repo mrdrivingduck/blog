@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/11/28
+  @version - 2021/12/09
 
   @description - 
     The content component for displaying markdown files
@@ -118,8 +118,8 @@
 <style src="duckling-markdown-css/github-markdown-dark.css"></style>
 
 <script>
-import { marked } from 'marked';
-// import MarkdownIt from 'markdown-it'
+// import { marked } from 'marked';
+import MarkdownIt from 'markdown-it';
 import hljs from "highlight.js";
 import GithubButton from "vue-github-button";
 
@@ -244,8 +244,8 @@ export default {
         this.firstCreatedAt = commits[commits.length - 1].committedDate;
         this.firstCreatedAtBy = commits[commits.length - 1].author.user.name;
         
-        let html = marked.parse(markdown);
-        // let html = new MarkdownIt().render(markdown)
+        // let html = marked.parse(markdown);
+        let html = new MarkdownIt().render(markdown);
         this.htmlStr = html.replace(api[repo].imgMatcher, api[repo].imgPrefix);
         this.$nextTick(this.onChangeTheme);
 
