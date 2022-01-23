@@ -29,18 +29,13 @@
 
       <div style="text-align: center;">
         <p>
-          Copyright © 2018-2021, 
+          Copyright © 2018-2022, 
             <el-link
               type="primary"
               href="mailto:mrdrivingduck@gmail.com">
               Jingtang Zhang
             </el-link>
           . All rights reserved.
-          <!-- <el-link
-            type="primary"
-            href="LICENSE">
-            (MIT License)
-          </el-link> -->
         </p>
       </div>
 
