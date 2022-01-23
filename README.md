@@ -26,10 +26,10 @@ Created by : Mr Dk.
 
 ## Build Status
 
-| Branch | Status                                                       |
-| ----------- | ------------------------------------------------------------ |
-| Dev (Build) | [![github-actions-build](https://img.shields.io/github/workflow/status/mrdrivingduck/blog/Build%20Only?label=Build&logo=githubactions&logoColor=yellow&style=for-the-badge)](https://github.com/mrdrivingduck/blog/actions/workflows/build-only.yml) |
-| Main (Deployment)  | [![github-actions-depoly](https://img.shields.io/github/workflow/status/mrdrivingduck/blog/Build%20and%20Deploy?label=Deploy&logo=githubactions&logoColor=yellow&style=for-the-badge)](https://github.com/mrdrivingduck/blog/actions/workflows/build-and-deploy.yml) |
+| Branch            | Status                                                                                                                                                                                                                                                               |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Dev (Build)       | [![github-actions-build](https://img.shields.io/github/workflow/status/mrdrivingduck/blog/Build%20Only?label=Build&logo=githubactions&logoColor=yellow&style=for-the-badge)](https://github.com/mrdrivingduck/blog/actions/workflows/build-only.yml)                 |
+| Main (Deployment) | [![github-actions-depoly](https://img.shields.io/github/workflow/status/mrdrivingduck/blog/Build%20and%20Deploy?label=Deploy&logo=githubactions&logoColor=yellow&style=for-the-badge)](https://github.com/mrdrivingduck/blog/actions/workflows/build-and-deploy.yml) |
 
 ## About
 
@@ -90,5 +90,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## License
 
-Copyright © 2018-2021, Jingtang Zhang. ([MIT License](LICENSE))
-
+Copyright © 2018-2022, Jingtang Zhang. ([MIT License](LICENSE))
