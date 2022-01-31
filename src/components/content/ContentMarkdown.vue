@@ -1,7 +1,7 @@
 <!-- 
 
   @author - Mr Dk.
-  @version - 2021/12/09
+  @version - 2022/01/31
 
   @description - 
     The content component for displaying markdown files
@@ -80,7 +80,7 @@
             rel="stylesheet"
             disabled
             :title="theme"
-            :href="'https://cdn.bootcdn.net/ajax/libs/highlight.js/11.2.0/styles/'
+            :href="'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/'
                    + theme + '.min.css'">
         </div>
       </div>
