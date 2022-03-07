@@ -1,0 +1,3 @@
+[submodule "docs/notes"]
+	path = docs/notes
+	url = https://github.com/mrdrivingduck/notes.git
