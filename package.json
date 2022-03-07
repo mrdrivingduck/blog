@@ -1,59 +1,22 @@
 {
   "name": "duckling-blog",
-  "version": "0.22.02",
-  "author": {
-    "name": "mrdrivingduck",
-    "email": "mrdrivingduck@gmail.com",
-    "url": "https://mrdrivingduck.github.io/"
-  },
-  "private": true,
+  "version": "1.2022.03",
+  "description": "Blog of Mr Dk.",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
-  "dependencies": {
-    "axios": "^0.26.0",
-    "core-js": "^3.21.1",
-    "duckling-markdown-css": "4.0.4",
-    "element-ui": "^2.15.6",
-    "markdown-it": "^12.3.2",
-    "vue": "^2.6.14",
-    "vue-clipboard2": "^0.3.3",
-    "vue-github-button": "^1.3.0",
-    "vue-router": "^3.5.3",
-    "vuex": "^3.6.2"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrdrivingduck/blog.git"
   },
+  "author": "mrdrivingduck",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mrdrivingduck/blog/issues"
+  },
+  "homepage": "https://github.com/mrdrivingduck/blog#readme",
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.5.15",
-    "@vue/cli-plugin-eslint": "^4.5.15",
-    "@vue/cli-service": "^4.5.15",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^7.19.1",
-    "vue-template-compiler": "^2.6.14"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions"
-  ]
+    "vuepress": "^2.0.0-beta.36"
+  }
 }
