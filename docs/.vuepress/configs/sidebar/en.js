@@ -526,6 +526,55 @@ module.exports = {
       ],
     },
   ],
+  "/redis-implementation-notes/": [
+    {
+      text: "⛸️ Redis Implementation (notes)",
+      link: "/redis-implementation-notes/README.md",
+      children: [
+        {
+          text: "Part 1 - 数据结构与对象",
+          children: [
+            "/redis-implementation-notes/Part 1 - 数据结构与对象/Chapter 2 - 简单动态字符串.md",
+            "/redis-implementation-notes/Part 1 - 数据结构与对象/Chapter 3 - 链表.md",
+            "/redis-implementation-notes/Part 1 - 数据结构与对象/Chapter 4 - 字典.md",
+            "/redis-implementation-notes/Part 1 - 数据结构与对象/Chapter 5 - 跳跃表.md",
+            "/redis-implementation-notes/Part 1 - 数据结构与对象/Chapter 6 - 整数集合.md",
+            "/redis-implementation-notes/Part 1 - 数据结构与对象/Chapter 7 - 压缩列表.md",
+            "/redis-implementation-notes/Part 1 - 数据结构与对象/Chapter 8 - 对象.md",
+          ],
+        },
+        {
+          text: "Part 2 - 单机数据库的实现",
+          children: [
+            "/redis-implementation-notes/Part 2 - 单机数据库的实现/Chapter 9 - 数据库.md",
+            "/redis-implementation-notes/Part 2 - 单机数据库的实现/Chapter 10 - RDB 持久化.md",
+            "/redis-implementation-notes/Part 2 - 单机数据库的实现/Chapter 11 - AOF 持久化.md",
+            "/redis-implementation-notes/Part 2 - 单机数据库的实现/Chapter 12 - 事件.md",
+            "/redis-implementation-notes/Part 2 - 单机数据库的实现/Chapter 13 - 客户端.md",
+            "/redis-implementation-notes/Part 2 - 单机数据库的实现/Chapter 14 - 服务器.md",
+          ],
+        },
+        {
+          text: "Part 3 - 多机数据库的实现",
+          children: [
+            "/redis-implementation-notes/Part 3 - 多机数据库的实现/Chapter 15 - 复制.md",
+            "/redis-implementation-notes/Part 3 - 多机数据库的实现/Chapter 16 - Sentinel.md",
+            "/redis-implementation-notes/Part 3 - 多机数据库的实现/Chapter 17 - 集群.md",
+          ],
+        },
+        {
+          text: "Part 4 - 独立功能的实现",
+          children: [
+            "/redis-implementation-notes/Part 4 - 独立功能的实现/Chapter 18 - 发布与订阅.md",
+            "/redis-implementation-notes/Part 4 - 独立功能的实现/Chapter 19 - 事务.md",
+            "/redis-implementation-notes/Part 4 - 独立功能的实现/Chapter 21 - 排序.md",
+            "/redis-implementation-notes/Part 4 - 独立功能的实现/Chapter 22 - 二进制位数组.md",
+            "/redis-implementation-notes/Part 4 - 独立功能的实现/Chapter 23 - 慢查询日志.md",
+          ],
+        },
+      ],
+    },
+  ],
   "/netty-in-action-notes/": [
     {
       text: "⚙️ Netty in Action (notes)",

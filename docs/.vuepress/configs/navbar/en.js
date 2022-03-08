@@ -292,6 +292,10 @@ module.exports = [
         link: "/understanding-the-jvm-notes/README.md",
       },
       {
+        text: "⛸️ Redis Implementation (notes)",
+        link: "/redis-implementation-notes/README.md",
+      },
+      {
         text: "⚙️ Netty in Action (notes)",
         link: "/netty-in-action-notes/README.md",
       },
