@@ -7,3 +7,9 @@
 [submodule "docs/linux-kernel-development-notes"]
 	path = docs/linux-kernel-development-notes
 	url = https://github.com/mrdrivingduck/linux-kernel-development-notes.git
+[submodule "docs/netty-in-action-notes"]
+	path = docs/netty-in-action-notes
+	url = https://github.com/mrdrivingduck/netty-in-action-notes.git
+[submodule "docs/spring-microservices-notes"]
+	path = docs/spring-microservices-notes
+	url = https://github.com/mrdrivingduck/spring-microservices-notes.git

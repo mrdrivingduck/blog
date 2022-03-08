@@ -278,7 +278,15 @@ module.exports = [
       {
         text: "Linux Kernel Development (notes)",
         link: "/linux-kernel-development-notes/README.md",
-      }
+      },
+      {
+        text: "Netty in Action (notes)",
+        link: "/netty-in-action-notes/README.md",
+      },
+      {
+        text: "Spring Microservices (notes)",
+        link: "/spring-microservices-notes/README.md",
+      },
     ],
   },
 ];

@@ -296,4 +296,43 @@ module.exports = {
       ],
     },
   ],
+  "/netty-in-action-notes/": [
+    {
+      text: "Netty in Action (notes)",
+      link: "/netty-in-action-notes/README.md",
+      children: [
+        "/netty-in-action-notes/1 - NIO Transportation Model.md",
+        "/netty-in-action-notes/2 - ByteBuf.md",
+        "/netty-in-action-notes/3 - Netty Thread Model.md",
+        "/netty-in-action-notes/3.1 - EventExecutorGroup.md",
+        "/netty-in-action-notes/3.2 - EventLoopGroup.md",
+        "/netty-in-action-notes/3.3 - EventExecutor.md",
+        "/netty-in-action-notes/3.4 - EventLoop.md",
+        "/netty-in-action-notes/4 - Channel Concept.md",
+        "/netty-in-action-notes/4.1 - Channel.md",
+        "/netty-in-action-notes/4.2 - ChannelHandler.md",
+        "/netty-in-action-notes/4.3 - ChannelHandlerContext.md",
+        "/netty-in-action-notes/4.4 - ChannelPipeline.md",
+        "/netty-in-action-notes/5.1 - Future.md",
+        "/netty-in-action-notes/5.2 - CompleteFuture.md",
+        "/netty-in-action-notes/5.3 - FutureListener.md",
+      ],
+    },
+  ],
+  "/spring-microservices-notes/": [
+    {
+      text: "Spring Microservices (notes)",
+      link: "/spring-microservices-notes/README.md",
+      children: [
+        "/spring-microservices-notes/Chapter 1 - 欢迎迈入云世界，Spring.md",
+        "/spring-microservices-notes/Chapter 2 - 使用 Spring Boot 构建微服务.md",
+        "/spring-microservices-notes/Chapter 3 - 使用 Spring Cloud 配置服务器控制配置.md",
+        "/spring-microservices-notes/Chapter 4 - 服务发现.md",
+        "/spring-microservices-notes/Chapter 5 - 使用 Spring Cloud 和 Netflix Hystrix 的客户端弹性模式.md",
+        "/spring-microservices-notes/Chapter 6 - 使用 Spring Cloud 和 Zuul 进行服务路由.md",
+        "/spring-microservices-notes/Chapter 7 - 保护微服务.md",
+        "/spring-microservices-notes/Chapter 8 - 使用 Spring Cloud Stream 的事件驱动架构.md",
+      ],
+    },
+  ],
 };
