@@ -57,7 +57,7 @@ module.exports = {
       text: "Cryptography",
       children: [
         "/notes/Cryptography/Cryptography Certbot.md",
-        "/notes/Cryptography/Cryptography Digital Signature & PKCS#7.md",
+        "/notes/Cryptography/Cryptography Digital Signature & PKCS7.md",
         "/notes/Cryptography/Cryptography GPG.md",
         "/notes/Cryptography/Cryptography JWT.md",
         "/notes/Cryptography/Cryptography Keystore & Certificates.md",
@@ -253,17 +253,27 @@ module.exports = {
       ],
     },
   ],
-  // "/deploy/": [
-  //   {
-  //     text: "部署指南",
-  //     children: [
-  //       "/deploy/README.md",
-  //       "/deploy/frontend.md",
-  //       "/deploy/backend.md",
-  //       "/deploy/business.md",
-  //       "/deploy/business-dareway.md",
-  //       "/deploy/computer.md"
-  //     ],
-  //   },
-  // ],
+  "/how-linux-works-notes/": [
+    {
+      text: "How Linux Works Notes",
+      children: [
+        "/how-linux-works-notes/README.md",
+        "/how-linux-works-notes/Chapter 1 - The Big Picture.md",
+        "/how-linux-works-notes/Chapter 2 - Basic Commands and Directory Hierarchy.md",
+        "/how-linux-works-notes/Chapter 3 - Devices.md",
+        "/how-linux-works-notes/Chapter 4.1 - Partitioning Disk Devices.md",
+        "/how-linux-works-notes/Chapter 4.2 - Filesystems.md",
+        "/how-linux-works-notes/Chapter 4.3-4.5 - Swap Space & Inside a Traditional Filesystem.md",
+        "/how-linux-works-notes/Chapter 5 - How the Linux Kernel Boots.md",
+        "/how-linux-works-notes/Chapter 7 - System Configuration.md",
+        "/how-linux-works-notes/Chapter 8 - A Closer Look at Processes and Resource Utilization.md",
+        "/how-linux-works-notes/Chapter 9 - Understanding your Network and ites Configuration.md",
+        "/how-linux-works-notes/Chapter 10 - Network Applications and Services.md",
+        "/how-linux-works-notes/Chapter 11 - Introduction to Shell Scripts.md",
+        "/how-linux-works-notes/Chapter 12 - Moving Files Across the Network.md",
+        "/how-linux-works-notes/Chapter 15 - Development Tools.md",
+        "/how-linux-works-notes/Chapter 16 - Introduction to Compiling Software From C Source Code.md",
+      ],
+    },
+  ],
 };

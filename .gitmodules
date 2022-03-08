@@ -1,3 +1,6 @@
 [submodule "docs/notes"]
 	path = docs/notes
 	url = https://github.com/mrdrivingduck/notes.git
+[submodule "docs/how-linux-works-notes"]
+	path = docs/how-linux-works-notes
+	url = https://github.com/mrdrivingduck/how-linux-works-notes.git
