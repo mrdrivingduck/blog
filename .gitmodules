@@ -22,3 +22,6 @@
 [submodule "docs/the-annotated-stl-sources-notes"]
 	path = docs/the-annotated-stl-sources-notes
 	url = https://github.com/mrdrivingduck/the-annotated-stl-sources-notes.git
+[submodule "docs/uc-os-ii-code-notes"]
+	path = docs/uc-os-ii-code-notes
+	url = https://github.com/mrdrivingduck/uc-os-ii-code-notes.git

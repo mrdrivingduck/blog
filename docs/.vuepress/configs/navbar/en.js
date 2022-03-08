@@ -1,6 +1,6 @@
 module.exports = [
   {
-    text: "About Me",
+    text: "🦆 About",
     link: "/about/",
     children: [
       {
@@ -282,6 +282,10 @@ module.exports = [
       {
         text: "🐧 Linux Kernel Development (notes)",
         link: "/linux-kernel-development-notes/README.md",
+      },
+      {
+        text: "🐤 μc/OS-II Source Code (notes)",
+        link: "/uc-os-ii-code-notes/README.md",
       },
       {
         text: "☕ Understanding the JVM (notes)",
