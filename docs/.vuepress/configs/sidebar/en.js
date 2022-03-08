@@ -255,9 +255,9 @@ module.exports = {
   ],
   "/how-linux-works-notes/": [
     {
-      text: "How Linux Works Notes",
+      text: "How Linux Works (notes)",
+      link: "/how-linux-works-notes/README.md",
       children: [
-        "/how-linux-works-notes/README.md",
         "/how-linux-works-notes/Chapter 1 - The Big Picture.md",
         "/how-linux-works-notes/Chapter 2 - Basic Commands and Directory Hierarchy.md",
         "/how-linux-works-notes/Chapter 3 - Devices.md",
@@ -273,6 +273,26 @@ module.exports = {
         "/how-linux-works-notes/Chapter 12 - Moving Files Across the Network.md",
         "/how-linux-works-notes/Chapter 15 - Development Tools.md",
         "/how-linux-works-notes/Chapter 16 - Introduction to Compiling Software From C Source Code.md",
+      ],
+    },
+  ],
+  "/linux-kernel-development-notes/": [
+    {
+      text: "Linux Kernel Development (notes)",
+      link: "/linux-kernel-development-notes/README.md",
+      children: [
+        "/linux-kernel-development-notes/Chapter 1 - Linux 内核简介.md",
+        "/linux-kernel-development-notes/Chapter 2 - 从内核出发.md",
+        "/linux-kernel-development-notes/Chapter 3 - 进程管理.md",
+        "/linux-kernel-development-notes/Chapter 4 - 进程调度.md",
+        "/linux-kernel-development-notes/Chapter 5 - 系统调用.md",
+        "/linux-kernel-development-notes/Chapter 7 - 中断和中断处理.md",
+        "/linux-kernel-development-notes/Chapter 9 - 内核同步介绍.md",
+        "/linux-kernel-development-notes/Chapter 10 - 内核同步方法.md",
+        "/linux-kernel-development-notes/Chapter 11 - 定时器和时间管理.md",
+        "/linux-kernel-development-notes/Chapter 13 - 虚拟文件系统.md",
+        "/linux-kernel-development-notes/Chapter 14 - 块 IO 层.md",
+        "/linux-kernel-development-notes/Chapter 16 - 页高速缓存和页回写.md",
       ],
     },
   ],

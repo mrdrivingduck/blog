@@ -4,3 +4,6 @@
 [submodule "docs/how-linux-works-notes"]
 	path = docs/how-linux-works-notes
 	url = https://github.com/mrdrivingduck/how-linux-works-notes.git
+[submodule "docs/linux-kernel-development-notes"]
+	path = docs/linux-kernel-development-notes
+	url = https://github.com/mrdrivingduck/linux-kernel-development-notes.git
