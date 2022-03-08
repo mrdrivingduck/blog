@@ -269,11 +269,15 @@ module.exports = [
     ],
   },
   {
-    text: "Book Notes",
+    text: "📚 Book Notes",
     children: [
       {
         text: "🐧 How Linux Works (notes)",
         link: "/how-linux-works-notes/README.md",
+      },
+      {
+        text: "🐧 Linux Kernel Comments (notes)",
+        link: "/linux-kernel-comments-notes/README.md",
       },
       {
         text: "🐧 Linux Kernel Development (notes)",

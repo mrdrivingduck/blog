@@ -256,8 +256,8 @@ module.exports = {
             "/notes/Wireless/Wireless Wifiphisher.md",
           ],
         },
-      ]
-    }
+      ],
+    },
   ],
   "/how-linux-works-notes/": [
     {
@@ -279,6 +279,120 @@ module.exports = {
         "/how-linux-works-notes/Chapter 12 - Moving Files Across the Network.md",
         "/how-linux-works-notes/Chapter 15 - Development Tools.md",
         "/how-linux-works-notes/Chapter 16 - Introduction to Compiling Software From C Source Code.md",
+      ],
+    },
+  ],
+  "/linux-kernel-comments-notes/": [
+    {
+      text: "🐧 Linux Kernel Comment (notes)",
+      link: "/linux-kernel-comments-notes/README.md",
+      children: [
+        {
+          text: "Chapter 2 - 微型计算机组成结构",
+          children: [
+            "/linux-kernel-comments-notes/Chapter 2 - 微型计算机组成结构/Chapter 2 - 微型计算机组成结构.md",
+          ],
+        },
+        {
+          text: "Chapter 3 - 内核编程语言和环境",
+          children: [
+            "/linux-kernel-comments-notes/Chapter 3 - 内核编程语言和环境/Chapter 3 - 内核编程语言和环境.md",
+          ],
+        },
+        {
+          text: "Chapter 4 - 80X86 保护模式及其编程",
+          children: [
+            "/linux-kernel-comments-notes/Chapter 4 - 80X86 保护模式及其编程/Chapter 4.1-4.2 - 80X86 & 保护模式内存管理.md",
+            "/linux-kernel-comments-notes/Chapter 4 - 80X86 保护模式及其编程/Chapter 4.3 - 分段机制.md",
+            "/linux-kernel-comments-notes/Chapter 4 - 80X86 保护模式及其编程/Chapter 4.4 - 分页机制.md",
+            "/linux-kernel-comments-notes/Chapter 4 - 80X86 保护模式及其编程/Chapter 4.5 - 保护.md",
+            "/linux-kernel-comments-notes/Chapter 4 - 80X86 保护模式及其编程/Chapter 4.6 - 中断和异常处理.md",
+            "/linux-kernel-comments-notes/Chapter 4 - 80X86 保护模式及其编程/Chapter 4.7 - 任务管理.md",
+            "/linux-kernel-comments-notes/Chapter 4 - 80X86 保护模式及其编程/Chapter 4.8 - 保护模式编程初始化.md",
+            "/linux-kernel-comments-notes/Chapter 4 - 80X86 保护模式及其编程/Chapter 4.9 - 一个简单的多任务内核实例.md",
+          ],
+        },
+        {
+          text: "Chapter 5 - Linux 内核体系结构",
+          children: [
+            "/linux-kernel-comments-notes/Chapter 5 - Linux 内核体系结构/Chapter 5.1-5.2 - Linux 内核模式 & 体系结构.md",
+            "/linux-kernel-comments-notes/Chapter 5 - Linux 内核体系结构/Chapter 5.3 - Linux 内核对内存的管理和使用.md",
+            "/linux-kernel-comments-notes/Chapter 5 - Linux 内核体系结构/Chapter 5.4-5.6 - 中断机制 & 系统调用 & 系统时间和定时.md",
+            "/linux-kernel-comments-notes/Chapter 5 - Linux 内核体系结构/Chapter 5.7-5.9 - Linux 进程控制 & 堆栈使用 & 文件系统.md",
+          ],
+        },
+        {
+          text: "Chapter 6 - 引导启动程序 (boot)",
+          children: [
+            "/linux-kernel-comments-notes/Chapter 6 - 引导启动程序 (boot)/Chapter 6 - 引导启动程序 (boot).md",
+          ],
+        },
+        {
+          text: "Chapter 7 - 初始化程序 (init)",
+          children: [
+            "/linux-kernel-comments-notes/Chapter 7 - 初始化程序 (init)/Chapter 7 - 初始化程序 (init).md",
+          ],
+        },
+        {
+          text: "Chapter 8 - 内核代码",
+          children: [
+            "/linux-kernel-comments-notes/Chapter 8 - 内核代码/Chapter 8.1 - 内核代码 总体功能.md",
+            "/linux-kernel-comments-notes/Chapter 8 - 内核代码/Chapter 8.2 - asm.s 程序.md",
+            "/linux-kernel-comments-notes/Chapter 8 - 内核代码/Chapter 8.3 - traps.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 8 - 内核代码/Chapter 8.4 - sys_call.s 程序.md",
+            "/linux-kernel-comments-notes/Chapter 8 - 内核代码/Chapter 8.5 - mktime.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 8 - 内核代码/Chapter 8.6 - sched.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 8 - 内核代码/Chapter 8.7 - signal.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 8 - 内核代码/Chapter 8.8 - exit.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 8 - 内核代码/Chapter 8.9 - fork.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 8 - 内核代码/Chapter 8.10 - sys.c 程序.md",
+          ],
+        },
+        {
+          text: "Chapter 9 - 块设备驱动程序",
+          children: [
+            "/linux-kernel-comments-notes/Chapter 9 - 块设备驱动程序/Chapter 9.1 - 块设备驱动程序 总体功能.md",
+            "/linux-kernel-comments-notes/Chapter 9 - 块设备驱动程序/Chapter 9.2 - blk.h 文件.md",
+            "/linux-kernel-comments-notes/Chapter 9 - 块设备驱动程序/Chapter 9.3 - hd.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 9 - 块设备驱动程序/Chapter 9.4 - ll_rw_blk.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 9 - 块设备驱动程序/Chapter 9.5 - ramdisk.c 程序.md",
+          ],
+        },
+        {
+          text: "Chapter 10 - 字符设备驱动程序",
+          children: [
+            "/linux-kernel-comments-notes/Chapter 10 - 字符设备驱动程序/Chapter 10.1 - 字符设备驱动程序 总体功能.md",
+            "/linux-kernel-comments-notes/Chapter 10 - 字符设备驱动程序/Chapter 10.2 - keyboard.S 程序.md",
+            "/linux-kernel-comments-notes/Chapter 10 - 字符设备驱动程序/Chapter 10.3 - console.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 10 - 字符设备驱动程序/Chapter 10.4 - serial.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 10 - 字符设备驱动程序/Chapter 10.5 - rs_io.s 程序.md",
+            "/linux-kernel-comments-notes/Chapter 10 - 字符设备驱动程序/Chapter 10.6 - tty_io.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 10 - 字符设备驱动程序/Chapter 10.7 - tty_ioctl.c 程序.md",
+          ],
+        },
+        {
+          text: "Chapter 12 - 文件系统",
+          children: [
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.1 - 文件系统 总体功能.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.2 - buffer.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.3 - bitmap.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.4 - truncate.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.5 - inode.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.6 - super.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.7 - namei.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.9 - block_dev.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.10 - file_dev.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.11 - pipe.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.12 - char_dev.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.13 - read_write.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.14 - open.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.15 - exec.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.16 - stat.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.17 - fcntl.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.18 - ioctl.c 程序.md",
+            "/linux-kernel-comments-notes/Chapter 12 - 文件系统/Chapter 12.19 - select.c 程序.md",
+          ],
+        },
       ],
     },
   ],
@@ -324,7 +438,7 @@ module.exports = {
             "/understanding-the-jvm-notes/Part 5 - 高效并发/Chapter 13 - 线程安全与锁优化.md",
           ],
         },
-      ]
+      ],
     },
   ],
   "/linux-kernel-development-notes/": [

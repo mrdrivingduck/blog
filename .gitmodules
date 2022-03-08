@@ -16,3 +16,6 @@
 [submodule "docs/understanding-the-jvm-notes"]
 	path = docs/understanding-the-jvm-notes
 	url = https://github.com/mrdrivingduck/understanding-the-jvm-notes.git
+[submodule "docs/linux-kernel-comments-notes"]
+	path = docs/linux-kernel-comments-notes
+	url = https://github.com/mrdrivingduck/linux-kernel-comments-notes.git
