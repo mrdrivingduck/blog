@@ -19,3 +19,6 @@
 [submodule "docs/linux-kernel-comments-notes"]
 	path = docs/linux-kernel-comments-notes
 	url = https://github.com/mrdrivingduck/linux-kernel-comments-notes.git
+[submodule "docs/the-annotated-stl-sources-notes"]
+	path = docs/the-annotated-stl-sources-notes
+	url = https://github.com/mrdrivingduck/the-annotated-stl-sources-notes.git

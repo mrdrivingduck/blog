@@ -500,4 +500,90 @@ module.exports = {
       ],
     },
   ],
+  "/the-annotated-stl-sources-notes/": [
+    {
+      text: "⚒️ The Annotated STL Sources (notes)",
+      link: "/the-annotated-stl-sources-notes/README.md",
+      children: [
+        {
+          text: "Chapter 1 - STL 概论与版本简介",
+          children: [
+            "/the-annotated-stl-sources-notes/Chapter 1 - STL 概论与版本简介/Chapter 1 - STL 概论与版本简介.md",
+          ],
+        },
+        {
+          text: "Chapter 2 - 空间分配器 allocator",
+          children: [
+            "/the-annotated-stl-sources-notes/Chapter 2 - 空间分配器 allocator/Chapter 2.1 - SGI 空间分配器.md",
+            "/the-annotated-stl-sources-notes/Chapter 2 - 空间分配器 allocator/Chapter 2.2 - SGI 特殊的空间分配器.md",
+            "/the-annotated-stl-sources-notes/Chapter 2 - 空间分配器 allocator/Chapter 2.3 - 内存基本处理工具.md",
+          ],
+        },
+        {
+          text: "Chapter 3 - 迭代器概念与 traits 编程方法",
+          children: [
+            "/the-annotated-stl-sources-notes/Chapter 3 - 迭代器概念与 traits 编程方法/Chapter 3.1-3.5 - 迭代器设计思维.md",
+            "/the-annotated-stl-sources-notes/Chapter 3 - 迭代器概念与 traits 编程方法/Chapter 3.6 - iterator 源代码完整重列.md",
+            "/the-annotated-stl-sources-notes/Chapter 3 - 迭代器概念与 traits 编程方法/Chapter 3.7 - SGI STL 的私房菜：__type_traits.md",
+          ],
+        },
+        {
+          text: "Chapter 4 - 序列式容器",
+          children: [
+            "/the-annotated-stl-sources-notes/Chapter 4 - 序列式容器/Chapter 4.2 - vector.md",
+            "/the-annotated-stl-sources-notes/Chapter 4 - 序列式容器/Chapter 4.3 - list.md",
+            "/the-annotated-stl-sources-notes/Chapter 4 - 序列式容器/Chapter 4.4 - deque.md",
+            "/the-annotated-stl-sources-notes/Chapter 4 - 序列式容器/Chapter 4.5 - stack.md",
+            "/the-annotated-stl-sources-notes/Chapter 4 - 序列式容器/Chapter 4.6 - queue.md",
+            "/the-annotated-stl-sources-notes/Chapter 4 - 序列式容器/Chapter 4.7 - heap.md",
+            "/the-annotated-stl-sources-notes/Chapter 4 - 序列式容器/Chapter 4.8 - priority_queue.md",
+            "/the-annotated-stl-sources-notes/Chapter 4 - 序列式容器/Chapter 4.9 - slist.md",
+          ],
+        },
+        {
+          text: "Chapter 5 - 关联式容器",
+          children: [
+            "/the-annotated-stl-sources-notes/Chapter 5 - 关联式容器/Chapter 5.2 - RB-Tree.md",
+            "/the-annotated-stl-sources-notes/Chapter 5 - 关联式容器/Chapter 5.3 - set & multiset.md",
+            "/the-annotated-stl-sources-notes/Chapter 5 - 关联式容器/Chapter 5.4 - map & multimap.md",
+            "/the-annotated-stl-sources-notes/Chapter 5 - 关联式容器/Chapter 5.7 - hashtable.md",
+            "/the-annotated-stl-sources-notes/Chapter 5 - 关联式容器/Chapter 5.8 - hash_set.md",
+            "/the-annotated-stl-sources-notes/Chapter 5 - 关联式容器/Chapter 5.9 - hash_map.md",
+            "/the-annotated-stl-sources-notes/Chapter 5 - 关联式容器/Chapter 5.10 - hash_multiset.md",
+            "/the-annotated-stl-sources-notes/Chapter 5 - 关联式容器/Chapter 5.11 - hash_multimap.md",
+          ],
+        },
+        {
+          text: "Chapter 6 - 算法",
+          children: [
+            "/the-annotated-stl-sources-notes/Chapter 6 - 算法/Chapter 6.1-6.3 - 数值算法.md",
+            "/the-annotated-stl-sources-notes/Chapter 6 - 算法/Chapter 6.4 - 基本算法.md",
+            "/the-annotated-stl-sources-notes/Chapter 6 - 算法/Chapter 6.5 - set 相关算法.md",
+            "/the-annotated-stl-sources-notes/Chapter 6 - 算法/Chapter 6.7.1 - 数据处理算法.md",
+            "/the-annotated-stl-sources-notes/Chapter 6 - 算法/Chapter 6.7.2 - lower_bound.md",
+            "/the-annotated-stl-sources-notes/Chapter 6 - 算法/Chapter 6.7.3 - upper_bound.md",
+            "/the-annotated-stl-sources-notes/Chapter 6 - 算法/Chapter 6.7.5 - permutation.md",
+            "/the-annotated-stl-sources-notes/Chapter 6 - 算法/Chapter 6.7.7 - random_shuffle.md",
+            "/the-annotated-stl-sources-notes/Chapter 6 - 算法/Chapter 6.7.8 - partial_sort.md",
+            "/the-annotated-stl-sources-notes/Chapter 6 - 算法/Chapter 6.7.9 - sort.md",
+            "/the-annotated-stl-sources-notes/Chapter 6 - 算法/Chapter 6.7.12 - nth_element.md",
+          ],
+        },
+        {
+          text: "Chapter 7 - 仿函数 functors",
+          children: [
+            "/the-annotated-stl-sources-notes/Chapter 7 - 仿函数 functors/Chapter 7 - functors.md",
+          ],
+        },
+        {
+          text: "Chapter 8 - 适配器",
+          children: [
+            "/the-annotated-stl-sources-notes/Chapter 8 - 适配器/Chapter 8.1-8.2 - Container Adapters.md",
+            "/the-annotated-stl-sources-notes/Chapter 8 - 适配器/Chapter 8.3 - Iterator Adapters.md",
+            "/the-annotated-stl-sources-notes/Chapter 8 - 适配器/Chapter 8.4 - Function Adapters.md",
+          ],
+        },
+      ],
+    },
+  ],
 };

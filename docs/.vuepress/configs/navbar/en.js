@@ -295,6 +295,10 @@ module.exports = [
         text: "☁️ Spring Microservices (notes)",
         link: "/spring-microservices-notes/README.md",
       },
+      {
+        text: "⚒️ The Annotated STL Sources (notes)",
+        link: "/the-annotated-stl-sources-notes/README.md",
+      }
     ],
   },
 ];
