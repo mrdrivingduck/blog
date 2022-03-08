@@ -575,6 +575,49 @@ module.exports = {
       ],
     },
   ],
+  "/understanding-nginx-notes/": [
+    {
+      text: "🗜️ Understanding Nginx (notes)",
+      link: "/understanding-nginx-notes/README.md",
+      children: [
+        {
+          text: "Part 1 - Nginx 能帮我们做什么",
+          children: [
+            "/understanding-nginx-notes/Part 1 - Nginx 能帮我们做什么/Chapter 1 - 研究 Nginx 前的准备工作.md",
+            "/understanding-nginx-notes/Part 1 - Nginx 能帮我们做什么/Chapter 2 - Nginx 的配置.md",
+          ],
+        },
+        {
+          text: "Part 2 - 如何编写 HTTP 模块",
+          children: [
+            "/understanding-nginx-notes/Part 2 - 如何编写 HTTP 模块/Chapter 7 - Nginx 提供的高级数据结构.md",
+          ],
+        },
+        {
+          text: "Part 3 - 深入 Nginx",
+          children: [
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 8.1-8.2 - Nginx 基础架构.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 8.3-8.6 - Nginx 框架核心结构体.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 8.7 - Nginx 内存池.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 9.1-9.3 - 事件处理框架.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 9.4-9.6 - 事件驱动模块与 EPOLL.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 9.7-9.8 - 定时器事件与事件驱动框架处理流程.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 9.9-9.10 - 文件的异步 IO 与 TCP.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 10.1-10.2 - HTTP 框架的配置解析与合并.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 10.3-10.7 - HTTP 阶段划分与框架初始化.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 11 - HTTP 框架的执行流程.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 12.1-12.4 - Upstream 与上游服务器通信.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 12.5 - 接收上游服务器响应并处理.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 12.6 - 12.9 - 转发响应并结束请求.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 13.1-13.5 - 邮件代理模块 - 认证服务器.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 13.6-13.7 - 邮件代理模块 - 上游.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 14 - 进程间通信机制.md",
+            "/understanding-nginx-notes/Part 3 - 深入 Nginx/Chapter 16 - slab 共享内存.md",
+          ],
+        },
+      ],
+    },
+  ],
   "/netty-in-action-notes/": [
     {
       text: "⚙️ Netty in Action (notes)",

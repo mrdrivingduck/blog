@@ -296,6 +296,10 @@ module.exports = [
         link: "/redis-implementation-notes/README.md",
       },
       {
+        text: "🗜️ Understanding Nginx (notes)",
+        link: "/understanding-nginx-notes/README.md",
+      },
+      {
         text: "⚙️ Netty in Action (notes)",
         link: "/netty-in-action-notes/README.md",
       },

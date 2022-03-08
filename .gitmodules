@@ -28,3 +28,6 @@
 [submodule "docs/redis-implementation-notes"]
 	path = docs/redis-implementation-notes
 	url = https://github.com/mrdrivingduck/redis-implementation-notes.git
+[submodule "docs/understanding-nginx-notes"]
+	path = docs/understanding-nginx-notes
+	url = https://github.com/mrdrivingduck/understanding-nginx-notes.git
