@@ -313,4 +313,13 @@ module.exports = [
       }
     ],
   },
+  {
+    text: "🤯 Code Reading",
+    children: [
+      {
+        text: "☕ Java Development Kit 8",
+        link: "/jdk-source-code-analysis/README.md",
+      },
+    ],
+  },
 ];

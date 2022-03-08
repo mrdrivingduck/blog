@@ -31,3 +31,6 @@
 [submodule "docs/understanding-nginx-notes"]
 	path = docs/understanding-nginx-notes
 	url = https://github.com/mrdrivingduck/understanding-nginx-notes.git
+[submodule "docs/jdk-source-code-analysis"]
+	path = docs/jdk-source-code-analysis
+	url = https://github.com/mrdrivingduck/jdk-source-code-analysis.git
