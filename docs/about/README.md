@@ -1,4 +1,4 @@
-# About Me
+# 🦆 About Me
 
 This is Mr Dk. ([@mrdrivingduck](https://github.com/mrdrivingduck)). I love ducks. 🦆
 

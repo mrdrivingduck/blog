@@ -1,7 +1,7 @@
 module.exports = {
   "/about/": [
     {
-      text: "🦆 About",
+      text: "About",
       children: [
         "/about/README.md",
         "/about/techstack.md",
@@ -261,7 +261,7 @@ module.exports = {
   ],
   "/how-linux-works-notes/": [
     {
-      text: "🐧 How Linux Works (notes)",
+      text: "🐧 How Linux Works",
       link: "/how-linux-works-notes/README.md",
       children: [
         "/how-linux-works-notes/Chapter 1 - The Big Picture.md",
@@ -284,7 +284,7 @@ module.exports = {
   ],
   "/linux-kernel-comments-notes/": [
     {
-      text: "🐧 Linux Kernel Comment (notes)",
+      text: "🐧 Linux Kernel Comments",
       link: "/linux-kernel-comments-notes/README.md",
       children: [
         {
@@ -398,7 +398,7 @@ module.exports = {
   ],
   "/linux-kernel-development-notes/": [
     {
-      text: "🐧 Linux Kernel Development (notes)",
+      text: "🐧 Linux Kernel Development",
       link: "/linux-kernel-development-notes/README.md",
       children: [
         "/linux-kernel-development-notes/Chapter 1 - Linux 内核简介.md",
@@ -418,7 +418,7 @@ module.exports = {
   ],
   "/uc-os-ii-code-notes/": [
     {
-      text: "🐤 μc/OS-II Source Code (notes)",
+      text: "🐤 μc/OS-II Source Code",
       link: "/uc-os-ii-code-notes/README.md",
       children: [
         {
@@ -483,7 +483,7 @@ module.exports = {
   ],
   "/understanding-the-jvm-notes/": [
     {
-      text: "☕ Understanding the JVM (notes)",
+      text: "☕ Understanding the JVM",
       link: "/understanding-the-jvm-notes/README.md",
       children: [
         {
@@ -528,7 +528,7 @@ module.exports = {
   ],
   "/redis-implementation-notes/": [
     {
-      text: "⛸️ Redis Implementation (notes)",
+      text: "⛸️ Redis Implementation",
       link: "/redis-implementation-notes/README.md",
       children: [
         {
@@ -577,7 +577,7 @@ module.exports = {
   ],
   "/understanding-nginx-notes/": [
     {
-      text: "🗜️ Understanding Nginx (notes)",
+      text: "🗜️ Understanding Nginx",
       link: "/understanding-nginx-notes/README.md",
       children: [
         {
@@ -620,7 +620,7 @@ module.exports = {
   ],
   "/netty-in-action-notes/": [
     {
-      text: "⚙️ Netty in Action (notes)",
+      text: "⚙️ Netty in Action",
       link: "/netty-in-action-notes/README.md",
       children: [
         "/netty-in-action-notes/1 - NIO Transportation Model.md",
@@ -643,7 +643,7 @@ module.exports = {
   ],
   "/spring-microservices-notes/": [
     {
-      text: "☁️ Spring Microservices (notes)",
+      text: "☁️ Spring Microservices",
       link: "/spring-microservices-notes/README.md",
       children: [
         "/spring-microservices-notes/Chapter 1 - 欢迎迈入云世界，Spring.md",
@@ -659,7 +659,7 @@ module.exports = {
   ],
   "/the-annotated-stl-sources-notes/": [
     {
-      text: "⚒️ The Annotated STL Sources (notes)",
+      text: "⚒️ The Annotated STL Sources",
       link: "/the-annotated-stl-sources-notes/README.md",
       children: [
         {

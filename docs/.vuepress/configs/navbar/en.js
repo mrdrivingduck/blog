@@ -4,19 +4,19 @@ module.exports = [
     link: "/about/",
     children: [
       {
-        text: "About Me",
+        text: "🦆 About Me",
         link: "/about/README.md",
       },
       {
-        text: "Technology Stack",
+        text: "⛏️ Technology Stack",
         link: "/about/techstack.md",
       },
       {
-        text: "Links",
+        text: "🔗 Links",
         link: "/about/links.md",
       },
       {
-        text: "About Blog",
+        text: "🗒️ About Blog",
         link: "/about/blog.md",
       },
     ],
