@@ -22,7 +22,7 @@ module.exports = [
     ],
   },
   {
-    text: "Notes",
+    text: "📝 Notes",
     link: "/notes/",
     children: [
       {
@@ -272,19 +272,23 @@ module.exports = [
     text: "Book Notes",
     children: [
       {
-        text: "How Linux Works (notes)",
+        text: "🐧 How Linux Works (notes)",
         link: "/how-linux-works-notes/README.md",
       },
       {
-        text: "Linux Kernel Development (notes)",
+        text: "🐧 Linux Kernel Development (notes)",
         link: "/linux-kernel-development-notes/README.md",
       },
       {
-        text: "Netty in Action (notes)",
+        text: "☕ Understanding the JVM (notes)",
+        link: "/understanding-the-jvm-notes/README.md",
+      },
+      {
+        text: "⚙️ Netty in Action (notes)",
         link: "/netty-in-action-notes/README.md",
       },
       {
-        text: "Spring Microservices (notes)",
+        text: "☁️ Spring Microservices (notes)",
         link: "/spring-microservices-notes/README.md",
       },
     ],

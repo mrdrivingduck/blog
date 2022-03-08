@@ -13,3 +13,6 @@
 [submodule "docs/spring-microservices-notes"]
 	path = docs/spring-microservices-notes
 	url = https://github.com/mrdrivingduck/spring-microservices-notes.git
+[submodule "docs/understanding-the-jvm-notes"]
+	path = docs/understanding-the-jvm-notes
+	url = https://github.com/mrdrivingduck/understanding-the-jvm-notes.git
