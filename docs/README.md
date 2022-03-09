@@ -9,5 +9,6 @@ actions:
   - text: Notes
     link: /notes/README.md
     type: secondary
-footer: MIT Licensed | Copyright © Jingtang Zhang, 2022
+footerHtml: true
+footer: MIT Licensed | Copyright © Jingtang Zhang, 2022 <br><br> <a href='https://beian.miit.gov.cn'>浙 ICP 备 20008590 号</a>
 ---

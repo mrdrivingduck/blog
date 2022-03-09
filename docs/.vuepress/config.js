@@ -7,7 +7,7 @@ module.exports = {
 
   base: "/blog/",
 
-  head: [["link", { rel: "icon", href: "/images/favicon.jpg" }]],
+  head: [["link", { rel: "icon", href: "/blog/images/favicon.jpg" }]],
 
   locales: {
     "/": {
