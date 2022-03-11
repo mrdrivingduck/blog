@@ -29,7 +29,7 @@
 
 ## JavaScript (Node.js / Vue.js)
 
-- 🦆 [Blog](https://github.com/mrdrivingduck/blog): Dynamic blog system based on Vue.js.
+- 🦆 [Blog](https://github.com/mrdrivingduck/blog): 🦆 Blog of [@mrdrivingduck](https://github.com/mrdrivingduck).
 
 ## R
 
