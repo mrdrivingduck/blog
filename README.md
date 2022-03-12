@@ -20,6 +20,8 @@ Created by : Mr Dk.
 ## Supported by
 
 - [VuePress 2](https://v2.vuepress.vuejs.org/): Vue-powered Static Site Generator.
+- [VuePress Search Plugin](https://v2.vuepress.vuejs.org/reference/plugin/search.html): Provide local search to your documentation site.
+- [@renovamen/vuepress-plugin-baidu-tongji@next](https://v2-vuepress-theme-gungnir.vercel.app/docs/plugins/baidu-tongji.html): adding [百度统计](https://tongji.baidu.com/web/welcome/login) to VuePress 2.
 
 ## Project setup
 

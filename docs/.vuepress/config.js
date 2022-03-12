@@ -53,28 +53,35 @@ module.exports = {
   },
 
   plugins: [
+    [
+      "@vuepress/plugin-search",
+      {
+        locales: {
+          "/": {
+            placeholder: "Search",
+          },
+        },
+        maxSuggestions: 12,
+      },
+    ],
+    [
+      "@renovamen/vuepress-plugin-baidu-tongji", {
+        "id": "1958503623668fcdb06542fb2aa21fe2"
+      }
+    ],
     // [
-    //   "@vuepress/plugin-search",
-    //   {
-    //     locales: {
-    //       "/": {
-    //         placeholder: "搜索",
-    //       },
-    //       "/en/": {
-    //         placeholder: "Search",
-    //       },
-    //     },
-    //   },
-    // ],
-    // [
-    //   '@renovamen/vuepress-plugin-katex',
-    //   {
-    //     throwOnError: false,
-    //     errorColor: '#cc0000'
+    //   "@renovamen/vuepress-plugin-reading-time", {
+    //     includes: ["/docs/.*"]
     //   }
     // ],
     // [
-    //   "@renovamen/vuepress-plugin-mermaid"
+    //   "vuepress-plugin-giscus", {
+    //     repo: "mrdrivingduck/blog",
+    //     repoId: "MDEwOlJlcG9zaXRvcnkxOTM5OTk3MDQ=",
+    //     category: "Announcements",
+    //     categoryId: "DIC_kwDOC5AzWM4CODgJ",
+    //     theme: "dark_dimmed",
+    //   }
     // ]
   ],
 };
