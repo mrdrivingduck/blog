@@ -101,43 +101,43 @@ module.exports = [
     children: [
       {
         text: "🐧 How Linux Works (notes)",
-        link: "/how-linux-works-notes/README.md",
+        link: "/how-linux-works-notes/",
       },
       {
         text: "🐧 Linux Kernel Comments (notes)",
-        link: "/linux-kernel-comments-notes/README.md",
+        link: "/linux-kernel-comments-notes/",
       },
       {
         text: "🐧 Linux Kernel Development (notes)",
-        link: "/linux-kernel-development-notes/README.md",
+        link: "/linux-kernel-development-notes/",
       },
       {
         text: "🐤 μc/OS-II Source Code (notes)",
-        link: "/uc-os-ii-code-notes/README.md",
+        link: "/uc-os-ii-code-notes/",
       },
       {
         text: "☕ Understanding the JVM (notes)",
-        link: "/understanding-the-jvm-notes/README.md",
+        link: "/understanding-the-jvm-notes/",
       },
       {
         text: "⛸️ Redis Implementation (notes)",
-        link: "/redis-implementation-notes/README.md",
+        link: "/redis-implementation-notes/",
       },
       {
         text: "🗜️ Understanding Nginx (notes)",
-        link: "/understanding-nginx-notes/README.md",
+        link: "/understanding-nginx-notes/",
       },
       {
         text: "⚙️ Netty in Action (notes)",
-        link: "/netty-in-action-notes/README.md",
+        link: "/netty-in-action-notes/",
       },
       {
         text: "☁️ Spring Microservices (notes)",
-        link: "/spring-microservices-notes/README.md",
+        link: "/spring-microservices-notes/",
       },
       {
         text: "⚒️ The Annotated STL Sources (notes)",
-        link: "/the-annotated-stl-sources-notes/README.md",
+        link: "/the-annotated-stl-sources-notes/",
       },
     ],
   },
@@ -146,7 +146,7 @@ module.exports = [
     children: [
       {
         text: "☕ Java Development Kit 8",
-        link: "/jdk-source-code-analysis/README.md",
+        link: "/jdk-source-code-analysis/",
       },
     ],
   },

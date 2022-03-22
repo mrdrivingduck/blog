@@ -54,14 +54,16 @@ module.exports = {
 
   plugins: [
     [
-      "@vuepress/plugin-search",
+      '@vuepress/docsearch',
       {
+        appId: "Y0FX1JHUAF",
+        apiKey: '508aac0c126f42fca77dcf28bc027dc8',
+        indexName: 'mrdrivingduck',
         locales: {
-          "/": {
-            placeholder: "Search",
+          '/': {
+            placeholder: 'Search Documentation',
           },
         },
-        maxSuggestions: 12,
       },
     ],
     [
