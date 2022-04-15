@@ -15,12 +15,12 @@ ICSME, 2021: [Revisiting Test Cases to Boost Generate-and-Validate Program Repai
 
 ## 🎓 Education
 
-### 2019.09 - NOW
+### 2019.09 - 2022.04
 
 - [Nanjing University of Aeronautics and Astronautics (NUAA) 南京航空航天大学](https://baike.baidu.com/item/%E5%8D%97%E4%BA%AC%E8%88%AA%E7%A9%BA%E8%88%AA%E5%A4%A9%E5%A4%A7%E5%AD%A6/170940)
 - College of Computer Science and Technology 计算机科学与技术学院 / 人工智能学院
 - 🔑 Cyberspace Security - 网络空间安全 
-- 👨‍🎓 M.Eng. - 工学硕士 在读 
+- 👨‍🎓 M.Eng. - 工学硕士
 - 🚩 Nanjing, Jiangsu, P.R.China - 江苏省南京市
 
 ### 2015.09 - 2019.06

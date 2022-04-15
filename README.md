@@ -45,4 +45,4 @@ npm run docs:build
 
 ## License
 
-Copyright © 2018-2022, Jingtang Zhang. ([MIT License](LICENSE))
+Copyright © 2018-2022, Jingtang Zhang. ([MIT License](./LICENSE))

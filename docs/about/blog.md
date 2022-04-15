@@ -6,7 +6,7 @@
 
 ## Version
 
-🛠️ Build version: 1.2022.03
+🛠️ Build version: 1.2022.04
 
 ## Branch Status
 

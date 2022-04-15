@@ -1,6 +1,6 @@
 {
   "name": "duckling-blog",
-  "version": "1.2022.03",
+  "version": "1.2022.04",
   "description": "Blog of Mr Dk.",
   "scripts": {
     "docs:dev": "vuepress dev docs",
