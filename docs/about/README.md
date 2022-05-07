@@ -13,6 +13,26 @@ This is Mr Dk. ([@mrdrivingduck](https://github.com/mrdrivingduck)). I love duck
 
 ICSME, 2021: [Revisiting Test Cases to Boost Generate-and-Validate Program Repair](https://ieeexplore.ieee.org/abstract/document/9609138/) (CCF-B)
 
+## 💼 Working Experiences
+
+### 2022.05 - NOW
+
+- [Alibaba Cloud Computing Co. Ltd. 阿里云计算有限公司](https://www.aliyun.com/)
+- 🖥️ [PolarDB](https://www.aliyun.com/product/polardb) DBMS Kernel Engineer - [PolarDB](https://www.aliyun.com/product/polardb) 数据库内核工程师
+- 🚩 Hangzhou, Zhejiang, P.R.China - 浙江省杭州市
+
+### 2021.05 - 2021.09
+
+- [Alibaba Cloud Computing Co. Ltd. 阿里云计算有限公司](https://www.aliyun.com/)
+- 🖥️ [PolarDB](https://www.aliyun.com/product/polardb) DBMS Kernel Engineer (internship) - [PolarDB](https://www.aliyun.com/product/polardb) 数据库内核工程师 (实习)
+- 🚩 Hangzhou, Zhejiang, P.R.China - 浙江省杭州市
+
+### 2018.07 - 2018.08
+
+- [DolphinDB, Inc. 智臾科技有限公司](https://www.dolphindb.com/)
+- 🖥️ Software Engineering (internship) - 软件工程师 (实习)
+- 🚩 Hangzhou, Zhejiang, P.R.China - 浙江省杭州市
+
 ## 🎓 Education
 
 ### 2019.09 - 2022.04
@@ -36,17 +56,3 @@ ICSME, 2021: [Revisiting Test Cases to Boost Generate-and-Validate Program Repai
 - [Zhejiang Ningbo High School 浙江省宁波中学](https://baike.baidu.com/item/%E6%B5%99%E6%B1%9F%E7%9C%81%E5%AE%81%E6%B3%A2%E4%B8%AD%E5%AD%A6/7529114)
 - 🧒 Senior H.S. - 高级中学
 - 🚩 Ningbo, Zhejiang, P.R.China - 浙江省宁波市
-
-## 💼 Working Experiences
-
-### 2021.05 - 2021.09
-
-- [Alibaba Cloud Computing Co. Ltd. 阿里云计算有限公司](https://www.aliyun.com/)
-- 🖥️ PolarDB DBMS Kernel Engineer (internship) - PolarDB 数据库内核工程师 (实习)
-- 🚩 Hangzhou, Zhejiang, P.R.China - 浙江省杭州市
-
-### 2018.07 - 2018.08
-
-- [DolphinDB, Inc. 智臾科技有限公司](https://www.dolphindb.com/)
-- 🖥️ Software Engineering (internship) - 软件工程师 (实习)
-- 🚩 Hangzhou, Zhejiang, P.R.China - 浙江省杭州市
