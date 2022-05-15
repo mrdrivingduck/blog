@@ -1,4 +1,6 @@
-module.exports = {
+import type { SidebarConfig } from "@vuepress/theme-default";
+
+export const sidebarEn: SidebarConfig = {
   "/about/": [
     {
       text: "About",
