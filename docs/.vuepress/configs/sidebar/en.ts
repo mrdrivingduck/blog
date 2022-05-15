@@ -19,6 +19,7 @@ export const sidebarEn: SidebarConfig = {
       children: [
         {
           text: "Algorithm",
+          link: "/notes/Algorithm/README.md",
           children: [
             "/notes/Algorithm/Algorithm Bloom Filter.md",
             "/notes/Algorithm/Algorithm Disjoint Set.md",
@@ -33,6 +34,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "C++",
+          link: "/notes/C++/README.md",
           children: [
             "/notes/C++/C++ Const.md",
             "/notes/C++/C++ File I&O.md",
@@ -53,6 +55,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Compiler",
+          link: "/notes/Compiler/README.md",
           children: [
             "/notes/Compiler/ANTLR Basic.md",
             "/notes/Compiler/Compiler LLVM Architecture.md",
@@ -61,6 +64,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Cryptography",
+          link: "/notes/Cryptography/README.md",
           children: [
             "/notes/Cryptography/Cryptography Certbot.md",
             "/notes/Cryptography/Cryptography Digital Signature & PKCS7.md",
@@ -72,9 +76,10 @@ export const sidebarEn: SidebarConfig = {
             "/notes/Cryptography/Cryptography TLS.md",
           ],
         },
-        { text: "DevOps", children: ["/notes/DevOps/DevOps Travis CI.md"] },
+        { text: "DevOps", link: "/notes/DevOps/README.md", children: ["/notes/DevOps/DevOps Travis CI.md"] },
         {
           text: "Docker",
+          link: "/notes/Docker/README.md",
           children: [
             "/notes/Docker/Docker Image & Storage Management.md",
             "/notes/Docker/Docker Image.md",
@@ -92,6 +97,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Git",
+          link: "/notes/Git/README.md",
           children: [
             "/notes/Git/Git Branch & Merge.md",
             "/notes/Git/Git Cached.md",
@@ -107,6 +113,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Java",
+          link: "/notes/Java/README.md",
           children: [
             "/notes/Java/JVM Synchronized.md",
             "/notes/Java/JVM Volatile.md",
@@ -133,6 +140,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "MS Office",
+          link: "/notes/MS Office/README.md",
           children: [
             "/notes/MS Office/MS Office Add-in Dev.md",
             "/notes/MS Office/MS Office Application.md",
@@ -140,6 +148,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "MySQL",
+          link: "/notes/MySQL/README.md",
           children: [
             "/notes/MySQL/InnoDB Architecture.md",
             "/notes/MySQL/InnoDB Backup.md",
@@ -157,6 +166,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Network",
+          link: "/notes/Network/README.md",
           children: [
             "/notes/Network/Network ARP.md",
             "/notes/Network/Network FTP.md",
@@ -179,6 +189,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Operating System",
+          link: "/notes/Operating System/README.md",
           children: [
             "/notes/Operating System/Linux Kernel Compilation.md",
             "/notes/Operating System/Linux Multi-OS.md",
@@ -204,6 +215,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "PostgreSQL",
+          link: "/notes/PostgreSQL/README.md",
           children: [
             "/notes/PostgreSQL/PostgreSQL Executor Append.md",
             "/notes/PostgreSQL/PostgreSQL Executor Group.md",
@@ -221,6 +233,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Productivity",
+          link: "/notes/Productivity/README.md",
           children: [
             "/notes/Productivity/LaTeX.md",
             "/notes/Productivity/Venn Diagram.md",
@@ -229,6 +242,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Solidity",
+          link: "/notes/Solidity/README.md",
           children: [
             "/notes/Solidity/Solidity ABI Specification.md",
             "/notes/Solidity/Solidity Contracts.md",
@@ -242,10 +256,12 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Vue.js",
+          link: "/notes/Vue.js/README.md",
           children: ["/notes/Vue.js/Vue.js Environment Variable.md"],
         },
         {
           text: "Web",
+          link: "/notes/Web/README.md",
           children: [
             "/notes/Web/Web CORS.md",
             "/notes/Web/Web OpenAPI Specification.md",
@@ -253,6 +269,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Wireless",
+          link: "/notes/Wireless/README.md",
           children: [
             "/notes/Wireless/Wireless WEP Cracking by Aircrack-ng.md",
             "/notes/Wireless/Wireless WPS Cracking by Reaver.md",
