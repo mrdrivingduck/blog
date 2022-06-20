@@ -217,6 +217,7 @@ export const sidebarEn: SidebarConfig = {
           text: "PostgreSQL",
           link: "/notes/PostgreSQL/README.md",
           children: [
+            "/notes/PostgreSQL/PostgreSQL Analyze.md",
             "/notes/PostgreSQL/PostgreSQL Executor Append.md",
             "/notes/PostgreSQL/PostgreSQL Executor Group.md",
             "/notes/PostgreSQL/PostgreSQL Executor Limit.md",
