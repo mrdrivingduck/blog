@@ -39,7 +39,7 @@ export default defineUserConfig({
         navbar: navbarEn,
 
         // sidebar
-        sidebarDepth: 1,
+        sidebarDepth: 2,
         sidebar: sidebarEn,
       },
     },
@@ -64,11 +64,7 @@ export default defineUserConfig({
         },
       },
     }),
-    // [
-    //   "@renovamen/vuepress-plugin-baidu-tongji", {
-    //     "id": "1958503623668fcdb06542fb2aa21fe2"
-    //   }
-    // ],
+    baiduTongjiPlugin({ id: "1958503623668fcdb06542fb2aa21fe2" }),
     // [
     //   "@renovamen/vuepress-plugin-reading-time", {
     //     includes: ["/docs/.*"]

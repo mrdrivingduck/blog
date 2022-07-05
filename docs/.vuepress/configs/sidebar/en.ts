@@ -227,6 +227,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/PostgreSQL/PostgreSQL Executor Sequential Scan.md",
             "/notes/PostgreSQL/PostgreSQL Executor Sort.md",
             "/notes/PostgreSQL/PostgreSQL Executor Unique.md",
+            "/notes/PostgreSQL/PostgreSQL FDW Async Execution.md",
             "/notes/PostgreSQL/PostgreSQL GUC.md",
             "/notes/PostgreSQL/PostgreSQL Locking.md",
             "/notes/PostgreSQL/PostgreSQL Query Execution.md",
