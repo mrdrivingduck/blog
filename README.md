@@ -28,19 +28,19 @@ Created by : Mr Dk.
 ### Install dependencies
 
 ```bash
-npm install
+yarn
 ```
 
 ### Compiles and hot-reloads for development
 
 ```bash
-npm run docs:dev
+yarn docs:dev
 ```
 
 ### Compiles and minifies for production
 
 ```bash
-npm run docs:build
+yarn docs:build
 ```
 
 ## License
