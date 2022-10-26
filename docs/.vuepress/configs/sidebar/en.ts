@@ -76,7 +76,11 @@ export const sidebarEn: SidebarConfig = {
             "/notes/Cryptography/Cryptography TLS.md",
           ],
         },
-        { text: "DevOps", link: "/notes/DevOps/README.md", children: ["/notes/DevOps/DevOps Travis CI.md"] },
+        {
+          text: "DevOps",
+          link: "/notes/DevOps/README.md",
+          children: ["/notes/DevOps/DevOps Travis CI.md"],
+        },
         {
           text: "Docker",
           link: "/notes/Docker/README.md",
@@ -137,6 +141,11 @@ export const sidebarEn: SidebarConfig = {
             "/notes/Java/Tomcat Class Loader.md",
             "/notes/Java/Tomcat Container.md",
           ],
+        },
+        {
+          text: "Linux",
+          link: "/notes/Linux/README.md",
+          children: ["/notes/Linux/gzip.md"],
         },
         {
           text: "MS Office",

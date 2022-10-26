@@ -57,6 +57,10 @@ export const navbarEn: NavbarConfig = [
         link: "/notes/Java/",
       },
       {
+        text: "Linux",
+        link: "/notes/Linux/",
+      },
+      {
         text: "MS Office",
         link: "/notes/MS Office/",
       },
