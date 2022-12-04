@@ -145,7 +145,18 @@ export const sidebarEn: SidebarConfig = {
         {
           text: "Linux",
           link: "/notes/Linux/README.md",
-          children: ["/notes/Linux/gzip.md"],
+          children: [
+            "/notes/Linux/cut.md",
+            "/notes/Linux/find.md",
+            "/notes/Linux/grep.md",
+            "/notes/Linux/gzip.md",
+            "/notes/Linux/head-tail.md",
+            "/notes/Linux/sort.md",
+            "/notes/Linux/uniq.md",
+            "/notes/Linux/watch.md",
+            "/notes/Linux/wc.md",
+            "/notes/Linux/xargs.md",
+          ],
         },
         {
           text: "MS Office",
