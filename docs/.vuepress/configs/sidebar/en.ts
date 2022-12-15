@@ -155,6 +155,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/Linux/uniq.md",
             "/notes/Linux/watch.md",
             "/notes/Linux/wc.md",
+            "/notes/Linux/which.md",
             "/notes/Linux/xargs.md",
           ],
         },
