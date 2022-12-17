@@ -1,6 +1,6 @@
 import { defineUserConfig } from "@vuepress/cli";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
-import { baiduTongjiPlugin } from "@renovamen/vuepress-plugin-baidu-tongji";
+// import { baiduTongjiPlugin } from "@renovamen/vuepress-plugin-baidu-tongji";
 import { defaultTheme } from "@vuepress/theme-default";
 import { navbarEn, sidebarEn } from "./configs";
 
@@ -64,7 +64,7 @@ export default defineUserConfig({
         },
       },
     }),
-    baiduTongjiPlugin({ id: "1958503623668fcdb06542fb2aa21fe2" }),
+    // baiduTongjiPlugin({ id: "1958503623668fcdb06542fb2aa21fe2" }),
     // [
     //   "@renovamen/vuepress-plugin-reading-time", {
     //     includes: ["/docs/.*"]
