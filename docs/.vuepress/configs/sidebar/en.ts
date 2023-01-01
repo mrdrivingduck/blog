@@ -148,6 +148,7 @@ export const sidebarEn: SidebarConfig = {
           children: [
             "/notes/Linux/cut.md",
             "/notes/Linux/df.md",
+            "/notes/Linux/du.md",
             "/notes/Linux/find.md",
             "/notes/Linux/grep.md",
             "/notes/Linux/gzip.md",
