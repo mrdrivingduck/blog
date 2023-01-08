@@ -155,6 +155,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/Linux/head-tail.md",
             "/notes/Linux/ldd.md",
             "/notes/Linux/lsof.md",
+            "/notes/Linux/ltrace-strace.md",
             "/notes/Linux/netstat.md",
             "/notes/Linux/sort.md",
             "/notes/Linux/uniq.md",
