@@ -1,6 +1,5 @@
 import { defineUserConfig } from "@vuepress/cli";
 import { docsearchPlugin } from "@vuepress/plugin-docsearch";
-// import { baiduTongjiPlugin } from "@renovamen/vuepress-plugin-baidu-tongji";
 import { defaultTheme } from "@vuepress/theme-default";
 import { navbarEn, sidebarEn } from "./configs";
 
@@ -45,14 +44,6 @@ export default defineUserConfig({
     },
   }),
 
-  // extendsMarkdown: (md) => {
-  // md.use(require('markdown-it-include'))
-  // md.use(require('markdown-it-footnote'))
-  // md.use(require('markdown-it-sub'))
-  // md.use(require('markdown-it-sup'))
-  // md.linkify.set({ fuzzyEmail: false })
-  // },
-
   plugins: [
     docsearchPlugin({
       appId: "Y0FX1JHUAF",
@@ -64,20 +55,5 @@ export default defineUserConfig({
         },
       },
     }),
-    // baiduTongjiPlugin({ id: "1958503623668fcdb06542fb2aa21fe2" }),
-    // [
-    //   "@renovamen/vuepress-plugin-reading-time", {
-    //     includes: ["/docs/.*"]
-    //   }
-    // ],
-    // [
-    //   "vuepress-plugin-giscus", {
-    //     repo: "mrdrivingduck/blog",
-    //     repoId: "MDEwOlJlcG9zaXRvcnkxOTM5OTk3MDQ=",
-    //     category: "Announcements",
-    //     categoryId: "DIC_kwDOC5AzWM4CODgJ",
-    //     theme: "dark_dimmed",
-    //   }
-    // ]
   ],
 });
