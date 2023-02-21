@@ -155,6 +155,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/Linux/groupadd.md",
             "/notes/Linux/gzip.md",
             "/notes/Linux/head-tail.md",
+            "/notes/Linux/hexdump.md",
             "/notes/Linux/iotop.md",
             "/notes/Linux/kill.md",
             "/notes/Linux/ldd.md",
