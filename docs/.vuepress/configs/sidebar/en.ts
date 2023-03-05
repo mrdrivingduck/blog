@@ -151,6 +151,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/Linux/df.md",
             "/notes/Linux/du.md",
             "/notes/Linux/find.md",
+            "/notes/Linux/fio.md",
             "/notes/Linux/grep.md",
             "/notes/Linux/groupadd.md",
             "/notes/Linux/gzip.md",
