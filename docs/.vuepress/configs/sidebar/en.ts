@@ -165,6 +165,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/Linux/netstat.md",
             "/notes/Linux/nm.md",
             "/notes/Linux/readlink.md",
+            "/notes/Linux/realpath.md",
             "/notes/Linux/sort.md",
             "/notes/Linux/tee.md",
             "/notes/Linux/uniq.md",
