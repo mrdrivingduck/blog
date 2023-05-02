@@ -150,6 +150,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/Linux/cut.md",
             "/notes/Linux/df.md",
             "/notes/Linux/du.md",
+            "/notes/Linux/fallocate.md",
             "/notes/Linux/find.md",
             "/notes/Linux/fio.md",
             "/notes/Linux/grep.md",
