@@ -270,6 +270,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/PostgreSQL/PostgreSQL FDW Async Execution.md",
             "/notes/PostgreSQL/PostgreSQL GUC.md",
             "/notes/PostgreSQL/PostgreSQL Locking.md",
+            "/notes/PostgreSQL/PostgreSQL Plan Hint GUC.md",
             "/notes/PostgreSQL/PostgreSQL Process Activity.md",
             "/notes/PostgreSQL/PostgreSQL Query Execution.md",
             "/notes/PostgreSQL/PostgreSQL VFD.md",
