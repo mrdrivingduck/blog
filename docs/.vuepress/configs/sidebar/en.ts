@@ -169,6 +169,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/Linux/pmap.md",
             "/notes/Linux/readlink.md",
             "/notes/Linux/realpath.md",
+            "/notes/Linux/rpm2cpio-rpm2archive.md",
             "/notes/Linux/sort.md",
             "/notes/Linux/tee.md",
             "/notes/Linux/uniq.md",
