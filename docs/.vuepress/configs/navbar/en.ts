@@ -77,6 +77,10 @@ export const navbarEn: NavbarConfig = [
         link: "/notes/Operating System/",
       },
       {
+        text: "Performance",
+        link: "/notes/Performance/",
+      },
+      {
         text: "PostgreSQL",
         link: "/notes/PostgreSQL/",
       },

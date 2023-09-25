@@ -259,6 +259,17 @@ export const sidebarEn: SidebarConfig = {
           ],
         },
         {
+          text: "Performance",
+          link: "/notes/Performance/",
+          children: [
+            "/notes/Performance/Linux Perf Event.md",
+            "/notes/Performance/Linux Perf Record.md",
+            "/notes/Performance/Linux Perf Report.md",
+            "/notes/Performance/Linux Flame Graphs.md",
+            "/notes/Performance/Linux Off CPU Analyze.md",
+          ],
+        },
+        {
           text: "PostgreSQL",
           link: "/notes/PostgreSQL/README.md",
           children: [
