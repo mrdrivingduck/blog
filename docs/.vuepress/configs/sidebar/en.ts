@@ -15,11 +15,11 @@ export const sidebarEn: SidebarConfig = {
   "/notes/": [
     {
       text: "📝 Notes",
-      link: "/notes/README.md",
+      link: "/notes/",
       children: [
         {
           text: "Algorithm",
-          link: "/notes/Algorithm/README.md",
+          link: "/notes/Algorithm/",
           children: [
             "/notes/Algorithm/Algorithm Bloom Filter.md",
             "/notes/Algorithm/Algorithm Disjoint Set.md",
@@ -34,7 +34,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "C++",
-          link: "/notes/C++/README.md",
+          link: "/notes/C++/",
           children: [
             "/notes/C++/C++ Const.md",
             "/notes/C++/C++ File I&O.md",
@@ -55,7 +55,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Compiler",
-          link: "/notes/Compiler/README.md",
+          link: "/notes/Compiler/",
           children: [
             "/notes/Compiler/ANTLR Basic.md",
             "/notes/Compiler/Compiler LLVM Architecture.md",
@@ -64,7 +64,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Cryptography",
-          link: "/notes/Cryptography/README.md",
+          link: "/notes/Cryptography/",
           children: [
             "/notes/Cryptography/Cryptography Certbot.md",
             "/notes/Cryptography/Cryptography Digital Signature & PKCS7.md",
@@ -78,12 +78,12 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "DevOps",
-          link: "/notes/DevOps/README.md",
+          link: "/notes/DevOps/",
           children: ["/notes/DevOps/DevOps Travis CI.md"],
         },
         {
           text: "Docker",
-          link: "/notes/Docker/README.md",
+          link: "/notes/Docker/",
           children: [
             "/notes/Docker/Docker Image & Storage Management.md",
             "/notes/Docker/Docker Image.md",
@@ -101,7 +101,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Git",
-          link: "/notes/Git/README.md",
+          link: "/notes/Git/",
           children: [
             "/notes/Git/Git Branch & Merge.md",
             "/notes/Git/Git Cached.md",
@@ -117,7 +117,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Java",
-          link: "/notes/Java/README.md",
+          link: "/notes/Java/",
           children: [
             "/notes/Java/JVM Synchronized.md",
             "/notes/Java/JVM Volatile.md",
@@ -144,7 +144,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Linux",
-          link: "/notes/Linux/README.md",
+          link: "/notes/Linux/",
           children: [
             "/notes/Linux/addr2line.md",
             "/notes/Linux/cut.md",
@@ -185,7 +185,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "MS Office",
-          link: "/notes/MS Office/README.md",
+          link: "/notes/MS Office/",
           children: [
             "/notes/MS Office/MS Office Add-in Dev.md",
             "/notes/MS Office/MS Office Application.md",
@@ -193,7 +193,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "MySQL",
-          link: "/notes/MySQL/README.md",
+          link: "/notes/MySQL/",
           children: [
             "/notes/MySQL/InnoDB Architecture.md",
             "/notes/MySQL/InnoDB Backup.md",
@@ -211,7 +211,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Network",
-          link: "/notes/Network/README.md",
+          link: "/notes/Network/",
           children: [
             "/notes/Network/Network ARP.md",
             "/notes/Network/Network FTP.md",
@@ -234,7 +234,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Operating System",
-          link: "/notes/Operating System/README.md",
+          link: "/notes/Operating System/",
           children: [
             "/notes/Operating System/Linux Kernel Compilation.md",
             "/notes/Operating System/Linux Multi-OS.md",
@@ -271,7 +271,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "PostgreSQL",
-          link: "/notes/PostgreSQL/README.md",
+          link: "/notes/PostgreSQL/",
           children: [
             "/notes/PostgreSQL/PostgreSQL Analyze.md",
             "/notes/PostgreSQL/PostgreSQL Executor Append.md",
@@ -294,7 +294,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Productivity",
-          link: "/notes/Productivity/README.md",
+          link: "/notes/Productivity/",
           children: [
             "/notes/Productivity/LaTeX.md",
             "/notes/Productivity/Venn Diagram.md",
@@ -303,7 +303,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Solidity",
-          link: "/notes/Solidity/README.md",
+          link: "/notes/Solidity/",
           children: [
             "/notes/Solidity/Solidity ABI Specification.md",
             "/notes/Solidity/Solidity Contracts.md",
@@ -317,12 +317,12 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Vue.js",
-          link: "/notes/Vue.js/README.md",
+          link: "/notes/Vue.js/",
           children: ["/notes/Vue.js/Vue.js Environment Variable.md"],
         },
         {
           text: "Web",
-          link: "/notes/Web/README.md",
+          link: "/notes/Web/",
           children: [
             "/notes/Web/Web CORS.md",
             "/notes/Web/Web OpenAPI Specification.md",
@@ -330,7 +330,7 @@ export const sidebarEn: SidebarConfig = {
         },
         {
           text: "Wireless",
-          link: "/notes/Wireless/README.md",
+          link: "/notes/Wireless/",
           children: [
             "/notes/Wireless/Wireless WEP Cracking by Aircrack-ng.md",
             "/notes/Wireless/Wireless WPS Cracking by Reaver.md",
@@ -343,7 +343,7 @@ export const sidebarEn: SidebarConfig = {
   "/how-linux-works-notes/": [
     {
       text: "🐧 How Linux Works",
-      link: "/how-linux-works-notes/README.md",
+      link: "/how-linux-works-notes/",
       children: [
         "/how-linux-works-notes/Chapter 1 - The Big Picture.md",
         "/how-linux-works-notes/Chapter 2 - Basic Commands and Directory Hierarchy.md",
@@ -366,7 +366,7 @@ export const sidebarEn: SidebarConfig = {
   "/linux-kernel-comments-notes/": [
     {
       text: "🐧 Linux Kernel Comments",
-      link: "/linux-kernel-comments-notes/README.md",
+      link: "/linux-kernel-comments-notes/",
       children: [
         {
           text: "Chapter 2 - 微型计算机组成结构",
@@ -480,7 +480,7 @@ export const sidebarEn: SidebarConfig = {
   "/linux-kernel-development-notes/": [
     {
       text: "🐧 Linux Kernel Development",
-      link: "/linux-kernel-development-notes/README.md",
+      link: "/linux-kernel-development-notes/",
       children: [
         "/linux-kernel-development-notes/Chapter 1 - Linux 内核简介.md",
         "/linux-kernel-development-notes/Chapter 2 - 从内核出发.md",
@@ -500,7 +500,7 @@ export const sidebarEn: SidebarConfig = {
   "/uc-os-ii-code-notes/": [
     {
       text: "🐤 μc/OS-II Source Code",
-      link: "/uc-os-ii-code-notes/README.md",
+      link: "/uc-os-ii-code-notes/",
       children: [
         {
           text: "Chapter 1 - 嵌入式系统导论",
@@ -565,7 +565,7 @@ export const sidebarEn: SidebarConfig = {
   "/understanding-the-jvm-notes/": [
     {
       text: "☕ Understanding the JVM",
-      link: "/understanding-the-jvm-notes/README.md",
+      link: "/understanding-the-jvm-notes/",
       children: [
         {
           text: "Part 2 - 自动内存管理",
@@ -610,7 +610,7 @@ export const sidebarEn: SidebarConfig = {
   "/redis-implementation-notes/": [
     {
       text: "⛸️ Redis Implementation",
-      link: "/redis-implementation-notes/README.md",
+      link: "/redis-implementation-notes/",
       children: [
         {
           text: "Part 1 - 数据结构与对象",
@@ -659,7 +659,7 @@ export const sidebarEn: SidebarConfig = {
   "/understanding-nginx-notes/": [
     {
       text: "🗜️ Understanding Nginx",
-      link: "/understanding-nginx-notes/README.md",
+      link: "/understanding-nginx-notes/",
       children: [
         {
           text: "Part 1 - Nginx 能帮我们做什么",
@@ -702,7 +702,7 @@ export const sidebarEn: SidebarConfig = {
   "/netty-in-action-notes/": [
     {
       text: "⚙️ Netty in Action",
-      link: "/netty-in-action-notes/README.md",
+      link: "/netty-in-action-notes/",
       children: [
         "/netty-in-action-notes/1 - NIO Transportation Model.md",
         "/netty-in-action-notes/2 - ByteBuf.md",
@@ -725,7 +725,7 @@ export const sidebarEn: SidebarConfig = {
   "/spring-microservices-notes/": [
     {
       text: "☁️ Spring Microservices",
-      link: "/spring-microservices-notes/README.md",
+      link: "/spring-microservices-notes/",
       children: [
         "/spring-microservices-notes/Chapter 1 - 欢迎迈入云世界，Spring.md",
         "/spring-microservices-notes/Chapter 2 - 使用 Spring Boot 构建微服务.md",
@@ -741,7 +741,7 @@ export const sidebarEn: SidebarConfig = {
   "/the-annotated-stl-sources-notes/": [
     {
       text: "⚒️ The Annotated STL Sources",
-      link: "/the-annotated-stl-sources-notes/README.md",
+      link: "/the-annotated-stl-sources-notes/",
       children: [
         {
           text: "Chapter 1 - STL 概论与版本简介",
@@ -827,7 +827,7 @@ export const sidebarEn: SidebarConfig = {
   "/jdk-source-code-analysis/": [
     {
       text: "☕ Java Development Kit 8",
-      link: "/jdk-source-code-analysis/README.md",
+      link: "/jdk-source-code-analysis/",
       children: [
         {
           text: "java.io",
