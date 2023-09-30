@@ -274,6 +274,8 @@ export const sidebarEn: SidebarConfig = {
           link: "/notes/PostgreSQL/",
           children: [
             "/notes/PostgreSQL/PostgreSQL Analyze.md",
+            "/notes/PostgreSQL/PostgreSQL COPY FROM.md",
+            "/notes/PostgreSQL/PostgreSQL COPY TO.md",
             "/notes/PostgreSQL/PostgreSQL Executor Append.md",
             "/notes/PostgreSQL/PostgreSQL Executor Group.md",
             "/notes/PostgreSQL/PostgreSQL Executor Limit.md",
