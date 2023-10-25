@@ -1,7 +1,7 @@
 ---
 home: true
 title: Blog
-heroImage: /images/avatar.jpg
+heroImage: /images/avatar.png
 actions:
   - text: About
     link: /about/README.md

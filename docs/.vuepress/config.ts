@@ -19,7 +19,7 @@ export default defineUserConfig({
   },
 
   theme: defaultTheme({
-    logo: "/images/avatar.jpg",
+    logo: "/images/avatar.png",
     repo: "https://github.com/mrdrivingduck/blog",
 
     editLink: false,
