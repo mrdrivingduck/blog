@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-199ea662","path":"/notes/Linux/","title":"Linux Every Day","lang":"en","frontmatter":{},"headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"notes/Linux/README.md"}');export{e as data};

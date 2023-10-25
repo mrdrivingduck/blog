@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-85ed9a14","path":"/notes/Java/Java%20String%20Split.html","title":"Java - String Split","lang":"en","frontmatter":{},"headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"notes/Java/Java String Split.md"}');export{t as data};

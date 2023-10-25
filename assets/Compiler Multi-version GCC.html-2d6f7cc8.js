@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-0a9cb7cc","path":"/notes/Compiler/Compiler%20Multi-version%20GCC.html","title":"Compiler - Multi-version GCC","lang":"en","frontmatter":{},"headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"notes/Compiler/Compiler Multi-version GCC.md"}');export{e as data};

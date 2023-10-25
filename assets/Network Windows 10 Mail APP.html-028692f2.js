@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-ec751746","path":"/notes/Network/Network%20Windows%2010%20Mail%20APP.html","title":"Network - Windows 10 Mail APP","lang":"en","frontmatter":{},"headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"notes/Network/Network Windows 10 Mail APP.md"}');export{t as data};

@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-1eb44020","path":"/notes/Algorithm/Algorithm%20Fast%20Power.html","title":"Algorithm - Fast Power","lang":"en","frontmatter":{},"headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"notes/Algorithm/Algorithm Fast Power.md"}');export{t as data};

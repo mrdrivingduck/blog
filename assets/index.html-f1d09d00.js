@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-6dbb711a","path":"/notes/C__/","title":"C++","lang":"en","frontmatter":{},"headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"notes/C++/README.md"}');export{t as data};

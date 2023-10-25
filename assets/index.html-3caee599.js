@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-6325e865","path":"/notes/Solidity/","title":"Solidity","lang":"en","frontmatter":{},"headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"notes/Solidity/README.md"}');export{t as data};

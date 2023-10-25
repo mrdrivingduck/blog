@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-b7551998","path":"/notes/PostgreSQL/","title":"PostgreSQL","lang":"en","frontmatter":{},"headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"notes/PostgreSQL/README.md"}');export{t as data};

@@ -1,0 +1,39 @@
+import{_ as e,o as i,c as n,e as a}from"./app-25fa875f.js";const r={},t=a(`<h1 id="chapter-1-stl-概论与版本简介" tabindex="-1"><a class="header-anchor" href="#chapter-1-stl-概论与版本简介" aria-hidden="true">#</a> Chapter 1 - STL 概论与版本简介</h1><p>Created by : Mr Dk.</p><p>2021 / 03 / 29 14:07</p><p>Nanjing, Jiangsu, China</p><hr><h2 id="_1-1-stl-概论" tabindex="-1"><a class="header-anchor" href="#_1-1-stl-概论" aria-hidden="true">#</a> 1.1 STL 概论</h2><p>制造 <strong>可重复运用的东西</strong>，防止大量程序员被迫从事大量重复的工作。</p><p>STL 的价值：</p><ul><li>极具实用价值的零部件 + 整合的组织</li><li>高层次、以泛型思维为基础的、系统化的、条理分明的 <strong>软件组件分类学</strong></li></ul><p>C++ 的 <strong>类</strong> 使得程序员可以自定义类型，C++ 的 <strong>模板</strong> 使得程序员可以将类型 <em>参数化</em>。这两个特性为 STL 的形成提供了温床。</p><h2 id="_1-2-stl-六大组件-功能与运用" tabindex="-1"><a class="header-anchor" href="#_1-2-stl-六大组件-功能与运用" aria-hidden="true">#</a> 1.2 STL 六大组件 功能与运用</h2><ol><li>容器 (containers)：各种数据结构；从实现角度看，是一种 <em>类模板 (class template)</em></li><li>算法 (algorithms)：各种常用算法；从实现角度看，是一种 <em>函数模板 (function template)</em></li><li>迭代器 (iterators)：泛型指针，扮演容器与算法的粘合剂；从实现角度看，是 <strong>将指针相关操作予以重载</strong> 的类模板</li><li>仿函数 (functors)：行为类似函数；从实现角度看，是 <strong>重载了 <code>operator()</code></strong> 的类或类模板</li><li>适配器 (adapters)：用于修饰容器 / 仿函数 / 迭代器接口，用于暴露相同底层结构的不同功能</li><li>分配器 (allocators)：负责空间的配置与管理；从实现角度看，是实现了 <strong>动态空间分配 / 管理 / 释放</strong> 的类模板</li></ol><p>应用 STL 时，应遵照 C++ 规范，养成良好习惯，使用 <strong>无扩展名的头文件</strong>。</p><h2 id="_1-4-hp-实现版本" tabindex="-1"><a class="header-anchor" href="#_1-4-hp-实现版本" aria-hidden="true">#</a> 1.4 HP 实现版本</h2><p><em>Hewlett-Packard (HP)</em> 版本是所有 STL 实现版本的始祖。每个 HP STL 头文件上都有声明，允许任何人免费使用、拷贝、修改、传播、贩卖，唯一的条件是在所有文件中加上这个声明。属于开源范畴。</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token comment">/*
+ *
+ * Copyright (c) 1994
+ * Hewlett-Packard Company
+ *
+ * Permission to use, copy, modify, distribute and sell this software
+ * and its documentation for any purpose is hereby granted without fee,
+ * provided that the above copyright notice appear in all copies and
+ * that both that copyright notice and this permission notice appear
+ * in supporting documentation.  Hewlett-Packard Company makes no
+ * representations about the suitability of this software for any
+ * purpose.  It is provided &quot;as is&quot; without express or implied warranty.
+ */</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="_1-5-p-j-plauger-实现版本" tabindex="-1"><a class="header-anchor" href="#_1-5-p-j-plauger-实现版本" aria-hidden="true">#</a> 1.5 P.J.Plauger 实现版本</h2><p>由 <em>P.J.Plauger</em> 开发，继承自 HP 版本，被 <em>Visual C++</em> 采用。</p><h2 id="_1-6-rouge-wave-实现版本" tabindex="-1"><a class="header-anchor" href="#_1-6-rouge-wave-实现版本" aria-hidden="true">#</a> 1.6 Rouge Wave 实现版本</h2><p>由 <em>Rouge Wave</em> 公司开发，继承自 HP 版本，被 <em>C++Builder</em> 采用。</p><h2 id="_1-8-sgi-stl-实现版本" tabindex="-1"><a class="header-anchor" href="#_1-8-sgi-stl-实现版本" aria-hidden="true">#</a> 1.8 SGI STL 实现版本</h2><p>由 <em>Silicon Graphics Computer Systems, Inc.</em> 公司开发，继承自 HP 版本。每份文件内除了 HP 的声明，还有 SGI 公司的版权声明。</p><div class="language-cpp line-numbers-mode" data-ext="cpp"><pre class="language-cpp"><code><span class="token comment">/*
+ *
+ * Copyright (c) 1994
+ * Hewlett-Packard Company
+ *
+ * Permission to use, copy, modify, distribute and sell this software
+ * and its documentation for any purpose is hereby granted without fee,
+ * provided that the above copyright notice appear in all copies and
+ * that both that copyright notice and this permission notice appear
+ * in supporting documentation.  Hewlett-Packard Company makes no
+ * representations about the suitability of this software for any
+ * purpose.  It is provided &quot;as is&quot; without express or implied warranty.
+ *
+ *
+ * Copyright (c) 1996
+ * Silicon Graphics Computer Systems, Inc.
+ *
+ * Permission to use, copy, modify, distribute and sell this software
+ * and its documentation for any purpose is hereby granted without fee,
+ * provided that the above copyright notice appear in all copies and
+ * that both that copyright notice and this permission notice appear
+ * in supporting documentation.  Silicon Graphics makes no
+ * representations about the suitability of this software for any
+ * purpose.  It is provided &quot;as is&quot; without express or implied warranty.
+ */</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>SGI 版本被 GCC 采用，不论是在符号命名还是编程风格上，可读性都非常高。另外，SGI 为了具有高度移植性，考虑了不同编译器的不同编译能力。</p><h2 id="_1-9-可能令你困惑的-c-语法" tabindex="-1"><a class="header-anchor" href="#_1-9-可能令你困惑的-c-语法" aria-hidden="true">#</a> 1.9 可能令你困惑的 C++ 语法</h2><h3 id="_1-9-2-临时对象的产生与使用" tabindex="-1"><a class="header-anchor" href="#_1-9-2-临时对象的产生与使用" aria-hidden="true">#</a> 1.9.2 临时对象的产生与使用</h3><p>即所谓 <strong>匿名对象</strong>，STL 最常将此技巧应用于仿函数与算法的搭配上，比如 <code>greater&lt;int&gt;()</code>。<code>greater&lt;int&gt;</code> 实际上是一个仿函数类。<code>greater&lt;int&gt;()</code> 就是该仿函数类的一个临时对象。</p><h3 id="_1-9-4-increament-decrement-dereference-操作符" tabindex="-1"><a class="header-anchor" href="#_1-9-4-increament-decrement-dereference-操作符" aria-hidden="true">#</a> 1.9.4 increament / decrement / dereference 操作符</h3><p>迭代器必须实现 <strong>前进</strong> (重载 <code>operator++</code>) 和 <strong>取值</strong> (重载 <code>operator*</code>) 两个功能，前进功能还要细分为前缀式和后缀式。对于有些支持双向移动的迭代器，还要具备 <strong>后退</strong> (重载 <code>operator--</code>) 的功能。</p><h3 id="_1-9-5-前闭后开区间表示法" tabindex="-1"><a class="header-anchor" href="#_1-9-5-前闭后开区间表示法" aria-hidden="true">#</a> 1.9.5 前闭后开区间表示法 [)</h3><p>任何一个 STL 算法都要获得以一对迭代器指示的区间，以表示操作范围。迭代器表示的是一个 <strong>左闭右开区间</strong>。<code>[first, last)</code> 指示从 <code>first</code> 到 <code>last-1</code> 的元素，<code>last</code> 表示 <strong>最后一个元素的下一个位置</strong>。这种偏移一格的表示方法带来了许多方便。</p><h3 id="_1-9-6-function-call-操作符-operator" tabindex="-1"><a class="header-anchor" href="#_1-9-6-function-call-操作符-operator" aria-hidden="true">#</a> 1.9.6 function call 操作符 (<code>operator()</code>)</h3><p>需要有一种特殊的东西来表达 <strong>一组操作</strong>，在 C 语言中，只能使用函数指针来实现，缺点是无法持有自己的状态，且不能达成可适配性。在 STL 中，以 <strong>仿函数</strong> 来实现这种功能。仿函数特指 <strong>对某个类进行 <code>operator()</code> 重载</strong>。通过将仿函数实例化为一个临时对象，就能方便地描述一个操作。</p>`,33),s=[t];function o(d,c){return i(),n("div",null,s)}const p=e(r,[["render",o],["__file","Chapter 1 - STL 概论与版本简介.html.vue"]]);export{p as default};

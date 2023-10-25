@@ -1,0 +1,1 @@
+const t=JSON.parse('{"key":"v-1f1983f7","path":"/notes/Operating%20System/","title":"Operating System","lang":"en","frontmatter":{},"headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"notes/Operating System/README.md"}');export{t as data};

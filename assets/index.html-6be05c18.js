@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-52e57566","path":"/notes/Performance/","title":"Linux Performance","lang":"en","frontmatter":{},"headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"notes/Performance/README.md"}');export{e as data};

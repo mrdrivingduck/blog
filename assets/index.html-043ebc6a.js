@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-542c7fbd","path":"/notes/MS%20Office/","title":"MS Office","lang":"en","frontmatter":{},"headers":[],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"notes/MS Office/README.md"}');export{e as data};

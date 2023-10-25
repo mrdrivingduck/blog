@@ -1,0 +1,1 @@
+const e=JSON.parse('{"key":"v-a4e30378","path":"/uc-os-ii-code-notes/","title":"uc-os-ii-code-notes","lang":"en","frontmatter":{},"headers":[{"level":2,"title":"License","slug":"license","link":"#license","children":[]}],"git":{"updatedTime":null,"contributors":[]},"filePathRelative":"uc-os-ii-code-notes/README.md"}');export{e as data};

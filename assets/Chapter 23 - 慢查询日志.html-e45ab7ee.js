@@ -1,0 +1,17 @@
+import{_ as n,o as s,c as a,e}from"./app-25fa875f.js";const o={},l=e(`<h1 id="chapter-23-慢查询日志" tabindex="-1"><a class="header-anchor" href="#chapter-23-慢查询日志" aria-hidden="true">#</a> Chapter 23 - 慢查询日志</h1><p>Created by : Mr Dk.</p><p>2020 / 06 / 13 14:08</p><p>Nanjing, Jiangsu, China</p><hr><p>Redis 的慢查询日志功能用于记录执行时间超过给定时长的命令请求。用户可以通过慢查询日志来监视和优化查询速度。</p><ul><li><code>slowlog-log-slower-than</code> 指定执行时间超过该阈值的命令会被记录</li><li><code>slowlog-max-len</code> 指定服务器最多保存多少条慢查询日志</li></ul><p>与该功能相关的数据结构：</p><div class="language-c line-numbers-mode" data-ext="c"><pre class="language-c"><code><span class="token keyword">struct</span> <span class="token class-name">redisServer</span> <span class="token punctuation">{</span>
+    <span class="token comment">// ...</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> slowlog_entry_id<span class="token punctuation">;</span> <span class="token comment">// 下一条慢查询日志 id</span>
+    list <span class="token operator">*</span>slowlog<span class="token punctuation">;</span> <span class="token comment">// 保存了所有慢查询日志的链表</span>
+
+    <span class="token keyword">long</span> <span class="token keyword">long</span> slowlog_log_slower_than<span class="token punctuation">;</span>
+    <span class="token keyword">unsigned</span> <span class="token keyword">long</span> slowlog_max_len<span class="token punctuation">;</span>
+    <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>其中，第一条慢查询日志的 id 为 <code>0</code>，之后每创建一条日志 id + 1。慢查询日志的链表结构定义：</p><div class="language-c line-numbers-mode" data-ext="c"><pre class="language-c"><code><span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">slowlogEntry</span> <span class="token punctuation">{</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> id<span class="token punctuation">;</span>
+    <span class="token class-name">time_t</span> time<span class="token punctuation">;</span> <span class="token comment">// 命令执行时的时间</span>
+    <span class="token keyword">long</span> <span class="token keyword">long</span> duration<span class="token punctuation">;</span> <span class="token comment">// 执行命令消耗的时间</span>
+    robj <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">;</span> <span class="token comment">// 命令与命令参数</span>
+    <span class="token keyword">int</span> argc<span class="token punctuation">;</span> <span class="token comment">// 命令与命令参数的数量</span>
+<span class="token punctuation">}</span> slowlogEntry<span class="token punctuation">;</span>
+</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>每次执行命令前后，程序都会记录微秒格式的 UNIX 时间戳，两个时间戳的差就是服务器执行命令所耗费的时长。如果超出了设定阈值，就产生一条新的慢查询日志加入链表；如果链表长度超出阈值，则删除最早的慢查询日志。</p>`,12),t=[l];function c(p,i){return s(),a("div",null,t)}const r=n(o,[["render",c],["__file","Chapter 23 - 慢查询日志.html.vue"]]);export{r as default};
