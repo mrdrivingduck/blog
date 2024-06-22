@@ -1,18 +1,17 @@
-import { defineUserConfig } from "@vuepress/cli";
-import { docsearchPlugin } from "@vuepress/plugin-docsearch";
+import { defineUserConfig } from "vuepress";
 import { defaultTheme } from "@vuepress/theme-default";
+import { docsearchPlugin } from "@vuepress/plugin-docsearch";
 import { navbarEn, sidebarEn } from "./configs";
+import { viteBundler } from "@vuepress/bundler-vite";
 
 export default defineUserConfig({
-  lang: "zh-CN",
-
   base: "/blog/",
-
   head: [["link", { rel: "icon", href: "/blog/images/favicon.jpg" }]],
+  bundler: viteBundler(),
 
   locales: {
     "/": {
-      lang: "en",
+      lang: "en-US",
       title: "Mr Dk.'s Blog",
       description: "A Tiffany-twisted perfectionist. 🍬",
     },

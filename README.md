@@ -27,21 +27,21 @@ Created by : Mr Dk.
 ### Install dependencies
 
 ```bash
-yarn
+pnpm install
 ```
 
 ### Compiles and hot-reloads for development
 
 ```bash
-yarn docs:dev
+pnpm run docs:dev
 ```
 
 ### Compiles and minifies for production
 
 ```bash
-yarn docs:build
+pnpm run docs:build
 ```
 
 ## License
 
-Copyright © 2018-2023, Jingtang Zhang. ([MIT License](./LICENSE))
+Copyright © 2018-2024, Jingtang Zhang. ([MIT License](./LICENSE))
