@@ -21,7 +21,6 @@ export default defineUserConfig({
     logo: "/images/avatar.png",
     repo: "https://github.com/mrdrivingduck/blog",
 
-    editLink: false,
     docsDir: "docs",
 
     // whether to enable light/dark mode
