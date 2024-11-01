@@ -2,20 +2,19 @@
 
 🦆 Blog of [@mrdrivingduck](https://github.com/mrdrivingduck).
 
-Created by : Mr Dk.
+Created by: Mr Dk.
 
 2019 / 07 / 01 15:44
 
-@Nanjing, Jiangsu, China
+Nanjing, Jiangsu, China
 
 ---
 
 ## Build Status
 
-| Branch            | Status                                                                                                                                                                                                                                                                       |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Dev (Build)       | [![github-actions-build](https://img.shields.io/github/actions/workflow/status/mrdrivingduck/blog/build-only.yml?label=Build&logo=githubactions&logoColor=yellow&style=for-the-badge)](https://github.com/mrdrivingduck/blog/actions/workflows/build-only.yml)               |
-| Main (Deployment) | [![github-actions-depoly](https://img.shields.io/github/actions/workflow/status/mrdrivingduck/blog/build-and-deploy.yml?label=Deploy&logo=githubactions&logoColor=yellow&style=for-the-badge)](https://github.com/mrdrivingduck/blog/actions/workflows/build-and-deploy.yml) |
+| Branch            | Status                                                                                                                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Main (Deployment) | [![GitHub branch check runs](<https://img.shields.io/github/check-runs/mrdrivingduck/blog/main?logo=github&label=checks%20(main)>)](https://github.com/mrdrivingduck/blog/tree/main) |
 
 ## Supported by
 
