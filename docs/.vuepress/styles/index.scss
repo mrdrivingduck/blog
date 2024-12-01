@@ -1,17 +1,18 @@
 :root {
   scroll-behavior: smooth;
-
-  // brand colors
-  --c-brand: #9567e4;
-  --c-brand-light: #9567e4;
-
-  --c-tip: #9567e4;
 }
 
-html.dark {
-  // brand colors
-  --c-brand: #ffd04b;
-  --c-brand-light: #ffd04b;
+// === colors ===
+:root {
+  // accent colors
+  --vp-c-accent: #9567e4;
+  --vp-c-accent-bg: #9567e4;
+  --vp-c-accent-hover: #9a70e2;
+}
 
-  --c-tip: #ffd04b;
+[data-theme='dark'] {
+  // brand colors
+  --vp-c-accent: #ffd04b;
+  --vp-c-accent-bg: #ffd04b;
+  --vp-c-accent-hover: #ecbb33;
 }

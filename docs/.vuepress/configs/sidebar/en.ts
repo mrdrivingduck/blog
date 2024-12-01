@@ -512,60 +512,48 @@ export const sidebarEn: SidebarConfig = {
       children: [
         {
           text: "Chapter 1 - 嵌入式系统导论",
-          children: [
-            "/uc-os-ii-code-notes/Chapter 1 - 嵌入式系统导论/Chapter 1 - 嵌入式系统导论.md",
-          ],
+          link: "/uc-os-ii-code-notes/Chapter 1 - 嵌入式系统导论.md",
         },
         {
           text: "Chapter 2 - 嵌入式操作系统中的基本概念",
-          children: [
-            "/uc-os-ii-code-notes/Chapter 2 - 嵌入式操作系统中的基本概念/Chapter 2 - 嵌入式操作系统中的基本概念.md",
-          ],
+          link: "/uc-os-ii-code-notes/Chapter 2 - 嵌入式操作系统中的基本概念.md",
         },
         {
           text: "Chapter 3 - 任务管理",
           children: [
-            "/uc-os-ii-code-notes/Chapter 3 - 任务管理/Chapter 3.1 - 核心任务管理.md",
-            "/uc-os-ii-code-notes/Chapter 3 - 任务管理/Chapter 3.2 - 用户任务管理.md",
+            "/uc-os-ii-code-notes/Chapter 3.1 - 核心任务管理.md",
+            "/uc-os-ii-code-notes/Chapter 3.2 - 用户任务管理.md",
           ],
         },
         {
           text: "Chapter 4 - 中断与时间管理",
-          children: [
-            "/uc-os-ii-code-notes/Chapter 4 - 中断与时间管理/Chapter 4 - 中断与时间管理.md",
-          ],
+          link: "/uc-os-ii-code-notes/Chapter 4 - 中断与时间管理.md",
         },
         {
           text: "Chapter 5 - 事件控制块",
-          children: [
-            "/uc-os-ii-code-notes/Chapter 5 - 事件控制块/Chapter 5 - 事件控制块.md",
-          ],
+          link: "/uc-os-ii-code-notes/Chapter 5 - 事件控制块.md",
         },
         {
           text: "Chapter 6 - 信号量与互斥信号量管理",
           children: [
-            "/uc-os-ii-code-notes/Chapter 6 - 信号量与互斥信号量管理/Chapter 6.1 - 信号量管理.md",
-            "/uc-os-ii-code-notes/Chapter 6 - 信号量与互斥信号量管理/Chapter 6.2 - 互斥信号量管理.md",
+            "/uc-os-ii-code-notes/Chapter 6.1 - 信号量管理.md",
+            "/uc-os-ii-code-notes/Chapter 6.2 - 互斥信号量管理.md",
           ],
         },
         {
           text: "Chapter 7 - 消息管理",
           children: [
-            "/uc-os-ii-code-notes/Chapter 7 - 消息管理/Chapter 7.1 - 消息邮箱管理.md",
-            "/uc-os-ii-code-notes/Chapter 7 - 消息管理/Chapter 7.2 - 消息队列管理.md",
+            "/uc-os-ii-code-notes/Chapter 7.1 - 消息邮箱管理.md",
+            "/uc-os-ii-code-notes/Chapter 7.2 - 消息队列管理.md",
           ],
         },
         {
           text: "Chapter 8 - 事件标志组",
-          children: [
-            "/uc-os-ii-code-notes/Chapter 8 - 事件标志组/Chapter 8 - 事件标志组.md",
-          ],
+          link: "/uc-os-ii-code-notes/Chapter 8 - 事件标志组.md",
         },
         {
           text: "Chapter 9 - 内存管理",
-          children: [
-            "/uc-os-ii-code-notes/Chapter 9 - 内存管理/Chapter 9 - 内存管理.md",
-          ],
+          link: "/uc-os-ii-code-notes/Chapter 9 - 内存管理.md",
         },
       ],
     },
