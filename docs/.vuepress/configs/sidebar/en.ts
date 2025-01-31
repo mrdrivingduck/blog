@@ -298,6 +298,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/PostgreSQL/PostgreSQL Storage Management.md",
             "/notes/PostgreSQL/PostgreSQL VFD.md",
             "/notes/PostgreSQL/PostgreSQL WAL Insert.md",
+            "/notes/PostgreSQL/PostgreSQL WAL Prefetch.md",
           ],
         },
         {
