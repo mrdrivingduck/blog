@@ -43,4 +43,4 @@ pnpm run docs:build
 
 ## License
 
-Copyright © 2018-2024, Jingtang Zhang. ([MIT License](./LICENSE))
+Copyright © 2018-2025, Jingtang Zhang. ([MIT License](./LICENSE))
