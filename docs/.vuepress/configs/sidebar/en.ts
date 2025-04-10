@@ -88,6 +88,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/Docker/Docker Image & Storage Management.md",
             "/notes/Docker/Docker Image.md",
             "/notes/Docker/Docker Libcontainer.md",
+            "/notes/Docker/Docker Multi-Arch Image.md",
             "/notes/Docker/Docker Multi-Stage Build.md",
             "/notes/Docker/Docker Network.md",
             "/notes/Docker/Docker Orchestration & Deployment.md",
