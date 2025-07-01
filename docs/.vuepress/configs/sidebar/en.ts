@@ -296,6 +296,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/PostgreSQL/PostgreSQL Plan Hint GUC.md",
             "/notes/PostgreSQL/PostgreSQL Process Activity.md",
             "/notes/PostgreSQL/PostgreSQL Query Execution.md",
+            "/notes/PostgreSQL/PostgreSQL Read Stream.md",
             "/notes/PostgreSQL/PostgreSQL Resource Owner.md",
             "/notes/PostgreSQL/PostgreSQL Spinlock.md",
             "/notes/PostgreSQL/PostgreSQL Storage Management.md",
