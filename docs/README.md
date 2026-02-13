@@ -10,5 +10,5 @@ actions:
     link: /notes/README.md
     type: primary
 footerHtml: true
-footer: MIT Licensed | Copyright © Jingtang Zhang, 2022-2024
+footer: MIT Licensed | Copyright © Jingtang Zhang, 2022-2026
 ---
