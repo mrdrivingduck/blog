@@ -289,6 +289,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/PostgreSQL/PostgreSQL Executor Sort.md",
             "/notes/PostgreSQL/PostgreSQL Executor Unique.md",
             "/notes/PostgreSQL/PostgreSQL Extension pg_duckdb.md",
+            "/notes/PostgreSQL/PostgreSQL Extension pg_mooncake.md",
             "/notes/PostgreSQL/PostgreSQL FDW Async Execution.md",
             "/notes/PostgreSQL/PostgreSQL GUC.md",
             "/notes/PostgreSQL/PostgreSQL Locking.md",
