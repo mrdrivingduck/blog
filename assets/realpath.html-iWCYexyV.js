@@ -1,0 +1,36 @@
+import{_ as n,c as e,a,o as l}from"./app-BeHGwf2X.js";const i={};function t(r,s){return l(),e("div",null,s[0]||(s[0]=[a(`<h1 id="readlink" tabindex="-1"><a class="header-anchor" href="#readlink"><span>readlink</span></a></h1><p>Created by : Mr Dk.</p><p>2023 / 04 / 14 19:55</p><p>Hangzhou, Zhejiang, China</p><hr><h2 id="background" tabindex="-1"><a class="header-anchor" href="#background"><span>Background</span></a></h2><p><code>realpath</code> 能够返回任意路径的绝对路径。</p><h2 id="usage" tabindex="-1"><a class="header-anchor" href="#usage"><span>Usage</span></a></h2><div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre><code><span class="line">$ realpath <span class="token parameter variable">--help</span></span>
+<span class="line">Usage: realpath <span class="token punctuation">[</span>OPTION<span class="token punctuation">]</span><span class="token punctuation">..</span>. FILE<span class="token punctuation">..</span>.</span>
+<span class="line">Print the resolved absolute <span class="token function">file</span> name<span class="token punctuation">;</span></span>
+<span class="line">all but the last component must exist</span>
+<span class="line"></span>
+<span class="line">  -e, --canonicalize-existing  all components of the path must exist</span>
+<span class="line">  -m, --canonicalize-missing   no components of the path need exist</span>
+<span class="line">  -L, <span class="token parameter variable">--logical</span>                resolve <span class="token string">&#39;..&#39;</span> components before symlinks</span>
+<span class="line">  -P, <span class="token parameter variable">--physical</span>               resolve symlinks as encountered <span class="token punctuation">(</span>default<span class="token punctuation">)</span></span>
+<span class="line">  -q, <span class="token parameter variable">--quiet</span>                  suppress <span class="token function">most</span> error messages</span>
+<span class="line">      --relative-to<span class="token operator">=</span>FILE       print the resolved path relative to FILE</span>
+<span class="line">      --relative-base<span class="token operator">=</span>FILE     print absolute paths unless paths below FILE</span>
+<span class="line">  -s, --strip, --no-symlinks   don<span class="token string">&#39;t expand symlinks</span>
+<span class="line">  -z, --zero                   separate output with NUL rather than newline</span>
+<span class="line"></span>
+<span class="line">      --help     display this help and exit</span>
+<span class="line">      --version  output version information and exit</span>
+<span class="line"></span>
+<span class="line">GNU coreutils online help: &lt;http://www.gnu.org/software/coreutils/&gt;</span>
+<span class="line">For complete documentation, run: info coreutils &#39;</span>realpath invocation&#39;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>ChatGPT 给出的资料：</p><blockquote><p>The realpath command in Linux is used to resolve the absolute path of a given file or directory, taking into account any symbolic links or relative paths that may be involved. It returns the canonical, or standardized, path for the specified file or directory.</p></blockquote><h2 id="demo" tabindex="-1"><a class="header-anchor" href="#demo"><span>Demo</span></a></h2><p>得到一个已有文件的绝对路径：</p><div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre><code><span class="line">$ <span class="token function">touch</span> README.md</span>
+<span class="line">$ realpath ./README.md</span>
+<span class="line">/home/mrdrivingduck/test/README.md</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p><code>-e</code> / <code>-m</code> 选项可以被用于控制是否允许目标文件不存在：</p><div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre><code><span class="line">$ realpath <span class="token parameter variable">-e</span> ./README.m</span>
+<span class="line">realpath: ‘./README.m’: No such <span class="token function">file</span> or directory</span>
+<span class="line"></span>
+<span class="line">$ realpath <span class="token parameter variable">-m</span> ./README.m</span>
+<span class="line">/home/mrdrivingduck/test/README.m</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>对于符号链接来说，<code>-s</code> 选项可以选择不展开符号链接：</p><div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre><code><span class="line">$ <span class="token function">ln</span> <span class="token parameter variable">-s</span> polar-doc/docs/README.md README</span>
+<span class="line"></span>
+<span class="line">$ realpath README</span>
+<span class="line">/home/mrdrivingduck/test/polar-doc/docs/README.md</span>
+<span class="line"></span>
+<span class="line">$ realpath <span class="token parameter variable">-s</span> README</span>
+<span class="line">/home/mrdrivingduck/test/README</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="references" tabindex="-1"><a class="header-anchor" href="#references"><span>References</span></a></h2><p><a href="https://linux.die.net/man/1/realpath" target="_blank" rel="noopener noreferrer">realpath(1) - Linux man page</a></p>`,20)]))}const c=n(i,[["render",t],["__file","realpath.html.vue"]]),d=JSON.parse('{"path":"/notes/Linux/realpath.html","title":"readlink","lang":"en-US","frontmatter":{},"headers":[{"level":2,"title":"Background","slug":"background","link":"#background","children":[]},{"level":2,"title":"Usage","slug":"usage","link":"#usage","children":[]},{"level":2,"title":"Demo","slug":"demo","link":"#demo","children":[]},{"level":2,"title":"References","slug":"references","link":"#references","children":[]}],"git":{},"filePathRelative":"notes/Linux/realpath.md"}');export{c as comp,d as data};

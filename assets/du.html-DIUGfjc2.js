@@ -1,0 +1,93 @@
+import{_ as n,c as a,a as e,o as l}from"./app-BeHGwf2X.js";const i={};function p(t,s){return l(),a("div",null,s[0]||(s[0]=[e(`<h1 id="du" tabindex="-1"><a class="header-anchor" href="#du"><span>du</span></a></h1><p>Created by : Mr Dk.</p><p>2023 / 01 / 01 23:11</p><p>Hangzhou, Zhejiang, China</p><hr><h2 id="background" tabindex="-1"><a class="header-anchor" href="#background"><span>Background</span></a></h2><p><code>du</code> 用于查看文件的空间使用量。</p><h2 id="usage" tabindex="-1"><a class="header-anchor" href="#usage"><span>Usage</span></a></h2><div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre><code><span class="line">$ <span class="token function">du</span> <span class="token parameter variable">--help</span></span>
+<span class="line">Usage: <span class="token function">du</span> <span class="token punctuation">[</span>OPTION<span class="token punctuation">]</span><span class="token punctuation">..</span>. <span class="token punctuation">[</span>FILE<span class="token punctuation">]</span><span class="token punctuation">..</span>.</span>
+<span class="line">  or:  <span class="token function">du</span> <span class="token punctuation">[</span>OPTION<span class="token punctuation">]</span><span class="token punctuation">..</span>. --files0-from<span class="token operator">=</span>F</span>
+<span class="line">Summarize disk usage of the <span class="token builtin class-name">set</span> of FILEs, recursively <span class="token keyword">for</span> directories.</span>
+<span class="line"></span>
+<span class="line">Mandatory arguments to long options are mandatory <span class="token keyword">for</span> short options too.</span>
+<span class="line">  -0, <span class="token parameter variable">--null</span>            end each output line with NUL, not newline</span>
+<span class="line">  -a, <span class="token parameter variable">--all</span>             <span class="token function">write</span> counts <span class="token keyword">for</span> all files, not just directories</span>
+<span class="line">      --apparent-size   print apparent sizes, rather than disk usage<span class="token punctuation">;</span> although</span>
+<span class="line">                          the apparent size is usually smaller, it may be</span>
+<span class="line">                          larger due to holes <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token string">&#39;sparse&#39;</span><span class="token punctuation">)</span> files, internal</span>
+<span class="line">                          fragmentation, indirect blocks, and the like</span>
+<span class="line">  -B, --block-size<span class="token operator">=</span>SIZE  scale sizes by SIZE before printing them<span class="token punctuation">;</span> e.g.,</span>
+<span class="line">                           <span class="token string">&#39;-BM&#39;</span> prints sizes <span class="token keyword">in</span> <span class="token function">units</span> of <span class="token number">1,048</span>,576 bytes<span class="token punctuation">;</span></span>
+<span class="line">                           see SIZE <span class="token function">format</span> below</span>
+<span class="line">  -b, <span class="token parameter variable">--bytes</span>           equivalent to <span class="token string">&#39;--apparent-size --block-size=1&#39;</span></span>
+<span class="line">  -c, <span class="token parameter variable">--total</span>           produce a grand total</span>
+<span class="line">  -D, --dereference-args  dereference only symlinks that are listed on the</span>
+<span class="line">                          <span class="token builtin class-name">command</span> line</span>
+<span class="line">  -d, --max-depth<span class="token operator">=</span>N     print the total <span class="token keyword">for</span> a directory <span class="token punctuation">(</span>or file, with --all<span class="token punctuation">)</span></span>
+<span class="line">                          only <span class="token keyword">if</span> it is N or fewer levels below the <span class="token builtin class-name">command</span></span>
+<span class="line">                          line argument<span class="token punctuation">;</span>  --max-depth<span class="token operator">=</span><span class="token number">0</span> is the same as</span>
+<span class="line">                          <span class="token parameter variable">--summarize</span></span>
+<span class="line">      --files0-from<span class="token operator">=</span>F   summarize disk usage of the</span>
+<span class="line">                          NUL-terminated <span class="token function">file</span> names specified <span class="token keyword">in</span> <span class="token function">file</span> F<span class="token punctuation">;</span></span>
+<span class="line">                          <span class="token keyword">if</span> F is -, <span class="token keyword">then</span> <span class="token builtin class-name">read</span> names from standard input</span>
+<span class="line">  <span class="token parameter variable">-H</span>                    equivalent to --dereference-args <span class="token punctuation">(</span>-D<span class="token punctuation">)</span></span>
+<span class="line">  -h, --human-readable  print sizes <span class="token keyword">in</span> human readable <span class="token function">format</span> <span class="token punctuation">(</span>e.g., 1K 234M 2G<span class="token punctuation">)</span></span>
+<span class="line">      <span class="token parameter variable">--inodes</span>          list inode usage information instead of block usage</span>
+<span class="line">  <span class="token parameter variable">-k</span>                    like --block-size<span class="token operator">=</span>1K</span>
+<span class="line">  -L, <span class="token parameter variable">--dereference</span>     dereference all symbolic links</span>
+<span class="line">  -l, --count-links     count sizes many <span class="token builtin class-name">times</span> <span class="token keyword">if</span> hard linked</span>
+<span class="line">  <span class="token parameter variable">-m</span>                    like --block-size<span class="token operator">=</span>1M</span>
+<span class="line">  -P, --no-dereference  don<span class="token string">&#39;t follow any symbolic links (this is the default)</span>
+<span class="line">  -S, --separate-dirs   for directories do not include size of subdirectories</span>
+<span class="line">      --si              like -h, but use powers of 1000 not 1024</span>
+<span class="line">  -s, --summarize       display only a total for each argument</span>
+<span class="line">  -t, --threshold=SIZE  exclude entries smaller than SIZE if positive,</span>
+<span class="line">                          or entries greater than SIZE if negative</span>
+<span class="line">      --time            show time of the last modification of any file in the</span>
+<span class="line">                          directory, or any of its subdirectories</span>
+<span class="line">      --time=WORD       show time as WORD instead of modification time:</span>
+<span class="line">                          atime, access, use, ctime or status</span>
+<span class="line">      --time-style=STYLE  show times using STYLE, which can be:</span>
+<span class="line">                            full-iso, long-iso, iso, or +FORMAT;</span>
+<span class="line">                            FORMAT is interpreted like in &#39;</span><span class="token function">date</span><span class="token string">&#39;</span>
+<span class="line">  -X, --exclude-from=FILE  exclude files that match any pattern in FILE</span>
+<span class="line">      --exclude=PATTERN    exclude files that match PATTERN</span>
+<span class="line">  -x, --one-file-system    skip directories on different file systems</span>
+<span class="line">      --help     display this help and exit</span>
+<span class="line">      --version  output version information and exit</span>
+<span class="line"></span>
+<span class="line">Display values are in units of the first available SIZE from --block-size,</span>
+<span class="line">and the DU_BLOCK_SIZE, BLOCK_SIZE and BLOCKSIZE environment variables.</span>
+<span class="line">Otherwise, units default to 1024 bytes (or 512 if POSIXLY_CORRECT is set).</span>
+<span class="line"></span>
+<span class="line">The SIZE argument is an integer and optional unit (example: 10K is 10*1024).</span>
+<span class="line">Units are K,M,G,T,P,E,Z,Y (powers of 1024) or KB,MB,... (powers of 1000).</span>
+<span class="line"></span>
+<span class="line">GNU coreutils online help: &lt;https://www.gnu.org/software/coreutils/&gt;</span>
+<span class="line">Full documentation at: &lt;https://www.gnu.org/software/coreutils/du&gt;</span>
+<span class="line">or available locally via: info &#39;</span><span class="token punctuation">(</span>coreutils<span class="token punctuation">)</span> <span class="token function">du</span> invocation&#39;</span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="打印当前目录下所有子目录的空间占用" tabindex="-1"><a class="header-anchor" href="#打印当前目录下所有子目录的空间占用"><span>打印当前目录下所有子目录的空间占用</span></a></h3><div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre><code><span class="line">$ <span class="token function">du</span></span>
+<span class="line"><span class="token number">4</span>       ./certbot/2582</span>
+<span class="line"><span class="token number">4</span>       ./certbot/2618</span>
+<span class="line"><span class="token number">4</span>       ./certbot/common</span>
+<span class="line"><span class="token number">16</span>      ./certbot</span>
+<span class="line"><span class="token number">20</span>      <span class="token builtin class-name">.</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>如果也需要打印文件的大小占用，则使用 <code>-a</code> 参数：</p><div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre><code><span class="line">$ <span class="token function">du</span> <span class="token parameter variable">-a</span></span>
+<span class="line"><span class="token number">4</span>       ./certbot/2582</span>
+<span class="line"><span class="token number">4</span>       ./certbot/2618</span>
+<span class="line"><span class="token number">4</span>       ./certbot/common</span>
+<span class="line"><span class="token number">0</span>       ./certbot/current</span>
+<span class="line"><span class="token number">16</span>      ./certbot</span>
+<span class="line"><span class="token number">20</span>      <span class="token builtin class-name">.</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="以人类可读的格式打印" tabindex="-1"><a class="header-anchor" href="#以人类可读的格式打印"><span>以人类可读的格式打印</span></a></h3><p>使用 <code>-h</code> 参数：</p><div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre><code><span class="line">$ <span class="token function">du</span> <span class="token parameter variable">-h</span></span>
+<span class="line"><span class="token number">4</span>.0K    ./certbot/2582</span>
+<span class="line"><span class="token number">4</span>.0K    ./certbot/2618</span>
+<span class="line"><span class="token number">4</span>.0K    ./certbot/common</span>
+<span class="line">16K     ./certbot</span>
+<span class="line">20K     <span class="token builtin class-name">.</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="打印文件的最后修改时间" tabindex="-1"><a class="header-anchor" href="#打印文件的最后修改时间"><span>打印文件的最后修改时间</span></a></h3><p>使用 <code>--time</code> 参数：</p><div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre><code><span class="line">$ <span class="token function">du</span> <span class="token parameter variable">-h</span> <span class="token parameter variable">--time</span></span>
+<span class="line"><span class="token number">4</span>.0K    <span class="token number">2022</span>-03-03 <span class="token number">10</span>:15        ./certbot/2582</span>
+<span class="line"><span class="token number">4</span>.0K    <span class="token number">2022</span>-03-03 <span class="token number">10</span>:15        ./certbot/2618</span>
+<span class="line"><span class="token number">4</span>.0K    <span class="token number">2022</span>-03-03 <span class="token number">10</span>:15        ./certbot/common</span>
+<span class="line">16K     <span class="token number">2022</span>-12-17 08:07        ./certbot</span>
+<span class="line">20K     <span class="token number">2022</span>-12-17 08:07        <span class="token builtin class-name">.</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><h3 id="递归深度控制" tabindex="-1"><a class="header-anchor" href="#递归深度控制"><span>递归深度控制</span></a></h3><p>当什么参数都不加时，默认递归到最深层。</p><p>使用 <code>-d</code> 参数可以指定递归的最深层层数：</p><div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre><code><span class="line">$ <span class="token function">du</span> <span class="token parameter variable">-h</span> <span class="token parameter variable">-d</span> <span class="token number">1</span></span>
+<span class="line">16K     ./certbot</span>
+<span class="line">20K     <span class="token builtin class-name">.</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>使用 <code>-s</code> 参数可以只递归到当前层，等价于 <code>-d 0</code>：</p><div class="language-bash line-numbers-mode" data-highlighter="prismjs" data-ext="sh" data-title="sh"><pre><code><span class="line">$ <span class="token function">du</span> <span class="token parameter variable">-h</span> <span class="token parameter variable">-s</span></span>
+<span class="line">20K     <span class="token builtin class-name">.</span></span>
+<span class="line"></span></code></pre><div class="line-numbers" aria-hidden="true" style="counter-reset:line-number 0;"><div class="line-number"></div><div class="line-number"></div></div></div><h2 id="references" tabindex="-1"><a class="header-anchor" href="#references"><span>References</span></a></h2><p><a href="https://www.redhat.com/sysadmin/du-command-options" target="_blank" rel="noopener noreferrer">Linux commands: du and the options you should be using</a></p><p><a href="https://man7.org/linux/man-pages/man1/du.1.html" target="_blank" rel="noopener noreferrer">du(1) — Linux manual page</a></p>`,28)]))}const r=n(i,[["render",p],["__file","du.html.vue"]]),o=JSON.parse('{"path":"/notes/Linux/du.html","title":"du","lang":"en-US","frontmatter":{},"headers":[{"level":2,"title":"Background","slug":"background","link":"#background","children":[]},{"level":2,"title":"Usage","slug":"usage","link":"#usage","children":[{"level":3,"title":"打印当前目录下所有子目录的空间占用","slug":"打印当前目录下所有子目录的空间占用","link":"#打印当前目录下所有子目录的空间占用","children":[]},{"level":3,"title":"以人类可读的格式打印","slug":"以人类可读的格式打印","link":"#以人类可读的格式打印","children":[]},{"level":3,"title":"打印文件的最后修改时间","slug":"打印文件的最后修改时间","link":"#打印文件的最后修改时间","children":[]},{"level":3,"title":"递归深度控制","slug":"递归深度控制","link":"#递归深度控制","children":[]}]},{"level":2,"title":"References","slug":"references","link":"#references","children":[]}],"git":{},"filePathRelative":"notes/Linux/du.md"}');export{r as comp,o as data};
