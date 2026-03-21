@@ -101,6 +101,11 @@ export const sidebarEn: SidebarConfig = {
           ],
         },
         {
+          text: "DuckDB",
+          link: "/notes/DuckDB/",
+          children: ["/notes/DuckDB/DuckDB duckdb-paimon.md"],
+        },
+        {
           text: "Git",
           link: "/notes/Git/",
           children: [

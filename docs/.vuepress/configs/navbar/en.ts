@@ -49,6 +49,10 @@ export const navbarEn: NavbarConfig = [
         link: "/notes/Docker/",
       },
       {
+        text: "DuckDB",
+        link: "/notes/DuckDB/",
+      },
+      {
         text: "Git",
         link: "/notes/Git/",
       },
