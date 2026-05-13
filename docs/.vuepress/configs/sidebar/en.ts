@@ -308,6 +308,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/PostgreSQL/PostgreSQL Resource Owner.md",
             "/notes/PostgreSQL/PostgreSQL Spinlock.md",
             "/notes/PostgreSQL/PostgreSQL Storage Management.md",
+            "/notes/PostgreSQL/PostgreSQL VACUUM.md",
             "/notes/PostgreSQL/PostgreSQL VFD.md",
             "/notes/PostgreSQL/PostgreSQL WAL Insert.md",
             "/notes/PostgreSQL/PostgreSQL WAL Prefetch.md",
