@@ -93,6 +93,10 @@ export const navbarEn: NavbarConfig = [
         link: "/notes/Productivity/",
       },
       {
+        text: "Tantivy",
+        link: "/notes/Tantivy/",
+      },
+      {
         text: "Solidity",
         link: "/notes/Solidity/",
       },

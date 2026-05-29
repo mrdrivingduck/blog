@@ -326,6 +326,11 @@ export const sidebarEn: SidebarConfig = {
           ],
         },
         {
+          text: "Tantivy",
+          link: "/notes/Tantivy/",
+          children: ["/notes/Tantivy/Tantivy Architecture.md"],
+        },
+        {
           text: "Solidity",
           link: "/notes/Solidity/",
           children: [
