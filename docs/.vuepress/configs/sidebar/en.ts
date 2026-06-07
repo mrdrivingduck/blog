@@ -329,7 +329,10 @@ export const sidebarEn: SidebarConfig = {
         {
           text: "Tantivy",
           link: "/notes/Tantivy/",
-          children: ["/notes/Tantivy/Tantivy Architecture.md"],
+          children: [
+            "/notes/Tantivy/Tantivy Architecture.md",
+            "/notes/Tantivy/Tantivy Tokenizer.md",
+          ],
         },
         {
           text: "Solidity",
