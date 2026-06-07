@@ -1,6 +1,6 @@
 {
   "name": "duckling-blog",
-  "version": "1.2026.03",
+  "version": "1.2026.06",
   "description": "Blog of Mr Dk.",
   "scripts": {
     "docs:dev": "vuepress dev docs",
@@ -18,14 +18,14 @@
   "homepage": "https://github.com/mrdrivingduck/blog#readme",
   "devDependencies": {
     "@vuepress/bundler-vite": "2.0.0-rc.26",
-    "@vuepress/plugin-docsearch": "^2.0.0-rc.125",
-    "@vuepress/plugin-register-components": "^2.0.0-rc.125",
-    "@vuepress/theme-default": "^2.0.0-rc.125",
+    "@vuepress/plugin-docsearch": "2.0.0-rc.125",
+    "@vuepress/plugin-register-components": "2.0.0-rc.125",
+    "@vuepress/theme-default": "2.0.0-rc.125",
     "katex": "^0.16.40",
     "prettier": "3.8.1",
     "sass-embedded": "^1.98.0",
     "vue": "^3.5.30",
     "vuepress": "2.0.0-rc.26",
-    "vuepress-plugin-md-enhance": "^2.0.0-rc.103"
+    "vuepress-plugin-md-enhance": "2.0.0-rc.103"
   }
 }
