@@ -311,6 +311,7 @@ export const sidebarEn: SidebarConfig = {
             "/notes/PostgreSQL/PostgreSQL TidStore.md",
             "/notes/PostgreSQL/PostgreSQL VACUUM.md",
             "/notes/PostgreSQL/PostgreSQL VACUUM Eager Scan.md",
+            "/notes/PostgreSQL/PostgreSQL VACUUM Prioritization.md",
             "/notes/PostgreSQL/PostgreSQL VFD.md",
             "/notes/PostgreSQL/PostgreSQL WAL Insert.md",
             "/notes/PostgreSQL/PostgreSQL WAL Prefetch.md",
